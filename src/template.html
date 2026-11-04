@@ -18,18 +18,19 @@
 {{CSS}}</style>
 </head>
 <body>
+<a class="skip" href="#main" onclick="document.getElementById('main').focus();return false">Skip to content</a>
 <header>
   <div class="top">
-    <div class="logo" onclick="go('home')">PUNCTUM<small id="sub"></small></div>
-    <input type="search" id="q" oninput="doSearch()" autocomplete="off">
+    <div class="logo" role="link" tabindex="0" onclick="go('home')" onkeydown="if(event.key==='Enter')go('home')">PUNCTUM<small id="sub"></small></div>
+    <input type="search" id="q" aria-label="Search" oninput="doSearch()" autocomplete="off">
     <select id="lang" onchange="setLang(this.value)" aria-label="Language">
       <option value="ro">Română</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="es">Español</option><option value="pt">Português</option><option value="de">Deutsch</option><option value="hu">Magyar</option>
     </select>
     <button class="ib" id="thm" onclick="toggleTheme()" aria-label="Theme">◐</button>
   </div>
-  <nav id="nav"></nav>
+  <nav id="nav" aria-label="Main"></nav>
 </header>
-<main id="main"></main>
+<main id="main" tabindex="-1" aria-live="polite"></main>
 <footer>
   <div id="ftxt"></div>
   <div id="fver"></div>

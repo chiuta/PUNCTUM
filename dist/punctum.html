@@ -64,21 +64,28 @@ footer{max-width:1100px;margin:0 auto;padding:1.2rem .9rem 2.2rem;border-top:1px
 footer a{display:inline-block;margin:.4rem .3rem 0;padding:.4rem .9rem;border-radius:999px;background:var(--gold);color:#201a05;text-decoration:none;font-weight:700}
 svg text{font-family:inherit}
 .elp{cursor:pointer}
+
+.skip{position:absolute;left:-999px;top:0;background:var(--acc);color:#fff;padding:.5rem 1rem;z-index:99}.skip:focus{left:0}
+:focus-visible{outline:3px solid var(--acc);outline-offset:2px}
+#main:focus{outline:none}
+@media print{header,nav,footer,.bar,.skip,.ib,#modal{display:none!important}body{background:#fff!important;color:#000!important}details{display:block}details>*{display:block!important}a{color:#000;text-decoration:none}.card,.warn{break-inside:avoid;border:1px solid #999}}
+@media(forced-colors:active){.badge{border:1px solid}}
 </style>
 </head>
 <body>
+<a class="skip" href="#main" onclick="document.getElementById('main').focus();return false">Skip to content</a>
 <header>
   <div class="top">
-    <div class="logo" onclick="go('home')">PUNCTUM<small id="sub"></small></div>
-    <input type="search" id="q" oninput="doSearch()" autocomplete="off">
+    <div class="logo" role="link" tabindex="0" onclick="go('home')" onkeydown="if(event.key==='Enter')go('home')">PUNCTUM<small id="sub"></small></div>
+    <input type="search" id="q" aria-label="Search" oninput="doSearch()" autocomplete="off">
     <select id="lang" onchange="setLang(this.value)" aria-label="Language">
       <option value="ro">Română</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="es">Español</option><option value="pt">Português</option><option value="de">Deutsch</option><option value="hu">Magyar</option>
     </select>
     <button class="ib" id="thm" onclick="toggleTheme()" aria-label="Theme">◐</button>
   </div>
-  <nav id="nav"></nav>
+  <nav id="nav" aria-label="Main"></nav>
 </header>
-<main id="main"></main>
+<main id="main" tabindex="-1" aria-live="polite"></main>
 <footer>
   <div id="ftxt"></div>
   <div id="fver"></div>
