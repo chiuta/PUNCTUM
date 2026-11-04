@@ -1,3 +1,5 @@
 node_modules/
 *.zip
 research/raw/
+dist/
+__pycache__/
