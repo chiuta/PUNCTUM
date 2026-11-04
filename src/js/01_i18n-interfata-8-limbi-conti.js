@@ -11,7 +11,12 @@ de:{nav:['Start','Theorie','Meridiane','Punkte','Akupressur','Varianten','Ohr & 
 hu:{nav:['Kezdőlap','Elmélet','Meridiánok','Pontok','Akupresszúra','Változatok','Fül és láb','Mérés','Biztonság','Kvíz','Szószedet'],sub:'a pontterápiák atlasza',ph:'Pontok, meridiánok, fogalmak keresése…',disc:'Oktatási anyag. Nem helyettesíti az orvosi diagnózist, kezelést vagy tanácsot. A tűs akupunktúrát csak képzett szakember végezheti.',ver:'Verzió 2.0 · Utolsó frissítés:',noRes:'Nincs találat.',note:'Az oktatási tartalom románul van; a felület 8 nyelven érhető el.'}
 };
 const S={lang:'ro',theme:'auto',fav:[],best:0};
-function load(){try{const j=JSON.parse((localStorage.getItem('punctum')||localStorage.getItem('acupunctura'))||'{}');Object.assign(S,j)}catch(e){}}
+function load(){try{const j=JSON.parse((localStorage.getItem('punctum')||localStorage.getItem('acupunctura'))||'{}');if(j&&typeof j==='object'&&!Array.isArray(j))for(const k of Object.keys(j)){if(k==='__proto__'||k==='constructor'||k==='prototype')continue;S[k]=j[k]}}catch(e){}
+  if(!I18N[S.lang])S.lang='ro';if(!['auto','light','dark'].includes(S.theme))S.theme='auto';
+  if(!Array.isArray(S.fav))S.fav=[];S.fav=S.fav.filter(x=>typeof x==='string').slice(0,500);
+  if(typeof S.best!=='number'||!isFinite(S.best))S.best=0;
+  if(S.course&&typeof S.course!=='object')S.course=null;
+  if(S.routines!==undefined){if(!Array.isArray(S.routines))S.routines=[];S.routines=S.routines.filter(r=>r&&typeof r==='object').slice(0,200).map((r,i)=>({id:String(r.id==null?'r'+i:r.id).replace(/[^\w-]/g,'_').slice(0,40)||'r'+i,name:String(r.name==null?'':r.name).slice(0,120),pts:(Array.isArray(r.pts)?r.pts:[]).filter(c=>typeof c==='string'&&/^[A-Z]{1,2}(-[A-Za-z]+)?\d{0,3}$/.test(c)).slice(0,60),sec:+r.sec>0&&+r.sec<=600?+r.sec:60,fav:!!r.fav}))}}
 function save(){try{localStorage.setItem('punctum',JSON.stringify(S))}catch(e){}}
 const T=()=>I18N[S.lang]||I18N.ro;
 

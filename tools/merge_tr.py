@@ -16,3 +16,4 @@ for l in langs:
             if t and t!=src[int(p[0])]:d[src[int(p[0])]]=t
     json.dump(d,open(f'src/i18n/{l}.json','w',encoding='utf-8'),ensure_ascii=False,separators=(',',':'))
     print(l,len(d),'/',len(src),'rău formatate:',bad)
+os.system('python3 tools/apply_fixes.py')

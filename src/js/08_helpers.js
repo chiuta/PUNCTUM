@@ -1,6 +1,6 @@
 /* ================= HELPERS ================= */
 const $=s=>document.querySelector(s);
-const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+const esc=s=>String(s).replace(/[&<>"'`]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'}[c]));
 function ptCard(p){
   const fav=S.fav.includes(p.c+'|'+p.p);
   const m=MER.find(x=>x.c===p.m);
