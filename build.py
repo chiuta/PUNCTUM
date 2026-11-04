@@ -24,12 +24,15 @@ def sub(m):
     return '[]' if n in JSON_NAMES else ''
 js=re.sub(r'/\*@@([A-Z0-9_]+)@@\*/',sub,js)
 def i18n_blocks():
-    out=[]
-    for f in sorted(glob.glob('src/i18n/*.json')):
-        lang=os.path.basename(f)[:-5]
-        d=json.load(open(f,encoding='utf-8'))
-        txt=json.dumps(d,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
-        out.append(f'<script type="application/json" id="i18n-{lang}">{txt}</script>')
+    """chei românești o singură dată + câte un tablou de traduceri pe limbă (aliniat cu cheile)"""
+    files=sorted(glob.glob('src/i18n/*.json'))
+    dicts={os.path.basename(f)[:-5]:json.load(open(f,encoding='utf-8')) for f in files}
+    keys=sorted({k for d in dicts.values() for k in d})
+    idx={k:i for i,k in enumerate(keys)}
+    esc=lambda o:json.dumps(o,ensure_ascii=False,separators=(',',':')).replace('</','<\\/')
+    out=[f'<script type="application/json" id="i18n-keys">{esc(keys)}</script>']
+    for lang,d in dicts.items():
+        out.append(f'<script type="application/json" id="i18n-{lang}">{esc([d.get(k,"") for k in keys])}</script>')
     return '\n'.join(out)
 html=tpl.replace('{{CSS}}',css).replace('{{I18N}}',i18n_blocks()).replace('{{JS}}',js)
 open(out,'w',encoding='utf-8').write(html)

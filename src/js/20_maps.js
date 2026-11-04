@@ -222,7 +222,7 @@ function mpCount(){let n=0;VORD.forEach(k=>{if(VW[k].ear)return;const v=compPos(
 const MPCSS=`<style>
 .mp .mpt{display:flex;gap:.3rem;overflow-x:auto;padding:.1rem 0 .4rem;margin:.2rem 0 .3rem}
 .mp .mpt button,.mp .mpc button.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:.42rem .8rem;border-radius:999px;font-size:.88rem;cursor:pointer;min-height:36px}
-.mp .mpt button[aria-selected=true],.mp .mpc button.chip.on{background:var(--acc);color:#fff;border-color:var(--acc)}
+.mp .mpt button[aria-selected=true],.mp .mpc button.chip.on{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
 .mp .mpg{display:grid;gap:.8rem;grid-template-areas:"ctrl" "fig" "info"}
 .mp .mpc{grid-area:ctrl}.mp .mpf{grid-area:fig;position:relative;padding:.5rem}.mp .mpi{grid-area:info;min-width:0}
 @media(min-width:900px){.mp .mpg{grid-template-columns:minmax(320px,480px) 1fr;grid-template-areas:"fig ctrl" "fig info";align-items:start}.mp .mpf{position:sticky;top:7.5rem}}

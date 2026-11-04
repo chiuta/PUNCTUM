@@ -31,5 +31,5 @@ const strs=await p.evaluate(()=>{
 });
 fs.mkdirSync('research',{recursive:true});
 const ro=strs.filter(s=>/[a-zăâîșțĂÂÎȘȚ]{2}/i.test(s)&&!/^[A-Z]{1,3}\d+(-\w+)?$/.test(s)).sort();
-fs.writeFileSync('research/strings_ro.json',JSON.stringify(ro,null,0));
+fs.writeFileSync('research/strings_live.json',JSON.stringify(ro,null,0));
 console.log('șiruri:',ro.length,'caractere:',ro.join('').length);await b.close()})();

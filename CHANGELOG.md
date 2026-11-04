@@ -1,5 +1,13 @@
 # PUNCTUM — jurnal de versiuni
 
+## 2.1 (2026-11-04) — audit adversarial
+- **Securitate**: reparat XSS prin id de rutină; stare coruptă din localStorage nu mai blochează aplicația (`research/audit_adversarial_cod.md`)
+- **Conținut medical**: audit independent al afecțiunilor (82 corecturi: dovezi coborâte la „limitat” unde ghidurile nu susțin, semnale de alarmă noi), quiz (56), curs/protocoale/siguranță (74), avertismente per punct (46 de puncte), 43 de corecturi de traducere (ex. maghiară „vérvétel”→„vérengedés”)
+- **Siguranță în interfață**: sursă unică pentru semnalul de sarcină, avertismente în tipărire, casetă vizibilă pe fișa punctului și în sesiune
+- **Accesibilitate**: contrast WCAG în ambele teme, ținte tactile
+- **Mărime**: 6,0 MB → 3,7 MB (chei de traducere comune)
+- Teste noi: `adversarial.js`, `contrast.js`, `all.sh`
+
 ## 2.0 (2026-11-04) — 20 de iterații cu agenți
 1. Bază modulară (`src/`, `build.py`), teste automate (`tests/run.js`)
 2. Comparație cu aplicații concurente (`research/competitors_*.md`): lacune identificate → hărți interactive, index de afecțiuni, rutine, flashcarduri, curs, verificare onestă a datelor

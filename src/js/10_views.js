@@ -34,7 +34,7 @@ function vTheory(){
   <details><summary>Cele trei comori: Jing, Qi, Shen</summary><p><b>Jing</b> (esență), <b>Qi</b> (energie) și <b>Shen</b> (spirit) sunt cele trei niveluri ale vitalității: Jing este rezerva profundă, Qi este energia funcțională, Shen este claritatea conștiinței.</p></details>
   <details><summary>Substanțele fundamentale</summary><ul><li><b>Qi</b> — motricitate, căldură, protecție</li><li><b>Xue</b> (sânge) — hrănire, ancorare</li><li><b>Jin Ye</b> — fluidele corporale, umezire</li><li><b>Jing</b> — esență, dezvoltare</li><li><b>Shen</b> — conștiință</li></ul></details>
   <details><summary>Organele Zang-Fu</summary><p>În MTC organele sunt <i>sisteme funcționale</i>, nu doar structuri anatomice. <b>Zang</b> (yin, pline): Inimă, Plămân, Splină, Ficat, Rinichi (+ Pericard). <b>Fu</b> (yang, goale): Intestin subțire, Intestin gros, Stomac, Vezică biliară, Vezică urinară, Triplu încălzitor. Fiecare Zang e cuplat cu un Fu din același element.</p></details>
-  <details><summary>Cauzele bolii în MTC</summary><ul><li><b>Externe:</b> vânt, frig, căldură, umezeală, uscăciune, foc/vară</li><li><b>Interne:</b> cele șapte emoții (bucurie, furie, tristețe, grijă, gândire excesivă, frică, șoc)</li><li><b>Alte cauze:</b> alimentație, surmenaj, lipsa mișcării, traumatisme, constituție</li></ul></details>
+  <details><summary>Cauzele bolii în MTC</summary><ul><li><b>Externe:</b> vânt, frig, căldură de vară, umezeală, uscăciune, foc</li><li><b>Interne:</b> cele șapte emoții (bucurie, furie, tristețe, grijă, gândire excesivă, frică, șoc)</li><li><b>Alte cauze:</b> alimentație, surmenaj, lipsa mișcării, traumatisme, constituție</li></ul></details>
   <details><summary>Cele patru metode de diagnostic</summary><ul><li><b>Observație</b> — înfățișare, culoare, limbă</li><li><b>Auscultare/olfacție</b> — voce, respirație, mirosuri</li><li><b>Interogare</b> — simptome, somn, digestie, frig/căldură, durere</li><li><b>Palpare</b> — pulsul radial (în mai multe poziții), abdomen, puncte dureroase</li></ul></details>
   <details><summary>Cele opt principii (Ba Gang)</summary><p>Yin/Yang · Exterior/Interior · Rece/Cald · Gol (deficit) / Plin (exces).</p></details>
 
@@ -53,14 +53,14 @@ function vTheory(){
 
   <h2>Tipuri speciale de puncte</h2>
   <div class="tw"><table><tr><th>Tip</th><th>Rol</th><th>Exemple</th></tr>
-  <tr><td>Yuan (sursă)</td><td>Tonifierea organului</td><td>${ptLink('LI4')}, ${ptLink('LR3')}, ${ptLink('HT7')}, ${ptLink('KI3')}, ${ptLink('LU9')}</td></tr>
+  <tr><td>Yuan (sursă)</td><td>Reglarea organului (tradițional)</td><td>${ptLink('LI4')}, ${ptLink('LR3')}, ${ptLink('HT7')}, ${ptLink('KI3')}, ${ptLink('LU9')}</td></tr>
   <tr><td>Luo (legătură)</td><td>Leagă meridianele cuplate</td><td>${ptLink('LU7')}, ${ptLink('ST40')}</td></tr>
   <tr><td>Xi (fisură)</td><td>Stări acute, durere</td><td>${ptLink('ST34')}, ${ptLink('SP8')}</td></tr>
   <tr><td>Mu (alarmă)</td><td>Diagnostic și tratament al organului</td><td>${ptLink('CV12')}, ${ptLink('LR14')}, ${ptLink('ST25')}, ${ptLink('LU1')}</td></tr>
   <tr><td>Shu dorsale</td><td>Reglarea organelor pe spate</td><td>${ptLink('BL13')}, ${ptLink('BL18')}, ${ptLink('BL20')}, ${ptLink('BL23')}</td></tr>
-  <tr><td>Hui (influență)</td><td>Controlează țesuturi</td><td>${ptLink('LR13')}, ${ptLink('CV12')}, ${ptLink('CV17')}, ${ptLink('BL17')}, ${ptLink('GB34')}, ${ptLink('LU9')}, ${ptLink('GB39')}</td></tr>
+  <tr><td>Hui (influență)</td><td>Controlează țesuturi</td><td>${ptLink('LR13')}, ${ptLink('CV12')}, ${ptLink('CV17')}, ${ptLink('BL17')}, ${ptLink('GB34')}, ${ptLink('LU9')}, ${ptLink('GB39')}, ${ptLink('BL11')}</td></tr>
   <tr><td>Chei ale celor 8 vase</td><td>Deschid vasele extraordinare</td><td>LU7–Ren, SP4–Chong, PC6–Yin Wei, GB41–Dai, TE5–Yang Wei, SI3–Du, BL62–Yang Qiao, KI6–Yin Qiao</td></tr>
-  <tr><td>Comandă (4 Gates)</td><td>Zone ale corpului</td><td>${ptLink('LI4')} față, ${ptLink('LU7')} cap/ceafă, ${ptLink('BL40')} spate, ${ptLink('ST36')} abdomen, ${ptLink('PC6')} torace</td></tr></table></div>
+  <tr><td>Puncte de comandă</td><td>Zone ale corpului (tradițional)</td><td>${ptLink('LI4')} față, ${ptLink('LU7')} cap/ceafă, ${ptLink('BL40')} spate, ${ptLink('ST36')} abdomen; unele surse adaugă ${ptLink('PC6')} torace</td></tr></table></div>
 
   <h2>Ce spune știința modernă (ipoteze)</h2>
   <ul><li><b>Poarta de control a durerii:</b> stimularea fibrelor mari modulează semnalele dureroase la nivel medular.</li>
@@ -140,7 +140,7 @@ function drawSes(){
    <p class="mut">${esc(SES.title)} · ${SES.i+1}/${SES.pts.length}</p>
    <h2 style="margin:.2rem 0"><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h2>
    <p style="margin:.3rem 0"><b>Localizare:</b> ${esc(p.l)}</p>
-   ${p.w?`<p class="w" style="color:var(--acc2)">${esc(p.w)}</p>`:''}
+   ${p.w?`<p class="w pw" role="note">${esc(p.w)}</p>`:''}
    <div class="breath">${SES.left}</div>
    <p class="mut">Presiune fermă dar confortabilă · inspiră 4 s · expiră 6 s · ambele părți unde e cazul</p>
    <div class="bar" style="justify-content:center">
@@ -161,14 +161,14 @@ function vAcu(){
   <li>Găsește punctul (vezi <a href="#cun">Măsurare</a>); caută o mică sensibilitate sau „adâncitură".</li>
   <li>Folosește pulpa degetului mare sau a arătătorului; crește presiunea treptat, 3–5 s.</li>
   <li>Menține <b>30–90 s</b> cu presiune fixă sau mici cercuri; respirație lentă și adâncă.</li>
-  <li>Intensitate: „durere bună", plictisitoare/caldă, niciodată ascuțită sau care radiază cu furnicături.</li>
+  <li>Intensitate: o senzație de presiune fermă, plictisitoare sau caldă, niciodată ascuțită sau care radiază cu furnicături; orientativ 4–6 din 10.</li>
   <li>De 1–3 ori pe zi; punctele pereche (stânga–dreapta) se fac pe ambele părți.</li>
   <li>După sesiune: bea apă, odihnește-te câteva minute.</li></ul>
-  <div class="warn"><b>Oprește sesiunea</b> dacă apar: durere ascuțită, amețeală puternică, amorțeală persistentă, palpitații sau stare de leșin. Evită presiunea pe răni, vene varicoase severe, umflături, tumori, zone fracturate sau operate recent, febră mare și imediat după mese copioase. În sarcină evită punctele marcate ⚠.</div>
+  <div class="warn"><b>Oprește sesiunea</b> dacă apar: durere ascuțită, amețeală puternică, amorțeală persistentă, palpitații sau stare de leșin. Evită presiunea pe răni, vene varicoase severe, tromboză venoasă, umflături, tumori, zone fracturate sau operate recent, febră mare și imediat după mese copioase. La anticoagulante, osteoporoză severă, epilepsie, cancer sau boli cardiace grave, și la copii mici, cere întâi sfatul medicului. În sarcină evită punctele marcate ⚠ și zonele abdominală și lombo-sacrată, și cere avizul medicului.</div>
   <h2>Protocoale pe situații (auto-îngrijire)</h2>
   <div class="bar"><label class="mut">Durată/punct: <select onchange="SES.sec=+this.value">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s</option>`).join('')}</select></label><label class="mut"><input type="checkbox" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
   ${PROT.map((p,i)=>{
-    const pts=p.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean);const preg=pts.filter(x=>/Contraindicat în sarcină|Evită în sarcină|Doar sub îndrumare/.test(x.w)).map(x=>x.c);
+    const pts=p.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean);const preg=pts.filter(isPregPt).map(x=>x.c);
     return `<details><summary>${esc(p.t)}</summary>
      <p>${pts.map(x=>`<span class="tag" title="${esc(x.l)}">${ptLink(x.c)} ${esc(x.p)}</span>`).join('')}</p>
      <p>${esc(p.n)}</p>
@@ -177,7 +177,7 @@ function vAcu(){
   <h2>Autostimulare cu obiecte</h2>
   <ul><li><b>Minge de tenis / lacrosse</b> lângă coloană, pe perete sau pe podea — pentru spate și fese (BL, GB30).</li>
   <li><b>Pieptene sau perie</b> pentru stimularea ușoară a scalpului (GV20, EX-HN1).</li>
-  <li><b>Brățări de acupresură</b> (PC6) — pentru greață/rău de mișcare, cu dovezi moderate.</li>
+  <li><b>Brățări de acupresură</b> (PC6) — pentru greață/rău de mișcare; dovezi limitate (calitate scăzută până la moderată, mai ales postoperator).</li>
   <li><b>Rola cu spini</b> doar peste haine sau piele sănătoasă, fără presiune excesivă.</li></ul>
   <h2>Când nu te trata singur</h2>
   <ul><li>Durere toracică, dificultăți de respirație, durere abdominală intensă, febră mare.</li>
@@ -230,7 +230,7 @@ function renderVarList(){
   }
   const order=Object.keys(CATN);let h='';
   if(TF.sort==='cat'){
-    order.forEach(k=>{const g=L.filter(v=>v.cat===k);if(!g.length)return;h+=`<h2 style="color:${CATC[k]}">${esc(CATN[k])} <span class="mut">(${g.length})</span></h2>`+g.map(v=>vCard(v,TF.open===v.id)).join('')});
+    order.forEach(k=>{const g=L.filter(v=>v.cat===k);if(!g.length)return;h+=`<h2 class="cc" style="--cc:${CATC[k]}">${esc(CATN[k])} <span class="mut">(${g.length})</span></h2>`+g.map(v=>vCard(v,TF.open===v.id)).join('')});
   }else h=L.map(v=>vCard(v,TF.open===v.id)).join('');
   box.innerHTML=h;
   if(TF.open){const e=document.getElementById('v-'+TF.open);if(e)e.scrollIntoView({block:'start'});TF.open=''}
@@ -331,21 +331,26 @@ function vSafe(){
   <li>Cere întotdeauna: ace de unică folosință, igienă a mâinilor și a pielii, cabinet curat, informare asupra riscurilor.</li></ul>
   <h2>Contraindicații și precauții</h2>
   <div class="tw"><table><tr><th>Situație</th><th>Ce faci</th></tr>
-   <tr><td>Sarcină</td><td>Evită punctele marcate ⚠ (SP6, LI4, BL60, GB21 etc.) și punctele abdominale inferioare, doar cu medic/practician cu experiență în sarcină.</td></tr>
+   <tr><td>Sarcină</td><td>Evită punctele marcate ⚠ (SP6, LI4, BL60, GB21 etc.), punctele abdominale inferioare și zona lombo-sacrată; moxibustia și electrostimularea nu se folosesc; orice utilizare doar cu medic/practician cu experiență în sarcină.</td></tr>
    <tr><td>Anticoagulante / tulburări de coagulare</td><td>Fără ace fără acordul medicului; presopunctură blândă.</td></tr>
-   <tr><td>Stimulator cardiac / implant electric</td><td>Fără electroacupunctură.</td></tr>
+   <tr><td>Stimulator cardiac / implant electric</td><td>Fără electroacupunctură sau TENS/TEAS; nu se trece curent prin torace, cap sau gât.</td></tr>
    <tr><td>Imunosupresie, diabet cu complicații</td><td>Precauție cu ace; piele sănătoasă; igienă strictă.</td></tr>
    <tr><td>Infecții cutanate, răni, tumori</td><td>Nu aplica ace/presiune în zonă.</td></tr>
+   <tr><td>Epilepsie / convulsii</td><td>Fără electroacupunctură sau electrostimulare; ace doar cu acordul medicului; presiune blândă.</td></tr>
+   <tr><td>Cancer / tumori / limfedem</td><td>Nu pe tumoră, ganglioni sau zone iradiate; fără ace pe membrul cu limfedem; nu înlocuiește tratamentul oncologic; risc de infecție în neutropenie (discută cu oncologul).</td></tr>
+   <tr><td>Boli cardiace severe, hipotensiune, leșin</td><td>Poziție culcat, sesiuni scurte; întreabă medicul.</td></tr>
+   <tr><td>Boli pulmonare severe sau pneumotorax în antecedente</td><td>Fără ace pe torace/spate/umăr; presiune blândă.</td></tr>
+   <tr><td>Tromboză venoasă, varice severe, fracturi recente, osteoporoză severă</td><td>Nu masa și nu apăsa zona; întreabă medicul.</td></tr>
    <tr><td>Febră mare, urgențe</td><td>Medic imediat.</td></tr>
    <tr><td>Copii</td><td>Doar pediatri/practicieni cu experiență; adesea laser sau presiune blândă, fără ace.</td></tr>
    <tr><td>Tulburări psihice severe, panică</td><td>Nu ca înlocuitor al tratamentului; conlucrare cu medicul.</td></tr></table></div>
   <h2>Ce spun dovezile</h2>
   <div class="card">
-   <p><b>Unde există dovezi mai bune (beneficii mici-moderate):</b> durere cronică lombară, osteoartrită de genunchi, cefalee de tensiune și migrenă (profilaxie), greață și vomă postoperatorie și după chimioterapie (inclusiv acupresura PC6).</p>
+   <p><b>Unde există dovezi ceva mai consistente (de calitate scăzută până la moderată; beneficii în general mici):</b> durere cronică musculoscheletală (inclusiv lombară), cefalee de tensiune și migrenă (profilaxie), greață și vomă postoperatorie (PC6). Pentru osteoartrita de genunchi diferența față de sham este mică și adesea sub pragul de relevanță clinică; pentru greața din chimioterapie dovezile sunt mai slabe și de calitate mixtă.</p>
    <p><b>Unde dovezile sunt slabe sau amestecate:</b> multe alte afecțiuni (depresie, fertilitate, astm, obezitate, tulburări de somn); rezultatele variază cu calitatea studiilor.</p>
    <p><b>Placebo și sham:</b> în multe studii acupunctura reală diferă puțin de acupunctura sham (ace superficiale sau în puncte nespecifice), ceea ce sugerează că o parte din efect este contextual (așteptare, atingere, ritual). Efectul contextual poate fi totuși util, mai ales în durere.</p>
-   <p><b>Ghiduri:</b> unele ghiduri clinice includ acupunctura printre opțiunile non-farmacologice pentru lombalgie cronică (de ex. American College of Physicians, 2017), altele au restrâns recomandarea (de ex. NICE, Marea Britanie, pentru durerea cronică primară). Verifică ghidurile țării tale.</p>
-   <p><b>Mecanisme:</b> există efecte neurobiologice demonstrate (modulare a durerii), dar meridianele ca structuri anatomice nu au fost identificate.</p>
+   <p><b>Ghiduri:</b> unele ghiduri clinice includ acupunctura printre opțiunile non-farmacologice pentru lombalgie cronică (de ex. American College of Physicians, 2017), altele nu o recomandă (de ex. NICE, Marea Britanie: NG59 pentru lombalgie, 2016; NG193 pentru durerea cronică primară, 2021). Verifică ghidurile țării tale.</p>
+   <p><b>Mecanisme:</b> studiile experimentale descriu efecte neurobiologice (modulare a durerii), dar meridianele ca structuri anatomice nu au fost identificate, iar mecanismele clinice rămân în cercetare.</p>
    <p><b>Recunoaștere:</b> în 2010 UNESCO a înscris „acupunctura și moxibustia MTC" pe lista patrimoniului cultural imaterial al umanității.</p></div>
   <h2>Abordare responsabilă</h2>
   <ul><li>Folosește acupunctura și presopunctura ca <b>adjuvante</b>, nu ca înlocuitor al diagnosticului și tratamentului medical.</li>
@@ -353,7 +358,7 @@ function vSafe(){
   <li>Fii atent la promisiuni de „vindecări" miraculoase, cure scumpe sau diagnostice fără examinare.</li>
   <li>Verifică reglementarea practicii în țara ta (în multe țări acupunctura se practică de medici sau de personal înregistrat).</li></ul>
   <h2>Istorie pe scurt</h2>
-  <ul><li><b>Sec. II–I î.Hr.:</b> <i>Huangdi Neijing</i> (Canonul Intern al Împăratului Galben) pune bazele teoriei.</li><li><b>Sec. III d.Hr.:</b> Huangfu Mi compilează <i>Zhenjiu Jiayijing</i> (sistematizare a punctelor).</li><li><b>1601:</b> Yang Jizhou, <i>Zhenjiu Dacheng</i>.</li><li><b>1971–1972:</b> Interesul occidental crește după vizita lui Nixon în China și relatările despre acupunctura în chirurgie.</li><li><b>1979–1991:</b> OMS publică liste de afecțiuni și nomenclatura standard a punctelor.</li><li><b>2010:</b> UNESCO — patrimoniu cultural imaterial.</li></ul>`;
+  <ul><li><b>Statele Combatante–Han (datare disputată):</b> <i>Huangdi Neijing</i> (Canonul Intern al Împăratului Galben), compilație în straturi, pune bazele teoriei.</li><li><b>Sec. III d.Hr.:</b> Huangfu Mi compilează <i>Zhenjiu Jiayijing</i> (sistematizare a punctelor).</li><li><b>1601:</b> Yang Jizhou, <i>Zhenjiu Dacheng</i>.</li><li><b>1971–1972:</b> Interesul occidental crește după vizita lui Nixon în China și relatările despre acupunctura în chirurgie.</li><li><b>1979–1991:</b> OMS publică liste de afecțiuni și nomenclatura standard a punctelor.</li><li><b>2010:</b> UNESCO — patrimoniu cultural imaterial.</li></ul>`;
 }
 
 /* --- QUIZ --- */

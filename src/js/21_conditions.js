@@ -40,7 +40,7 @@ const cnN=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const CNF={q:'',g:'',noN:false,open:''};
 const CRT={id:null,name:'',pts:[],sec:60,msg:'',io:''};
 const CSEC=[30,45,60,90,120];
-const CPREG=/Contraindicat în sarcină|Evită în sarcină|Doar sub îndrumare/;
+const CPREG=PREGRE;
 function cRoutines(){if(!Array.isArray(S.routines))S.routines=[];return S.routines}
 function cSave(){try{save()}catch(e){}}
 function cPt(c){return PT.find(x=>x.c===c)}
@@ -146,9 +146,11 @@ function rtnRemove(id){
 function rtnPrint(id){
   const r=rtnById(id);if(!r)return;
   const rows=r.pts.map(cPt).filter(Boolean).map((p,i)=>`<tr><td>${i+1}</td><td><b>${esc(p.c)}</b> ${esc(p.p)}</td><td>${esc(p.l)}</td><td>${r.sec||60} ${esc(CNU('rSecU'))}</td></tr>`).join('');
+  const wp=r.pts.map(cPt).filter(p=>p&&p.w);const pg=r.pts.map(cPt).filter(isPregPt).map(p=>p.c);
+  const warnList=wp.length?`<ul>${pg.length?`<li><b>⚠ ${esc(CNU('pregN'))}${pg.join(', ')}.</b></li>`:''}${wp.map(p=>`<li><b>${esc(p.c)}</b>: ${esc(p.w)}</li>`).join('')}</ul>`:'';
   let d=document.getElementById('cprint');if(d)d.remove();
   d=document.createElement('div');d.id='cprint';
-  d.innerHTML=`<h1>${esc(r.name)}</h1><p>${esc(CNU('pTitle'))} · PUNCTUM</p><table><tr><th>${esc(CNU('pStep'))}</th><th>${esc(CNU('points'))}</th><th>${esc(CNU('pLoc'))}</th><th>${esc(CNU('pDur'))}</th></tr>${rows}</table><p><i>${esc(CNU('pFoot'))}</i></p>`;
+  d.innerHTML=`<h1>${esc(r.name)}</h1><p>${esc(CNU('pTitle'))} · PUNCTUM</p><table><tr><th>${esc(CNU('pStep'))}</th><th>${esc(CNU('points'))}</th><th>${esc(CNU('pLoc'))}</th><th>${esc(CNU('pDur'))}</th></tr>${rows}</table>${warnList}<p><i>${esc(CNU('pFoot'))}</i></p>`;
   document.body.appendChild(d);document.body.classList.add('cprinting');
   const done=()=>{document.body.classList.remove('cprinting');const x=document.getElementById('cprint');if(x)x.remove();window.removeEventListener('afterprint',done)};
   window.addEventListener('afterprint',done);

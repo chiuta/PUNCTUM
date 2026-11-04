@@ -2,7 +2,7 @@
 
 _atlante delle terapie a punti: agopuntura, agopressione, moxibustione, coppettazione, auricoloterapia, riflessologia e altro_
 
-**Versione 2.0 · Ultimo aggiornamento: 2026-11-04**
+**Versione 2.1 · Ultimo aggiornamento: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 

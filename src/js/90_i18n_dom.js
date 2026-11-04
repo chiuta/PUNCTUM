@@ -1,9 +1,15 @@
 /* ================= traducere la rulare a textului afișat (sursă: română) ================= */
 const I18N_CACHE={};
+let I18N_KEYS=null;
 function i18nDict(l){
   if(l==='ro')return null;if(I18N_CACHE[l])return I18N_CACHE[l];
   const el=document.getElementById('i18n-'+l);if(!el)return null;
-  try{I18N_CACHE[l]=JSON.parse(el.textContent)}catch(e){I18N_CACHE[l]={}}
+  try{
+    if(!I18N_KEYS)I18N_KEYS=JSON.parse(document.getElementById('i18n-keys').textContent);
+    const arr=JSON.parse(el.textContent),d=Object.create(null);
+    for(let i=0;i<arr.length;i++)if(arr[i])d[I18N_KEYS[i]]=arr[i];
+    I18N_CACHE[l]=d;
+  }catch(e){I18N_CACHE[l]={}}
   return I18N_CACHE[l];
 }
 const trNorm=s=>s.replace(/\s+/g,' ').trim();

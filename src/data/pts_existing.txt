@@ -7,12 +7,12 @@ LI4|Hegu|bra|Pe dosul mâinii, între metacarpienele I și II, la mijlocul margi
 LI10|Shousanli|bra|2 cun sub LI11, pe linia LI5–LI11|Durere de braț și umăr, tulburări gastro-intestinale|
 LI11|Quchi|bra|La capătul lateral al pliului cotului flectat, la mijlocul distanței dintre LU5 și epicondilul lateral|Febră, piele (prurit, acnee), tensiune, durere de cot|
 LI15|Jianyu|gat|Pe umăr, în depresiunea anterioară și inferioară acromionului, cu brațul în abducție|Durere și limitare de mișcare a umărului|
-LI20|Yingxiang|cap|În șanțul nazo-labial, la nivelul mijlocului marginii laterale a aripii nazale|Nas înfundat, rinită, sinuzită|
+LI20|Yingxiang|cap|În șanțul nazo-labial, la nivelul mijlocului marginii laterale a aripii nazale|Nas înfundat, rinită, sinuzită|⚠ Moxibustie contraindicată tradițional.
 ST2|Sibai|cap|Sub pupilă, în gaura infraorbitală, 1 cun sub marginea orbitei|Ochi obosiți, durere facială, paralizie facială|
 ST6|Jiache|cap|La unghiul mandibulei, pe proeminența maseterului când se strâng dinții|Durere dentară, tulburări ATM, paralizie facială|
-ST7|Xiaguan|cap|În depresiunea de sub arcada zigomatică, anterior de condilul mandibulei (gura închisă)|ATM, tinitus, durere de dinți și urechi|
-ST8|Touwei|cap|0,5 cun în interiorul liniei părului, la colțul frunții (4,5 cun lateral de linia mediană)|Cefalee frontală și temporală, amețeală|
-ST25|Tianshu|tor|2 cun lateral de centrul ombilicului|Constipație, diaree, balonare; punct Mu al intestinului gros|
+ST7|Xiaguan|cap|În depresiunea de sub arcada zigomatică, anterior de condilul mandibulei (gura închisă)|ATM, tinitus, durere de dinți și urechi|⚠ Moxibustie contraindicată tradițional.
+ST8|Touwei|cap|0,5 cun în interiorul liniei părului, la colțul frunții (4,5 cun lateral de linia mediană)|Cefalee frontală și temporală, amețeală|⚠ Moxibustie contraindicată tradițional.
+ST25|Tianshu|tor|2 cun lateral de centrul ombilicului|Constipație, diaree, balonare; punct Mu al intestinului gros|⚠ Evită în sarcină (abdomen; în special după luna a 3-a).
 ST34|Liangqiu|pic|2 cun deasupra marginii supero-laterale a rotulei|Durere de genunchi, durere gastrică acută (punct Xi)|
 ST36|Zusanli|pic|3 cun sub ST35, la un deget lateral de creasta tibiei|Digestie, oboseală, imunitate, vitalitate, durere de genunchi; punct He inferior al stomacului|
 ST40|Fenglong|pic|8 cun sub ST35, la un deget lateral de ST38|Flegmă, tuse cu secreții, amețeală, greutate în cap; punct Luo|
@@ -28,8 +28,8 @@ HT7|Shenmen|bra|La capătul ulnar al pliului încheieturii, pe partea radială a
 SI3|Houxi|bra|Pe marginea ulnară a mâinii, proximal de articulația metacarpofalangiană V, la capătul pliului palmar când se strânge pumnul|Rigiditate cervicală, durere dorsală, cefalee occipitală; deschide Du Mai|
 SI11|Tianzong|gat|În centrul fosei infraspinoase a omoplatului|Durere de omoplat și umăr|
 SI19|Tinggong|cap|În depresiunea dintre tragus și condilul mandibulei, cu gura deschisă|Tinitus, hipoacuzie, durere de ureche|
-BL1|Jingming|cap|0,1 cun superior de unghiul intern al ochiului|Ochi: oboseală, înroșire, vedere încețoșată|
-BL2|Zanzhu|cap|La capătul medial al sprâncenei, în incizura supraorbitală|Cefalee frontală, sinuzită, ochi obosiți|
+BL1|Jingming|cap|0,1 cun superior de unghiul intern al ochiului|Ochi: oboseală, înroșire, vedere încețoșată|⚠ Moxibustie contraindicată tradițional.
+BL2|Zanzhu|cap|La capătul medial al sprâncenei, în incizura supraorbitală|Cefalee frontală, sinuzită, ochi obosiți|⚠ Moxibustie contraindicată tradițional.
 BL10|Tianzhu|gat|1,3 cun lateral de GV15, pe marginea laterală a trapezului, la nivelul liniei părului din ceafă|Rigiditate cervicală, cefalee occipitală, tensiune|
 BL13|Feishu|spa|1,5 cun lateral de marginea inferioară a procesului spinos T3|Tuse, astm, tulburări respiratorii; punct Shu dorsal al Plămânului|
 BL15|Xinshu|spa|1,5 cun lateral de procesul spinos T5|Palpitații, anxietate, insomnie; Shu dorsal al Inimii|
@@ -48,8 +48,8 @@ KI3|Taixi|pic|În depresiunea dintre maleola medială și tendonul lui Ahile, la
 KI6|Zhaohai|pic|1 cun sub vârful maleolei mediale|Insomnie, gât uscat, tulburări ale ciclului; deschide Yin Qiao Mai|
 KI7|Fuliu|pic|2 cun deasupra KI3, pe marginea anterioară a tendonului lui Ahile|Edem, transpirație anormală, lombalgie|
 PC3|Quze|bra|În pliul cotului, pe partea ulnară a tendonului bicepsului|Palpitații, căldură, greață|
-PC6|Neiguan|bra|2 cun deasupra pliului încheieturii, între tendoanele palmarului lung și flexorului radial al carpului|Greață și vomă (cele mai bune dovezi), anxietate, palpitații, rău de mișcare; deschide Yin Wei Mai|
-PC7|Daling|bra|La mijlocul pliului încheieturii, între cele două tendoane|Anxietate, sindrom de tunel carpian, palpitații|
+PC6|Neiguan|bra|2 cun deasupra pliului încheieturii, între tendoanele palmarului lung și flexorului radial al carpului|Greață și vomă (cele mai bune dovezi), anxietate, palpitații, rău de mișcare; deschide Yin Wei Mai|⚠ Nervul median este foarte aproape de suprafață: presiune blândă; oprește la furnicături, amorțeală sau senzație de șoc electric.
+PC7|Daling|bra|La mijlocul pliului încheieturii, între cele două tendoane|Anxietate, sindrom de tunel carpian, palpitații|⚠ Nervul median este foarte aproape de suprafață: presiune blândă; oprește la furnicături, amorțeală sau senzație de șoc electric.
 PC8|Laogong|bra|În palmă, între metacarpienele II și III, unde atinge vârful degetului mijlociu când se strânge pumnul|Agitație, transpirație palmară, stres|
 PC9|Zhongchong|bra|Vârful degetului mijlociu|Urgențe, căldură (punct clasic de sângerare punctiformă)|
 TE3|Zhongzhu|bra|Pe dosul mâinii, în depresiunea proximală de articulațiile metacarpofalangiene IV–V|Tinitus, cefalee temporală, durere de mână|
@@ -58,7 +58,7 @@ TE6|Zhigou|bra|3 cun deasupra pliului dorsal al încheieturii, între radius și
 TE14|Jianliao|gat|În depresiunea posterioară și inferioară acromionului, cu brațul în abducție|Durere de umăr, limitare de mișcare|
 TE17|Yifeng|cap|În depresiunea din spatele lobului urechii, între mandibulă și mastoidă|Tinitus, hipoacuzie, paralizie facială, durere de maxilar|
 TE21|Ermen|cap|În depresiunea din fața incizurii supratragiene, cu gura deschisă|Tinitus, durere de ureche|
-TE23|Sizhukong|cap|În depresiunea de la capătul lateral al sprâncenei|Cefalee temporală, migrenă, tic palpebral|
+TE23|Sizhukong|cap|În depresiunea de la capătul lateral al sprâncenei|Cefalee temporală, migrenă, tic palpebral|⚠ Moxibustie contraindicată tradițional.
 GB1|Tongziliao|cap|0,5 cun lateral de unghiul extern al ochiului, în depresiunea marginii laterale a orbitei|Ochi, cefalee temporală|
 GB14|Yangbai|cap|1 cun deasupra sprâncenei, în dreptul pupilei|Cefalee frontală, ochi, paralizie facială|
 GB20|Fengchi|gat|Sub occipital, în depresiunea dintre sternocleidomastoidian și trapez|Cefalee, rigiditate cervicală, răceală, amețeală, ochi obosiți|⚠ Înțepat: direcție și adâncime riscante — doar personal calificat
@@ -75,13 +75,13 @@ LR14|Qimen|tor|În spațiul intercostal VI, pe linia mameloanelor|Durere de coas
 CV4|Guanyuan|tor|3 cun sub ombilic, pe linia mediană|Oboseală, ginecologie, urinar; „poarta originii"|
 CV6|Qihai|tor|1,5 cun sub ombilic, pe linia mediană|Energie scăzută, digestie, ciclu; „marea mare a Qi-ului"|
 CV8|Shenque|tor|În centrul ombilicului|Tradițional: doar moxibustie (nu se înțeapă)|
-CV12|Zhongwan|tor|4 cun deasupra ombilicului, pe linia mediană|Digestie, greață, balonare, arsuri; punct Mu al stomacului, influență asupra organelor Fu|
+CV12|Zhongwan|tor|4 cun deasupra ombilicului, pe linia mediană|Digestie, greață, balonare, arsuri; punct Mu al stomacului, influență asupra organelor Fu|⚠ Doar sub îndrumare medicală în sarcină (abdomen superior: se evită după luna a 3-a–a 5-a). Înțepare profundă: risc peritoneal, mai ales la persoanele slabe.
 CV17|Danzhong|tor|Pe linia mediană, la nivelul spațiului intercostal IV (între mameloane)|Apăsare toracică, anxietate, tuse; punct de influență al Qi-ului|
 CV22|Tiantu|tor|În centrul fosei suprasternale|Tuse, gât iritat; presiune ușoară, fără apăsare spre trahee|⚠ Fără presiune puternică spre trahee
 CV24|Chengjiang|cap|În șanțul mentolabial|Durere facială, paralizie facială, salivație|
 GV4|Mingmen|spa|Sub procesul spinos L2|Lombalgie, oboseală, frig lombar; „poarta vieții"|
 GV14|Dazhui|spa|Sub procesul spinos C7|Febră, răceală, rigiditate cervicală, imunitate|
-GV16|Fengfu|spa|1 cun deasupra liniei părului din ceafă, sub protuberanța occipitală externă|Cefalee occipitală, rigiditate cervicală|⚠ Zonă riscantă la înțepare profundă — doar personal calificat
+GV16|Fengfu|spa|1 cun deasupra liniei părului din ceafă, sub protuberanța occipitală externă|Cefalee occipitală, rigiditate cervicală|⚠ Zonă riscantă la înțepare profundă — doar personal calificat. Moxibustie contraindicată tradițional.
 GV20|Baihui|cap|Pe linia mediană, pe creștet, la 5 cun în interiorul liniei anterioare a părului|Cefalee, amețeală, concentrare slabă, stres; „întâlnirea celor 100"|
 GV26|Renzhong|cap|În treimea superioară a șanțului subnazal (filtrum)|Urgență: leșin (uz tradițional); lombalgie acută|
 EX-HN3|Yintang|cap|La mijlocul distanței dintre sprâncene|Insomnie, anxietate, cefalee frontală, sinuzită|

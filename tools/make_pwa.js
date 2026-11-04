@@ -1,7 +1,7 @@
 // node tools/make_pwa.js <versiune> : generează dist/pwa/ (index.html + manifest + sw + pictograme)
 const fs=require('fs'),path=require('path');
 const {chromium}=require('playwright');
-const ver=process.argv[2]||'2.0';
+const ver=process.argv[2]||'2.1';
 const out='dist/pwa';fs.mkdirSync(out,{recursive:true});
 fs.copyFileSync('dist/punctum.html',out+'/index.html');
 let html=fs.readFileSync(out+'/index.html','utf8');
