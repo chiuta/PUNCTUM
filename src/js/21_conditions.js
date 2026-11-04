@@ -58,8 +58,13 @@ function cndStart(id){const c=COND.find(x=>x.id===id);if(c)startCustom(c.n,c.pts
 
 /* ---- index ---- */
 function cndFilter(){
-  const q=cnN(CNF.q.trim());
-  return COND.filter(c=>(!CNF.g||c.g===CNF.g)&&(!q||cnN([c.n,c.d,c.g,CNUg(c.g),c.id,c.pts.join(' '),c.pr,c.sc].join(' ')).includes(q)));
+  const tk=cnN(CNF.q).split(/[\s,;]+/).filter(t=>t.length>1&&!['de','la','si','in','cu','pe','al','a'].includes(t)).map(t=>t.length>5?t.slice(0,-2):t);
+  return COND.filter(c=>{
+    if(CNF.g&&c.g!==CNF.g)return false;
+    if(!tk.length)return true;
+    const h=cnN([c.n,c.d,c.g,CNUg(c.g),c.id,c.pts.join(' '),c.pr,c.sc].join(' '));
+    return tk.every(t=>h.includes(t));
+  });
 }
 function cndVarLink(id){
   const v=VAR.find(x=>x.id===id);if(!v)return '';
@@ -206,7 +211,7 @@ function vCond(){
   <div class="bar"><input id="cnd-q" type="search" placeholder="${esc(CNU('search'))}" aria-label="${esc(CNU('search'))}" value="${esc(CNF.q)}" oninput="CNF.q=this.value;cndRenderList()">
    <span class="mut" id="cnd-count" style="align-self:center"></span></div>
   <div class="bar" id="cnd-chips"></div>
-  <div class="bar"><label class="mut"><input type="checkbox" ${CNF.noN?'checked':''} onchange="CNF.noN=this.checked;cndRenderList()"> ${esc(CNU('noNeedle'))}</label></div>
+  <div class="bar"><label class="mut" style="display:flex;gap:.4rem;align-items:center"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${CNF.noN?'checked':''} onchange="CNF.noN=this.checked;cndRenderList()"> ${esc(CNU('noNeedle'))}</label></div>
   <div id="cnd-list"></div>
   <h2 id="rtn-sec">${esc(CNU('sec'))}</h2>
   <div id="rtn-box"></div>`;
@@ -217,7 +222,7 @@ function condInit(){
 }
 (function(){
   const st=document.createElement('style');
-  st.textContent='#cprint{display:none}@media print{body.cprinting>*:not(#cprint){display:none!important}body.cprinting #cprint{display:block!important;color:#000;background:#fff;padding:1cm;font:14px/1.5 system-ui,sans-serif}body.cprinting #cprint table{width:100%;border-collapse:collapse}body.cprinting #cprint th,body.cprinting #cprint td{border:1px solid #888;padding:.4rem;text-align:left}body{background:#fff}header,nav,footer,#modal,.noprint{display:none!important}}';
+  st.textContent='#rtn-sec,details[id^=c-]{scroll-margin-top:8rem}#cprint{display:none}@media print{body.cprinting>*:not(#cprint){display:none!important}body.cprinting #cprint{display:block!important;color:#000;background:#fff;padding:1cm;font:14px/1.5 system-ui,sans-serif}body.cprinting #cprint table{width:100%;border-collapse:collapse}body.cprinting #cprint th,body.cprinting #cprint td{border:1px solid #888;padding:.4rem;text-align:left}body{background:#fff}header,nav,footer,#modal,.noprint{display:none!important}}';
   document.head.appendChild(st);
 })();
 regView('cond',vCond,{ro:'Afecțiuni & rutine',en:'Conditions & routines',fr:'Affections & routines',it:'Disturbi e routine',es:'Afecciones y rutinas',pt:'Condições e rotinas',de:'Beschwerden & Routinen',hu:'Panaszok és rutinok'},{after:'acu',post:condInit});
