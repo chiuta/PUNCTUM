@@ -34,7 +34,7 @@ en:{title:'Conditions & routines',intro:'Search a common condition or symptom to
  pTitle:'Acupressure routine',pStep:'Step',pLoc:'Location',pDur:'Duration',pFoot:'Educational material; it does not replace medical advice. Stop on sharp pain, dizziness or discomfort. Avoid points contraindicated in pregnancy.',
  g:{'Durere':'Pain','Digestiv':'Digestive','Respirator':'Respiratory','Somn și minte':'Sleep & mind','Ginecologic':'Gynaecological','Cap și senzoriale':'Head & senses','Oboseală și imunitate':'Fatigue & immunity','Piele':'Skin','Urinar':'Urinary','Copii':'Children'}}
 };
-function CNU(k){const a=CONDUI[S.lang],e=CONDUI.en,r=CONDUI.ro;return (a&&a[k]!==undefined)?a[k]:(e[k]!==undefined?e[k]:r[k])}
+function CNU(k){const a=CONDUI[S.lang],r=CONDUI.ro;return (a&&a[k]!==undefined)?a[k]:r[k]}
 function CNUg(g){const o=CNU('g');return (o&&o[g])||(CONDUI.en.g[g])||g}
 const cnN=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
 const CNF={q:'',g:'',noN:false,open:''};
