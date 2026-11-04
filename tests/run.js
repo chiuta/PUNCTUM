@@ -16,6 +16,7 @@ const F=m=>{fails++;console.log('FAIL',m)},W=m=>{warns++;console.log('WARN',m)},
   const errs=[];pg.on('pageerror',e=>errs.push('pageerror: '+e.message));
   pg.on('console',m=>{if(m.type()==='error'&&!/ResizeObserver/.test(m.text()))errs.push('console: '+m.text())});
   const take=()=>{const e=errs.splice(0);return e};
+  await pg.goto(URL);{const ex=await pg.evaluate(()=>NAVX.map(x=>x.k));VIEWS.push(...ex.filter(k=>!VIEWS.includes(k)));take();console.log('vizualizări:',VIEWS.join(','))}
   // 1. fiecare vizualizare, 2 lățimi
   for(const w of [360,1100]){
     await pg.setViewportSize({width:w,height:800});
