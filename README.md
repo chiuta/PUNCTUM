@@ -2,7 +2,7 @@
 
 _atlas of point-based therapies: acupuncture, acupressure, moxibustion, cupping, auricular therapy, reflexology and more_
 
-**Version 2.3 · Last updated: 2026-11-04**
+**Version 2.4 · Last updated: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
@@ -16,6 +16,9 @@ PUNCTUM is a **single-file HTML app** that works **offline** — no account, no 
 - **Conditions index** (60) with red flags, points and variants; **personal routines** (build, guided session, print, export/import)
 - **Course** with 6 levels / 24 lessons, **quiz** with 200+ questions, **spaced-repetition flashcards** (Leitner), glossary, measuring guide (cun)
 - **8 languages**: ro, en, fr, it, es, pt, de, hu · light/dark theme · keyboard and screen-reader support · print · installable **PWA**
+- **Acupressure is the focus**: gentle methods are shown by default; needles, moxa, cupping and bloodletting are information-only, with warnings
+- **Massage**: 31 combinations of points pressed at the same time, 13 regional sequences and 14 techniques, with timed guided sessions and a partner mode (feedback and STOP)
+- **Personal safety, stored locally**: safety profile, pre-session check, “Where does it hurt?”, before/after score journal, plan with calendar (.ics) export, printable cards, map-location exam, voice, high contrast and data transfer
 
 ## Evidence and safety
 

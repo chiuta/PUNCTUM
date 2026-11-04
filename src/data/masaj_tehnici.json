@@ -1,0 +1,295 @@
+{
+ "tehnici": [
+  {
+   "id": "ef",
+   "n": "Mângâiere lentă (effleurage)",
+   "scop": "Pentru începutul și finalul unei sesiuni: încălzește pielea, obișnuiește corpul cu atingerea și poate induce relaxare.",
+   "cum": "Alunecă cu palma întreagă, relaxată, pe piele, cu o mișcare lungă și lentă, de obicei dinspre extremitate spre trunchi. Mâna rămâne moale și se modelează după formă; ritmul este constant, ca o respirație calmă. Un strat subțire de ulei sau loțiune ajută alunecarea.",
+   "presiune": "ușoară",
+   "sec": "60–180 s pe zonă",
+   "zone": "Spate (mușchii de lângă coloană, nu pe ea), umeri, brațe, coapse, gambe, labe.",
+   "evita": "Piele rănită, arsă, iritată sau infectată; zone cu varice severe sau suspiciune de tromboză; lateralul gâtului.",
+   "auto": "da"
+  },
+  {
+   "id": "pe",
+   "n": "Frământare (petrissage)",
+   "scop": "Pentru mușchii încordați din ceafă-umeri, coapse și gambe; tradițional se spune că „descarcă” tensiunea musculară.",
+   "cum": "Prinde mușchiul între degetul mare și restul degetelor, ridică-l ușor și strânge-l blând, apoi dă-i drumul, ca și cum ai frământa aluat moale. Mută mâinile încet, cu mișcare ritmică. Dacă apare durere ascuțită, reduci imediat presiunea.",
+   "presiune": "medie",
+   "sec": "60–120 s pe zonă",
+   "zone": "Trapez (partea de sus a umerilor), brațe, coapse, gambe, fese.",
+   "evita": "Lateralul și partea din față a gâtului; vene varicoase, vânătăi, zone inflamate sau dureroase la atingere; spatele genunchiului (fosa poplitee), întotdeauna; gamba umflată, dureroasă, caldă sau roșie (posibilă tromboză): nu masa și cere consult.",
+   "auto": "da"
+  },
+  {
+   "id": "fr",
+   "n": "Fricțiune (friction)",
+   "scop": "Încălzește local țesuturile și poate reduce senzația de rigiditate în jurul articulațiilor și al cicatricilor vechi, vindecate.",
+   "cum": "Apasă cu pulpa degetelor sau cu podul palmei și mișcă pielea împreună cu țesutul de dedesubt, în cercuri mici sau înainte-înapoi, fără să aluneci pe piele. Rămâi într-o zonă mică, 20–40 s, apoi treci mai departe. Oprește-te dacă pielea se înroșește puternic sau devine sensibilă.",
+   "presiune": "medie",
+   "sec": "20–60 s pe zonă",
+   "zone": "Mușchii din jurul omoplatului, antebraț, coapsă, șold, pe părțile laterale ale genunchiului (nu pe rotulă și nu în spatele genunchiului).",
+   "evita": "Pe oase direct, pe cicatrici recente, pe piele iritată, pe tendoane inflamate sau dureroase.",
+   "auto": "da"
+  },
+  {
+   "id": "ps",
+   "n": "Presiune statică pe punct (ischemică ușoară)",
+   "scop": "Tehnica de bază a presopuncturii: stimularea unui punct sau a unui „nod” muscular sensibil, cu efect posibil de relaxare locală.",
+   "cum": "Așază pulpa degetului mare pe punct și crește presiunea treptat, în 3–5 secunde, până la o senzație de presiune fermă, dar suportabilă. Menține fix, respirând lent, apoi relaxează încet. Nu repeta mai mult de 2–3 ori pe același punct într-o sesiune.",
+   "presiune": "medie",
+   "sec": "30–90 s",
+   "zone": "Puncte de pe mâini, picioare, umeri, ceafă (posterior), fese, gambe.",
+   "evita": "Presiune pe lateralul și pe partea din față a gâtului (artere, tiroidă), ochi, ganglioni măriți, spatele genunchiului (fosa poplitee) și pe os; abdomen în sarcină; oprește dacă apar furnicături, amorțeală sau durere ascuțită.",
+   "auto": "da"
+  },
+  {
+   "id": "cp",
+   "n": "Cercuri pe punct (circular pressure)",
+   "scop": "Variantă mai blândă a presiunii statice, potrivită când un punct este sensibil sau pentru zone mai mari.",
+   "cum": "Cu pulpa degetului mare sau a arătătorului, apasă ușor spre moderat (3–5/10) și fă cercuri mici; pe tâmple, doar blând, de 1–2 cm, mișcând pielea odată cu degetul. Păstrează un ritm lent, aproximativ un cerc pe secundă. Schimbă sensul după 30 s dacă e confortabil.",
+   "presiune": "ușoară",
+   "sec": "30–90 s",
+   "zone": "Tâmple, ceafă, antebraț, palmă, talpă, în jurul gleznei.",
+   "evita": "Piele iritată sau rănită; în jurul ochilor presiune foarte blândă, fără a apăsa globul ocular.",
+   "auto": "da"
+  },
+  {
+   "id": "pl",
+   "n": "Rulare a pielii (skin rolling)",
+   "scop": "Poate detensiona pielea și țesutul de dedesubt; poate fi folosită ca încălzire sau pentru zone unde pielea se simte „lipită”.",
+   "cum": "Prinde un pliu de piele între degetele mari și celelalte degete și „rulează-l” înainte, ca pe un val, mutând degetele mari înainte. Dacă pielea nu se ridică ușor sau doare mult, renunță la zona respectivă. Mișcarea este lentă și fără ciupire.",
+   "presiune": "ușoară",
+   "sec": "30–90 s pe zonă",
+   "zone": "Spate (de o parte și de alta a coloanei), abdomen superficial la persoane care nu sunt însărcinate, coapse.",
+   "evita": "Piele fragilă, vânătăi, erupții, arsuri, vene varicoase; abdomen în sarcină.",
+   "auto": "parțial"
+  },
+  {
+   "id": "tp",
+   "n": "Percuție ușoară (tapotement)",
+   "scop": "Stimulare tonifiantă pe mușchii mari; tradițional este folosită ca „trezire” înainte de efort sau dimineața.",
+   "cum": "Cu mâna relaxată, lovește rapid și ușor cu marginea mâinii (partea dinspre degetul mic) sau cu mâna în cupă, alternând mâinile. Mișcarea vine din încheietură, nu din umăr, iar loviturile sunt elastice, nu grele. Dacă lovitura se simte „în os”, oprește-te și mută mâna pe un mușchi mai gros.",
+   "presiune": "ușoară",
+   "sec": "20–60 s",
+   "zone": "Doar mușchi mari și groși: coapse și fese; pe spate, doar între coloană și omoplat, cu lovituri foarte ușoare (nu pe omoplat, coaste sau zona lombară).",
+   "evita": "Coloană, rinichi (zona lombară laterală), cap, gât, abdomen, oase, articulații, zone cu varice sau vânătăi; osteoporoză severă.",
+   "auto": "parțial"
+  },
+  {
+   "id": "vb",
+   "n": "Vibrație / scuturare ușoară (shaking)",
+   "scop": "Poate relaxa mușchii și încheieturile din brațe și picioare și poate da o senzație de ușurare după efort.",
+   "cum": "Prinde ușor mâna, antebrațul sau gamba și scutură rapid, cu amplitudine mică, ca și cum ai scutura o frânghie. Mușchii rămân relaxați, fără smucituri și fără tragere puternică de articulație. Încheie cu câteva mângâieri lente.",
+   "presiune": "ușoară",
+   "sec": "15–45 s",
+   "zone": "Brațe, mâini, coapse, gambe, picioare (la persoana întinsă și relaxată).",
+   "evita": "Articulații dureroase sau instabile, fracturi, proteze sau operații recente, hernie de disc, sciatică sau durere radiculară (scuturarea piciorului trage de coloana lombară), gambă umflată, cu varice sau cu suspiciune de tromboză; nu trage și nu răsuci membrul.",
+   "auto": "parțial"
+  },
+  {
+   "id": "in",
+   "n": "Întindere pasivă blândă (gentle passive stretch)",
+   "scop": "Pentru senzația de rigiditate musculară; ajută la conștientizarea tensiunii și la relaxare după masaj.",
+   "cum": "Deplasează încet un membru până când simți o întindere ușoară, plăcută, apoi stai acolo. Respiră lent; la expir, partenerul sau tu poți mări foarte puțin unghiul, doar dacă rămâne confortabil. Nu forța, nu săltați, nu merge până la durere.",
+   "presiune": "ușoară",
+   "sec": "20–40 s",
+   "zone": "Spatele coapsei, gambă, antebraț, piept (la perete), umeri.",
+   "evita": "Articulații inflamate sau instabile, fracturi sau operații recente, osteoporoză severă, hiperlaxitate; pe gât doar mișcare activă, lentă, făcută de tine (fără ajutorul mâinilor sau al partenerului); fără trosnete; hernie de disc sau durere radiculară; proteze; sarcină avansată.",
+   "auto": "da"
+  },
+  {
+   "id": "pa",
+   "n": "Presiune cu antebrațul sau podul palmei (broad pressure)",
+   "scop": "Alternativă pentru zone mari, când degetele obosesc; oferă o presiune largă și mai puțin punctiformă.",
+   "cum": "Așază podul palmei sau partea cărnoasă a antebrațului pe mușchi și lasă greutatea corpului să facă presiunea, nu forța brațului. Alunecă încet sau stai fix 10–20 s. Întreabă partenerul tot timpul cum se simte.",
+   "presiune": "medie",
+   "sec": "10–30 s pe loc, 30–90 s în total",
+   "zone": "Fese, coapse, partea superioară a spatelui (pe mușchi), umeri.",
+   "evita": "Coloana vertebrală, zona rinichilor, abdomen, gât, oase; presiune adâncă în general.",
+   "auto": "parțial"
+  },
+  {
+   "id": "mn",
+   "n": "Acupresură cu minge pe perete (ball against wall)",
+   "scop": "Auto-masaj pentru spate și fese: mingea ține locul degetului și permite să dozezi presiunea cu greutatea corpului.",
+   "cum": "Așază o minge de tenis între spate și perete, lateral față de coloană, și fă mici flexii din genunchi ca să o rulezi pe mușchi. Oprește-te 20–30 s pe locurile sensibile, fără durere ascuțită. Mingea nu trebuie să atingă direct coloana sau osul.",
+   "presiune": "medie",
+   "sec": "30–90 s pe loc",
+   "zone": "Mușchii de lângă omoplat, trapez, fese; nu pe coloană și nu pe rinichi.",
+   "evita": "Coloană, zona rinichilor, gât, osteoporoză severă, varice sau tromboză; dacă apare amorțeală sau durere ce coboară în picior, oprește.",
+   "auto": "da"
+  },
+  {
+   "id": "bl",
+   "n": "Presiune simultană cu ambele mâini (bilateral pressure)",
+   "scop": "Calmare și echilibrare, tradițional; este folosită când același punct se stimulează pe ambele părți, ca în protocoalele de presopunctură.",
+   "cum": "Apasă simultan punctele pereche, de exemplu pe ambele încheieturi sau pe ambele părți ale tălpii, cu aceeași forță. Respiră lent, fără grabă, și relaxează treptat. Dacă apare amețeală, oprește-te și stai jos.",
+   "presiune": "medie",
+   "sec": "30–60 s",
+   "zone": "Mâini, antebrațe, picioare, umeri, partea de jos a gambelor, tâmple (blând).",
+   "evita": "Nu apăsa simultan pe lateralul gâtului; nu apăsa niciodată pe globul ocular (doar pe osul din jurul lui, blând); în sarcină nu apăsa abdomenul.",
+   "auto": "da"
+  },
+  {
+   "id": "ur",
+   "n": "Masajul urechii (ear massage)",
+   "scop": "Relaxare blândă și senzația de „trezire”; în tradiție, urechea este văzută ca o hartă a corpului, dar dovezile pentru acest model sunt slabe.",
+   "cum": "Prinde lobul între degetul mare și arătător și masează-l ușor în cercuri mici. Continuă de-a lungul marginii urechii, în sus, cu mișcări lente. Apoi poți trage ușor urechea în lateral și în jos, de câteva ori, fără durere.",
+   "presiune": "ușoară",
+   "sec": "30–90 s pe ureche",
+   "zone": "Lobul, pavilionul urechii, zona din spatele urechii (doar cu mișcare ușoară).",
+   "evita": "Infecție sau durere de ureche, secreții, piercing recent, eczemă sau leziuni; nu introduce nimic în canalul auditiv.",
+   "auto": "da"
+  },
+  {
+   "id": "mt",
+   "n": "Masajul mâinii și al tălpii (hand and foot massage)",
+   "scop": "Relaxare și destindere locală după zi lungă; zone ușor de atins pentru auto-masaj, folosite și în presopunctură.",
+   "cum": "Masează palma sau talpa cu degetele mari, în mișcări lungi dinspre degete spre călcâi sau încheietură, apoi cercuri mici și presiuni fixe scurte. Apucă și mișcă ușor fiecare deget, fără să-l tragi tare. Termină cu mângâieri largi.",
+   "presiune": "medie",
+   "sec": "2–5 min pe mână sau picior",
+   "zone": "Palmă, degete, talpă, arcul plantar, în jurul gleznei.",
+   "evita": "Răni, ciuperci, bășici, unghii încarnate, diabet cu sensibilitate scăzută la picior (doar cu avizul medicului), edem sau durere la gambă.",
+   "auto": "da"
+  }
+ ],
+ "siguranta": {
+  "nu_face": [
+   "Cu febră sau stare generală alterată, amână masajul până la însănătoșire.",
+   "Pe piele cu infecții (bacteriene, fungice, virale), erupții, răni deschise, arsuri, eczeme active sau alte leziuni cutanate: nu masa zona afectată.",
+   "Cu tromboză venoasă profundă cunoscută sau bănuită (gambă umflată, dureroasă, caldă, roșie) nu masa zona și cere urgent consult medical.",
+   "Pe vene varicoase severe, flebită sau zone cu ulcer: nu masa local.",
+   "La persoane cu tumori sau cancer activ, nu masa local și nu începe masaj fără acordul oncologului.",
+   "După fracturi sau operații recente nu masa zona (tipic până la aviz medical) și nu mobiliza forțat articulațiile.",
+   "La osteoporoză severă evită orice presiune fermă, percuție și întinderi pe zonele fragile.",
+   "La tratament anticoagulant sau tulburări de coagulare nu aplica presiune fermă, frământare sau percuție, din cauza riscului de vânătăi și sângerare.",
+   "În sarcină nu masa abdomenul, zona lombo-sacrată, gleznele și alte puncte marcate ⚠ în aplicație, decât cu avizul medicului.",
+   "La sugari și copii mici, nu face masaj cu presiune medie sau fermă; orice atingere terapeutică se discută cu pediatrul.",
+   "Pe zone inflamate, umflate, calde, cu durere neexplicată sau cu sensibilitate puternică la atingere.",
+   "Imediat după mese copioase, sub influența alcoolului sau a drogurilor, ori când ești foarte obosit și cu amețeli.",
+   "Pe ganglioni măriți, noduli sau umflături nediagnosticate (gât, axile, zona inghinală, sân) și pe partea din față a gâtului (tiroidă, artere): nu masa; cere consult medical.",
+   "Cu limfedem sau după îndepărtarea ganglionilor limfatici, nu masa membrul fără avizul medicului.",
+   "Pe hernie abdominală sau inghinală, stomă, pompă de insulină ori cateter nu apăsa zona; cu pacemaker sau alt dispozitiv implantat nu masa zona dispozitivului și întreabă medicul."
+  ],
+  "medic": [
+   "Dacă ai boli de inimă, hipertensiune greu de controlat sau tulburări de ritm, întreabă medicul înainte.",
+   "Dacă ai diabet, mai ales cu neuropatie sau sensibilitate redusă la picioare, discută cu medicul înainte de masajul picioarelor.",
+   "La epilepsie sau la antecedente de convulsii, cere sfatul medicului înainte de presiuni puternice sau stimulare repetată.",
+   "Dacă ai cancer, în curs de chimioterapie sau radioterapie, sau ai terminat tratamentul recent, cere acordul echipei medicale.",
+   "Dacă iei anticoagulante, antiagregante sau ai tulburări de coagulare, întreabă medicul care e intensitatea acceptabilă.",
+   "Dacă ai osteoporoză, hernie de disc, durere radiculară sau afecțiuni ale coloanei vertebrale, cere avizul medicului.",
+   "La sarcină (mai ales primul trimestru sau sarcină cu risc), cere avizul medicului sau al moașei înainte de orice masaj pe puncte.",
+   "Dacă durerea este nouă, intensă, nu se ameliorează în câteva zile sau apare după un traumatism, ai nevoie de un consult, nu de masaj.",
+   "La boli de piele, alergii cunoscute, boli autoimune sau după intervenții chirurgicale, discută cu medicul.",
+   "La vârstnici fragili (piele subțire, osteoporoză, anticoagulante, amețeli) și la copii: doar mângâiere și presiune foarte ușoară (maximum 3/10), sesiuni scurte, după ce ai întrebat medicul."
+  ],
+  "oprire": [
+   "Durere ascuțită, arsură sau junghi în timpul masajului.",
+   "Furnicături, amorțeală sau slăbiciune care apar sau persistă după ce lași mâna jos.",
+   "Amețeală, senzație de leșin, transpirații reci sau palpitații.",
+   "Greață puternică, dificultăți de respirație sau durere în piept: oprește și cere ajutor, la nevoie sună la 112.",
+   "Roșeață intensă, urticarie, mâncărime sau umflare a pielii (posibilă reacție alergică).",
+   "Apariția unei vânătăi sau a unei umflături în zona masată.",
+   "Durere care se agravează în orele sau în ziua următoare, față de ce era înainte de masaj.",
+   "Dacă partenerul spune „oprește”, te oprești imediat, fără discuții."
+  ],
+  "sarcina": [
+   "Cere avizul medicului sau al moașei înainte de orice masaj; evită sesiunile în primul trimestru, dacă nu e recomandat altfel.",
+   "Nu masa abdomenul, zona lombo-sacrată și zona gleznelor, tradițional considerate sensibile în sarcină.",
+   "Evită punctele la care cardul afișează „În sarcină evită” (de exemplu LI4, SP6, GB21, BL60, ST25, CV4, CV6, CV12, BL32), precum și LR3, SP4, KI3 (gleznă) și punctele lombo-sacre (BL25, BL26, GB30), și orice presiune fermă pe picioare.",
+   "Alege poziția culcată pe o parte, cu perne între genunchi; evită poziția pe spate mult timp, mai ales târziu în sarcină.",
+   "Folosește doar presiune ușoară spre medie, mângâieri lungi și frământare blândă pe spate și umeri, cu avizul medicului; nu frământa și nu apăsa gambele (risc crescut de tromboză în sarcină).",
+   "Oprește dacă apar contracții, sângerare, durere abdominală, amețeală, umflarea bruscă a unei gambe sau dureri de cap severe, și cere ajutor medical."
+  ],
+  "igiena": [
+   "Spală mâinile cu apă și săpun înainte și după masaj; unghii scurte, fără inele sau brățări.",
+   "Piele curată și uscată în zona masată; evită masajul pe piele cu transpirație abundentă sau iritată.",
+   "Alege o încăpere liniștită, caldă (aprox. 22–24 °C), cu o poziție stabilă, confortabilă și susținută de perne.",
+   "Șterge sau spală prosoapele, cearșafurile și obiectele folosite (minge, rolă) după fiecare utilizare.",
+   "Nu folosi pe persoane cu infecții de piele; nu împărți uleiul folosit pe zone infectate.",
+   "După masaj bea apă și odihnește-te câteva minute înainte de a te ridica brusc."
+  ],
+  "ulei": [
+   "Poți masa și fără ulei; uleiul ajută doar la mângâiere și frământare, nu la presiune statică pe punct.",
+   "Alege ulei sau loțiune simple, fără parfum, cum ar fi uleiul vegetal alimentar (de exemplu măsline sau floarea-soarelui; uleiul de migdale doar dacă nu ai alergie la nuci) sau loțiune neparfumată.",
+   "Fă un test pe piele: pune o picătură pe interiorul antebrațului, așteaptă 24 de ore și observă dacă apare roșeață sau mâncărime.",
+   "Evită uleiurile din nuci sau arahide dacă tu sau partenerul aveți alergii alimentare, și uleiurile esențiale concentrate pe piele fără diluare.",
+   "Uleiurile esențiale se folosesc doar diluate și cu prudență; evită-le în sarcină, la copii mici, la astm sau epilepsie, fără aviz medical.",
+   "Nu aplica ulei pe piele rănită, iritată, în jurul ochilor sau pe mucoase."
+  ]
+ },
+ "dovezi": [
+  {
+   "t": "Durere lombară cronică: dovezile pentru masaj sunt slabe",
+   "niv": "w",
+   "txt": "Un review Cochrane din 2015 (25 de studii, 3.096 participanți) a evaluat dovezile ca fiind de calitate scăzută sau foarte scăzută. Masajul a redus durerea pe termen scurt față de lipsa tratamentului, dar nu pe termen lung, iar autorii au spus că au „foarte puțină încredere” că masajul este eficient. Nu s-au raportat evenimente adverse grave; cel mai frecvent, durerea a crescut temporar."
+  },
+  {
+   "t": "Ghidurile britanice (NICE) lasă masajul doar ca parte a unui pachet",
+   "niv": "l",
+   "txt": "Ghidul NICE NG59 spune că poate fi luată în calcul terapia manuală, inclusiv tehnicile de țesut moale precum masajul, doar ca parte dintr-un pachet de tratament care include exercițiu fizic, cu sau fără terapie psihologică. Masajul singur nu este recomandat ca tratament principal al durerii lombare."
+  },
+  {
+   "t": "Durere cervicală: efecte mici, încredere limitată",
+   "niv": "w",
+   "txt": "Un rezumat de congres (World Physiotherapy) despre actualizarea unui review Cochrane (44 de studii) a concluzionat că studiile sunt de calitate scăzută și că nu se poate da o recomandare fermă pentru sau împotriva masajului. Efecte mici până la medii au apărut mai ales după masaj în doze mari și repetate; efectele secundare raportate au fost minore și trecătoare, cum ar fi sensibilitatea locală."
+  },
+  {
+   "t": "Anxietate și relaxare: rezultate promițătoare, calitate scăzută",
+   "niv": "w",
+   "txt": "O meta-analiză din 2024 a 39 de studii randomizate pe acupresură (3.395 participanți) a raportat scăderea anxietății, dar eterogenitatea a fost foarte mare (până la 100%), aproape toate studiile au avut risc de bias, iar în comparațiile cu acupresură simulată (placebo) diferența nu a fost semnificativă statistic. Autorii recunosc calitatea scăzută a studiilor. Rezultatele sugerează posibil efect de relaxare, nu o dovadă fermă, și nu înlocuiesc tratamentul anxietății persistente."
+  },
+  {
+   "t": "Durere după operație: reducere raportată, dar studiile diferă mult",
+   "niv": "w",
+   "txt": "O meta-analiză din 2022 (33 de studii randomizate) a raportat reducerea durerii postoperatorii după masaj, însă eterogenitatea a fost extrem de mare, niciun studiu nu a fost dublu-orb, iar efectul real este nesigur. Masajul după operație se face numai cu acordul echipei medicale."
+  },
+  {
+   "t": "Cancer: sprijin pentru simptome, dovezi foarte slabe",
+   "niv": "w",
+   "txt": "Un review Cochrane despre masaj, cu sau fără aromaterapie, la persoane cu cancer a evaluat majoritatea rezultatelor ca având certitudine foarte scăzută; un singur rezultat (anxietate pe termen mediu, aromaterapie cu masaj) a primit calificativ moderat. Masajul poate fi un sprijin pentru relaxare, nu un tratament al bolii, și se discută cu echipa oncologică."
+  },
+  {
+   "t": "Dureri de cap: dovezi preliminare",
+   "niv": "w",
+   "txt": "Centrul NCCIH al institutelor americane de sănătate descrie cercetarea despre masaj pentru cefalee ca preliminară și doar puțin promițătoare. Sfatul aplicației (nu al NCCIH): dureri de cap care apar brusc sau sunt severe cer consult, nu auto-tratament. NCCIH notează riscuri mici doar la masajul făcut de un terapeut instruit; aceste date nu se aplică automat auto-masajului."
+  },
+  {
+   "t": "„Eliminarea toxinelor” prin masaj nu are susținere în sursele consultate",
+   "niv": "x",
+   "txt": "În sursele consultate pentru această secțiune nu există dovezi că masajul „elimină toxinele” sau „deblochează energia”. Senzația de ușurare după masaj poate fi reală, dar explicația prin toxine nu este demonstrată."
+  }
+ ],
+ "surse": [
+  {
+   "t": "Cochrane: Massage for low-back pain (Furlan et al., 2015)",
+   "u": "https://www.cochrane.org/evidence/CD001929"
+  },
+  {
+   "t": "Cochrane: Massage with or without aromatherapy for symptom relief in people with cancer (2016)",
+   "u": "https://cochranelibrary.com/cdsr/doi/10.1002/14651858.CD009873.pub3/information"
+  },
+  {
+   "t": "NICE NG59: Low back pain and sciatica in over 16s - Recommendations",
+   "u": "https://www.nice.org.uk/guidance/ng59/chapter/Recommendation"
+  },
+  {
+   "t": "Massage for neck pain: Cochrane review update (World Physiotherapy congress proceeding)",
+   "u": "https://world.physio/congress-proceeding/massage-neck-pain-cochrane-review-update"
+  },
+  {
+   "t": "NCCIH: Massage therapy for health purposes - what you need to know",
+   "u": "https://www.nccih.nih.gov/health/tips/things-to-know-about-massage-therapy-for-health-purposes"
+  },
+  {
+   "t": "The effect of massage therapy on pain after surgery: a comprehensive meta-analysis (Complement Ther Med, 2022)",
+   "u": "https://www.pubmed.gov/36309174/"
+  },
+  {
+   "t": "Acupressure and anxiety: meta-analysis of randomized controlled trials (Front Med, 2024)",
+   "u": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10993250/"
+  }
+ ]
+}

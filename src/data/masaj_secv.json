@@ -1,0 +1,1027 @@
+[
+ {
+  "id": "r01",
+  "n": "Cap și scalp (≈6 min)",
+  "regiune": "cap",
+  "cine": "singur",
+  "dur_min": 6,
+  "material": "nimic (opțional: pieptene cu dinți rari)",
+  "poz": "Șezând, spate drept, coate sprijinite pe masă.",
+  "scop": "Rutină de relaxare a scalpului și a tâmplelor, utilă după ore de concentrare; nu tratează cefaleea.",
+  "pasi": [
+   {
+    "t": "Cu palmele mângâie lent fruntea spre tâmple, apoi de la frunte spre ceafă, de 6–8 ori, respirând rar.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Cu arătătorul și mijlociul de fiecare parte, apasă simultan tâmplele și zona de deasupra urechilor, cu cercuri mici și blânde.",
+    "teh": "bl",
+    "pts": [
+     "EX-HN5",
+     "GB8"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Cu vârfurile degetelor, fricționează tot scalpul ca la spălatul pe cap, dinspre frunte spre ceafă.",
+    "teh": "fr",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Cu degetul mijlociu apasă vârful capului, iar cu celelalte degete punctele din jur, ținând presiunea constantă.",
+    "teh": "ps",
+    "pts": [
+     "GV20",
+     "EX-HN1"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Sprijină capul în mâini și apasă cu degetele mari, în sus, sub marginea osului occipital, în dreapta și stânga simultan, fără să apeși lateral pe gât.",
+    "teh": "bl",
+    "pts": [
+     "GB20"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Cu pulpa degetelor mari și a arătătoarelor, mișcă ușor pielea de-a lungul sprâncenelor, dinspre nas spre tâmplă, fără ciupire și fără să tragi de piele; ține presiunea pe osul sprâncenei, nu spre ochi.",
+    "teh": "cp",
+    "pts": [
+     "BL2",
+     "EX-HN4",
+     "TE23"
+    ],
+    "sec": 30
+   },
+   {
+    "t": "Masează urechile: întinde ușor lobii, apoi rulează marginea pavilionului între degete.",
+    "teh": "ur",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Atinge ușor scalpul cu vârfurile degetelor, cu mici mișcări circulare, ca o ploaie măruntă.",
+    "teh": "cp",
+    "pts": [],
+    "sec": 25
+   },
+   {
+    "t": "Așază palmele pe față, apoi mângâie spre ceafă; încheie cu 3 respirații lente.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 40
+   }
+  ],
+  "evita": "Rană, infecție sau erupție pe scalp, febră, cefalee bruscă și severă, traumatism recent al capului.",
+  "nota": "Presiunea rămâne ușoară; fără apăsare pe gâtul lateral. În sarcină cere avizul medicului; secvența nu conține puncte marcate „În sarcină evită”, dar păstrează presiunea ușoară."
+ },
+ {
+  "id": "r02",
+  "n": "Ceafă și umeri la birou (≈5 min)",
+  "regiune": "ceafa",
+  "cine": "singur",
+  "dur_min": 5,
+  "material": "nimic",
+  "poz": "Șezând pe scaun, tălpile pe podea, umerii lăsați.",
+  "scop": "Pauză scurtă de destindere pentru zona gâtului și a umerilor după muncă la calculator.",
+  "pasi": [
+   {
+    "t": "Mângâie cu o palmă umărul opus, de la gât spre braț, de 4–5 ori pe fiecare parte.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Frământă ușor mușchiul de pe vârful umerilor (trapez), alternativ cu fiecare mână, fără a apăsa pe lateralul gâtului.",
+    "teh": "pe",
+    "pts": [
+     "GB21"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Apasă cu degetele arătător și mijlociu, ținând constant, marginea de sus a omoplatului, spre gât (TE15), și mușchiul de deasupra spinei omoplatului (SI12), în același timp.",
+    "teh": "ps",
+    "pts": [
+     "TE15",
+     "SI12"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Cu mâna opusă fă cercuri mici în adâncitura de sub mijlocul spinei omoplatului, pe mușchi, apoi schimbă partea.",
+    "teh": "cp",
+    "pts": [
+     "SI11"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Sprijină ceafa în mâini și apasă în sus, cu degetele mari, sub marginea craniului, pe ambele părți deodată.",
+    "teh": "bl",
+    "pts": [
+     "GB20"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Cu pulpele degetelor rotește ușor mușchii de lângă coloana cervicală, nu pe ea, de sus în jos.",
+    "teh": "cp",
+    "pts": [
+     "BL10"
+    ],
+    "sec": 35
+   },
+   {
+    "t": "Apasă cu degetul mare punctul de lângă articulația degetului mic de pe latura mâinii, apoi schimbă mâna.",
+    "teh": "ps",
+    "pts": [
+     "SI3"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Înclină încet capul spre fiecare umăr, doar cât e confortabil, fără să-l tragi cu mâna, apoi rotește umerii înapoi de 5 ori; oprește la amețeală sau furnicături în braț.",
+    "teh": "in",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Mângâie nuca și umerii și respiră lent de 3 ori.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 20
+   }
+  ],
+  "evita": "Durere care coboară în braț, amorțeală, amețeli, traumatism recent al gâtului sau hernie cervicală acută.",
+  "nota": "Nu presa pe lateralul gâtului și nu forța mișcările. În sarcină cere avizul medicului și omite GB21 (pasul 2)."
+ },
+ {
+  "id": "r03",
+  "n": "Spate lombar cu minge (≈7 min)",
+  "regiune": "spate",
+  "cine": "singur",
+  "dur_min": 7,
+  "material": "minge de tenis, perete liber, haine subțiri",
+  "poz": "În picioare, spatele sprijinit de perete, mingea între perete și spate, lângă coloană (nu pe ea).",
+  "scop": "Relaxarea mușchilor lombari și ai fesei după statul prelungit pe scaun.",
+  "pasi": [
+   {
+    "t": "Mângâie cu palmele zona lombară și șoldurile, de sus în jos, de 6–8 ori.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Așază mingea pe mușchiul de lângă coloană, la înălțimea marginii de sus a oaselor bazinului (creasta iliacă), cu mult sub ultimele coaste și sub zona rinichilor; flectează ușor genunchii și lasă greutatea să apese cu blândețe.",
+    "teh": "mn",
+    "pts": [
+     "BL25"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Coboară mingea până lângă marginea sacrului și rulează mic, doar pe mușchiul de lângă os, fără să apeși pe osul sacru; omite acest pas în sarcină.",
+    "teh": "mn",
+    "pts": [
+     "BL26",
+     "BL32"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Mută mingea în mijlocul fesei, ușor lateral, și rămâi sprijinit, respirând adânc; la furnicături sau durere care coboară în picior, ridică imediat greutatea.",
+    "teh": "mn",
+    "pts": [
+     "GB30"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Repetă partea cealaltă: mingea lângă coloană, apoi sacru, apoi fesa.",
+    "teh": "mn",
+    "pts": [
+     "BL25",
+     "BL32",
+     "GB30"
+    ],
+    "sec": 90
+   },
+   {
+    "t": "Pune ambele palme pe șolduri, cu degetele mari lateral de coloana joasă, și apasă blând cu palmele, simultan, pe mușchii laterali.",
+    "teh": "pa",
+    "pts": [
+     "BL25",
+     "BL26"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Rotește bazinul în cercuri largi, lente, de 5 ori în fiecare sens.",
+    "teh": "in",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Mângâie zona lombară cu palmele, cu respirații lente.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 25
+   }
+  ],
+  "evita": "Durere care coboară în picior, slăbiciune sau amorțeală, febră, traumatism recent, operație lombară; nu pe rinichi și nu direct pe coloană.",
+  "nota": "Păstrează mingea doar pe mușchi; dacă apare durere ascuțită, ridică greutatea de pe minge. În sarcină nu face această secvență (zona lombo-sacră și fesele sunt de evitat: BL25, BL26, BL32, GB30), decât cu avizul medicului."
+ },
+ {
+  "id": "r04",
+  "n": "Picioare obosite (≈6 min)",
+  "regiune": "picioare",
+  "cine": "singur",
+  "dur_min": 6,
+  "material": "loțiune sau ulei, un prosop",
+  "poz": "Șezând, un picior sprijinit pe un scaun sau pe pat.",
+  "scop": "Reîmprospătarea gambelor și a coapselor după o zi pe picioare, cu presiune blândă.",
+  "pasi": [
+   {
+    "t": "Cu ambele palme mângâie piciorul de la gleznă spre genunchi și apoi spre șold, de 8–10 ori, în sus.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Frământă gamba între palme, fără a apăsa direct în spatele genunchiului.",
+    "teh": "pe",
+    "pts": [],
+    "sec": 60
+   },
+   {
+    "t": "Apasă cu degetul mare pe mușchiul de lângă creasta tibiei, la 3 lățimi de deget sub rotulă (ST36), apoi în adâncitura de sub marginea interioară a osului, sub genunchi (SP9); nu apăsa pe os, cu presiune constantă.",
+    "teh": "ps",
+    "pts": [
+     "ST36",
+     "SP9"
+    ],
+    "sec": 50
+   },
+   {
+    "t": "Pe latura exterioară a gambei apasă ușor cu degetul mare punctul din fața și de sub capul fibulei (nu pe osul rotunjit, trece un nerv), ținând și respirând lent.",
+    "teh": "ps",
+    "pts": [
+     "GB34"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Cu ambele degete mari apasă blând, în cele două adâncituri de sub rotulă, de o parte și de alta a ligamentului rotulian („ochii genunchiului”).",
+    "teh": "bl",
+    "pts": [
+     "EX-LE5"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Cu pumnul relaxat bate ușor coapsa, pe față și pe lateral.",
+    "teh": "tp",
+    "pts": [],
+    "sec": 35
+   },
+   {
+    "t": "Cu piciorul sprijinit, scutură ușor doar laba piciorului, fără tragere, apoi rotește glezna de 5 ori în fiecare sens; sari peste scuturare dacă ai hernie de disc, sciatică, proteză sau varice.",
+    "teh": "vb",
+    "pts": [],
+    "sec": 35
+   },
+   {
+    "t": "Mângâie lung de la gleznă spre șold; ridică piciorul 2–3 minute pe un suport, relaxat.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 60
+   }
+  ],
+  "evita": "Vene varicoase severe, tromboză, edem sau umflătură unilaterală cu durere, răni, piele inflamată.",
+  "nota": "Presiunea rămâne ușoară pe vene; nu apăsa în spatele genunchiului. În sarcină nu frământa și nu apăsa gambele (risc crescut de tromboză) și cere avizul medicului; secvența nu conține puncte marcate „În sarcină evită”."
+ },
+ {
+  "id": "r05",
+  "n": "Tălpi (≈6 min)",
+  "regiune": "picioare",
+  "cine": "singur",
+  "dur_min": 6,
+  "material": "loțiune, o minge mică (opțional), un prosop",
+  "poz": "Șezând, glezna sprijinită pe celălalt genunchi.",
+  "scop": "Relaxarea tălpilor după mers sau purtat încălțăminte strâmtă.",
+  "pasi": [
+   {
+    "t": "Cu ambele mâini mângâie talpa și dosul piciorului, de la degete spre gleznă.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Cu degetele mari fricționează lung talpa, de la călcâi spre degete.",
+    "teh": "fr",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Apasă cu degetul mare în adâncitura din treimea anterioară a tălpii și ține, respirând lent.",
+    "teh": "ps",
+    "pts": [
+     "KI1"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Cu o mână apasă adâncitura dintre glezna interioară și tendonul lui Ahile (KI3), iar cu cealaltă pe cea dintre glezna exterioară și tendon (BL60; omite în sarcină), ținând constant, cu presiune ușoară spre medie.",
+    "teh": "ps",
+    "pts": [
+     "KI3",
+     "BL60"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Masează fiecare deget: rotește-l ușor, fără să-l tragi tare, apoi apasă pe dosul piciorului în adâncitura de unde se unesc oasele degetelor 1 și 2 (LR3) și în spațiul dintre degetele 2 și 3 (ST44).",
+    "teh": "mt",
+    "pts": [
+     "LR3",
+     "ST44"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Apasă pe dosul piciorului, lângă marginea exterioară, în adâncitura de dincolo de locul unde se unesc oasele degetelor 4 și 5 (GB41), cu presiune moderată.",
+    "teh": "cp",
+    "pts": [
+     "GB41"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Rulează talpa peste o minge mică, cu greutatea ușoară, 30–40 de secunde.",
+    "teh": "mn",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Întinde blând degetele spre tine, apoi flectează laba piciorului, de 5 ori.",
+    "teh": "in",
+    "pts": [],
+    "sec": 25
+   },
+   {
+    "t": "Mângâie piciorul de la degete spre gleznă și repetă cu celălalt picior.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 40
+   }
+  ],
+  "evita": "Răni, ciuperci, infecții sau fisuri pe talpă, diabet cu neuropatie fără aviz medical, tromboză, picior umflat.",
+  "nota": "Fă secvența pe ambele picioare. Presiune de 4–6 din 10. În sarcină omite punctele de la gleznă și picior (KI3, BL60, LR3) și presiunea fermă pe picioare; cere avizul medicului."
+ },
+ {
+  "id": "r06",
+  "n": "Mâini și antebrațe (≈6 min)",
+  "regiune": "brate",
+  "cine": "singur",
+  "dur_min": 6,
+  "material": "loțiune sau cremă pentru mâini",
+  "poz": "Șezând, antebrațul pe masă, palma în sus.",
+  "scop": "Destinderea mâinilor și antebrațelor după muncă la tastatură și mouse.",
+  "pasi": [
+   {
+    "t": "Cu palma opusă mângâie antebrațul de la încheietură spre cot, pe față și pe spate, de 6 ori.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Frământă ușor mușchii antebrațului între degetul mare și restul degetelor.",
+    "teh": "pe",
+    "pts": [],
+    "sec": 45
+   },
+   {
+    "t": "Prinde încheietura ca într-un clește: degetul mare pe fața palmară (PC6) și arătătorul pe dosul antebrațului (TE5), cu presiune ușoară spre medie; oprește la furnicături.",
+    "teh": "bl",
+    "pts": [
+     "PC6",
+     "TE5"
+    ],
+    "sec": 50
+   },
+   {
+    "t": "Apasă cu degetul mare linia încheieturii, pe partea cu degetul mic și în mijloc.",
+    "teh": "ps",
+    "pts": [
+     "HT7",
+     "PC7"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Apasă cu degetul mare mușchiul dintre police și arătător, ținând și respirând lent.",
+    "teh": "ps",
+    "pts": [
+     "LI4"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Cu degetul mare apasă pe palmă, în centru, apoi masează palma cu cercuri largi.",
+    "teh": "mt",
+    "pts": [
+     "PC8"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Cu cotul îndoit, apasă cu degetul mare la capătul dinspre exterior al pliului cotului (LI11), apoi cu 3 lățimi de deget mai jos, pe mușchiul antebrațului (LI10); nu apăsa la mijlocul pliului (vase și nerv), ținând constant.",
+    "teh": "cp",
+    "pts": [
+     "LI11",
+     "LI10"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Întinde blând încheietura în sus și în jos, ajutându-te cu mâna cealaltă, câte 15 secunde.",
+    "teh": "in",
+    "pts": [],
+    "sec": 35
+   },
+   {
+    "t": "Scutură mâinile relaxat, apoi mângâie fiecare mână de la degete spre cot, cu cremă, și respiră lent.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   }
+  ],
+  "evita": "Inflamație acută, umflătură sau durere puternică la încheietură, fracturi recente, amorțeală persistentă a degetelor.",
+  "nota": "Fă secvența pe ambele mâini. Furnicături sau amorțeli la degete: oprește-te și cere sfat medical. În sarcină omite LI4 (pasul 5) și cere avizul medicului."
+ },
+ {
+  "id": "r07",
+  "n": "Față: relaxare și sinusuri (≈5 min)",
+  "regiune": "fata",
+  "cine": "singur",
+  "dur_min": 5,
+  "material": "nimic (opțional: un strop de ulei, doar pe obraji și frunte, niciodată în jurul ochilor)",
+  "poz": "Șezând, coatele pe masă, mâinile curate.",
+  "scop": "Destinderea mușchilor feței și o senzație de ușurare în zona nasului; nu înlocuiește tratamentul sinuzitei.",
+  "pasi": [
+   {
+    "t": "Cu palmele mângâie ușor fața, din centru spre exterior, de 6 ori.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Cu degetele mari apasă blând simultan colțurile interioare ale sprâncenelor, pe osul de deasupra ochiului, nu pe glob.",
+    "teh": "bl",
+    "pts": [
+     "BL2"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Cu degetul mijlociu apasă și rotește mic între sprâncene, respirând lent.",
+    "teh": "cp",
+    "pts": [
+     "EX-HN3"
+    ],
+    "sec": 35
+   },
+   {
+    "t": "Cu arătătorul și mijlociul apasă simultan pe oasele de sub ochi și pe lateralul nărilor, fără a atinge globul ocular.",
+    "teh": "bl",
+    "pts": [
+     "ST2",
+     "LI20"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Apasă cu degetele arătătoare pe lateral, sub pometele obrajilor, cu cercuri mici.",
+    "teh": "cp",
+    "pts": [
+     "ST3"
+    ],
+    "sec": 35
+   },
+   {
+    "t": "Apasă cu degetele maxilarul, lateral, unde simți mușchiul când strângi dinții, apoi deschide gura ușor.",
+    "teh": "cp",
+    "pts": [
+     "ST6",
+     "ST7"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Apasă tâmplele cu cercuri mici și blânde, pe ambele părți deodată.",
+    "teh": "bl",
+    "pts": [
+     "EX-HN5"
+    ],
+    "sec": 35
+   },
+   {
+    "t": "Mângâie fruntea de la mijloc spre tâmple, apoi acoperă ochii cu palmele, fără presiune, 3 respirații.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 35
+   }
+  ],
+  "evita": "Infecție sau răni pe față, febră, glaucom, operații oculare recente, lentile de contact puse (scoate-le înainte), durere intensă în ochi sau dinți, traumatism facial recent, tratamente estetice recente.",
+  "nota": "Nu apăsa niciodată pe globul ocular și nu apăsa dacă apare durere. În sarcină cere avizul medicului; secvența nu conține puncte marcate „În sarcină evită”."
+ },
+ {
+  "id": "r08",
+  "n": "Abdomen: digestie (≈6 min)",
+  "regiune": "abdomen",
+  "cine": "singur",
+  "dur_min": 6,
+  "material": "nimic (haine largi, loc cald)",
+  "poz": "Întins pe spate, genunchii îndoiți, o pernă sub cap.",
+  "scop": "Mângâiere și presiune ușoară pentru confortul digestiv; fără promisiunea tratării unei boli.",
+  "pasi": [
+   {
+    "t": "Așază ambele palme calde pe abdomen și respiră adânc de 4–5 ori, lăsând burta să se umfle.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Mângâie în cerc, în sensul acelor de ceasornic, în jurul buricului, cu presiune foarte ușoară.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 50
+   },
+   {
+    "t": "Cu două degete apasă ușor deasupra buricului, la jumătatea distanței dintre buric și stern, ținând și expirând lent.",
+    "teh": "ps",
+    "pts": [
+     "CV12"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Cu arătătorul și mijlociul de fiecare parte apasă blând lateral de buric, simultan, cu respirație lentă.",
+    "teh": "bl",
+    "pts": [
+     "ST25"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Apasă ușor sub buric, cu două degete, pe linia mediană, fără a forța.",
+    "teh": "ps",
+    "pts": [
+     "CV6",
+     "CV4"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Cu palma întreagă, fără greutate, fă cercuri largi, lente, pe abdomen, în același sens.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Ridică-te sau șezi și apasă cu degetul mare sub genunchi, lateral de tibie, și pe interiorul antebrațului, la încheietură.",
+    "teh": "ps",
+    "pts": [
+     "ST36",
+     "PC6"
+    ],
+    "sec": 50
+   },
+   {
+    "t": "Mângâie abdomenul cu palmele, apoi stai 2 minute cu mâinile pe burtă, respirând lent.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 60
+   }
+  ],
+  "evita": "Sarcină, la mai puțin de 1–2 ore după masă, durere abdominală intensă, febră, vărsături, operație abdominală recentă, hernie, sângerare, menstruație abundentă, ciroză sau lichid în abdomen, anevrism de aortă, stomă, boală inflamatorie acută.",
+  "nota": "NU în sarcină (pașii cu abdomenul: CV12, ST25, CV6, CV4) și nu imediat după masă. Presiunea rămâne foarte ușoară; oprește-te la durere sau la senzația de rău."
+ },
+ {
+  "id": "r09",
+  "n": "Înainte de somn (≈7 min)",
+  "regiune": "intreg",
+  "cine": "singur",
+  "dur_min": 7,
+  "material": "lumină slabă, o pernă; opțional ulei de masaj",
+  "poz": "Întins pe pat sau șezând în pat, cameră caldă și liniștită.",
+  "scop": "Relaxare treptată înainte de culcare, care poate sprijini igiena somnului.",
+  "pasi": [
+   {
+    "t": "Respiră lent: 4 secunde inspir pe nas, 6 secunde expir; mângâie ușor brațele și fața.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 60
+   },
+   {
+    "t": "Cu degetele mari apasă ușor, pe rând, pe interiorul încheieturii: în adâncitura dinspre degetul mic (HT7), apoi la mijloc, la 3 lățimi de deget deasupra pliului (PC6), ținând constant.",
+    "teh": "bl",
+    "pts": [
+     "HT7",
+     "PC6"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Cu degetul mijlociu apasă și rotește mic între sprâncene, cu ochii închiși.",
+    "teh": "cp",
+    "pts": [
+     "EX-HN3"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Apasă cu degetul mijlociu vârful capului, apoi masează blând scalpul spre ceafă.",
+    "teh": "ps",
+    "pts": [
+     "GV20",
+     "EX-HN1"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Masează urechile, de la lobi spre vârf, rulându-le ușor între degete.",
+    "teh": "ur",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Sprijină ceafa în mâini și apasă lent cu degetele mari sub craniu, în sus.",
+    "teh": "bl",
+    "pts": [
+     "GB20"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Șezând, masează talpa cu degetul mare, apoi apasă pe interiorul gleznei, fiecare picior câte 45 de secunde.",
+    "teh": "ps",
+    "pts": [
+     "KI1",
+     "KI3"
+    ],
+    "sec": 90
+   },
+   {
+    "t": "Mângâie lent picioarele, de la glezne spre coapse, apoi stai nemișcat cu mâinile pe abdomen.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 60
+   }
+  ],
+  "evita": "Imediat după efort intens, febră, stare de rău, amețeală; dacă te trezește energia, scurtează secvența.",
+  "nota": "Păstrează presiunea ușoară (3–5 din 10) și lumina slabă. Dacă insomnia durează peste 3 săptămâni, cere consult. În sarcină omite punctul de la gleznă (KI3) și cere avizul medicului."
+ },
+ {
+  "id": "r10",
+  "n": "Dimineața: activare blândă (≈8 min)",
+  "regiune": "intreg",
+  "cine": "singur",
+  "dur_min": 8,
+  "material": "nimic",
+  "poz": "În picioare sau șezând pe marginea patului.",
+  "scop": "Trezire ușoară a corpului la începutul zilei, fără stimulare excesivă.",
+  "pasi": [
+   {
+    "t": "Frecă energic palmele una de alta, apoi mângâie fața, ceafa și brațele (nu partea din față sau laterală a gâtului).",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Fricționează scalpul cu vârfurile degetelor, apoi apasă vârful capului și tâmplele.",
+    "teh": "fr",
+    "pts": [
+     "GV20",
+     "EX-HN5"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Masează urechile cu mișcări rapide, rulând lobii și marginea pavilionului.",
+    "teh": "ur",
+    "pts": [],
+    "sec": 35
+   },
+   {
+    "t": "Sprijină ceafa în mâini și apasă în sus, sub craniu, pe ambele părți.",
+    "teh": "bl",
+    "pts": [
+     "GB20"
+    ],
+    "sec": 40
+   },
+   {
+    "t": "Apasă cu degetele ambele laturi ale nasului, lângă nări, cu cercuri mici.",
+    "teh": "cp",
+    "pts": [
+     "LI20"
+    ],
+    "sec": 30
+   },
+   {
+    "t": "Apasă mușchiul dintre police și arătător, apoi încheietura, pe fiecare mână.",
+    "teh": "ps",
+    "pts": [
+     "LI4",
+     "PC6"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Bate ușor cu palma în cupă coapsele și fesele (nu pe osul șoldului).",
+    "teh": "tp",
+    "pts": [],
+    "sec": 40
+   },
+   {
+    "t": "Apasă sub genunchi, lateral de tibie, apoi talpa, fiecare picior, 20–30 de secunde.",
+    "teh": "ps",
+    "pts": [
+     "ST36",
+     "KI1"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Întinde brațele deasupra capului, apoi lasă-le să cadă; mângâie brațele și pieptul și inspiră adânc de 3 ori.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   }
+  ],
+  "evita": "Amețeală dimineața, tensiune arterială instabilă, febră.",
+  "nota": "Fii blând și evită presiunea intensă. În sarcină omite LI4 (pasul 6) și cere avizul medicului."
+ },
+ {
+  "id": "r11",
+  "n": "Masaj în doi: spate (≈9 min)",
+  "regiune": "spate",
+  "cine": "partener",
+  "dur_min": 9,
+  "material": "ulei sau loțiune, prosop, saltea sau pat ferm",
+  "poz": "Cel masat întins pe burtă, cu o pernă mică sub piept sau sub glezne; cel care masează lateral.",
+  "scop": "Relaxarea mușchilor spatelui prin masaj prietenos, într-un cadru calm.",
+  "pasi": [
+   {
+    "t": "Cu palmele calde și uleiul, mângâie larg spatele, de jos în sus pe lateralele coloanei și înapoi pe părțile laterale.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 60
+   },
+   {
+    "t": "Frământă mușchii de pe umeri (trapez), fără să urci pe partea laterală a gâtului, apoi de pe spate spre șolduri, pe ambele părți.",
+    "teh": "pe",
+    "pts": [],
+    "sec": 90
+   },
+   {
+    "t": "Cu degetele mari apasă, pe ambele părți ale coloanei (nu pe ea), în același timp, de sus în jos, pe mușchi.",
+    "teh": "bl",
+    "pts": [
+     "BL13",
+     "BL15"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Continuă la nivelul mijlocului spatelui, pe mușchi, fără a coborî pe flancuri sub coaste.",
+    "teh": "bl",
+    "pts": [
+     "BL17",
+     "BL18",
+     "BL20"
+    ],
+    "sec": 90
+   },
+   {
+    "t": "Apasă cu degetele mari și cercuri mici pe mușchii joși ai spatelui, lângă sacru, simultan.",
+    "teh": "bl",
+    "pts": [
+     "BL25",
+     "BL26"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Cu degetul mare sau cu podul palmei, apasă blând în partea laterală a fesei, în adâncitura de lângă șold (GB30), pe un singur punct, pe fiecare parte; la furnicături sau durere în picior, oprește.",
+    "teh": "ps",
+    "pts": [
+     "GB30"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Cu palmele rulează ușor și fricționează lung spatele, de la șolduri spre umeri.",
+    "teh": "fr",
+    "pts": [],
+    "sec": 60
+   },
+   {
+    "t": "Lovituri foarte ușoare cu palma în cupă, doar pe mușchii dintre coloană și omoplat, nu pe coloană, omoplat, coaste sau sub ultimele coaste (rinichi), apoi mângâiere lentă.",
+    "teh": "tp",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Încheie cu mângâiere lungă, de la ceafă la bazin, și lasă 1 minut de liniște.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 45
+   }
+  ],
+  "evita": "Febră, răni sau erupții pe spate, fracturi recente, dureri puternice sau radiante, sarcină (în orice trimestru), osteoporoză severă; nicio presiune pe coloană, pe rinichi sau pe coaste.",
+  "nota": "Stabiliți un semnal de oprire (cuvântul „stop” sau mâna ridicată) înainte să începeți; cel care masează întreabă la 1–2 minute „cum e presiunea?” (ținta: 4–6 din 10), iar cel masat poate cere oricând mai ușor, mai greu sau oprire, fără explicații. La cerere sau la durere ascuțită, amorțeală ori amețeală te oprești imediat. În sarcină nu face această secvență (poziția pe burtă și zona lombo-sacră — BL25, BL26, GB30 — sunt de evitat)."
+ },
+ {
+  "id": "r12",
+  "n": "Masaj în doi: ceafă și umeri (≈7 min)",
+  "regiune": "umeri",
+  "cine": "partener",
+  "dur_min": 7,
+  "material": "ulei sau loțiune, un scaun cu spătar sau un scaun fără, perne",
+  "poz": "Cel masat șezând, relaxat, sprijinit pe masă; cel care masează stă în spatele lui.",
+  "scop": "Destinderea mușchilor din ceafă și umeri într-un masaj blând între doi parteneri.",
+  "pasi": [
+   {
+    "t": "Așază palmele pe umeri și mângâie de la gât spre capetele umerilor, de 6–8 ori.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 45
+   },
+   {
+    "t": "Frământă mușchiul de pe vârful umerilor cu ambele mâini, apoi cu degetele mari pe lângă omoplați.",
+    "teh": "pe",
+    "pts": [
+     "GB21"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Apasă cu degetele mari în adâncitura de sub mijlocul spinei omoplatului (SI11) și la marginea de sus a omoplatului, spre gât (TE15), pe mușchi, pe ambele părți simultan, cu presiune constantă.",
+    "teh": "bl",
+    "pts": [
+     "SI11",
+     "TE15"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Cu degetele mari apasă zona de la baza craniului, în sus, fără a apăsa pe lateralul gâtului.",
+    "teh": "bl",
+    "pts": [
+     "GB20",
+     "BL10"
+    ],
+    "sec": 60
+   },
+   {
+    "t": "Fricționează ușor mușchii trapez cu palmele, de la ceafă spre umăr.",
+    "teh": "fr",
+    "pts": [],
+    "sec": 45
+   },
+   {
+    "t": "Cu palma în cupă, lovituri foarte ușoare pe mușchiul trapez de pe umeri (nu pe gât, claviculă sau omoplat), apoi pauză.",
+    "teh": "tp",
+    "pts": [],
+    "sec": 30
+   },
+   {
+    "t": "Ridică ușor umerii cât timp cel masat inspiră și lasă-i să cadă la expirație, de 5 ori.",
+    "teh": "in",
+    "pts": [],
+    "sec": 45
+   },
+   {
+    "t": "Apasă blând cu degetele mari mușchiul de la baza gâtului, lateral de coloană, nu pe ea.",
+    "teh": "ps",
+    "pts": [
+     "BL11"
+    ],
+    "sec": 45
+   },
+   {
+    "t": "Încheie cu mângâiere lentă de la ceafă la umeri și pe brațe.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 45
+   }
+  ],
+  "evita": "Dureri puternice, amorțeală în brațe, amețeli, traumatism recent al gâtului, hernie cervicală acută; fără presiune pe lateralul gâtului.",
+  "nota": "Stabiliți un semnal de oprire (cuvântul „stop” sau mâna ridicată) înainte să începeți; cel care masează întreabă la 1–2 minute „cum e presiunea?” (ținta: 4–6 din 10), iar cel masat poate cere oricând mai ușor, mai greu sau oprire, fără explicații. La cerere sau la durere ascuțită, amorțeală ori amețeală te oprești imediat. În sarcină omite GB21 (pasul 2) și cere avizul medicului."
+ },
+ {
+  "id": "r13",
+  "n": "Rutină completă de 20 min (≈20 min)",
+  "regiune": "intreg",
+  "cine": "singur",
+  "dur_min": 20,
+  "material": "un prosop, loțiune (opțional), o minge de tenis (opțional)",
+  "poz": "Șezând confortabil pe scaun sau pe pat, apoi întins pe spate.",
+  "scop": "Rutină relaxantă de la cap la picioare, care combină mângâierea, masajul și presiunea ușoară pe puncte.",
+  "pasi": [
+   {
+    "t": "Respiră lent și mângâie brațele, umerii și fața, ca încălzire.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 120
+   },
+   {
+    "t": "Fricționează scalpul și apasă blând vârful capului și tâmplele.",
+    "teh": "fr",
+    "pts": [
+     "GV20",
+     "EX-HN5"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Sprijină ceafa în mâini și apasă sub craniu, în sus, apoi frământă umerii.",
+    "teh": "bl",
+    "pts": [
+     "GB20",
+     "GB21"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Apasă simultan cu degetele mari încheieturile, pe ambele fețe, și mușchiul dintre police și arătător.",
+    "teh": "bl",
+    "pts": [
+     "PC6",
+     "LI4"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Apasă și rotește mic între sprâncene, apoi lateral de nas.",
+    "teh": "cp",
+    "pts": [
+     "EX-HN3",
+     "LI20"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Cu ambele palme mângâie abdomenul în cerc, în sensul acelor de ceasornic; apoi atinge ușor deasupra buricului, fără să apeși în adâncime.",
+    "teh": "ef",
+    "pts": [
+     "CV12",
+     "ST25"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Ridică-te și, cu mingea la perete, sau rămâi șezând și, cu palmele, masează partea de jos a spatelui, lateral de coloană, deasupra oaselor bazinului și sub nivelul ultimelor coaste.",
+    "teh": "mn",
+    "pts": [
+     "BL25",
+     "BL26"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Apasă sub genunchi, lateral de tibie, apoi pe interiorul gambei.",
+    "teh": "ps",
+    "pts": [
+     "ST36",
+     "SP6"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Masează talpa cu degetul mare și apasă pe dosul piciorului, în adâncitura de unde se unesc oasele degetelor 1 și 2.",
+    "teh": "mt",
+    "pts": [
+     "KI1",
+     "LR3"
+    ],
+    "sec": 120
+   },
+   {
+    "t": "Întinde-te pe spate, mâinile pe abdomen, respiră lent și mângâie ușor corpul.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 120
+   }
+  ],
+  "evita": "Febră, sarcină (omite pasul cu abdomenul), imediat după masă, răni, vene varicoase severe, tromboză.",
+  "nota": "Fă fiecare pas fără grabă; dacă timpul e scurt, sari peste pașii de abdomen sau de picioare. În sarcină sari peste pașii cu abdomenul (CV12, ST25), zona lombară (BL25, BL26), glezna și piciorul (SP6, LR3) și punctele LI4, GB21; cere avizul medicului. Oprește secvența la durere ascuțită, amorțeală sau amețeală."
+ }
+]

@@ -1,9 +1,9 @@
-:root{--bg:#f6f3ec;--card:#fffdf8;--ink:#1f2a27;--mut:#5d6b66;--acc:#26705f;--onacc:#fff;--acc2:#b5573a;--gold:#8f6808;--line:#ddd6c6;--soft:#e8f1ee;--warn:#fff1e0;--warnb:#e0a15a;--sh:0 1px 3px rgba(0,0,0,.08)}
+:root{--fz:1;--bg:#f6f3ec;--card:#fffdf8;--ink:#1f2a27;--mut:#5d6b66;--acc:#26705f;--onacc:#fff;--acc2:#b5573a;--gold:#8f6808;--line:#ddd6c6;--soft:#e8f1ee;--warn:#fff1e0;--warnb:#e0a15a;--sh:0 1px 3px rgba(0,0,0,.08)}
 :root[data-theme=dark]{--bg:#141b19;--card:#1c2623;--ink:#e8efec;--mut:#9fb0aa;--acc:#5fb7a4;--onacc:#0b1210;--acc2:#e08a6b;--gold:#e0b84c;--line:#2e3b37;--soft:#22312d;--warn:#33281a;--warnb:#a8742f;--sh:none}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#141b19;--card:#1c2623;--ink:#e8efec;--mut:#9fb0aa;--acc:#5fb7a4;--onacc:#0b1210;--acc2:#e08a6b;--gold:#e0b84c;--line:#2e3b37;--soft:#22312d;--warn:#33281a;--warnb:#a8742f;--sh:none}}
 *{box-sizing:border-box}
 html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+body{margin:0;background:var(--bg);color:var(--ink);font:1rem/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
 a{color:var(--acc)}
 header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--sh)}
 .top{display:flex;gap:.6rem;align-items:center;padding:.55rem .9rem;max-width:1100px;margin:auto;flex-wrap:wrap}
@@ -60,3 +60,14 @@ h2.cc{color:color-mix(in srgb,var(--cc) 70%,#000)}
 @media(prefers-color-scheme:dark){:root:not([data-theme=light]) h2.cc{color:color-mix(in srgb,var(--cc) 45%,#fff)}}
 .pt .star{min-width:44px;min-height:44px}
 input[type=checkbox]{width:20px;height:20px;accent-color:var(--acc)}
+
+html{font-size:calc(100% * var(--fz,1))}
+.brg{width:64px;height:64px;border-radius:50%;margin:.4rem auto;background:var(--soft);border:3px solid var(--acc);animation:brg 10s ease-in-out infinite}
+@keyframes brg{0%{transform:scale(.6)}40%{transform:scale(1)}100%{transform:scale(.6)}}
+html.rm *{animation:none!important;transition:none!important;scroll-behavior:auto!important}
+@media(prefers-reduced-motion:reduce){.brg{animation:none}}
+html.hc{--bg:#000;--card:#000;--ink:#fff;--mut:#f0f0f0;--acc:#ffe066;--onacc:#000;--acc2:#ff9f80;--gold:#ffe066;--line:#fff;--soft:#1a1a1a;--warn:#000;--warnb:#ffe066}
+html.hc .card,html.hc .warn,html.hc details,html.hc .modal .box{border:2px solid #fff}
+html.hc a{color:#8fd3ff;text-decoration:underline}
+#cprint .pcards{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
+#cprint .pcard{border:1px solid #000;padding:.5rem;break-inside:avoid}

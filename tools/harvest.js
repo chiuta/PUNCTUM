@@ -18,6 +18,16 @@ const strs=await p.evaluate(()=>{
  safe(()=>COURSE.forEach(l=>{fromHtml(`<h1>${l.titlu}</h1><p>${l.descriere||''}</p>`);(l.lectii||[]).forEach(le=>{(le.intrebari||[]).forEach((q,i)=>{cst().ans[le.id+':'+i]=q.corect});fromHtml(crLesson(l,le));(le.intrebari||[]).forEach(q=>{[q.q,q.corect,...(q.gresite||[]),q.explicatie].forEach(x=>x&&set.add(norm(x)))})})}));
  safe(()=>{S.course={done:{},ans:{}}});
  safe(()=>COND.forEach(c=>fromHtml(cndCard(c))));
+ safe(()=>{MF.cine='';fromHtml(vMasaj())});
+ safe(()=>{PFLAGS.forEach(f=>{S.prof[f[0]]=true});['profil','jurnal','plan','setari'].forEach(t=>{EU.tab=t;if(t==='jurnal'){S.log=[{t:Date.now(),ti:'x',b:5,a:3,n:'',f:0},{t:Date.now(),ti:'x',b:4,a:2,n:'',f:0}]}if(t==='plan'){S.plan=[{k:'p',i:0,time:'08:00',days:[1,2]}]}EU.msg='Datele nu sunt valide.';fromHtml(vEu())});EU.tab='profil';S.log=[];S.plan=[]});
+ safe(()=>{DZ.forEach(z=>{DR.z=z.id;DR.s=DS[0];DR.d=DD[0];DR.red=[false,false,false,false,false];fromHtml(vDurere())});DR.s=DS[3];DR.d=DD[2];fromHtml(vDurere());DR.red=[true,false,false,false,false];fromHtml(vDurere());DR.red=[false,false,false,false,false];DR.z='';DR.s='';DR.d=''});
+ safe(()=>{['exact','close','miss'].forEach(l=>{EX.res={lvl:l,x:1,y:1,cx:2,cy:2,d:1};EX.tip=true;fromHtml(vExam())});EX.res=null});
+ safe(()=>{S.prof.preg=true;S.prof.tromboza=true;MASC.forEach((r,i)=>fromHtml(profBadges(profR('seq',r))));MASS.forEach(c=>fromHtml(profBadges(profR('sim',c))));VAR.forEach(v=>fromHtml(profBadges(profR('var',v))));PT.slice(0,400).forEach(p=>fromHtml(profBadges(profR('pt',p))));S.prof.onco=true;S.prof.anticoag=true;S.prof.pacemaker=true;S.prof.neuropatie=true;S.prof.osteo=true;S.prof.hernie=true;S.prof.piele=true;VAR.forEach(v=>fromHtml(profBadges(profR('var',v))));S.prof={}});
+ safe(()=>{GATE={title:'x',steps:[],o:{partner:true},R:[{lv:'stop',k:'preg'}],note:true};gateDraw();fromHtml(document.querySelector('#modal').innerHTML);GATE={title:'x',steps:[{grp:[]}],o:{partner:true},R:[],note:false};gateDraw();fromHtml(document.querySelector('#modal').innerHTML);S.pre=0;GATE=null;SES.jb=3;fromHtml(sesDoneHtml());SES.partner=true;Object.values(FBT).forEach(t=>{SES.fb=t;fromHtml(partnerBar())});SES.fb='';SES.partner=false;SES.jb=null;document.querySelector('#modal').innerHTML=''});
+ safe(()=>HX.forEach(t=>set.add(norm(t))));
+ safe(()=>['PUNCTUM — carduri de puncte','Material educativ; nu înlocuiește sfatul medicului. Presiune confortabilă, 30–60 s, respirație lentă.','PUNCTUM — planul meu','Material educativ; nu înlocuiește sfatul medicului.'].forEach(t=>set.add(norm(t))));
+ safe(()=>fromHtml('<div class="warn"><b>Ce descrii poate fi o urgență.</b> Dacă ai durere în piept, dificultăți de respirație, slăbiciune bruscă, tulburări de vorbire sau sângerare importantă, sună la 112. Nu folosi presopunctura în locul ajutorului medical.</div>'));
+ safe(()=>{MASS.forEach((c,i)=>{masStart('s',i);fromHtml(document.querySelector('#modal').innerHTML);endSes(false)});MASC.forEach((r,i)=>{masStart('c',i);r.pasi.forEach((p,j)=>{SES.i=j;drawSes();fromHtml(document.querySelector('#modal').innerHTML)});endSes(false)});document.querySelector('#modal').innerHTML=''});
  safe(()=>QBANK.forEach(q=>[q.q,q.ok,...q.w,q.e].forEach(x=>x&&set.add(norm(x)))));
  safe(()=>QM.forEach(q=>JSON.stringify(q)));
  safe(()=>PROT.forEach(pr=>{fromHtml(JSON.stringify(pr))}));

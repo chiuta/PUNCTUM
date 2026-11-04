@@ -2,7 +2,7 @@
 
 _Atlas punktbasierter Therapien: Akupunktur, Akupressur, Moxibustion, Schröpfen, Ohrakupunktur, Reflexzonentherapie und mehr_
 
-**Version 2.3 · Zuletzt aktualisiert: 2026-11-04**
+**Version 2.4 · Zuletzt aktualisiert: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
@@ -16,6 +16,9 @@ PUNCTUM ist eine **Ein-Datei-HTML-App**, die **offline** funktioniert — ohne K
 - **Beschwerdenindex** (60) mit Warnzeichen, Punkten und Varianten; **persönliche Routinen** (erstellen, geführte Sitzung, drucken, Export/Import)
 - **Kurs** mit 6 Stufen / 24 Lektionen, **Quiz** mit über 200 Fragen, **Karteikarten** mit verteilter Wiederholung (Leitner), Glossar, Maßanleitung (Cun)
 - **8 Sprachen**: ro, en, fr, it, es, pt, de, hu · helles/dunkles Design · Tastatur und Screenreader · Druck · installierbare **PWA**
+- **Akupressur ist der Schwerpunkt**: sanfte Methoden werden standardmäßig angezeigt; Nadeln, Moxa, Schröpfen und Aderlass nur zur Information, mit Warnhinweisen
+- **Massage**: 31 gleichzeitig gedrückte Punktkombinationen, 13 Sequenzen nach Region und 14 Techniken, mit zeitgesteuerten geführten Sitzungen und Partnermodus (Feedback und STOP)
+- **Persönliche Sicherheit, lokal gespeichert**: Sicherheitsprofil, Check vor der Sitzung, „Wo tut es weh?“, Tagebuch mit Vorher-/Nachher-Wert, Plan mit Kalenderexport (.ics), druckbare Karten, Lokalisierungsprüfung auf der Karte, Stimme, hoher Kontrast und Datentransfer
 
 ## Evidenz und Sicherheit
 

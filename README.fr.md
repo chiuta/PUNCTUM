@@ -2,7 +2,7 @@
 
 _atlas des thérapies par points : acupuncture, acupression, moxibustion, ventouses, auriculothérapie, réflexologie et plus_
 
-**Version 2.3 · Dernière mise à jour: 2026-11-04**
+**Version 2.4 · Dernière mise à jour: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
@@ -16,6 +16,9 @@ PUNCTUM est une application **HTML en un seul fichier**, qui fonctionne **hors l
 - **Index de 60 affections** avec signaux d'alerte, points et variantes ; **routines personnelles** (création, séance guidée, impression, export/import)
 - **Cours** en 6 niveaux / 24 leçons, **quiz** de plus de 200 questions, **cartes mémoire** à répétition espacée (Leitner), glossaire, guide de mesure (cun)
 - **8 langues** : ro, en, fr, it, es, pt, de, hu · thème clair/sombre · clavier et lecteur d'écran · impression · **PWA** installable
+- **L'acupression est l'axe principal** : les méthodes douces s'affichent par défaut ; aiguilles, moxa, ventouses et saignée sont donnés à titre informatif, avec avertissements
+- **Massage** : 31 combinaisons de points pressés simultanément, 13 séquences par région et 14 techniques, avec séances guidées chronométrées et mode partenaire (retour et STOP)
+- **Sécurité personnelle, stockée localement** : profil de sécurité, vérification avant séance, « Où avez-vous mal ? », journal avec score avant/après, plan avec export calendrier (.ics), cartes imprimables, examen de localisation sur carte, voix, contraste élevé et transfert de données
 
 ## Preuves et sécurité
 

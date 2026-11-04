@@ -33,6 +33,10 @@ const r=await p.evaluate(()=>{const E=[],W=[];const e=m=>E.push(m),w=m=>W.push(m
   if(!(le.text||[]).length)e('lecție fără text '+le.id);(le.intrebari||[]).forEach((q,i)=>{const all=[q.corect,...(q.gresite||[])];if(new Set(all).size!==all.length)e('răspunsuri duplicate '+le.id+':'+i);if((q.gresite||[]).length<2)e('puține distractori '+le.id+':'+i);if(!q.explicatie)w('fără explicație '+le.id+':'+i)})}));
  // protocoale
  PROT.forEach(pr=>pr.p.forEach(c=>{if(!codes.has(c))e('PROT '+pr.t+' cod inexistent '+c)}));
+ const TEH=new Set((MAST.tehnici||[]).map(t=>t.id));const ids=new Set();
+ MASS.forEach(c=>{if(ids.has(c.id))e('MASS id dublat '+c.id);ids.add(c.id);if(!(c.pts||[]).length)e('MASS fără puncte '+c.id);(c.pts||[]).forEach(x=>{if(!codes.has(x))e('MASS '+c.id+' cod inexistent '+x)});if(!(c.sec>=30&&c.sec<=120))e('MASS sec '+c.id);['n','poz','cum','ef','cine'].forEach(k=>{if(!c[k])e('MASS '+c.id+' lipsă '+k)})});
+ MASC.forEach(r=>{if(ids.has(r.id))e('MASC id dublat '+r.id);ids.add(r.id);if(!(r.pasi||[]).length)e('MASC fără pași '+r.id);(r.pasi||[]).forEach((p,j)=>{if(!TEH.has(p.teh))e('MASC '+r.id+' tehnică necunoscută '+p.teh);if(!(p.sec>=20&&p.sec<=120))e('MASC '+r.id+' sec pas '+j);(p.pts||[]).forEach(x=>{if(!codes.has(x))e('MASC '+r.id+' cod inexistent '+x)})})});
+ if(!TEH.size)e('MAST fără tehnici');(MAST.dovezi||[]).forEach(d=>{if(!'mlwx'.includes(d.niv))e('MAST nivel dovezi invalid')});
  // quiz
  const qs=new Set();QBANK.concat(QM.map(x=>({q:x[0],ok:x[1],w:x[2].slice(0,3)}))).forEach((q,i)=>{const all=[q.ok,...q.w];if(new Set(all).size!==all.length)e('quiz răspunsuri duplicate: '+q.q.slice(0,50));if(all.some(x=>!x||x.length>70))e('quiz răspuns gol/lung: '+q.q.slice(0,40));if(qs.has(q.q))e('quiz întrebare duplicat: '+q.q.slice(0,40));qs.add(q.q);
   (q.e||'').match(/(?<![\w-])[A-Z]{2}\d{1,2}\b/g)?.forEach(c=>{if(!codes.has(c))w('quiz explicație cod inexistent '+c)})});

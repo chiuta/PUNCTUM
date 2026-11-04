@@ -2,7 +2,7 @@
 
 _atlante delle terapie a punti: agopuntura, agopressione, moxibustione, coppettazione, auricoloterapia, riflessologia e altro_
 
-**Versione 2.3 · Ultimo aggiornamento: 2026-11-04**
+**Versione 2.4 · Ultimo aggiornamento: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
@@ -16,6 +16,9 @@ PUNCTUM è un'app **HTML in un unico file** che funziona **offline** — senza a
 - **Indice di 60 disturbi** con segnali d'allarme, punti e varianti; **routine personali** (creazione, sessione guidata, stampa, esporta/importa)
 - **Corso** in 6 livelli / 24 lezioni, **quiz** con oltre 200 domande, **flashcard** a ripetizione dilazionata (Leitner), glossario, guida alle misure (cun)
 - **8 lingue**: ro, en, fr, it, es, pt, de, hu · tema chiaro/scuro · tastiera e screen reader · stampa · **PWA** installabile
+- **La digitopressione è l'asse principale**: i metodi dolci sono mostrati per impostazione predefinita; aghi, moxa, coppettazione e salasso sono solo informativi, con avvertenze
+- **Massaggio**: 31 combinazioni di punti premuti contemporaneamente, 13 sequenze per regione e 14 tecniche, con sessioni guidate a tempo e modalità partner (feedback e STOP)
+- **Sicurezza personale, salvata in locale**: profilo di sicurezza, controllo prima della sessione, «Dove senti dolore?», diario con punteggio prima/dopo, piano con esportazione calendario (.ics), schede stampabili, esame di localizzazione sulla mappa, voce, alto contrasto e trasferimento dati
 
 ## Evidenze e sicurezza
 

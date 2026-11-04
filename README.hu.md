@@ -2,7 +2,7 @@
 
 _pontalapú terápiák atlasza: akupunktúra, akupresszúra, moxa, köpölyözés, fülakupunktúra, reflexológia és más_
 
-**Verzió 2.3 · Utolsó frissítés: 2026-11-04**
+**Verzió 2.4 · Utolsó frissítés: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
@@ -16,6 +16,9 @@ A PUNCTUM egy **egyetlen HTML-fájlból álló alkalmazás**, amely **offline** 
 - **60 panaszt tartalmazó index** vészjelekkel, pontokkal és változatokkal; **személyes rutinok** (készítés, vezetett gyakorlás, nyomtatás, export/import)
 - **Tanfolyam** 6 szinten / 24 leckével, **kvíz** 200+ kérdéssel, **szókártyák** elosztott ismétléssel (Leitner), szószedet, mérési útmutató (cun)
 - **8 nyelv**: ro, en, fr, it, es, pt, de, hu · világos/sötét téma · billentyűzet és képernyőolvasó · nyomtatás · telepíthető **PWA**
+- **A fókusz az akupresszúra**: alapértelmezés szerint a gyengéd módszerek láthatók; a tű, a moxa, a köpölyözés és az érvágás csak tájékoztató jellegű, figyelmeztetésekkel
+- **Masszázs**: 31 egyszerre nyomott ponttársítás, 13 régiónkénti sorozat és 14 technika, időzített vezetett alkalmakkal és partner móddal (visszajelzés és STOP)
+- **Személyes biztonság, helyben tárolva**: biztonsági profil, ellenőrzés az alkalom előtt, „Hol fáj?”, napló előtte/utána pontszámmal, napirend naptár-exporttal (.ics), nyomtatható kártyák, térképes helymeghatározási vizsga, hang, magas kontraszt és adatátvitel
 
 ## Bizonyítékok és biztonság
 

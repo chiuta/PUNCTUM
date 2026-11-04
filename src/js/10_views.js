@@ -3,6 +3,7 @@ function vHome(){
   const now=new Date();const h=now.getHours();const idx=Math.floor((((h-3)+24)%24)/2);const cur=CLOCKO[idx];
   const cm=MER.find(x=>x.c===cur);
   const tiles=[['acu','✋','Presopunctură','15 protocoale de auto-îngrijire și sesiuni ghidate cu cronometru.'],
+   ['masaj','💆','Masaj','Puncte apăsate simultan, secvențe pe regiuni și tehnici de bază, cu sesiuni ghidate.'],
    ['cond','🩺','Afecțiuni & rutine','Rutine de presopunctură pentru 60 de afecțiuni comune, cu semne de alarmă.'],
    ['pts','•','Puncte','Peste 400 de puncte, filtrabile după meridian și regiune, cu favorite.'],
    ['cun','📏','Măsurare (cun)','Cum găsești punctele, cu calculator personalizat.'],
@@ -122,37 +123,42 @@ function vPts(){
 }
 
 /* --- sesiune presopunctură --- */
-const SES={on:false,pts:[],i:0,sec:60,left:60,paused:false,timer:null,beep:true,title:''};
+const SES={fixed:false,on:false,pts:[],i:0,sec:60,left:60,paused:false,timer:null,beep:true,title:''};
 let AC=null;
 function beep(f){if(!SES.beep)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f||660;g.gain.value=.08;o.connect(g);g.connect(AC.destination);o.start();setTimeout(()=>o.stop(),180)}catch(e){}}
-function startSes(i){
-  const pr=PROT[i];SES.title=pr.t;SES.pts=pr.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean);SES.i=0;SES.left=SES.sec;SES.on=true;SES.paused=false;
-  clearInterval(SES.timer);SES.timer=setInterval(tick,1000);beep(880);drawSes();
-}
+function stepSec(i){const x=SES.pts[i];return (x&&x.s)||SES.sec}
+function startSes(i){const pr=PROT[i];sesBegin(pr.t,pr.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean),{})}
 function tick(){
   if(SES.paused)return;SES.left--;
-  if(SES.left<=0){beep(660);if(SES.i<SES.pts.length-1){SES.i++;SES.left=SES.sec}else{endSes(true);return}}
+  if(SES.left<=0){beep(660);if(SES.i<SES.pts.length-1){SES.i++;SES.left=stepSec(SES.i)}else{endSes(true);return}}
   drawSes();
 }
-function endSes(done){clearInterval(SES.timer);SES.on=false;if(done){$('#modal').innerHTML=`<div class="modal"><div class="box"><h2>✔ Sesiune încheiată</h2><p>Stai încă 1–2 minute, respiră lent. Bea apă dacă dorești.</p><button class="b" onclick="$('#modal').innerHTML=''">OK</button></div></div>`;beep(990)}else $('#modal').innerHTML=''}
-function sesNext(d){SES.i=Math.max(0,Math.min(SES.pts.length-1,SES.i+d));SES.left=SES.sec;drawSes()}
+function endSes(done){clearInterval(SES.timer);SES.on=false;speechStop();if(done){$('#modal').innerHTML=sesDoneHtml();beep(990)}else $('#modal').innerHTML=''}
+function sesNext(d){SES.i=Math.max(0,Math.min(SES.pts.length-1,SES.i+d));SES.left=stepSec(SES.i);drawSes()}
 function sesPause(){SES.paused=!SES.paused;drawSes()}
-function sesTime(v){SES.sec=+v;SES.left=SES.sec;drawSes()}
+function sesTime(v){SES.sec=+v;SES.left=stepSec(SES.i);drawSes()}
 function drawSes(){
   if(!SES.on)return;const p=SES.pts[SES.i];
+  const head=p.grp?`<h2 style="margin:.2rem 0">${p.grp.map(x=>`<span class="badge" style="background:${MCOL[x.m]}">${esc(x.c)}</span>`).join(' ')} ${esc(p.th||'')}</h2>
+   <p style="margin:.3rem 0">${esc(p.t)}</p>
+   ${p.grp.map(x=>`<p style="margin:.3rem 0"><b>${esc(x.c)} ${esc(x.p)}:</b> ${esc(x.l)}</p>${x.w?`<p class="w pw" role="note">${esc(x.w)}</p>`:''}`).join('')}`
+   :`<h2 style="margin:.2rem 0"><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h2>
+   <p style="margin:.3rem 0"><b>Localizare:</b> ${esc(p.l)}</p>
+   ${p.w?`<p class="w pw" role="note">${esc(p.w)}</p>`:''}`;
+  sesSpeak(p);
   $('#modal').innerHTML=`<div class="modal"><div class="box">
    <p class="mut">${esc(SES.title)} · ${SES.i+1}/${SES.pts.length}</p>
-   <h2 style="margin:.2rem 0"><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h2>
-   <p style="margin:.3rem 0"><b>Localizare:</b> ${esc(p.l)}</p>
-   ${p.w?`<p class="w pw" role="note">${esc(p.w)}</p>`:''}
+   ${head}
+   ${ringHtml()}
    <div class="breath">${SES.left}</div>
+   ${SES.partner?partnerBar():''}
    <p class="mut">Presiune fermă dar confortabilă · inspiră 4 s · expiră 6 s · ambele părți unde e cazul</p>
    <div class="bar" style="justify-content:center">
     <button class="b alt" onclick="sesNext(-1)" ${SES.i===0?'disabled':''}>◀</button>
     <button class="b" onclick="sesPause()">${SES.paused?'▶':'❚❚'}</button>
     <button class="b alt" onclick="sesNext(1)" ${SES.i===SES.pts.length-1?'disabled':''}>▶</button>
     <button class="b alt" onclick="endSes(false)">✕</button></div>
-   <div class="bar" style="justify-content:center"><select onchange="sesTime(this.value)">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s / punct</option>`).join('')}</select>
+   <div class="bar" style="justify-content:center">${SES.fixed?'':`<select onchange="sesTime(this.value)">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s / punct</option>`).join('')}</select>`}
    <label class="mut" style="align-self:center"><input type="checkbox" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
   </div></div>`;
 }
@@ -210,6 +216,7 @@ function vBadges(v){
 }
 function vCard(v,open){
   return `<details id="v-${esc(v.id)}" ${open?'open':''}><summary>${esc(v.n)}</summary>
+   ${profBadges(profR('var',v))}
    ${v.soft?'':(v.inv>=2||v.risc>=3?'<div class="warn" role="note">⛔ Doar informativ. Se face numai de practicant calificat, cu material steril. Nu încerca acasă.</div>':'<div class="warn" role="note">⚠ Informativ. Se practică numai după instruire și cu respectarea contraindicațiilor din fișă.</div>')}
    <p>${vBadges(v)}</p>
    <p><b>Origine:</b> ${esc(v.or)}</p>
@@ -441,11 +448,14 @@ function doSearch(){
   const mer=MER.filter(m=>(m.c+' '+m.n+' '+m.zh+' '+m.path+' '+m.key+' '+m.use).toLowerCase().includes(v));
   const glo=GLO.filter(g=>(g[0]+' '+g[1]).toLowerCase().includes(v));
   const tech=VAR.filter(t=>(t.n+' '+t.pr+' '+t.zon+' '+t.ind).toLowerCase().includes(v));
-  const pro=PROT.filter(p=>(p.t+' '+p.n+' '+p.p.join(' ')).toLowerCase().includes(v));
-  const any=pts.length+mer.length+glo.length+tech.length+pro.length;
-  $('#main').innerHTML=`<h1>${esc(T().ph.replace('…',''))}: “${esc(v)}”</h1>${any?'':`<p class="mut">${esc(T().noRes)}</p>`}
+  const nlx=nlExpand(v).map(nlNorm);const nlHit=h=>{const n=nlNorm(h);return nlx.some(t=>n.includes(t))};
+  const pro=PROT.filter(p=>(p.t+' '+p.n+' '+p.p.join(' ')).toLowerCase().includes(v)||nlHit(p.t));
+  const mq=v.toLowerCase();const mas=(typeof MASS!=='undefined'?MASS.map((c,i)=>({k:'s',i,n:c.n,x:c.cum,hay:(c.n+' '+c.cum+' '+c.ef+' '+c.pts.join(' ')).toLowerCase()})).concat(MASC.map((r,i)=>({k:'c',i,n:r.n,x:r.scop,hay:(r.n+' '+r.scop+' '+r.regiune+' '+r.pasi.map(p=>p.t+' '+(p.pts||[]).join(' ')).join(' ')).toLowerCase()}))):[]).filter(m=>m.hay.includes(mq)).slice(0,12);
+  const any=pts.length+mer.length+glo.length+tech.length+pro.length+mas.length||nlUrgent(v);
+  $('#main').innerHTML=`<h1>${esc(T().ph.replace('…',''))}: “${esc(v)}”</h1>${nlUrgent(v)?'<div class="warn" role="alert"><b>Ce descrii poate fi o urgență.</b> Dacă ai durere în piept, dificultăți de respirație, slăbiciune bruscă, tulburări de vorbire sau sângerare importantă, sună la 112. Nu folosi presopunctura în locul ajutorului medical.</div>':''}${any?'':`<p class="mut">${esc(T().noRes)}</p>`}
   ${pts.length?`<h2>Puncte (${pts.length})</h2><div class="grid">${pts.map(ptCard).join('')}</div>`:''}
   ${mer.length?`<h2>Meridiane</h2>${mer.map(m=>`<div class="card" style="margin:.4rem 0"><h3><span class="badge" style="background:${MCOL[m.c]}">${m.c}</span>${esc(m.n)}</h3><p>${esc(m.path)}</p></div>`).join('')}`:''}
+  ${mas.length?`<h2>Masaj</h2>${mas.map(m=>`<div class="card" style="margin:.4rem 0"><h3>${esc(m.n)}</h3><p class="mut">${esc(m.x)}</p><button class="b" onclick="masStart('${m.k}',${m.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
   ${pro.length?`<h2>Protocoale</h2>${pro.map(p=>`<div class="card" style="margin:.4rem 0"><h3>${esc(p.t)}</h3><p>${p.p.map(c=>`<span class="tag">${c}</span>`).join('')}</p></div>`).join('')}`:''}
   ${tech.length?`<h2>Variante (${tech.length})</h2>${tech.slice(0,25).map(t=>`<div class="card" style="margin:.4rem 0"><h3>${esc(t.n)}</h3><p>${esc(t.pr)}</p><a href="#tech" onclick="TF.q='${esc(t.n).replace(/'/g,'')}';TF.cat='';TF.open='${esc(t.id)}';$('#q').value='';render();return false">Vezi fișa →</a></div>`).join('')}`:''}
   ${glo.length?`<h2>Glosar</h2>${glo.map(g=>`<details open><summary>${esc(g[0])}</summary><p>${esc(g[1])}</p></details>`).join('')}`:''}`;

@@ -16,6 +16,7 @@ function ptCard(p){
    ${p.tg?`<p>${p.tg.split(',').filter(Boolean).map(t=>`<span class="tag">${esc(t.trim())}</span>`).join('')}</p>`:''}
    <p><b>Localizare:</b> ${esc(p.l)}</p>
    <p><b>Indicații tradiționale:</b> ${esc(p.u)}</p>
+   ${profBadges(profR('pt',p))}
    ${p.w?`<p class="w pw" role="note">${NEEDLEW.test(p.w)&&!isPregPt(p)?'<span class="mut">Pentru acupunctori: </span>':''}${esc(p.w)}</p>`:''}
   </div>`}
 function toggleFav(c,p){const k=c+'|'+p;const i=S.fav.indexOf(k);if(i<0)S.fav.push(k);else S.fav.splice(i,1);save();if(view()==='pts')renderPtsList();else render();}

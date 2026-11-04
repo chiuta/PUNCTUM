@@ -2,7 +2,7 @@
 
 _atlas al terapiilor prin puncte: acupunctură, presopunctură/acupresură, moxă, ventuze, auriculoterapie, reflexologie și altele_
 
-**Versiune 2.3 · Ultima actualizare: 2026-11-04**
+**Versiune 2.4 · Ultima actualizare: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 
@@ -16,6 +16,9 @@ PUNCTUM este o aplicație **într-un singur fișier HTML**, care funcționează 
 - **Index de afecțiuni** (60) cu semnale de alarmă, puncte și variante; **rutine personale** (creare, sesiune ghidată, tipărire, export/import)
 - **Curs** în 6 niveluri / 24 de lecții, **quiz** cu 200+ întrebări, **flashcarduri** cu repetiție eșalonată (Leitner), glosar, ghid de măsurare (cun)
 - **8 limbi**: ro, en, fr, it, es, pt, de, hu · temă luminoasă/întunecată · tastatură și cititor de ecran · tipărire · **PWA** instalabilă
+- **Presopunctura este focusul**: implicit se văd variantele blânde, iar acul, moxa, ventuzele și sângerarea sunt prezentate doar informativ, cu avertismente
+- **Masaj**: 31 combinații de puncte apăsate simultan, 13 secvențe pe regiuni și 14 tehnici, cu sesiuni ghidate cronometrate și mod partener (feedback și STOP)
+- **Siguranță personală, local pe dispozitiv**: profil de siguranță, triaj înainte de sesiune, „Unde te doare?”, jurnal cu scor înainte/după, plan cu export în calendar (.ics), carduri de imprimat, examen de localizare pe hartă, voce, contrast ridicat și transfer de date
 
 ## Despre dovezi și siguranță
 

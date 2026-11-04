@@ -1,5 +1,16 @@
 # PUNCTUM — jurnal de versiuni
 
+## 2.4 — 2026-11-04
+Masaj pe mai multe puncte simultan și 10 funcții noi, toate cu siguranța în față.
+- **Masaj** (secțiune nouă): 31 de combinații de puncte apăsate simultan, 13 secvențe pe regiuni, 14 tehnici de bază, liste de siguranță, dovezi cu niveluri oneste. Audit adversarial aplicat (`research/audit_masaj.md`, `audit_masaj_aplicat.md`).
+- **Profil de siguranță** (sarcină, anticoagulante, tromboză, osteoporoză, oncologie, stimulator, neuropatie, hernie, piele): blochează sau avertizează pe puncte, variante, combinații și secvențe.
+- **Triaj înainte de sesiune** (semne de alarmă → sesiune blocată), scor înainte/după, **Jurnal** cu grafic și export CSV.
+- **Mod partener** (consimțământ, feedback, STOP), **voce** și inel de respirație, **plan săptămânal** cu export .ics, **fișe de tipărit**.
+- **„Unde te doare?"** (hartă corporală; semne de alarmă → 112, fără sugestii pentru durere ascuțită/arsură), **căutare în limbaj natural** cu alertă de urgență, **examen pe hartă**.
+- **Accesibilitate**: text mărit, contrast ridicat, mișcare redusă. **Transfer de stare** prin fișier sau cod.
+- 735 de șiruri noi traduse în 7 limbi; 0 rămășițe românești (i18n_deep). Teste noi: `tests/features.js`.
+- Limite: traduceri neverificate de nativi; testat doar în Chromium; 18 variante „blânde" alese de mine, de confirmat de un specialist; conținutul de masaj nu a fost revizuit de un clinician; fără cameră AR și fără verificator de interacțiuni medicamentoase (excluse deliberat, nesigure).
+
 ## 2.3 — 2026-11-04
 Reorientare spre presopunctură, pentru reducerea riscurilor medicale.
 - Presopunctura este modul principal: apare prima în meniu și pe pagina de start, cu text nou despre ce este și ce reguli are; acupunctura devine secțiune „doar informativ".

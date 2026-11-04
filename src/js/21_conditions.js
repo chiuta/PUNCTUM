@@ -50,9 +50,7 @@ function cPtTag(c){const p=cPt(c);return p?`<span class="tag" title="${esc(p.l)}
 function startCustom(title,codes,sec){
   const pts=(codes||[]).map(c=>PT.find(x=>x.c===c)).filter(Boolean);
   if(!pts.length)return;
-  if(sec&&CSEC.includes(+sec))SES.sec=+sec;
-  SES.title=title;SES.pts=pts;SES.i=0;SES.left=SES.sec;SES.on=true;SES.paused=false;
-  clearInterval(SES.timer);SES.timer=setInterval(tick,1000);beep(880);drawSes();
+  sesBegin(title,pts,{sec:sec||0});
 }
 function cndStart(id){const c=COND.find(x=>x.id===id);if(c)startCustom(c.n,c.pts,c.g==='Copii'?30:0)}
 

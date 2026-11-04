@@ -1,0 +1,466 @@
+[
+ {
+  "id": "s01",
+  "n": "Baza craniului și marginea trapezului",
+  "pts": [
+   "GB20",
+   "BL10"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "Șezând, cu coatele sprijinite pe masă și capul ușor aplecat înainte.",
+  "cum": "Prinde ceafa în cupă, cu degetele împreunate sub ceafă, și așază degetele mari pe ambele GB20, în scobiturile de sub occiput. Cu degetele mari sau cu vârfurile mediilor apasă simultan și BL10, la 1,3 cun lateral de mijloc, imediat sub baza craniului, pe mușchiul de lângă coloană. Împinge cu presiune medie (4–5/10) în sus și spre ochi, cu expirații lungi.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru tensiunea din ceafă și cefaleea de tensiune; posibil efect de relaxare musculară.",
+  "nota": "Presează doar pe musculatura de sub occiput, nu pe partea laterală a gâtului. Cefalee bruscă și severă, cu febră, redoare de ceafă sau tulburări neurologice: urgență, nu acupresură."
+ },
+ {
+  "id": "s02",
+  "n": "Triunghiul cefei, cu partener",
+  "pts": [
+   "GB20",
+   "GV16"
+  ],
+  "lat": "bilateral",
+  "cine": "partener",
+  "poz": "Tu stai șezând, relaxat, cu bărbia ușor spre piept; partenerul stă în spatele tău.",
+  "cum": "Partenerul prinde occiputul cu o mână, cu degetul mare și mijlociul pe cele două GB20, în clește de-a curmezișul cefei. Cu degetul mare al celeilalte mâini apasă blând în scobitura de la mijloc, GV16, sub protuberanța occipitală, în sus și ușor spre înainte. Presiunea rămâne mică spre medie (3–5/10). Înainte să începeți, stabiliți un semnal de oprire („stop” sau mâna ridicată). Cel care apasă întreabă „cum e presiunea?” la început și la fiecare 15–20 secunde (ținta: 3–5 din 10); cel apăsat poate cere oricând mai ușor, mai greu sau oprire, fără explicații.",
+  "sec": 45,
+  "ef": "Tradițional vizat pentru rigiditatea cefei și senzația de cap greu; posibil efect de relaxare.",
+  "nota": "GV16 este o zonă sensibilă: fără presiune puternică, fără mișcări de răsucire a gâtului. Oprește la amețeală, furnicături în brațe sau durere ascuțită."
+ },
+ {
+  "id": "s03",
+  "n": "Tâmple și rădăcina nasului",
+  "pts": [
+   "EX-HN3",
+   "EX-HN5"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "Șezând, cu coatele sprijinite, ochii închiși.",
+  "cum": "Cuprinde capul cu palmele, cu degetele mari pe ambele Taiyang, în adânciturile tâmplelor, iar vârfurile degetelor mijlocii se întâlnesc la Yintang, între sprâncene. Apasă cu presiune ușoară spre medie pe tâmple și, în același timp, ușor în sus pe Yintang, respirând lent.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru cefaleea frontală de tensiune și pentru încordarea de la sfârșitul unei zile cu ecrane.",
+  "nota": "Pe tâmple presiunea rămâne blândă (artera temporală). Dacă durerea e nouă, pulsatilă, cu tulburări de vedere sau apărută după un traumatism, nu face acupresură și cere consult."
+ },
+ {
+  "id": "s04",
+  "n": "Ochi obosiți: arcadă și mijlocul sprâncenei",
+  "pts": [
+   "BL2",
+   "EX-HN4"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "Șezând la masă, coatele sprijinite, ochii închiși; fără lentile de contact.",
+  "cum": "Așază degetele mari la capătul dinspre nas al sprâncenei, în crestătura osului (BL2), pe os, nu în spatele lui, și apasă ușor în sus, spre frunte, fără să împingi spre ochi. Cu vârfurile arătătoarelor, în același timp, apasă pe osul sprâncenei, în dreptul EX-HN4, la mijlocul sprâncenei. Nu apeși niciodată pe globul ocular.",
+  "sec": 30,
+  "ef": "Tradițional se asociază cu oboseala vizuală și cu tensiunea din jurul ochilor; posibil efect de relaxare locală.",
+  "nota": "Presiunea merge numai pe os, niciodată pe ochi. Dacă ai glaucom, operații oculare recente, retină fragilă sau dureri oculare, omite complet."
+ },
+ {
+  "id": "s05",
+  "n": "Sinusuri și nas înfundat",
+  "pts": [
+   "LI20",
+   "EX-HN3"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "Șezând, cu coatele sprijinite, capul drept.",
+  "cum": "Așază vârfurile arătătoarelor în șanțurile de lângă aripile nasului, pe ambele LI20, și apasă ușor spre os, în sus și spre interior, 20–30 secunde, apoi ușor în cercuri mici. Apoi, separat, apasă cu degetul mijlociu între sprâncene (Yintang), 15–20 secunde.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru nas înfundat și presiune în sinusuri; poate aduce o ușurare temporară a senzației de blocaj.",
+  "nota": "Presiune blândă, fără apăsare pe cartilaj. Dacă ai febră, secreții cu miros urât sau durere facială puternică mai mult de câteva zile, cere consult medical. Evită la epistaxis recent."
+ },
+ {
+  "id": "s06",
+  "n": "Zona din jurul urechii",
+  "pts": [
+   "GB2",
+   "SI19",
+   "TE21"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând, cu gura ușor deschisă și mandibula relaxată.",
+  "cum": "Așază arătătorul, mijlociul și inelarul unei mâini în fața urechii, în ordine de sus în jos: TE21, SI19 și GB2, în adânciturile care se simt când deschizi gura. Apasă încet și cu presiune medie, confortabilă (4–6/10) spre înainte, menținând gura întredeschisă, apoi repetă pe partea cealaltă.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru tensiunea de la articulația temporo-mandibulară și pentru senzația de urechi înfundate; posibil efect de relaxare.",
+  "nota": "Nu apăsa în canalul auditiv. Durere de ureche, secreție, febră sau scădere bruscă a auzului: consult medical, nu automasaj."
+ },
+ {
+  "id": "s07",
+  "n": "Umărul și omoplatul, cu partener",
+  "pts": [
+   "GB21",
+   "SI11"
+  ],
+  "lat": "o parte",
+  "cine": "partener",
+  "poz": "Șezând pe scaun, cu brațele relaxate pe coapse; partenerul stă în spatele tău.",
+  "cum": "Partenerul pune degetul mare pe GB21, pe mușchiul trapez, la jumătatea distanței dintre ceafă și vârful umărului, și apasă încet în jos, pe mușchi, fără să împingi adânc spre vârful plămânului. Cu degetul mare al celeilalte mâini apasă simultan pe SI11, în adâncitura de sub mijlocul spinei omoplatului, pe mușchi (nu cu cotul). Îi spui când presiunea ajunge la 4–6/10 și respiri lent. Înainte să începeți, stabiliți un semnal de oprire („stop” sau mâna ridicată). Cel care apasă întreabă „cum e presiunea?” la început și la fiecare 15–20 secunde (ținta: 4–6 din 10); cel apăsat poate cere oricând mai ușor, mai greu sau oprire, fără explicații.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru umeri încordați și durere de omoplat; posibilă relaxare a trapezului.",
+  "nota": "GB21 se omite în sarcină, fiind tradițional contraindicat. Presiunea nu trebuie să radieze în braț ca un curent electric; dacă o simți, redu sau oprește."
+ },
+ {
+  "id": "s08",
+  "n": "Umerii, cu mâinile încrucișate",
+  "pts": [
+   "GB21",
+   "TE15"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "Șezând sau în picioare, cu mâinile încrucișate pe piept.",
+  "cum": "Încrucișează brațele și așază vârfurile degetelor mijlocii și inelare pe trapez, pe ambele GB21, la jumătatea distanței dintre ceafă și umăr. Vârful arătătorului alunecă puțin înapoi, spre TE15, la marginea superioară a omoplatului. Apasă în jos, încet, timp de 30–60 secunde.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru tensiunea de la ceafă și umeri după ore la birou.",
+  "nota": "GB21 se omite în sarcină. Nu apăsa pe partea laterală a gâtului. Dacă ai durere care coboară în braț sau amorțeli, oprește și cere consult."
+ },
+ {
+  "id": "s09",
+  "n": "Articulația umărului, față-spate",
+  "pts": [
+   "LI15",
+   "TE14"
+  ],
+  "lat": "o parte",
+  "cine": "singur",
+  "poz": "Șezând, cu brațul de pe partea tratată relaxat pe coapsă.",
+  "cum": "Cu mâna opusă prinde umărul: vârful arătătorului în adâncitura din fața acromionului (LI15), iar vârful degetului mare în adâncitura din spatele lui (TE14), ca un clește. Apasă simultan și ușor în adâncime, apoi fă mici mișcări lente ale brațului dacă te simți confortabil.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru rigiditatea și durerea de umăr; ușurare posibilă a mișcării.",
+  "nota": "Nu apăsa în caz de traumatism recent, luxație sau durere nocturnă intensă a umărului. Dacă simți înțepături, redu presiunea."
+ },
+ {
+  "id": "s10",
+  "n": "Încheietura: PC6 și HT7",
+  "pts": [
+   "PC6",
+   "HT7"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând, cu antebrațul sprijinit pe masă, palma în sus.",
+  "cum": "Cu mâna opusă prinde încheietura: degetul mare pe PC6, între cele două tendoane, la 2 lățimi de deget deasupra pliului încheieturii, iar vârful arătătorului sau al mijlociului pe HT7, în pliu, pe partea dinspre degetul mic. Apasă simultan, ușor spre mediu (3–5/10), 60 secunde, cu respirații lente; oprește la furnicături, amorțeală sau senzație de șoc în degete; schimbă mâna.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru neliniște, greață și încordare psihică; posibil efect de calmare. Palpitațiile cer evaluare medicală, nu automasaj.",
+  "nota": "În sarcină cere sfatul medicului înainte de PC6. Dacă ai sindrom de tunel carpian, redu presiunea. Palpitații puternice, dureri în piept sau leșin: consult medical."
+ },
+ {
+  "id": "s11",
+  "n": "Clește față-dos pe încheietură",
+  "pts": [
+   "PC6",
+   "TE5"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând, cu antebrațul sprijinit și mâna relaxată.",
+  "cum": "Cu mâna opusă pune degetul mare pe PC6 pe partea palmară și arătătorul pe TE5, exact pe partea opusă, pe dosul antebrațului. Strânge ușor, ca într-un clește, ținând apăsarea constantă și respirând lent.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru tensiunea din încheietură, greață ușoară și oboseala după muncă la tastatură.",
+  "nota": "Fără presiune puternică în caz de tunel carpian sau inflamație. În sarcină cere sfatul medicului înainte de PC6."
+ },
+ {
+  "id": "s12",
+  "n": "Încheietura radială și cubitală, cu partener",
+  "pts": [
+   "LU9",
+   "HT7"
+  ],
+  "lat": "alternativ",
+  "cine": "partener",
+  "poz": "Tu stai șezând, cu antebrațul sprijinit și palma în sus; partenerul stă în fața ta.",
+  "cum": "Partenerul pune un deget mare pe LU9, în pliul încheieturii pe partea dinspre police, unde se simte pulsul, și celălalt pe HT7, în pliu, pe partea dinspre degetul mic. Apasă simultan și ușor, fără a opri pulsul, cu presiune medie, confortabilă (4–6/10), și respirați lent împreună. Înainte să începeți, stabiliți un semnal de oprire („stop” sau mâna ridicată). Cel care apasă întreabă „cum e presiunea?” la început și la fiecare 15–20 secunde (ținta: 4–6 din 10); cel apăsat poate cere oricând mai ușor, mai greu sau oprire, fără explicații.",
+  "sec": 60,
+  "ef": "Tradițional se asociază cu calmarea și cu tonifierea respirației; posibil efect de relaxare.",
+  "nota": "Pe LU9 presiunea rămâne ușoară (artera radială). Nu apăsa puternic dacă ai afecțiuni vasculare ale mâinii sau iei anticoagulante."
+ },
+ {
+  "id": "s13",
+  "n": "Mâna: LI4 și SI3",
+  "pts": [
+   "LI4",
+   "SI3"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând, cu mâna sprijinită pe masă, palma în jos.",
+  "cum": "Cu mâna opusă pune degetul mare pe LI4, în mușchiul dintre police și arătător, și vârful arătătorului pe SI3, pe marginea cubitală a mâinii, în spatele articulației degetului mic, când pumnul e ușor strâns. Dacă nu ajungi la ambele puncte deodată, apasă-le pe rând, 20–30 secunde fiecare, cu presiune medie confortabilă, apoi schimbă mâna.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru tensiunea din mână și încheietură și pentru ceafă rigidă.",
+  "nota": "LI4 se omite în sarcină. Fără presiune puternică în caz de artrită inflamatorie acută a mâinii."
+ },
+ {
+  "id": "s14",
+  "n": "Antebrațul și cotul",
+  "pts": [
+   "LI11",
+   "LI10"
+  ],
+  "lat": "o parte",
+  "cine": "singur",
+  "poz": "Șezând, cu cotul îndoit și sprijinit pe masă.",
+  "cum": "Cu mâna opusă prinde antebrațul: degetul mare pe LI10, la 2 cun sub pliul cotului, pe mușchi, și vârful mijlociului pe LI11, la capătul extern al pliului cotului îndoit. Apasă simultan și ușor în adâncime, apoi ușor întinde și îndoaie brațul.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru oboseala antebrațului și pentru durerea de tip „cot de tenisman”; posibilă relaxare musculară, fără a înlocui consultul.",
+  "nota": "Presiune moderată, fără durere ascuțită. La inflamație acută a cotului sau pierdere de forță, cere consult."
+ },
+ {
+  "id": "s15",
+  "n": "Brațul, cot și mână, cu partener",
+  "pts": [
+   "LI11",
+   "LI4"
+  ],
+  "lat": "o parte",
+  "cine": "partener",
+  "poz": "Tu stai șezând, cu brațul sprijinit pe masă; partenerul stă lângă tine.",
+  "cum": "Partenerul pune degetul mare pe LI11, la capătul pliului cotului, și celălalt deget mare pe LI4, în mușchiul dintre police și arătător. Apasă simultan cu presiune medie, menține 45–60 secunde și respiri lent, apoi schimbați brațul. Înainte să începeți, stabiliți un semnal de oprire („stop” sau mâna ridicată). Cel care apasă întreabă „cum e presiunea?” la început și la fiecare 15–20 secunde (ținta: 4–6 din 10); cel apăsat poate cere oricând mai ușor, mai greu sau oprire, fără explicații.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru durerea de braț, tensiunea de la cap; efect posibil de relaxare.",
+  "nota": "LI4 se omite în sarcină. Fără presiune puternică în caz de edem sau tromboză a brațului."
+ },
+ {
+  "id": "s16",
+  "n": "Lombar: pumn pe BL23 și BL52",
+  "pts": [
+   "BL23",
+   "BL52"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "Șezând pe un scaun cu spătar, cu spatele drept.",
+  "cum": "Strânge mâinile în pumn și așază articulațiile degetelor pe spate: cele ale arătătorului pe BL23, la 1,5 cun lateral de coloană, la nivelul taliei, iar cele ale inelarului pe BL52, la 3 cun lateral. Sprijină-te ușor de spătar (3–5/10), 30–45 secunde, respirând lent; fără lovituri și fără greutate bruscă.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru oboseala zonei lombare și vlăguirea de la ședere prelungită.",
+  "nota": "Fără presiune directă pe coloană. BL23 și BL52 sunt la nivelul rinichilor: omite dacă ai boli de rinichi sau litiază renală. Durere lombară cu amorțeli, febră sau după traumatism: consult medical. În sarcină, doar presiune blândă, fără zona sacrată."
+ },
+ {
+  "id": "s17",
+  "n": "Lombar, cu partener",
+  "pts": [
+   "BL23",
+   "BL52"
+  ],
+  "lat": "bilateral",
+  "cine": "partener",
+  "poz": "Tu stai întins pe burtă (fără sarcină), cu o pernă sub abdomen; partenerul stă lângă tine.",
+  "cum": "Partenerul pune degetele mari pe BL23, pe mușchii de lângă coloană, la nivelul taliei, și pe BL52, la 3 cun lateral. Apasă simultan cu presiune ușoară spre medie (3–5/10), fără să împingi în adâncime, 30–45 secunde pe fiecare parte, doar pe mușchiul de lângă coloană, fără lovituri și fără apăsare pe flancuri sau pe coaste. Întreabă „cum e presiunea?” la fiecare 15–20 secunde; la „stop” te oprești imediat. Respirați lent împreună. Înainte să începeți, stabiliți un semnal de oprire („stop” sau mâna ridicată). Cel care apasă întreabă „cum e presiunea?” la început și la fiecare 15–20 secunde (ținta: 4–6 din 10); cel apăsat poate cere oricând mai ușor, mai greu sau oprire, fără explicații.",
+  "sec": 60,
+  "ef": "În MTC se asociază cu „oboseala rinichiului” (concept tradițional, nu boală de rinichi) și cu durerea lombară; posibilă relaxare musculară.",
+  "nota": "Omite cardul dacă ai boli de rinichi, litiază renală, durere lombară cu febră sau urină cu sânge. În sarcină nu te întinde pe burtă; folosește poziția pe o parte și presiune blândă. Evită zona sacrată și coloana directă."
+ },
+ {
+  "id": "s18",
+  "n": "Fesele: GB30 bilateral",
+  "pts": [
+   "GB30"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "În picioare, cu spatele sprijinit de perete, picioarele ușor depărtate.",
+  "cum": "Strânge pumnii și așază articulațiile degetelor pe GB30, în adâncitura de pe fese, la unirea treimii externe cu cea mijlocie a liniei dintre vârful trohanterului și hiatusul sacrat. Apasă încet în adâncime, cu respirații lente; poți folosi și două mingi de tenis între perete și fese.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru durerea de fesă; posibilă relaxare a mușchiului piriform. Durerea care coboară în picior (sciatică) cere consult, nu automasaj.",
+  "nota": "Fără presiune pe nervul sciatic dacă apar furnicături sau amorțeli. În sarcină doar blând, cu acordul medicului."
+ },
+ {
+  "id": "s19",
+  "n": "Genunchi și gambă: ST36 și SP6",
+  "pts": [
+   "ST36",
+   "SP6"
+  ],
+  "lat": "o parte",
+  "cine": "singur",
+  "poz": "Șezând, cu piciorul sprijinit pe un scaun.",
+  "cum": "Cu o mână pune degetul mare pe ST36, la 3 lățimi de deget sub rotulă, lateral de marginea tibiei, iar cu cealaltă pune degetul mare pe SP6, la 3 lățimi de deget deasupra gleznei, pe marginea posterioară a tibiei. Apasă simultan, cu presiune medie, confortabilă (4–6/10), 60–90 secunde.",
+  "sec": 75,
+  "ef": "Tradițional se folosește pentru oboseala picioarelor, digestie leneșă și energie scăzută.",
+  "nota": "SP6 se omite în sarcină. Omite zona dacă ai varice, tromboză, edem sau leziuni ale pielii."
+ },
+ {
+  "id": "s20",
+  "n": "Sub genunchi: ST36 și GB34",
+  "pts": [
+   "ST36",
+   "GB34"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând pe scaun, cu genunchii îndoiți la 90 de grade.",
+  "cum": "Pune degetul arătător pe ST36 și degetul mijlociu pe GB34, în adâncitura din fața și sub capul fibulei, cu aceeași mână, pe partea piciorului respectiv. Apasă simultan și cu presiune medie, confortabilă (4–6/10), 60 secunde, apoi schimbă piciorul.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru oboseala musculară de pe partea laterală a gambei și durerea de genunchi.",
+  "nota": "Evită presiunea puternică pe capul fibulei (nerv peronier). Fără apăsare în caz de varice sau tromboză."
+ },
+ {
+  "id": "s21",
+  "n": "Glezna: clește KI3 și BL60",
+  "pts": [
+   "KI3",
+   "BL60"
+  ],
+  "lat": "o parte",
+  "cine": "singur",
+  "poz": "Șezând, cu glezna sprijinită pe genunchiul opus.",
+  "cum": "Cu o mână pune degetul mare pe KI3, în adâncitura dintre maleola internă și tendonul lui Achile, și degetul arătător pe BL60, exact pe partea opusă, între maleola externă și tendon. Strânge ușor ca într-un clește, 60 secunde, apoi schimbă piciorul.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru glezne grele și tensiune în partea posterioară a piciorului.",
+  "nota": "BL60 se omite în sarcină. Fără presiune puternică dacă ai edem, varice sau leziuni ale pielii la gleznă."
+ },
+ {
+  "id": "s22",
+  "n": "Talpa: KI1 bilateral cu mingea",
+  "pts": [
+   "KI1"
+  ],
+  "lat": "bilateral",
+  "cine": "singur",
+  "poz": "Șezând pe scaun, cu tălpile pe podea.",
+  "cum": "Pune o minge mică sub fiecare talpă, la unirea treimii anterioare cu cea mijlocie, în depresiunea dintre cele două umflături, unde se află KI1. Lasă greutatea picioarelor să apese și fă mici rotiri lente, 60 secunde.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru calmare, picioare reci și încordare seara; posibil efect de relaxare.",
+  "nota": "Dacă ai diabet cu neuropatie sau sensibilitate redusă la picior, răni, ciuperci, bășici sau durere de călcâi, nu face acest exercițiu fără avizul medicului."
+ },
+ {
+  "id": "s23",
+  "n": "Piciorul: LR3 și SP4",
+  "pts": [
+   "LR3",
+   "SP4"
+  ],
+  "lat": "o parte",
+  "cine": "singur",
+  "poz": "Șezând, cu glezna sprijinită pe genunchiul opus.",
+  "cum": "Cu o mână pune degetul mare pe LR3, pe dosul piciorului, în adâncitura de unde se unesc oasele metatarsiene ale degetelor 1 și 2. Cu cealaltă mână apasă cu degetul mare pe SP4, în arcul piciorului, pe marginea internă. Apasă simultan, cu presiune medie, confortabilă (4–6/10), 60 secunde.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru tensiune și iritabilitate, precum și pentru crampe ușoare de picior.",
+  "nota": "SP4 și LR3 se omit în sarcină. Fără presiune în caz de leziuni ale pielii sau durere acută a piciorului."
+ },
+ {
+  "id": "s24",
+  "n": "Cele patru porți, cu partener",
+  "pts": [
+   "LI4",
+   "LR3"
+  ],
+  "lat": "bilateral",
+  "cine": "partener",
+  "poz": "Tu stai întins pe spate, relaxat; partenerul stă lângă picioare.",
+  "cum": "Partenerul apasă cu degetele mari pe ambele LR3, pe dosul piciorului, în adâncitura de unde se unesc oasele degetelor 1 și 2. În același timp, tu apeși LI4 pe o mână cu degetul mare al celeilalte, 30 de secunde, apoi schimbi mâna pentru alte 30 de secunde (LR3 rămân apăsate tot timpul). Înainte să începeți, stabiliți un semnal de oprire („stop” sau mâna ridicată). Cel care apasă întreabă „cum e presiunea?” la început și la fiecare 15–20 secunde (ținta: 4–6 din 10); cel apăsat poate cere oricând mai ușor, mai greu sau oprire, fără explicații.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru stres, durere de cap și tensiune generală; posibil efect de relaxare.",
+  "nota": "LI4 și LR3 se omit în sarcină. Presiunea rămâne la 4–6/10; oprești dacă apar amețeli."
+ },
+ {
+  "id": "s25",
+  "n": "Abdomen: CV12 și ST25",
+  "pts": [
+   "CV12",
+   "ST25"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Întins pe spate, cu genunchii îndoiți și un sul sub ei, la cel puțin 1–2 ore după masă.",
+  "cum": "Cu două degete ale unei mâini pune o presiune ușoară pe CV12, la mijlocul liniei dintre sternul inferior și ombilic. În același timp, cu un deget al celeilalte mâini, apasă blând pe ST25, la 2 lățimi de deget lateral de ombilic. Respiră lent în burtă, 45–60 secunde, apoi pe partea cealaltă.",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru balonare, digestie lentă și constipație ușoară; efect posibil de relaxare a abdomenului.",
+  "nota": "În sarcină omite complet CV12 și ST25 (zona abdominală). Fără presiune la hernie, ulcer activ, inflamații abdominale, intervenții recente, ciroză sau lichid în abdomen, anevrism de aortă abdominală cunoscut, stomă sau pompă, menstruație abundentă sau durere abdominală acută (mai ales în dreapta jos, cu febră sau vărsături: posibilă apendicită, nu apăsa și mergi la medic)."
+ },
+ {
+  "id": "s26",
+  "n": "Somn și stres: frunte și creștet",
+  "pts": [
+   "EX-HN3",
+   "GV20"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând sau întins, cu ochii închiși, în cameră liniștită.",
+  "cum": "Pune vârful degetului mijlociu al unei mâini pe Yintang, între sprâncene, iar cel al celeilalte mâini pe GV20, pe linia mediană a creștetului. Apasă blând, ușor spre os, 60 secunde, în timp ce respiri lent (4 secunde pe inspirație, 6 pe expirație).",
+  "sec": 60,
+  "ef": "Tradițional se folosește pentru calmare, neliniște și seara înainte de somn; posibil efect de relaxare.",
+  "nota": "Presiune blândă, fără durere. Insomnia persistentă peste 3 săptămâni, sforăitul cu pauze respiratorii sau starea depresivă necesită consult."
+ },
+ {
+  "id": "s27",
+  "n": "Somn: talpă și gleznă",
+  "pts": [
+   "KI1",
+   "KI3"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând pe pat, cu glezna sprijinită pe genunchiul opus, cu 30–60 min înainte de somn.",
+  "cum": "Cu un deget mare pe KI1, în talpă la unirea treimii anterioare cu cea mijlocie, și cu celălalt deget mare pe KI3, în adâncitura dintre maleola internă și tendonul lui Achile, apasă simultan, cu presiune medie, confortabilă (4–6/10). Respiră lent, 60–90 secunde, apoi schimbă piciorul.",
+  "sec": 75,
+  "ef": "Tradițional se folosește pentru picioare reci, neliniște și încordare seara; posibil efect de calmare.",
+  "nota": "Fără presiune în caz de răni, varice, edem sau neuropatie diabetică a piciorului. KI3 nu se apasă puternic."
+ },
+ {
+  "id": "s28",
+  "n": "Greață: încheietură și gambă, cu partener",
+  "pts": [
+   "PC6",
+   "ST36"
+  ],
+  "lat": "alternativ",
+  "cine": "partener",
+  "poz": "Tu stai șezând sau semi-întins, în repaus; partenerul stă lângă tine.",
+  "cum": "Partenerul pune degetul mare pe PC6, la 2 lățimi de deget deasupra pliului încheieturii, între cele două tendoane, și cu cealaltă mână pe ST36, sub rotulă, lateral de tibie. Apasă simultan, cu presiune medie confortabilă (4–6/10; pe PC6 mai blând), 60–90 secunde, în timp ce respiri lent. Înainte să începeți, stabiliți un semnal de oprire („stop” sau mâna ridicată). Cel care apasă întreabă „cum e presiunea?” la început și la fiecare 15–20 secunde (ținta: 4–6 din 10); cel apăsat poate cere oricând mai ușor, mai greu sau oprire, fără explicații.",
+  "sec": 75,
+  "ef": "PC6 este punctul cel mai studiat pentru greață, dar dovezile sunt limitate și inconsistente; posibilă ameliorare ușoară.",
+  "nota": "În sarcină cere sfatul medicului. Vărsături repetate, febră, durere abdominală puternică sau semne de deshidratare: consult medical."
+ },
+ {
+  "id": "s29",
+  "n": "Energie dimineața: creștet și tâmplă",
+  "pts": [
+   "GV20",
+   "EX-HN5"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând pe marginea patului, cu spatele drept și ochii deschiși.",
+  "cum": "Cu degetul mijlociu al unei mâini apasă ritmic pe GV20, pe creștet, iar cu cel al celeilalte apasă pe Taiyang, într-o parte, cu apăsări de 2–3 secunde. Respiră adânc și treaz, 30–45 secunde, apoi schimbă tâmpla.",
+  "sec": 30,
+  "ef": "Tradițional se folosește pentru a trezi, a limpezi gândurile și a reduce somnolența dimineața.",
+  "nota": "Presiune ușoară pe tâmplă. Cu epilepsie sau antecedente de convulsii, nu face apăsări ritmice repetate pe cap. Dacă ai cefalee nouă și puternică, omite. Efectul stimulant poate încurca somnul dacă se face seara."
+ },
+ {
+  "id": "s30",
+  "n": "Respirație: sub claviculă și stern",
+  "pts": [
+   "LU1",
+   "CV17"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Șezând, cu spatele drept, umerii relaxați.",
+  "cum": "Cu vârfurile a două degete ale unei mâini apasă ușor pe LU1, sub claviculă, în dreptul umărului, iar cu palma celeilalte mâini atinge CV17, pe stern, între mameloane, cu presiune foarte ușoară. Fă respirații adânci, 45–60 secunde, apoi schimbă partea.",
+  "sec": 45,
+  "ef": "Tradițional se folosește pentru tensiunea musculară din zona pieptului și a umerilor și pentru respirația superficială din stres; posibilă relaxare.",
+  "nota": "Presiune foarte ușoară, mai ales pe stern. Dacă ai osteoporoză, pacemaker, anticoagulante sau dureri toracice, nu face. Durere, strângere sau presiune în piept (mai ales la efort sau cu iradiere în braț/maxilar), dispnee, transpirații sau palpitații: urgență (112), nu acupresură. Nu face după operație pe torace/coaste fracturate sau radioterapie toracică."
+ },
+ {
+  "id": "s31",
+  "n": "Sandviș lombo-abdominal cu căldura mâinilor",
+  "pts": [
+   "CV6",
+   "BL23"
+  ],
+  "lat": "alternativ",
+  "cine": "singur",
+  "poz": "Întins pe o parte sau șezând, cu spatele sprijinit, în cameră caldă.",
+  "cum": "Pune o palmă pe abdomenul inferior, în dreptul CV6, la 1,5 cun sub ombilic, și cealaltă palmă pe zona lombară, pe BL23, la nivelul taliei, lateral de coloană. Ține contactul cald, cu presiune foarte ușoară, 90–120 secunde, respirând lent.",
+  "sec": 90,
+  "ef": "Tradițional se folosește pentru senzația de oboseală și frig în zona lombară și abdomenul inferior; posibil efect de relaxare și căldură.",
+  "nota": "În sarcină omite CV3–CV7 și orice presiune pe abdomen. Fără presiune la hernie, menstruație abundentă, inflamație abdominală sau durere acută."
+ }
+]

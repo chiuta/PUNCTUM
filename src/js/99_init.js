@@ -1,3 +1,3 @@
 /* init */
-load();document.documentElement.lang=S.lang;applyTheme();applyI18n();render();
+load();document.documentElement.lang=S.lang;applyAcc();applyTheme();applyI18n();render();
 trWatch();trAll();

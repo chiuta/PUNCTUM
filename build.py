@@ -16,8 +16,11 @@ def jcat(pat):
         d=json.load(open(f,encoding='utf-8'))
         out+= d if isinstance(d,list) else [d]
     return json.dumps(out,ensure_ascii=False)
+FILES={'MAST':'src/data/masaj_tehnici.json','MASS':'src/data/masaj_simult.json','MASC':'src/data/masaj_secv.json'}
 def sub(m):
     n=m.group(1);base=ALIAS.get(n,n.lower())
+    if n in FILES:
+        return json.dumps(json.load(open(FILES[n],encoding='utf-8')),ensure_ascii=False) if os.path.exists(FILES[n]) else ('{}' if n=='MAST' else '[]')
     js_files=glob.glob(f'src/data/{base}_*.json')
     if js_files: return jcat(f'src/data/{base}_*.json')
     if glob.glob(f'src/data/{base}_*.txt'): return cat(f'src/data/{base}_*.txt')

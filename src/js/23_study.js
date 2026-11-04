@@ -123,6 +123,7 @@ function vProgress(){
 function vStudy(){
   const tab=SQ.tab;
   const tabs=`<div class="bar"><button class="b ${tab==='quiz'?'':'alt'}" onclick="SQ.tab='quiz';render()">${esc(su('tabQuiz'))}</button><button class="b ${tab==='cards'?'':'alt'}" onclick="SQ.tab='cards';SQ.fc.built=null;render()">${esc(su('tabCards'))}</button><button class="b ${tab==='prog'?'':'alt'}" onclick="SQ.tab='prog';render()">${esc(su('tabProg'))}</button></div>`;
+  const exl=`<p><a class="b alt" href="#exam" style="text-decoration:none;display:inline-block;padding:.6rem .9rem">📍 Examen pe hartă</a></p>`;
   let body='';
   if(tab==='cards')body=vCards();
   else if(tab==='prog')body=vProgress();
@@ -137,6 +138,6 @@ function vStudy(){
      <label class="mut">${esc(su('mode'))}: <select onchange="SQ.mode=this.value"><option value="practice" ${SQ.mode==='practice'?'selected':''}>${esc(su('practice'))}</option><option value="exam" ${SQ.mode==='exam'?'selected':''}>${esc(su('exam'))}</option></select></label>
     </div><button class="b" onclick="qBegin()">${esc(su('start'))}</button> <span class="mut">${esc(su('best'))}: ${S.best||0}</span></div>`;
   }
-  return `<h1>${esc(su('title'))}</h1>${tabs}${body}`;
+  return `<h1>${esc(su('title'))}</h1>${tabs}${exl}${body}`;
 }
 regView('quiz',vStudy,{},{nonav:true});
