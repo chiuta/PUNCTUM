@@ -50,9 +50,9 @@ const F=m=>{fails++;console.log('FAIL',m)},W=m=>{warns++;console.log('WARN',m)},
     const e=take();
     if(e.length)F(`limba ${l}: ${e.join(' | ')}`);else if(r.nav.length<11||!r.ph)F(`limba ${l}: UI incomplet`);else O(`limba ${l}: ${r.nav.slice(0,3).join('/')}`);
   }
-  await pg.evaluate(()=>setLang('ro'));
+  await pg.evaluate(l=>setLang(l),process.env.MLANG||'ro');
   // 4. monkey test
-  let seed=12345;const rnd=()=>(seed=(seed*1103515245+12345)&0x7fffffff)/0x7fffffff;
+  let seed=+(process.env.SEED||12345);const rnd=()=>(seed=(seed*1103515245+12345)&0x7fffffff)/0x7fffffff;
   await pg.setViewportSize({width:390,height:800});
   let acts=0;
   for(const v of [...VIEWS,...EXTRA]){
