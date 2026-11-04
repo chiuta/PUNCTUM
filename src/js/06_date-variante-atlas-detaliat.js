@@ -9,4 +9,6 @@ const RISKN=['','Risc redus','Risc mediu','Risc ridicat'];
 const AUTN={d:'Poți face singur',p:'Parțial (basic acasă)',n:'Doar practicant'};
 const VX=`/*@@VX@@*/`;
 const VAR=VX.split('\n').filter(l=>l.trim()&&!l.startsWith('#')).map(l=>{const a=l.split('¦');return{id:a[0],n:a[1],cat:a[2],inv:+a[3],risc:+a[4],ev:a[5],auto:a[6],or:a[7],pr:a[8],pas:(a[9]||'').split(' // '),ins:a[10],dur:a[11],zon:a[12],ind:a[13],dov:a[14],sig:a[15],who:a[16]}});
+const ACUP=new Set(['acupresura','shiatsu','tuina','anma','jsj','thai','marma','trigger','acufacial','refl-t','refl-p','dien','band','doin','acuyoga','qigong','eft','mats']);
+VAR.forEach(v=>{v.soft=ACUP.has(v.id)});
 

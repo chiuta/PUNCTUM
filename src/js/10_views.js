@@ -2,17 +2,18 @@
 function vHome(){
   const now=new Date();const h=now.getHours();const idx=Math.floor((((h-3)+24)%24)/2);const cur=CLOCKO[idx];
   const cm=MER.find(x=>x.c===cur);
-  const tiles=[['theory','☯','Teorie','Qi, Yin-Yang, cinci elemente, Zang-Fu, tipuri de puncte, ipoteze moderne.'],
-   ['mer','〰','Meridiane','12 meridiane principale + Ren Mai și Du Mai, cu traseu și puncte-cheie.'],
-   ['pts','•','Puncte','Peste 90 de puncte, filtrabile după meridian și regiune, cu favorite.'],
-   ['acu','✋','Presopunctură','15 protocoale de auto-îngrijire și sesiuni ghidate cu cronometru.'],
-   ['tech','⚘','Variante','60 de variante detaliate pas cu pas: ace, presiune, moxă, ventuze, laser, microsisteme, școli și practici controversate.'],
-   ['ear','👂','Ureche & tălpi','Auriculoterapie și reflexologie.'],
+  const tiles=[['acu','✋','Presopunctură','15 protocoale de auto-îngrijire și sesiuni ghidate cu cronometru.'],
+   ['cond','🩺','Afecțiuni & rutine','Rutine de presopunctură pentru 60 de afecțiuni comune, cu semne de alarmă.'],
+   ['pts','•','Puncte','Peste 400 de puncte, filtrabile după meridian și regiune, cu favorite.'],
    ['cun','📏','Măsurare (cun)','Cum găsești punctele, cu calculator personalizat.'],
    ['safe','🛡','Siguranță & dovezi','Contraindicații, riscuri și ce spun studiile.'],
+   ['theory','☯','Teorie','Qi, Yin-Yang, cinci elemente, Zang-Fu, tipuri de puncte, ipoteze moderne.'],
+   ['mer','〰','Meridiane','12 meridiane principale + Ren Mai și Du Mai, cu traseu și puncte-cheie.'],
+   ['ear','👂','Ureche & tălpi','Auriculoterapie și reflexologie.'],
+   ['tech','⚘','Variante','Presopunctură și metode blânde, plus ace, moxă și ventuze prezentate doar informativ.'],
    ['quiz','?','Quiz','Verifică-ți cunoștințele cu întrebări generate aleatoriu.']];
   return `<div class="hero"><h1>PUNCTUM</h1>
-   <p>Atlas educativ offline al terapiilor prin puncte: acupunctură, presopunctură (acupresură), moxibustie, ventuze, gua sha, laser, auriculoterapie, reflexologie și alte variante, fiecare detaliată cu origine, tehnică pas cu pas, dovezi și siguranță.</p><p style="font-size:.9rem;opacity:.9"><b>PUNCTUM</b> (lat. „punct”): numele reunește toate variantele, care au în comun punctul ca unitate de lucru, indiferent dacă îl înțepi, îl apeși, îl încălzești, îl aspiri, îl stimulezi cu lumină sau îl atingi.</p>
+   <p>Atlas educativ offline de presopunctură (acupresură) și terapii prin puncte: puncte, rutine de auto-îngrijire cu presiune blândă, sesiuni ghidate cu cronometru, dovezi și siguranță. Metodele cu ace, moxă, ventuze sau sânge sunt descrise doar informativ, pentru că se fac numai de practicieni calificați.</p><p style="font-size:.9rem;opacity:.9"><b>PUNCTUM</b> (lat. „punct”): numele reunește toate variantele, care au în comun punctul ca unitate de lucru, indiferent dacă îl înțepi, îl apeși, îl încălzești, îl aspiri, îl stimulezi cu lumină sau îl atingi.</p>
    <p style="font-size:.9rem;opacity:.85">Un singur fișier HTML · fără internet · fără urmărire · licență MIT</p></div>
    ${disc()}
    <h2>Ceasul meridianelor (acum)</h2>
@@ -20,9 +21,11 @@ function vHome(){
    <p class="mut">Conform orarului tradițional (ora locală a dispozitivului), perioada maximă este a meridianului <b>${esc(cm.n)}</b> (${cm.t}). Este un cadru tradițional; ritmurile biologice măsurate nu confirmă acest orar.</p>
    <h2>Începe de aici</h2>
    <div class="grid">${tiles.map(t=>`<a class="card" href="#${t[0]}" style="text-decoration:none;color:inherit"><div style="font-size:1.6rem">${t[1]}</div><h3>${t[2]}</h3><span class="mut">${t[3]}</span></a>`).join('')}</div>
-   <h2>Ce este acupunctura?</h2>
-   <div class="card"><p>Acupunctura este un sistem de medicină tradițională chineză (MTC) în care sunt stimulate puncte specifice de pe corp, în mod clasic cu ace fine. Tradiția descrie un flux de <b>Qi</b> prin <b>meridiane</b>, iar tratamentul urmărește restabilirea echilibrului dintre Yin și Yang. Din ea au derivat sau s-au dezvoltat paralel presopunctura (acupresura), moxibustia, ventuzele, gua sha, tuina, shiatsu, auriculoterapia și reflexologia.</p>
+   <h2>Ce este presopunctura?</h2>
+   <div class="card"><p>Presopunctura (acupresura) stimulează aceleași puncte ca acupunctura, dar prin presiune cu degetul, fără ace și fără a străpunge pielea. Se aplică 30–60 de secunde, cu presiune fermă dar suportabilă, respirând lent. Este cea mai sigură cale de a învăța despre puncte, dar are reguli: unele puncte se evită în sarcină și există situații în care trebuie să mergi la medic.</p>
    <p>Cercetarea modernă arată că stimularea acestor puncte poate modula durerea prin mecanisme nervoase și neurochimice (ex. endorfine, adenozină, poarta de control a durerii), dar nu a demonstrat structuri anatomice ale „meridianelor". Studiile sunt amestecate: unele beneficii sunt reale, altele sunt în mare parte efecte nespecifice (așteptare, atingere, relaxare). Citește secțiunea <a href="#safe">Siguranță & dovezi</a>.</p></div>
+   <h2>Despre acupunctură (doar informativ)</h2>
+   <div class="card"><p>Acupunctura este un sistem de medicină tradițională chineză (MTC) în care sunt stimulate puncte specifice de pe corp, în mod clasic cu ace fine. Tradiția descrie un flux de <b>Qi</b> prin <b>meridiane</b>, iar tratamentul urmărește restabilirea echilibrului dintre Yin și Yang. Din ea au derivat sau s-au dezvoltat paralel presopunctura (acupresura), moxibustia, ventuzele, gua sha, tuina, shiatsu, auriculoterapia și reflexologia.</p></div>
    <p class="mut" style="margin-top:1rem">${esc(T().note)}</p>`;
 }
 
@@ -108,6 +111,7 @@ function filterPts(){
 function renderPtsList(){const L=filterPts();$('#plist').innerHTML=L.length?L.map(ptCard).join(''):`<p class="mut">${esc(T().noRes)}</p>`;$('#pcount').textContent=L.length+' / '+PT.length}
 function vPts(){
   return `<h1>Puncte</h1>${disc()}
+  <div class="card"><p><b>Presopunctură:</b> apasă cu pulpa degetului, ferm dar fără durere ascuțită, 30–60 de secunde, respirând lent. Dacă apar durere intensă, amorțeală sau amețeală, oprește-te. Avertismentele despre „înțepare" privesc doar practicanții de acupunctură.</p></div>
   <div class="bar"><input id="pq" placeholder="Filtrează (cod, nume, simptom)…" value="${esc(PF.q)}" oninput="PF.q=this.value;renderPtsList()">
    <select id="pm" onchange="PF.m=this.value;renderPtsList()"><option value="">Toate meridianele</option>${MER.map(m=>`<option value="${m.c}" ${PF.m===m.c?'selected':''}>${m.c} — ${esc(m.n)}</option>`).join('')}<option value="EX" ${PF.m==='EX'?'selected':''}>EX — Puncte extra</option></select>
    <select id="pr" onchange="PF.r=this.value;renderPtsList()"><option value="">Toate zonele</option>${Object.keys(REG).map(k=>`<option value="${k}" ${PF.r===k?'selected':''}>${REG[k]}</option>`).join('')}</select>
@@ -186,10 +190,10 @@ function vAcu(){
   <li>Sarcină, afecțiuni cronice grave, tratament anticoagulant sau chimioterapie: întreabă medicul înainte.</li></ul>`;
 }
 
-const TF={q:'',cat:'',noNeedle:false,self:false,ev:false,view:'cards',sort:'cat',open:''};
+const TF={scope:'soft',q:'',cat:'',noNeedle:false,self:false,ev:false,view:'cards',sort:'cat',open:''};
 function varFilter(){
   const q=TF.q.trim().toLowerCase();
-  let L=VAR.filter(v=>(!TF.cat||v.cat===TF.cat)&&(!TF.noNeedle||v.inv<2)&&(!TF.self||v.auto!=='n')&&(!TF.ev||v.ev==='m')&&(!q||(v.n+' '+v.pr+' '+v.or+' '+v.zon+' '+v.ind+' '+v.id+' '+CATN[v.cat]).toLowerCase().includes(q)));
+  let L=VAR.filter(v=>(TF.scope==='all'||v.soft||TF.open===v.id)&&(!TF.cat||v.cat===TF.cat)&&(!TF.noNeedle||v.inv<2)&&(!TF.self||v.auto!=='n')&&(!TF.ev||v.ev==='m')&&(!q||(v.n+' '+v.pr+' '+v.or+' '+v.zon+' '+v.ind+' '+v.id+' '+CATN[v.cat]).toLowerCase().includes(q)));
   const order=Object.keys(CATN);
   if(TF.sort==='cat')L=L.slice().sort((a,b)=>order.indexOf(a.cat)-order.indexOf(b.cat));
   else if(TF.sort==='name')L=L.slice().sort((a,b)=>cmp(a.n,b.n));
@@ -206,6 +210,7 @@ function vBadges(v){
 }
 function vCard(v,open){
   return `<details id="v-${esc(v.id)}" ${open?'open':''}><summary>${esc(v.n)}</summary>
+   ${v.soft?'':(v.inv>=2||v.risc>=3?'<div class="warn" role="note">⛔ Doar informativ. Se face numai de practicant calificat, cu material steril. Nu încerca acasă.</div>':'<div class="warn" role="note">⚠ Informativ. Se practică numai după instruire și cu respectarea contraindicațiilor din fișă.</div>')}
    <p>${vBadges(v)}</p>
    <p><b>Origine:</b> ${esc(v.or)}</p>
    <p><b>Principiu:</b> ${esc(v.pr)}</p>
@@ -222,7 +227,7 @@ function vCard(v,open){
 function renderVarList(){
   const L=varFilter();
   const box=$('#vlist');if(!box)return;
-  $('#vcount').textContent=L.length+' / '+VAR.length;
+  $('#vcount').textContent=L.length+' / '+(TF.scope==='all'?VAR.length:VAR.filter(v=>v.soft).length);
   if(!L.length){box.innerHTML=`<p class="mut">${esc(T().noRes)}</p>`;return}
   if(TF.view==='table'){
     box.innerHTML=`<div class="tw"><table><tr><th>Variantă</th><th>Categorie</th><th>Invazivitate</th><th>Risc</th><th>Dovezi</th><th>Autoaplicare</th></tr>${L.map(v=>`<tr><td><a href="#tech" onclick="TF.view='cards';TF.q='${esc(v.n).replace(/'/g,'')}';TF.open='${esc(v.id)}';render();return false">${esc(v.n)}</a></td><td>${esc(CATN[v.cat].split(' (')[0])}</td><td>${INVN[v.inv]}</td><td>${RISKN[v.risc]}</td><td><span class="badge" style="background:${EVC[v.ev]}">${esc(EVN[v.ev].split(' (')[0])}</span></td><td>${AUTN[v.auto]}</td></tr>`).join('')}</table></div>`;
@@ -236,16 +241,18 @@ function renderVarList(){
   if(TF.open){const e=document.getElementById('v-'+TF.open);if(e)e.scrollIntoView({block:'start'});TF.open=''}
 }
 function vTech(){
-  const cnt={};VAR.forEach(v=>cnt[v.cat]=(cnt[v.cat]||0)+1);
+  if(TF.open){const ov=VAR.find(x=>x.id===TF.open);if(ov&&!ov.soft)TF.scope='all'}
+  const cnt={};VAR.filter(v=>TF.scope==='all'||v.soft).forEach(v=>cnt[v.cat]=(cnt[v.cat]||0)+1);
   return `<h1>Variante</h1>${disc()}
-  <p>Atlas al <b>${VAR.length}</b> de variante, de la acupunctura cu ace la presopunctură, moxă, ventuze, laser, reflexologie și practici controversate. Fiecare fișă descrie originea, principiul, pașii, instrumentele, durata, zonele, indicațiile, dovezile și siguranța.</p>
+  <p>Implicit vezi presopunctura și metodele blânde, pe care le poți învăța și aplica acasă, cu respectarea regulilor de siguranță. Metodele cu ace, foc, vid sau sânge se văd doar dacă le ceri, sunt prezentate informativ și se fac numai de practicieni calificați.</p>
+  <div class="bar"><button class="b ${TF.scope==='soft'?'':'alt'}" onclick="TF.scope='soft';TF.cat='';render()">Presopunctură și metode blânde</button><button class="b ${TF.scope==='all'?'':'alt'}" onclick="TF.scope='all';render()">Toate variantele (ace, foc, sânge — doar informativ)</button></div>
   <div class="bar"><input id="vq" placeholder="Caută o variantă, o zonă, un simptom…" value="${esc(TF.q)}" oninput="TF.q=this.value;renderVarList()">
    <select onchange="TF.sort=this.value;renderVarList()"><option value="cat" ${TF.sort==='cat'?'selected':''}>Grupat pe categorii</option><option value="name" ${TF.sort==='name'?'selected':''}>Alfabetic</option><option value="risk" ${TF.sort==='risk'?'selected':''}>Risc crescător</option><option value="ev" ${TF.sort==='ev'?'selected':''}>Dovezi (cele mai bune întâi)</option></select>
    <button class="b alt" onclick="TF.view=TF.view==='cards'?'table':'cards';render()">${TF.view==='cards'?'▦ Tabel comparativ':'☰ Fișe'}</button>
    <span class="mut" id="vcount" style="align-self:center"></span></div>
   <div class="bar" id="vchips">
    <button class="b ${!TF.cat?'':'alt'}" onclick="TF.cat='';render()">Toate</button>
-   ${Object.keys(CATN).map(k=>`<button class="b ${TF.cat===k?'':'alt'}" onclick="TF.cat='${k}';render()">${esc(CATN[k].split(' (')[0])} (${cnt[k]||0})</button>`).join('')}</div>
+   ${Object.keys(CATN).filter(k=>cnt[k]).map(k=>`<button class="b ${TF.cat===k?'':'alt'}" onclick="TF.cat='${k}';render()">${esc(CATN[k].split(' (')[0])} (${cnt[k]||0})</button>`).join('')}</div>
   <div class="bar">
    <label class="mut"><input type="checkbox" ${TF.noNeedle?'checked':''} onchange="TF.noNeedle=this.checked;renderVarList()"> Fără ace</label>
    <label class="mut"><input type="checkbox" ${TF.self?'checked':''} onchange="TF.self=this.checked;renderVarList()"> Pot face singur (parțial sau total)</label>

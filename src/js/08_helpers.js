@@ -1,6 +1,7 @@
 /* ================= HELPERS ================= */
 const $=s=>document.querySelector(s);
 const PREGRE=/sarcin|gravid|Doar sub îndrumare/i; // sursă unică pentru semnalul „sarcină”
+const NEEDLEW=/înțep|pneumotorax|adânc|ac\b|ace\b/i;
 const isPregPt=p=>!!(p&&PREGRE.test(p.w||''));
 const esc=s=>String(s).replace(/[&<>"'`]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','`':'&#96;'}[c]));
 function ptCard(p){
@@ -15,7 +16,7 @@ function ptCard(p){
    ${p.tg?`<p>${p.tg.split(',').filter(Boolean).map(t=>`<span class="tag">${esc(t.trim())}</span>`).join('')}</p>`:''}
    <p><b>Localizare:</b> ${esc(p.l)}</p>
    <p><b>Indicații tradiționale:</b> ${esc(p.u)}</p>
-   ${p.w?`<p class="w pw" role="note">${esc(p.w)}</p>`:''}
+   ${p.w?`<p class="w pw" role="note">${NEEDLEW.test(p.w)&&!isPregPt(p)?'<span class="mut">Pentru acupunctori: </span>':''}${esc(p.w)}</p>`:''}
   </div>`}
 function toggleFav(c,p){const k=c+'|'+p;const i=S.fav.indexOf(k);if(i<0)S.fav.push(k);else S.fav.splice(i,1);save();if(view()==='pts')renderPtsList();else render();}
 function goPoint(c){PF.q=c;PF.m='';PF.r='';PF.fav=false;go('pts')}

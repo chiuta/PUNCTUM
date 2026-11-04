@@ -2,7 +2,7 @@
 
 _atlas of point-based therapies: acupuncture, acupressure, moxibustion, cupping, auricular therapy, reflexology and more_
 
-**Version 2.2 · Last updated: 2026-11-04**
+**Version 2.3 · Last updated: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 

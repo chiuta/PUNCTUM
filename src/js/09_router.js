@@ -6,6 +6,7 @@ window.addEventListener('hashchange',()=>{$('#q').value='';render();window.scrol
 function navList(){
   const L=T().nav;let arr=NAVK.map((k,i)=>({k,t:L[i]}));
   NAVX.forEach(x=>{const t=(x.l&&(x.l[S.lang]||x.l.en||x.l.ro))||x.k;const e={k:x.k,t};const i=x.after?arr.findIndex(y=>y.k===x.after):-1;if(i>=0){let j=i;while(arr[j+1]&&NAVX.some(z=>z.k===arr[j+1].k&&z.after===x.after))j++;arr.splice(j+1,0,e)}else arr.push(e)});
+  const ai=arr.findIndex(y=>y.k==='acu');if(ai>1)arr.splice(1,0,arr.splice(ai,1)[0]);
   return arr;
 }
 function renderNav(){

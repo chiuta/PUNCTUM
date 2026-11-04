@@ -2,7 +2,7 @@
 
 _Atlas punktbasierter Therapien: Akupunktur, Akupressur, Moxibustion, Schröpfen, Ohrakupunktur, Reflexzonentherapie und mehr_
 
-**Version 2.2 · Zuletzt aktualisiert: 2026-11-04**
+**Version 2.3 · Zuletzt aktualisiert: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 

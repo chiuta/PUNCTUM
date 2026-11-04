@@ -37,7 +37,7 @@ en:{title:'Conditions & routines',intro:'Search a common condition or symptom to
 function CNU(k){const a=CONDUI[S.lang],r=CONDUI.ro;return (a&&a[k]!==undefined)?a[k]:r[k]}
 function CNUg(g){const o=CNU('g');return (o&&o[g])||(CONDUI.en.g[g])||g}
 const cnN=s=>String(s).normalize('NFD').replace(/[̀-ͯ]/g,'').toLowerCase();
-const CNF={q:'',g:'',noN:false,open:''};
+const CNF={q:'',g:'',noN:true,open:''};
 const CRT={id:null,name:'',pts:[],sec:60,msg:'',io:''};
 const CSEC=[30,45,60,90,120];
 const CPREG=PREGRE;
@@ -68,7 +68,7 @@ function cndFilter(){
 }
 function cndVarLink(id){
   const v=VAR.find(x=>x.id===id);if(!v)return '';
-  if(CNF.noN&&v.inv>=2)return '';
+  if(CNF.noN&&(v.inv>=2||v.risc>=3))return '';
   return `<a class="tag" href="#tech" onclick="TF.q='${esc(v.n).replace(/'/g,'')}';TF.cat='';TF.open='${esc(v.id)}';$('#q').value='';render();return false">${esc(v.n.split(' (')[0])}</a>`;
 }
 function cndCard(c){

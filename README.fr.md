@@ -2,7 +2,7 @@
 
 _atlas des thérapies par points : acupuncture, acupression, moxibustion, ventouses, auriculothérapie, réflexologie et plus_
 
-**Version 2.2 · Dernière mise à jour: 2026-11-04**
+**Version 2.3 · Dernière mise à jour: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 

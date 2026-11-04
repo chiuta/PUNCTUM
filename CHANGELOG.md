@@ -1,5 +1,13 @@
 # PUNCTUM — jurnal de versiuni
 
+## 2.3 — 2026-11-04
+Reorientare spre presopunctură, pentru reducerea riscurilor medicale.
+- Presopunctura este modul principal: apare prima în meniu și pe pagina de start, cu text nou despre ce este și ce reguli are; acupunctura devine secțiune „doar informativ".
+- Variante: implicit se văd 18 variante de presopunctură și metode blânde. Cele 60 de variante rămân la un clic, cu avertisment pe fiecare fișă (⛔ doar practicant calificat / ⚠ numai după instruire). Linkurile către o variantă invazivă comută automat pe „toate".
+- Afecțiuni: implicit se ascund variantele cu ace, ventuze umede și moxă directă.
+- Puncte: notă despre presiunea corectă; avertismentele despre „înțepare" sunt marcate „Pentru acupunctori".
+- Avertismentul general și sloganul (8 limbi) subliniază presopunctura. 25 de șiruri noi traduse în 7 limbi.
+
 ## 2.2 — 2026-11-04
 Verificare și reparare completă (a treia trecere).
 - Test nou `tests/i18n_deep.js`: randează toate punctele, variantele, lecțiile, afecțiunile, cardurile și întrebările în fiecare limbă; 0 rămășițe românești în ~13.000 de șiruri/limbă.
