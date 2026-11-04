@@ -1,0 +1,866 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#2f7d6d">
+<title>PUNCTUM — atlas al terapiilor prin puncte</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232f7d6d'/%3E%3Cpath d='M32 8v40' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='52' r='4' fill='%23e9c46a'/%3E%3C/svg%3E">
+<!--
+  PUNCTUM — aplicație educațională offline, un singur fișier HTML.
+  MIT License — Copyright (c) 2026 Alexandru-Ionuț Chiuță (Alexio)
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+  and associated documentation files, to deal in the Software without restriction, including without
+  limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies,
+  subject to inclusion of this notice. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+-->
+<style>
+:root{--bg:#f6f3ec;--card:#fffdf8;--ink:#1f2a27;--mut:#5d6b66;--acc:#2f7d6d;--acc2:#b5573a;--gold:#c99a2e;--line:#ddd6c6;--soft:#e8f1ee;--warn:#fff1e0;--warnb:#e0a15a;--sh:0 1px 3px rgba(0,0,0,.08)}
+:root[data-theme=dark]{--bg:#141b19;--card:#1c2623;--ink:#e8efec;--mut:#9fb0aa;--acc:#5fb7a4;--acc2:#e08a6b;--gold:#e0b84c;--line:#2e3b37;--soft:#22312d;--warn:#33281a;--warnb:#a8742f;--sh:none}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]){--bg:#141b19;--card:#1c2623;--ink:#e8efec;--mut:#9fb0aa;--acc:#5fb7a4;--acc2:#e08a6b;--gold:#e0b84c;--line:#2e3b37;--soft:#22312d;--warn:#33281a;--warnb:#a8742f;--sh:none}}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:16px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,sans-serif}
+a{color:var(--acc)}
+header{position:sticky;top:0;z-index:20;background:var(--card);border-bottom:1px solid var(--line);box-shadow:var(--sh)}
+.top{display:flex;gap:.6rem;align-items:center;padding:.55rem .9rem;max-width:1100px;margin:auto;flex-wrap:wrap}
+.logo{font-weight:800;letter-spacing:.12em;color:var(--acc);font-size:1.15rem;white-space:nowrap;cursor:pointer}
+.logo small{display:block;font-weight:400;letter-spacing:0;font-size:.68rem;color:var(--mut)}
+.top input[type=search]{flex:1;min-width:150px;padding:.5rem .7rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-size:.95rem}
+select,button.ib{padding:.45rem .55rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-size:.9rem}
+nav{display:flex;overflow-x:auto;gap:.25rem;padding:0 .7rem .5rem;max-width:1100px;margin:auto;scrollbar-width:thin}
+nav a{white-space:nowrap;text-decoration:none;color:var(--mut);padding:.4rem .8rem;border-radius:999px;font-size:.9rem;border:1px solid transparent}
+nav a.on{background:var(--acc);color:#fff}
+nav a:hover:not(.on){border-color:var(--line)}
+main{max-width:1100px;margin:auto;padding:1rem .9rem 2rem}
+h1{font-size:1.7rem;margin:.2rem 0 .6rem}h2{font-size:1.3rem;margin:1.4rem 0 .5rem;color:var(--acc)}h3{font-size:1.05rem;margin:1rem 0 .3rem}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1rem;box-shadow:var(--sh)}
+.grid{display:grid;gap:.8rem;grid-template-columns:repeat(auto-fill,minmax(270px,1fr))}
+.hero{background:linear-gradient(135deg,var(--acc),#1f5a4e);color:#fff;border-radius:18px;padding:1.4rem 1.2rem}
+.hero h1{color:#fff;margin:0 0 .3rem;font-size:1.9rem;letter-spacing:.06em}.hero p{margin:.3rem 0;opacity:.95}
+.warn{background:var(--warn);border:1px solid var(--warnb);border-radius:12px;padding:.7rem .9rem;margin:.8rem 0;font-size:.93rem}
+.mut{color:var(--mut);font-size:.9rem}
+.badge{display:inline-block;padding:.12rem .55rem;border-radius:999px;font-size:.78rem;font-weight:700;color:#fff;margin-right:.35rem}
+.tag{display:inline-block;padding:.1rem .5rem;border-radius:8px;font-size:.78rem;background:var(--soft);color:var(--ink);margin:.1rem .15rem .1rem 0}
+.pt{position:relative}.pt h3{margin:.1rem 0}.pt .star{position:absolute;right:.6rem;top:.5rem;background:none;border:0;font-size:1.3rem;cursor:pointer;color:var(--gold)}
+.pt p{margin:.25rem 0;font-size:.93rem}.pt .w{color:var(--acc2);font-size:.88rem}
+.bar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}.bar input{flex:1;min-width:140px;padding:.5rem .7rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
+button.b{background:var(--acc);color:#fff;border:0;border-radius:10px;padding:.55rem .95rem;font-size:.95rem;cursor:pointer}
+button.b.alt{background:var(--soft);color:var(--ink);border:1px solid var(--line)}button.b:disabled{opacity:.5}
+details{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:.1rem .9rem;margin:.5rem 0}
+details summary{cursor:pointer;padding:.65rem 0;font-weight:600}
+table{width:100%;border-collapse:collapse;font-size:.92rem;margin:.5rem 0}th,td{border-bottom:1px solid var(--line);padding:.45rem .5rem;text-align:left;vertical-align:top}th{color:var(--acc)}
+.tw{overflow-x:auto}
+ul{padding-left:1.2rem}li{margin:.2rem 0}
+.clock{display:flex;flex-wrap:wrap;gap:.35rem}.clock span{padding:.3rem .55rem;border-radius:8px;border:1px solid var(--line);font-size:.82rem;background:var(--card)}.clock span.now{background:var(--acc);color:#fff;border-color:var(--acc);font-weight:700}
+.opt{display:block;width:100%;text-align:left;margin:.35rem 0;padding:.65rem .8rem;border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:10px;font-size:.98rem;cursor:pointer}
+.opt.ok{background:#2f7d6d;color:#fff;border-color:#2f7d6d}.opt.no{background:#b5573a;color:#fff;border-color:#b5573a}
+.modal{position:fixed;inset:0;background:rgba(10,18,16,.88);z-index:50;display:flex;align-items:center;justify-content:center;padding:1rem}
+.modal .box{background:var(--card);border-radius:20px;max-width:520px;width:100%;padding:1.3rem;text-align:center;max-height:96vh;overflow:auto}
+.breath{width:130px;height:130px;margin:.8rem auto;border-radius:50%;background:radial-gradient(circle,var(--acc),#1f5a4e);animation:br 8s ease-in-out infinite;display:flex;align-items:center;justify-content:center;color:#fff;font-size:2rem;font-weight:700}
+@keyframes br{0%,100%{transform:scale(.7);opacity:.7}50%{transform:scale(1.05);opacity:1}}
+@media(prefers-reduced-motion:reduce){.breath{animation:none}html{scroll-behavior:auto}}
+footer{max-width:1100px;margin:0 auto;padding:1.2rem .9rem 2.2rem;border-top:1px solid var(--line);color:var(--mut);font-size:.85rem;text-align:center}
+footer a{display:inline-block;margin:.4rem .3rem 0;padding:.4rem .9rem;border-radius:999px;background:var(--gold);color:#201a05;text-decoration:none;font-weight:700}
+svg text{font-family:inherit}
+.elp{cursor:pointer}
+</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="logo" onclick="go('home')">PUNCTUM<small id="sub"></small></div>
+    <input type="search" id="q" oninput="doSearch()" autocomplete="off">
+    <select id="lang" onchange="setLang(this.value)" aria-label="Language">
+      <option value="ro">Română</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="es">Español</option><option value="pt">Português</option><option value="de">Deutsch</option><option value="hu">Magyar</option>
+    </select>
+    <button class="ib" id="thm" onclick="toggleTheme()" aria-label="Theme">◐</button>
+  </div>
+  <nav id="nav"></nav>
+</header>
+<main id="main"></main>
+<footer>
+  <div id="ftxt"></div>
+  <div id="fver"></div>
+  <div>MIT License · © 2026 Alexandru-Ionuț Chiuță (Alexio)</div>
+  <a href="https://buymeacoffee.com/echo.of.the.strings" target="_blank" rel="noopener">☕ Buy Me a Coffee</a>
+</footer>
+<div id="modal"></div>
+
+<script>
+"use strict";
+const cmp=(a,b)=>String(a).localeCompare(String(b),'ro');
+/* ================= i18n (interfața: 8 limbi; conținutul educațional: română) ================= */
+const NAVK=['home','theory','mer','pts','acu','tech','ear','cun','safe','quiz','gloss'];
+const I18N={
+ro:{nav:['Acasă','Teorie','Meridiane','Puncte','Presopunctură','Variante','Ureche & tălpi','Măsurare','Siguranță','Quiz','Glosar'],sub:'atlas al terapiilor prin puncte',ph:'Caută puncte, meridiane, termeni…',disc:'Material educativ. Nu înlocuiește diagnosticul, tratamentul sau sfatul medicului. Acupunctura cu ace se practică doar de personal calificat.',ver:'Versiune 1.1 · Ultima actualizare:',noRes:'Niciun rezultat.',note:'Conținutul educațional este în limba română; interfața este disponibilă în 8 limbi.'},
+en:{nav:['Home','Theory','Meridians','Points','Acupressure','Variants','Ear & feet','Measuring','Safety','Quiz','Glossary'],sub:'atlas of point-based therapies',ph:'Search points, meridians, terms…',disc:'Educational material. It does not replace a physician\'s diagnosis, treatment or advice. Needle acupuncture must only be performed by qualified practitioners.',ver:'Version 1.1 · Last updated:',noRes:'No results.',note:'Educational content is in Romanian; the interface is available in 8 languages.'},
+fr:{nav:['Accueil','Théorie','Méridiens','Points','Acupression','Variantes','Oreille & pieds','Mesures','Sécurité','Quiz','Glossaire'],sub:'atlas des thérapies par points',ph:'Rechercher points, méridiens, termes…',disc:'Contenu éducatif. Il ne remplace pas le diagnostic, le traitement ou l\'avis d\'un médecin. L\'acupuncture par aiguilles doit être pratiquée par des professionnels qualifiés.',ver:'Version 1.1 · Dernière mise à jour :',noRes:'Aucun résultat.',note:'Le contenu éducatif est en roumain ; l\'interface est disponible en 8 langues.'},
+it:{nav:['Home','Teoria','Meridiani','Punti','Digitopressione','Varianti','Orecchio & piedi','Misure','Sicurezza','Quiz','Glossario'],sub:'atlante delle terapie a punti',ph:'Cerca punti, meridiani, termini…',disc:'Materiale educativo. Non sostituisce diagnosi, terapia o parere del medico. L\'agopuntura con aghi deve essere praticata solo da personale qualificato.',ver:'Versione 1.1 · Ultimo aggiornamento:',noRes:'Nessun risultato.',note:'Il contenuto educativo è in rumeno; l\'interfaccia è disponibile in 8 lingue.'},
+es:{nav:['Inicio','Teoría','Meridianos','Puntos','Acupresión','Variantes','Oído y pies','Medidas','Seguridad','Quiz','Glosario'],sub:'atlas de terapias por puntos',ph:'Buscar puntos, meridianos, términos…',disc:'Material educativo. No sustituye el diagnóstico, tratamiento o consejo médico. La acupuntura con agujas solo debe practicarla personal cualificado.',ver:'Versión 1.1 · Última actualización:',noRes:'Sin resultados.',note:'El contenido educativo está en rumano; la interfaz está disponible en 8 idiomas.'},
+pt:{nav:['Início','Teoria','Meridianos','Pontos','Acupressão','Variantes','Orelha e pés','Medidas','Segurança','Quiz','Glossário'],sub:'atlas de terapias por pontos',ph:'Pesquisar pontos, meridianos, termos…',disc:'Material educativo. Não substitui diagnóstico, tratamento ou aconselhamento médico. A acupuntura com agulhas só deve ser praticada por profissionais qualificados.',ver:'Versão 1.1 · Última atualização:',noRes:'Sem resultados.',note:'O conteúdo educativo está em romeno; a interface está disponível em 8 idiomas.'},
+de:{nav:['Start','Theorie','Meridiane','Punkte','Akupressur','Varianten','Ohr & Füße','Maße','Sicherheit','Quiz','Glossar'],sub:'Atlas der Punkttherapien',ph:'Punkte, Meridiane, Begriffe suchen…',disc:'Bildungsmaterial. Ersetzt weder Diagnose, Behandlung noch ärztlichen Rat. Nadelakupunktur darf nur von qualifizierten Fachkräften durchgeführt werden.',ver:'Version 1.1 · Zuletzt aktualisiert:',noRes:'Keine Ergebnisse.',note:'Der Bildungsinhalt ist auf Rumänisch; die Oberfläche ist in 8 Sprachen verfügbar.'},
+hu:{nav:['Kezdőlap','Elmélet','Meridiánok','Pontok','Akupresszúra','Változatok','Fül és láb','Mérés','Biztonság','Kvíz','Szószedet'],sub:'a pontterápiák atlasza',ph:'Pontok, meridiánok, fogalmak keresése…',disc:'Oktatási anyag. Nem helyettesíti az orvosi diagnózist, kezelést vagy tanácsot. A tűs akupunktúrát csak képzett szakember végezheti.',ver:'Verzió 1.1 · Utolsó frissítés:',noRes:'Nincs találat.',note:'Az oktatási tartalom románul van; a felület 8 nyelven érhető el.'}
+};
+const S={lang:'ro',theme:'auto',fav:[],best:0};
+function load(){try{const j=JSON.parse((localStorage.getItem('punctum')||localStorage.getItem('acupunctura'))||'{}');Object.assign(S,j)}catch(e){}}
+function save(){try{localStorage.setItem('punctum',JSON.stringify(S))}catch(e){}}
+const T=()=>I18N[S.lang]||I18N.ro;
+
+/* ================= DATE: elemente ================= */
+const EL=[
+ {n:'Foc',zh:'Huo',c:'#c0392b',org:'Inimă / Intestin subțire (+ Pericard / Triplu încălzitor)',sez:'Vară',cl:'Căldură',em:'Bucurie (în exces: agitație)',col:'Roșu',gust:'Amar',tes:'Vase de sânge',sim:'Limbă',txt:'Expansiune, căldură, relații, conștiință (Shen).'},
+ {n:'Pământ',zh:'Tu',c:'#c99a2e',org:'Splină / Stomac',sez:'Vara târzie (între anotimpuri)',cl:'Umezeală',em:'Gândire excesivă, grijă',col:'Galben',gust:'Dulce',tes:'Mușchi, țesut conjunctiv',sim:'Gură, buze',txt:'Transformare, nutriție, centrare.'},
+ {n:'Metal',zh:'Jin',c:'#6c7a89',org:'Plămân / Intestin gros',sez:'Toamnă',cl:'Uscăciune',em:'Tristețe, melancolie',col:'Alb',gust:'Picant',tes:'Piele, păr fin',sim:'Nas',txt:'Contracție, claritate, a lăsa să plece.'},
+ {n:'Apă',zh:'Shui',c:'#1f4e79',org:'Rinichi / Vezică urinară',sez:'Iarnă',cl:'Frig',em:'Frică',col:'Negru / albastru închis',gust:'Sărat',tes:'Oase, măduvă',sim:'Urechi',txt:'Rezervă, profunzime, esență (Jing).'},
+ {n:'Lemn',zh:'Mu',c:'#2e8b57',org:'Ficat / Vezică biliară',sez:'Primăvară',cl:'Vânt',em:'Furie, frustrare',col:'Verde',gust:'Acru',tes:'Tendoane, ligamente',sim:'Ochi',txt:'Creștere, flexibilitate, plan, mișcare liberă a Qi-ului.'}
+];
+const ELC={Foc:'#c0392b',Pământ:'#c99a2e',Metal:'#6c7a89',Apă:'#1f4e79',Lemn:'#2e8b57'};
+
+/* ================= DATE: meridiane ================= */
+const MER=[
+ {c:'LU',n:'Plămân',zh:'Shou Taiyin',el:'Metal',yy:'Yin',lim:'Braț',pts:11,t:'3–5',dir:'torace → mână',path:'De la torace (LU1), pe fața antero-laterală a brațului, până la colțul radial al policelui (LU11).',key:'LU7 (comandă cap/ceafă, Ren Mai), LU9 (influență vase), LU5, LU1 (Mu)',use:'Aparat respirator, piele, gât, imunitate de suprafață.'},
+ {c:'LI',n:'Intestin gros',zh:'Shou Yangming',el:'Metal',yy:'Yang',lim:'Braț',pts:20,t:'5–7',dir:'mână → cap',path:'De la vârful arătătorului (LI1), pe marginea radială a mâinii și fața dorsală a brațului, prin umăr și gât, până lângă nara opusă (LI20).',key:'LI4 (comandă față/gură), LI10, LI11, LI15, LI20',use:'Față, dinți, nas, gât, tranzit, durere de braț/umăr.'},
+ {c:'ST',n:'Stomac',zh:'Zu Yangming',el:'Pământ',yy:'Yang',lim:'Picior',pts:45,t:'7–9',dir:'cap → picior',path:'De sub ochi (ST1), prin față și gât, coboară pe torace și abdomen, apoi pe fața antero-laterală a coapsei și gambei până la degetul II al piciorului (ST45).',key:'ST36 (He inferior), ST25 (Mu intestin gros), ST40, ST44, ST6, ST7',use:'Digestie, vitalitate, față, genunchi, flegmă.'},
+ {c:'SP',n:'Splină-Pancreas',zh:'Zu Taiyin',el:'Pământ',yy:'Yin',lim:'Picior',pts:21,t:'9–11',dir:'picior → torace',path:'De la halucele (SP1), pe marginea internă a piciorului și fața medială a gambei și coapsei, prin abdomen, până în spațiul intercostal VI (SP21).',key:'SP6 (întâlnirea celor 3 yin), SP4 (Chong Mai), SP9, SP10, SP8',use:'Digestie, sânge, umezeală, ginecologie, oboseală.'},
+ {c:'HT',n:'Inimă',zh:'Shou Shaoyin',el:'Foc',yy:'Yin',lim:'Braț',pts:9,t:'11–13',dir:'torace → mână',path:'De la axilă (HT1), pe fața medială a brațului și antebrațului, până la vârful degetului mic (HT9).',key:'HT7 (Shenmen, Yuan), HT3, HT5',use:'Palpitații, anxietate, insomnie, Shen.'},
+ {c:'SI',n:'Intestin subțire',zh:'Shou Taiyang',el:'Foc',yy:'Yang',lim:'Braț',pts:19,t:'13–15',dir:'mână → cap',path:'De la degetul mic (SI1), pe marginea ulnară a mâinii și brațului, peste omoplat și gât, până în fața urechii (SI19).',key:'SI3 (Du Mai), SI11, SI19',use:'Ceafă, umăr, omoplat, ureche, rigiditate.'},
+ {c:'BL',n:'Vezică urinară',zh:'Zu Taiyang',el:'Apă',yy:'Yang',lim:'Picior',pts:67,t:'15–17',dir:'cap → picior',path:'De la colțul intern al ochiului (BL1), peste frunte și creștet, coboară pe spate pe două linii paralele (1,5 și 3 cun de coloană), pe fesă, spatele coapsei, popliteu și gambă, până la degetul V (BL67). Cel mai lung meridian.',key:'BL13–BL23 (puncte Shu dorsale), BL40, BL60, BL62, BL67',use:'Spate, coloană, ochi, cap, organe prin punctele Shu.'},
+ {c:'KI',n:'Rinichi',zh:'Zu Shaoyin',el:'Apă',yy:'Yin',lim:'Picior',pts:27,t:'17–19',dir:'picior → torace',path:'De la talpă (KI1), în jurul maleolei mediale, pe fața internă a gambei și coapsei, prin abdomen și torace, până sub claviculă (KI27).',key:'KI1, KI3 (Yuan), KI6, KI7',use:'Vitalitate, oase, lombar, urechi, somn, rădăcina Yin/Yang.'},
+ {c:'PC',n:'Pericard (Maestrul Inimii)',zh:'Shou Jueyin',el:'Foc',yy:'Yin',lim:'Braț',pts:9,t:'19–21',dir:'torace → mână',path:'De la torace, lateral de mamelon (PC1), pe mijlocul feței anterioare a brațului, prin palmă, până la vârful degetului mijlociu (PC9).',key:'PC6 (Yin Wei Mai), PC7, PC8, PC3',use:'Greață, anxietate, torace, emoții.'},
+ {c:'TE',n:'Triplu încălzitor (San Jiao)',zh:'Shou Shaoyang',el:'Foc',yy:'Yang',lim:'Braț',pts:23,t:'21–23',dir:'mână → cap',path:'De la degetul inelar (TE1), pe fața dorsală a antebrațului, cotul, umărul, gâtul, în jurul urechii, până la capătul extern al sprâncenei (TE23).',key:'TE5 (Yang Wei Mai), TE3, TE6, TE14, TE17, TE21, TE23',use:'Ureche, laterală cap, braț, termoreglare, tranzit (TE6).'},
+ {c:'GB',n:'Vezică biliară',zh:'Zu Shaoyang',el:'Lemn',yy:'Yang',lim:'Picior',pts:44,t:'23–1',dir:'cap → picior',path:'De la unghiul extern al ochiului (GB1), în zigzag pe fața laterală a capului, prin umăr și torace lateral, șold și fața laterală a piciorului, până la degetul IV (GB44).',key:'GB20, GB21, GB30, GB34 (influență tendoane), GB39 (influență măduvă), GB41 (Dai Mai)',use:'Cefalee laterală, sciatică, tendoane, decizie, migrene.'},
+ {c:'LR',n:'Ficat',zh:'Zu Jueyin',el:'Lemn',yy:'Yin',lim:'Picior',pts:14,t:'1–3',dir:'picior → torace',path:'De la halucele (LR1), pe fața medială a piciorului și coapsei, prin abdomen, până în spațiul intercostal VI (LR14).',key:'LR3 (Yuan), LR2, LR8, LR13 (influență organe Zang), LR14 (Mu)',use:'Stres, iritabilitate, circulația Qi-ului, ochi, tendoane, ciclu.'},
+ {c:'CV',n:'Vas Concepție (Ren Mai)',zh:'Ren Mai',el:'Extra',yy:'Yin',lim:'Linia mediană anterioară',pts:24,t:'—',dir:'perineu → bărbie',path:'De la perineu (CV1), pe linia mediană anterioară a abdomenului și toracelui, până la șanțul mentolabial (CV24). „Marea mare a Yin-ului".',key:'CV4, CV6, CV8 (ombilic — doar moxă), CV12, CV17 (influență Qi), CV22, CV24',use:'Abdomen, energie, ginecologie, torace, Qi central.'},
+ {c:'GV',n:'Vas Guvernor (Du Mai)',zh:'Du Mai',el:'Extra',yy:'Yang',lim:'Linia mediană posterioară',pts:28,t:'—',dir:'coccis → buză',path:'De la coccis (GV1), pe coloană, ceafă, creștet, frunte și nas, până la frenul buzei superioare (GV28). „Marea mare a Yang-ului".',key:'GV4, GV14, GV16, GV20, GV26',use:'Coloană, cap, minte, Yang, urgențe (GV26).'}
+];
+const CLOCKO=['LU','LI','ST','SP','HT','SI','BL','KI','PC','TE','GB','LR'];
+const MCOL={LU:'#6c7a89',LI:'#6c7a89',ST:'#c99a2e',SP:'#c99a2e',HT:'#c0392b',SI:'#c0392b',PC:'#c0392b',TE:'#c0392b',BL:'#1f4e79',KI:'#1f4e79',GB:'#2e8b57',LR:'#2e8b57',CV:'#7b4fa3',GV:'#7b4fa3',EX:'#0f8b8d'};
+const REG={cap:'Cap / față',gat:'Gât / umăr',tor:'Torace / abdomen',spa:'Spate',bra:'Braț / mână',pic:'Picior / labă'};
+
+/* ================= DATE: puncte  cod|pinyin|regiune|localizare|acțiuni|atenție ================= */
+const PTX=`LU1|Zhongfu|tor|Lateral de linia mediană la 6 cun, în spațiul intercostal I, sub fosa infraclaviculară|Tuse, dispnee, durere toracică superioară; punct Mu (alarmă) al Plămânului|
+LU5|Chize|bra|În pliul cotului, pe partea radială a tendonului bicepsului|Tuse, durere de cot, spasm al antebrațului|
+LU7|Lieque|bra|1,5 cun proximal de pliul încheieturii, deasupra apofizei stiloide a radiusului|Cefalee, rigiditate cervicală, tuse, rinită; punct Luo, comandă pentru cap și ceafă; deschide Ren Mai|
+LU9|Taiyuan|bra|În pliul încheieturii, pe partea radială a arterei radiale|Tuse, dispnee, slăbiciune; punct de influență al vaselor|
+LU11|Shaoshang|bra|Colțul radial al unghiei policelui|Faringită, urgențe (în tradiție: sedare, sângerare punctiformă)|
+LI4|Hegu|bra|Pe dosul mâinii, între metacarpienele I și II, la mijlocul marginii radiale a metacarpianului II|Durere (cefalee, dinți, față), rinită, stres; punct Yuan, comandă pentru față și gură|⚠ Evită în sarcină (în special cu stimulare puternică)
+LI10|Shousanli|bra|2 cun sub LI11, pe linia LI5–LI11|Durere de braț și umăr, tulburări gastro-intestinale|
+LI11|Quchi|bra|La capătul lateral al pliului cotului flectat, la mijlocul distanței dintre LU5 și epicondilul lateral|Febră, piele (prurit, acnee), tensiune, durere de cot|
+LI15|Jianyu|gat|Pe umăr, în depresiunea anterioară și inferioară acromionului, cu brațul în abducție|Durere și limitare de mișcare a umărului|
+LI20|Yingxiang|cap|În șanțul nazo-labial, la nivelul mijlocului marginii laterale a aripii nazale|Nas înfundat, rinită, sinuzită|
+ST2|Sibai|cap|Sub pupilă, în gaura infraorbitală, 1 cun sub marginea orbitei|Ochi obosiți, durere facială, paralizie facială|
+ST6|Jiache|cap|La unghiul mandibulei, pe proeminența maseterului când se strâng dinții|Durere dentară, tulburări ATM, paralizie facială|
+ST7|Xiaguan|cap|În depresiunea de sub arcada zigomatică, anterior de condilul mandibulei (gura închisă)|ATM, tinitus, durere de dinți și urechi|
+ST8|Touwei|cap|0,5 cun în interiorul liniei părului, la colțul frunții (4,5 cun lateral de linia mediană)|Cefalee frontală și temporală, amețeală|
+ST25|Tianshu|tor|2 cun lateral de centrul ombilicului|Constipație, diaree, balonare; punct Mu al intestinului gros|
+ST34|Liangqiu|pic|2 cun deasupra marginii supero-laterale a rotulei|Durere de genunchi, durere gastrică acută (punct Xi)|
+ST36|Zusanli|pic|3 cun sub ST35, la un deget lateral de creasta tibiei|Digestie, oboseală, imunitate, vitalitate, durere de genunchi; punct He inferior al stomacului|
+ST40|Fenglong|pic|8 cun sub ST35, la un deget lateral de ST38|Flegmă, tuse cu secreții, amețeală, greutate în cap; punct Luo|
+ST44|Neiting|pic|În marginea membranei dintre degetele II și III de la picior|Durere de dinți, febră, durere gastrică|
+SP3|Taibai|pic|Proximal și inferior de capul metatarsianului I, la joncțiunea pielii roșii și albe|Balonare, oboseală, digestie slabă; punct Yuan|
+SP4|Gongsun|pic|Distal și inferior de baza metatarsianului I, la joncțiunea pielii roșii și albe|Durere epigastrică, greață, dureri menstruale; deschide Chong Mai|
+SP6|Sanyinjiao|pic|3 cun deasupra vârfului maleolei mediale, pe marginea posterioară a tibiei|Ginecologie, insomnie, digestie, urinar; întâlnirea celor trei meridiane yin ale piciorului|⚠ Contraindicat în sarcină
+SP8|Diji|pic|3 cun sub SP9, pe linia SP9–SP5|Dureri menstruale (punct Xi), edem|
+SP9|Yinlingquan|pic|În depresiunea de sub condilul medial al tibiei|Umezeală, edem, balonare, durere de genunchi; punct He|
+SP10|Xuehai|pic|2 cun deasupra marginii supero-mediale a rotulei, pe bombarea vastului medial|Sânge, piele (urticarie, eczemă), ciclu|
+HT3|Shaohai|bra|Între capătul medial al pliului cotului flectat și epicondilul medial|Anxietate, durere de cot, tremor|
+HT7|Shenmen|bra|La capătul ulnar al pliului încheieturii, pe partea radială a tendonului flexorului ulnar al carpului|Insomnie, anxietate, palpitații, agitație; punct Yuan, „poarta spiritului"|
+SI3|Houxi|bra|Pe marginea ulnară a mâinii, proximal de articulația metacarpofalangiană V, la capătul pliului palmar când se strânge pumnul|Rigiditate cervicală, durere dorsală, cefalee occipitală; deschide Du Mai|
+SI11|Tianzong|gat|În centrul fosei infraspinoase a omoplatului|Durere de omoplat și umăr|
+SI19|Tinggong|cap|În depresiunea dintre tragus și condilul mandibulei, cu gura deschisă|Tinitus, hipoacuzie, durere de ureche|
+BL1|Jingming|cap|0,1 cun superior de unghiul intern al ochiului|Ochi: oboseală, înroșire, vedere încețoșată|
+BL2|Zanzhu|cap|La capătul medial al sprâncenei, în incizura supraorbitală|Cefalee frontală, sinuzită, ochi obosiți|
+BL10|Tianzhu|gat|1,3 cun lateral de GV15, pe marginea laterală a trapezului, la nivelul liniei părului din ceafă|Rigiditate cervicală, cefalee occipitală, tensiune|
+BL13|Feishu|spa|1,5 cun lateral de marginea inferioară a procesului spinos T3|Tuse, astm, tulburări respiratorii; punct Shu dorsal al Plămânului|
+BL15|Xinshu|spa|1,5 cun lateral de procesul spinos T5|Palpitații, anxietate, insomnie; Shu dorsal al Inimii|
+BL17|Geshu|spa|1,5 cun lateral de procesul spinos T7|Sânge, singulț, piele; punct de influență al sângelui|
+BL18|Ganshu|spa|1,5 cun lateral de procesul spinos T9|Ficat, ochi, irascibilitate; Shu dorsal al Ficatului|
+BL20|Pishu|spa|1,5 cun lateral de procesul spinos T11|Digestie, oboseală, umezeală; Shu dorsal al Splinei|
+BL23|Shenshu|spa|1,5 cun lateral de procesul spinos L2|Lombalgie, oboseală, urechi, urinar; Shu dorsal al Rinichiului|
+BL25|Dachangshu|spa|1,5 cun lateral de procesul spinos L4|Lombalgie, constipație, sciatică; Shu dorsal al intestinului gros|
+BL40|Weizhong|pic|La mijlocul pliului poplitee|Lombalgie, sciatică, durere de genunchi; punct de comandă pentru spate; He inferior|
+BL57|Chengshan|pic|În vârful „V"-ului format de cele două capete ale gastrocnemianului, la cca 8 cun sub BL40|Crampe de gambă, hemoroizi, lombalgie|
+BL60|Kunlun|pic|Între maleola laterală și tendonul lui Ahile, la nivelul vârfului maleolei|Lombalgie, cefalee occipitală, rigiditate cervicală, durere de călcâi|⚠ Contraindicat în sarcină
+BL62|Shenmai|pic|0,5 cun sub vârful maleolei laterale|Insomnie, lombalgie, amețeală; deschide Yang Qiao Mai|
+BL67|Zhiyin|pic|Colțul lateral al unghiei degetului V de la picior|Cefalee, tradițional moxă pentru prezentație pelviană (dovezi mixte)|⚠ Doar sub îndrumare medicală în sarcină
+KI1|Yongquan|pic|Pe talpă, în depresiunea care apare la flexia degetelor, la limita dintre treimea anterioară și cele două treimi posterioare|Amețeală, agitație, insomnie, picioare reci; „fântâna care țâșnește"|
+KI3|Taixi|pic|În depresiunea dintre maleola medială și tendonul lui Ahile, la nivelul vârfului maleolei|Lombalgie, tinitus, oboseală, insomnie; punct Yuan|
+KI6|Zhaohai|pic|1 cun sub vârful maleolei mediale|Insomnie, gât uscat, tulburări ale ciclului; deschide Yin Qiao Mai|
+KI7|Fuliu|pic|2 cun deasupra KI3, pe marginea anterioară a tendonului lui Ahile|Edem, transpirație anormală, lombalgie|
+PC3|Quze|bra|În pliul cotului, pe partea ulnară a tendonului bicepsului|Palpitații, căldură, greață|
+PC6|Neiguan|bra|2 cun deasupra pliului încheieturii, între tendoanele palmarului lung și flexorului radial al carpului|Greață și vomă (cele mai bune dovezi), anxietate, palpitații, rău de mișcare; deschide Yin Wei Mai|
+PC7|Daling|bra|La mijlocul pliului încheieturii, între cele două tendoane|Anxietate, sindrom de tunel carpian, palpitații|
+PC8|Laogong|bra|În palmă, între metacarpienele II și III, unde atinge vârful degetului mijlociu când se strânge pumnul|Agitație, transpirație palmară, stres|
+PC9|Zhongchong|bra|Vârful degetului mijlociu|Urgențe, căldură (punct clasic de sângerare punctiformă)|
+TE3|Zhongzhu|bra|Pe dosul mâinii, în depresiunea proximală de articulațiile metacarpofalangiene IV–V|Tinitus, cefalee temporală, durere de mână|
+TE5|Waiguan|bra|2 cun deasupra pliului dorsal al încheieturii, între radius și ulnă (opus PC6)|Cefalee laterală, tinitus, răceală, durere de braț; deschide Yang Wei Mai|
+TE6|Zhigou|bra|3 cun deasupra pliului dorsal al încheieturii, între radius și ulnă|Constipație, durere de coaste, tinitus|
+TE14|Jianliao|gat|În depresiunea posterioară și inferioară acromionului, cu brațul în abducție|Durere de umăr, limitare de mișcare|
+TE17|Yifeng|cap|În depresiunea din spatele lobului urechii, între mandibulă și mastoidă|Tinitus, hipoacuzie, paralizie facială, durere de maxilar|
+TE21|Ermen|cap|În depresiunea din fața incizurii supratragiene, cu gura deschisă|Tinitus, durere de ureche|
+TE23|Sizhukong|cap|În depresiunea de la capătul lateral al sprâncenei|Cefalee temporală, migrenă, tic palpebral|
+GB1|Tongziliao|cap|0,5 cun lateral de unghiul extern al ochiului, în depresiunea marginii laterale a orbitei|Ochi, cefalee temporală|
+GB14|Yangbai|cap|1 cun deasupra sprâncenei, în dreptul pupilei|Cefalee frontală, ochi, paralizie facială|
+GB20|Fengchi|gat|Sub occipital, în depresiunea dintre sternocleidomastoidian și trapez|Cefalee, rigiditate cervicală, răceală, amețeală, ochi obosiți|⚠ Înțepat: direcție și adâncime riscante — doar personal calificat
+GB21|Jianjing|gat|La mijlocul liniei dintre GV14 și acromion, pe trapez|Tensiune în umeri, cefalee, durere cervicală|⚠ Contraindicat în sarcină; risc de pneumotorax la înțepare
+GB30|Huantiao|pic|La joncțiunea treimii laterale cu cele două treimi mediale a liniei dintre trohanterul mare și hiatusul sacrat|Sciatică, durere de șold și fesă|
+GB34|Yanglingquan|pic|În depresiunea antero-inferioară capului fibulei|Crampe, tendoane, durere laterală de coapsă și coaste; punct de influență al tendoanelor|
+GB39|Xuanzhong|pic|3 cun deasupra vârfului maleolei laterale, pe marginea fibulei|Rigiditate cervicală, durere de gambă; punct de influență al măduvei|
+GB41|Zulinqi|pic|Distal de joncțiunea metatarsienelor IV și V, lateral de tendonul extensorului al degetului V|Cefalee laterală, sân, durere de picior; deschide Dai Mai|
+LR2|Xingjian|pic|În marginea membranei dintre degetele I și II de la picior|Iritabilitate, cefalee, ochi roșii, căldură hepatică|
+LR3|Taichong|pic|Pe dosul piciorului, în depresiunea distală de joncțiunea metatarsienelor I și II|Stres, iritabilitate, cefalee, tensiune musculară, dureri menstruale; punct Yuan; cu LI4 formează „cele patru porți"|
+LR8|Ququan|pic|Cu genunchiul flectat, la capătul medial al pliului poplitee, posterior de epicondilul medial|Urinar, genunchi, ginecologie|
+LR13|Zhangmen|tor|Anterior și inferior de capătul liber al coastei XI|Digestie, durere de coaste; Mu al Splinei, influență asupra organelor Zang|
+LR14|Qimen|tor|În spațiul intercostal VI, pe linia mameloanelor|Durere de coaste, stres, tulburări digestive; punct Mu al Ficatului|
+CV4|Guanyuan|tor|3 cun sub ombilic, pe linia mediană|Oboseală, ginecologie, urinar; „poarta originii"|
+CV6|Qihai|tor|1,5 cun sub ombilic, pe linia mediană|Energie scăzută, digestie, ciclu; „marea mare a Qi-ului"|
+CV8|Shenque|tor|În centrul ombilicului|Tradițional: doar moxibustie (nu se înțeapă)|
+CV12|Zhongwan|tor|4 cun deasupra ombilicului, pe linia mediană|Digestie, greață, balonare, arsuri; punct Mu al stomacului, influență asupra organelor Fu|
+CV17|Danzhong|tor|Pe linia mediană, la nivelul spațiului intercostal IV (între mameloane)|Apăsare toracică, anxietate, tuse; punct de influență al Qi-ului|
+CV22|Tiantu|tor|În centrul fosei suprasternale|Tuse, gât iritat; presiune ușoară, fără apăsare spre trahee|⚠ Fără presiune puternică spre trahee
+CV24|Chengjiang|cap|În șanțul mentolabial|Durere facială, paralizie facială, salivație|
+GV4|Mingmen|spa|Sub procesul spinos L2|Lombalgie, oboseală, frig lombar; „poarta vieții"|
+GV14|Dazhui|spa|Sub procesul spinos C7|Febră, răceală, rigiditate cervicală, imunitate|
+GV16|Fengfu|spa|1 cun deasupra liniei părului din ceafă, sub protuberanța occipitală externă|Cefalee occipitală, rigiditate cervicală|⚠ Zonă riscantă la înțepare profundă — doar personal calificat
+GV20|Baihui|cap|Pe linia mediană, pe creștet, la 5 cun în interiorul liniei anterioare a părului|Cefalee, amețeală, concentrare slabă, stres; „întâlnirea celor 100"|
+GV26|Renzhong|cap|În treimea superioară a șanțului subnazal (filtrum)|Urgență: leșin (uz tradițional); lombalgie acută|
+EX-HN3|Yintang|cap|La mijlocul distanței dintre sprâncene|Insomnie, anxietate, cefalee frontală, sinuzită|
+EX-HN5|Taiyang|cap|În depresiunea de la cca 1 cun posterior de mijlocul liniei dintre capătul lateral al sprâncenei și unghiul extern al ochiului|Cefalee temporală, migrenă, ochi obosiți|
+EX-HN1|Sishencong|cap|Patru puncte, la 1 cun în față, în spate și lateral de GV20|Insomnie, cefalee, amețeală, concentrare|
+EX|Anmian|cap|Pe mijlocul liniei dintre TE17 și GB20 (în spatele urechii)|Insomnie, agitație, cefalee|
+EX-B1|Dingchuan|spa|0,5 cun lateral de GV14|Tuse, astm, respirație dificilă|
+EX-B2|Huatuojiaji|spa|0,5 cun lateral de marginea inferioară a proceselor spinoase T1–L5 (pe ambele părți)|Durere vertebrală, organe corespunzătoare nivelului|
+EX-UE11|Shixuan|bra|Vârfurile celor zece degete|Urgențe (tradițional: sângerare punctiformă)|
+EX-UE9|Baxie|bra|Pe dosul mâinii, în marginile membranelor dintre degete|Umflare a mâinii, durere de degete|
+EX-LE10|Bafeng|pic|Pe dosul piciorului, în marginile membranelor dintre degete|Umflare a piciorului, durere de picior|`;
+function merOf(c){const m=c.match(/^[A-Z]{2}/);return m?m[0]:'EX'}
+const PT=(()=>{const mp=new Map();PTX.split('\n').forEach(l=>{l=l.trim();if(!l||l.startsWith('#'))return;const a=l.split('|');if(a.length<5)return;mp.set(a[0],{c:a[0],p:a[1],r:a[2],l:a[3],u:a[4],w:a[5]||'',tg:a[6]||'',mn:a[7]||'',m:merOf(a[0])})});
+const ord=['LU','LI','ST','SP','HT','SI','BL','KI','PC','TE','GB','LR','CV','GV','EX'];
+const num=c=>{const m=c.match(/(\d+)/);return m?+m[1]:0};
+return [...mp.values()].sort((x,y)=>ord.indexOf(x.m)-ord.indexOf(y.m)||num(x.c)-num(y.c)||cmp(x.c,y.c))})();
+
+/* ================= DATE: protocoale de presopunctură ================= */
+const PROT=[
+ {t:'Greață & rău de mișcare',p:['PC6','ST36','CV12'],n:'PC6 este punctul cu cele mai bune dovezi clinice. Presează pe ambele încheieturi (poți folosi și brățări de presopunctură).'},
+ {t:'Cefalee de tensiune',p:['GB20','LI4','EX-HN5','EX-HN3','LR3'],n:'Masează încet baza craniului (GB20) cu degetele mari, apoi tâmplele.'},
+ {t:'Insomnie & agitație seara',p:['HT7','EX','EX-HN3','KI1','SP6'],n:'Fă sesiunea cu 30–60 min înainte de somn, într-o cameră liniștită. „EX" = Anmian.'},
+ {t:'Stres & anxietate',p:['GV20','EX-HN3','PC6','HT7','LR3'],n:'Respirație lentă pe nas: 4 secunde inspir, 6 secunde expir.'},
+ {t:'Ceafă & umeri încordați',p:['GB20','GB21','SI3','SI11','LI4'],n:'Poți combina cu înclinări lente ale capului. Evită presiunea puternică pe lateralul gâtului (arterele).'},
+ {t:'Lombalgie ușoară (fără semne de alarmă)',p:['BL23','GV4','BL25','BL40','GB30','BL60'],n:'Presiune cu degetele mari sau cu o minge de tenis lângă coloană; niciodată direct pe coloana vertebrală.'},
+ {t:'Digestie lentă & balonare',p:['ST36','CV12','ST25','PC6','SP4'],n:'La cel puțin 1 oră după masă; masaj circular ușor, în sensul acelor de ceasornic, pe abdomen.'},
+ {t:'Nas înfundat & sinusuri',p:['LI20','EX-HN3','LI4','BL2','GB20'],n:'Presiune moale pe laterale nasului (LI20), nu insera degetele în nări.'},
+ {t:'Ochi obosiți (lucru la ecran)',p:['BL2','EX-HN5','GB20','ST2','BL1'],n:'Presiune foarte blândă în jurul orbitei; nu apăsa globul ocular. Pauze de privit în depărtare (regula 20-20-20).'},
+ {t:'Dureri menstruale ușoare',p:['SP6','SP8','LR3','CV4','BL23'],n:'Fără SP6 dacă ești gravidă sau încerci să afli dacă ești. Dureri severe sau noi: consultă medicul.'},
+ {t:'Oboseală & energie scăzută',p:['ST36','CV6','KI3','GV20'],n:'Dimineața, 1–2 minute pe punct. Dacă oboseala persistă săptămâni, cere o evaluare medicală.'},
+ {t:'Dureri de dinți & ATM (disconfort ușor)',p:['LI4','ST6','ST7','SI19'],n:'Presiune ușoară-medie; pentru dureri dentare persistente, mergi la stomatolog.'},
+ {t:'Tuse iritativă & gât iritat',p:['LU7','LU9','LU5','BL13'],n:'Este un ajutor de confort; tuse peste 2–3 săptămâni sau cu dificultăți de respirație cere consult.'},
+ {t:'Picioare grele & umflare ușoară',p:['SP9','SP6','ST36','KI3','KI1'],n:'Seara, cu picioarele ridicate. Umflături unilaterale, dureroase sau bruște: urgență (posibilă tromboză).'},
+ {t:'Concentrare & studiu',p:['GV20','EX-HN1','EX-HN3','LI4','PC6'],n:'Sesiune scurtă înaintea unei sarcini mentale; 30–40 s pe punct sunt suficiente.'}
+];
+
+/* ================= DATE: variante (atlas detaliat) =================
+ câmpuri: id¦nume¦cat¦inv(0 non-invaziv,1 minim,2 invaziv)¦risc(1-3)¦ev(m,l,w,x)¦auto(d,p,n)¦origine¦principiu¦pași(//)¦instrumente¦durată¦zone¦indicații¦dovezi¦siguranță¦practicant */
+const CATN={ace:'Cu ace și înțepare',pres:'Presiune și masaj manual',cald:'Căldură și moxibustie',vid:'Vid, răzuire și percuție',tehno:'Stimulare tehnologică',micro:'Microsisteme (ureche, scalp, mână, față, talpă)',scoli:'Școli și tradiții',self:'Auto-practici',ctrl:'Controversate / fără dovezi'};
+const CATC={ace:'#b5573a',pres:'#2f7d6d',cald:'#c0392b',vid:'#7b4fa3',tehno:'#1f4e79',micro:'#c99a2e',scoli:'#2e8b57',self:'#0f8b8d',ctrl:'#6c7a89'};
+const EVN={m:'Dovezi moderate (unele indicații)',l:'Dovezi limitate',w:'Dovezi slabe',x:'Fără dovezi / neștiințific'};
+const EVC={m:'#2f7d6d',l:'#c99a2e',w:'#b5573a',x:'#6c7a89'};
+const INVN=['Non-invaziv','Minim invaziv','Invaziv (înțepare)'];
+const RISKN=['','Risc redus','Risc mediu','Risc ridicat'];
+const AUTN={d:'Poți face singur',p:'Parțial (basic acasă)',n:'Doar practicant'};
+const VX=`acu-cl¦Acupunctură corporală clasică (MTC)¦ace¦2¦2¦m¦n¦China; Huangdi Neijing (sec. II–I î.Hr.), standardizare modernă după 1950¦Ace filiforme sterile înțeapă puncte alese după diagnosticul MTC (puncte locale + la distanță + după sindrom). Tradițional se reglează fluxul de Qi; explicația modernă invocă modularea nervoasă a durerii și a funcțiilor vegetative.¦Anamneză și diagnostic prin cele patru metode (observație, auscultare/olfacție, interogare, palpare: puls și limbă) // Alegerea a 4–12 puncte (locale, distale, după sindrom) // Dezinfecția pielii și a mâinilor; ace de unică folosință, de obicei cu tub-ghid // Inserție rapidă la adâncimea potrivită (de la câțiva mm la câțiva cm) // Căutarea senzației De Qi (greutate, căldură, amorțeală ușoară) // Stimulare manuală (rotire, ridicare–împingere) pentru tonifiere sau dispersare // Retenție 15–30 min, cu pacientul în repaus // Scoaterea acelor, numărarea lor, eliminarea în container pentru obiecte ascuțite¦Ace filiforme 0,16–0,30 mm și 13–75 mm lungime; tampoane cu alcool; container pentru ascuțite¦Cură tipică de 6–12 ședințe, 1–2 pe săptămână, apoi întreținere¦Puncte locale + distale (LI4, ST36, SP6, GB34, LR3 etc.)¦Durere cronică (lombară, cervicală, genunchi), cefalee, migrenă, greață postoperatorie, unele tulburări funcționale¦Moderate pentru lombalgie cronică, osteoartrită de genunchi, migrenă și cefalee de tensiune, greață; amestecate pentru restul. Diferența față de acupunctura sham este adesea mică, ceea ce arată că o parte din efect este contextual.¦Doar personal calificat. Riscuri rare: pneumotorax, infecții, leziuni de nervi, leșin. Precauție cu anticoagulante/coagulopatii, sarcină, imunosupresie, implanturi.¦Medici cu competență în acupunctură sau acupuncturiști autorizați (reglementarea diferă de la țară la țară)
+ea¦Electroacupunctură¦ace¦2¦2¦l¦n¦China, anii 1950–60 (analgezie chirurgicală); răspândită global¦Perechi de ace sunt conectate la un stimulator care trimite curent slab pulsatil. Frecvențele joase (2–4 Hz) și înalte (~100 Hz) par să elibereze peptide opioide diferite; modul alternant (dens–dispers) le combină.¦Ace inserate ca la acupunctura clasică // Fixarea clemelor pe perechi de ace (de regulă aceeași regiune sau meridian) // Pornirea aparatului la intensitate zero, creștere treptată până la contracție musculară vizibilă, dar confortabilă // Alegerea frecvenței (2 Hz, 100 Hz sau 2/100 Hz alternant) // Stimulare 10–30 min // Reducerea intensității la zero înainte de a desprinde clemele și a scoate acele¦Stimulator cu mai multe canale, cabluri cu cleme, ace sterile¦10–30 min/ședință, 1–3 ședințe pe săptămână¦Puncte din zona dureroasă și puncte distale pereche (ex. ST36–GB34)¦Durere musculo-scheletică, nevralgii, recuperare (adjuvant), analgezie perioperatorie¦Limitate–moderate pentru durere și recuperare; calitatea studiilor variază.¦Contraindicată cu stimulator cardiac sau alt implant electric și în epilepsie neîngrijită; nu se aplică curent peste torace sau zona gâtului fără pregătire; se evită în sarcină.¦Medici și acupuncturiști formați în electroterapie
+ac-cald¦Acupunctură cu ac cald (Wen Zhen)¦ace¦2¦2¦w¦n¦China, tradițională¦Combină înțeparea cu căldura: pe mânerul acului se arde un con sau o bucată de moxă, iar căldura se transmite prin ac în adâncime. Se folosește tradițional pentru „frig” și durere articulară.¦Inserția acului la adâncimea dorită // Verificarea stabilității acului // Plasarea unei bucăți de țigară de moxă (1–2 cm) pe mâner // Aprinderea; protejarea pielii cu un carton sau o bucată de tifon // Arderea completă, 5–15 min // Înlăturarea cenușii în recipient, scoaterea acului¦Ace cu mâner metalic, moxă, carton de protecție, recipient pentru cenușă¦1 ședință, 1–3 ori pe săptămână¦Articulații (genunchi, șold), lombar, abdomen inferior¦Durere articulară „rece”, artroză, dureri lombare¦Slabe–limitate; puține studii bune.¦Risc de arsură prin cădere de jar; nu se folosește pe pielea lezată, la pacienți care nu simt bine căldura (neuropatie) sau în febră mare.¦Practicieni formați în MTC
+fire¦Fire needling (Huo Zhen)¦ace¦2¦3¦w¦n¦China, textele clasice; folosit în dermatologie și durere¦Un ac gros se încălzește la roșu în flacără și se înțeapă foarte rapid și superficial în punct sau în leziune. Tradițional se spune că „scoate” frigul și umezeala.¦Selectarea zonei și marcarea punctului // Dezinfecția pielii // Încălzirea acului la roșu într-o lampă cu alcool // Înțepare rapidă, de obicei 1–3 mm, scoatere imediată // Presiune ușoară și pansament dacă este nevoie¦Ace speciale din oțel/aliaj, lampă cu spirt¦Câteva ședințe, la 3–7 zile¦Zone locale cu durere, plăci cutanate, noduli¦Tradițional: durere, afecțiuni cutanate cronice, verucă¦Slabe; studii mici și de calitate scăzută.¦Procedură cu risc crescut: arsuri, cicatrici, infecții. Doar specialiști.¦Medici/practicieni foarte bine instruiți
+dry¦Dry needling (înțepare uscată miofascială)¦ace¦2¦2¦l¦n¦Medicina occidentală: Janet Travell (anii 1940–1980), Chan Gunn (IMS, anii 1970)¦Acul se introduce în puncte trigger miofasciale, pe baza anatomiei și a palpării, nu a meridianelor. Scopul este eliberarea benzilor încordate și reducerea durerii prin răspunsul de contracție locală (twitch).¦Evaluarea musculaturii și localizarea benzii încordate cu durere reproductibilă // Dezinfecție, inserție cu ac fin // Mișcări rapide de intrare–ieșire (tehnica Hong) sau retenție 5–15 min // Obținerea răspunsului de contracție locală // Întinderi blânde și mișcare activă după procedură¦Ace sterile fine, mănuși, tampoane¦1–6 ședințe, 1/săptămână¦Trapez, infraspinos, gluteu mic, gambă, paravertebrali¦Dureri miofasciale, tendinopatii, cefalee cervicogenă¦Moderate pentru durere miofascială pe termen scurt; efectele pe termen lung sunt mai puțin clare.¦Aceleași riscuri ca la ace (inclusiv pneumotorax la zona toracică); dureri post-procedură câteva zile.¦Kinetoterapeuți, medici și alți clinicieni instruiți (autorizarea diferă pe țări)
+intrad¦Ace intradermice (press tacks) și ace pentru ureche¦ace¦1¦2¦l¦p¦Japonia (Pyonex, Seirin) și China; folosite frecvent pe ureche¦Ace foarte scurte (0,3–1,5 mm) fixate cu plasture pentru 2–7 zile, pentru stimulare prelungită prin apăsarea ocazională a pacientului.¦Alegerea punctului // Dezinfecția pielii // Aplicarea acului cu penseta sterilă sau aplicatorul // Fixarea cu plasturele // Instruirea pacientului să apese ușor de 3–5 ori pe zi // Scoaterea după 2–7 zile sau la prima iritație¦Ace/pioneze sterile, pensetă, aplicator, plasturi¦2–7 zile per aplicare¦Ureche (Shenmen, simpatic), puncte ale mâinii/piciorului¦Durere acută, stres, insomnie, dependențe (adjuvant)¦Limitate; mai bune pentru durere acută în unele studii.¦Risc de infecție locală și iritație cutanată; se scot la semne de roșeață, durere sau secreție; nu pentru diabet cu piele fragilă.¦Practicieni formați; pacientul poate apăsa singur
+bee¦Apitoxină (bee venom acupuncture)¦ace¦2¦3¦w¦n¦Medicina tradițională coreeană și chineză, sec. XX¦Se injectează sau se aplică o cantitate minimă de venin de albină diluat în puncte, cu intenția de a combina efectul de înțepare cu cel antiinflamator al toxinei.¦Test de sensibilitate la venin (testul cutanat) // Alegerea punctelor locale // Aplicare intradermică a unei cantități foarte mici // Observarea pacientului 30 min // Întreruperea imediată la reacții¦Venin purificat, seringi fine, adrenalină la îndemână în cabinet¦Cure scurte, de ex. 1–2/săptămână¦Puncte locale în zona dureroasă¦Artrită, dureri musculare (uz tradițional)¦Slabe; efecte adverse frecvente (reacții locale, alergii) sunt documentate.¦Contraindicată la alergici; pericol de anafilaxie. Doar în unități cu echipament de urgență.¦Medici cu experiență
+aqua¦Aquapunctură (injecție în puncte)¦ace¦2¦2¦l¦n¦China (Shui Zhen), anii 1950; practică și veterinară¦Prin ac fin se injectează o cantitate mică de soluție (ser fiziologic, vitamina B12, anestezic local, plante) în punct, combinând stimularea mecanică cu un efect farmacologic.¦Alegerea punctelor și a soluției // Dezinfecție, seringă sterilă cu ac fin // Injectare lentă 0,2–1 ml per punct // Observarea reacțiilor // Pansament simplu¦Seringi, ace, soluții sterile¦1–2 ședințe pe săptămână, scurt¦Puncte pe spate, ST36, BL, GB¦Durere, nevralgie, tulburări funcționale (uz tradițional)¦Limitate; adesea greu de separat efectul injecției de cel al punctului.¦Riscuri de injecție: infecție, hematom, reacții alergice. Doar medici.¦Medici și medici veterinari autorizați
+acuto¦Acupotomie (Xiao Zhen Dao — „ac-bisturiu”)¦ace¦2¦3¦w¦n¦China, Zhu Hanzhang (1976)¦Ac cu vârf plat/lamă mică pentru a secționa aderențe de țesut conjunctiv sau a „elibera” zone tensionate, în loc de simpla înțepare.¦Evaluarea clinică și imagistică, alegerea zonei // Dezinfecție, anestezie locală uneori // Inserția acului-bisturiu pe traseul planificat // Mișcări scurte de secționare // Compresie și pansament¦Ac-bisturiu steril, anestezic local¦Câteva ședințe, la 1–2 săptămâni¦Aderențe cervicale, lombare, tendinoase¦Tendinite, durere cronică, periartrită scapulo-humerală¦Slabe–limitate; puține studii independente.¦Procedură invazivă cu risc de lezare nervoasă/vasculară; doar medici instruiți.¦Medici cu pregătire specifică
+sang¦Sângerare terapeutică (Dian Ci / puncte Jing-puț)¦ace¦2¦3¦w¦n¦China antică (Neijing); practici similare în multe culturi¦Cu o lanțetă se face o înțepătură superficială într-un punct (adesea la vârful degetelor sau al urechii) pentru a elibera o picătură sau câteva picături de sânge, tradițional pentru „căldură” și febră.¦Dezinfecția zonei // Înțeparea punctului cu lanțeta sterilă // Strângerea ușoară pentru 2–5 picături // Presiune cu tampon steril până la oprirea sângerării // Eliminarea lanțetei în container¦Lanțete sterile, tampoane, mănuși¦1–2 ședințe în episoade acute¦Vârfurile degetelor (EX-UE11), PC9, LU11, vârful urechii¦Febră, faringită, cefalee, intoxicații termice (uz tradițional)¦Slabe; fără studii solide.¦Risc de infecție și transmitere de patogeni prin sânge; doar cu material sterile de unică folosință. Fără coagulopatii/anticoagulante.¦Practicieni autorizați
+tung¦Acupunctura Master Tung (Dong)¦ace¦2¦2¦w¦n¦Tung Ching-chang (1916–1975), Taiwan; populară în SUA¦Folosește un sistem propriu de puncte pe mână, braț, picior și față, care nu coincid cu meridianele clasice; punctele sunt alese după „zone” corporale și relații de imagine în oglindă.¦Alegerea zonei corporale „corespondente” // Palparea punctului la distanță de zona dureroasă // Inserție cu ac fin, adesea cu mișcarea simultană a zonei dureroase // Retenție 15–30 min¦Ace fine, tampoane¦1–2 ședințe pe săptămână¦Puncte pe mână (ex. zona Ling Gu/Da Bai), antebraț, picior¦Durere, mai ales musculo-scheletică și neuropatică¦Foarte limitate; în mare parte rapoarte de caz.¦Aceleași riscuri ca la acupunctura clasică.¦Acuponctori formați în sistemul Tung
+acupresura¦Acupresură (presopunctură)¦pres¦0¦1¦m¦d¦China, foarte veche; parte din Tuina; popularizată global în sec. XX¦Presiune manuală fermă dar confortabilă pe aceleași puncte ca la acupunctură, fără ace. Efectul propus: stimulare mecanică a nervilor și țesutului conjunctiv, relaxare, modularea durerii.¦Poziție stabilă, relaxată; mâini curate // Localizarea punctului (cun, repere osoase, sensibilitate locală) // Presiune treptată, 3–5 s, cu pulpa degetului mare sau arătătorului // Menținerea presiunii fixe sau cu cercuri mici 30–90 s // Respirație lentă (inspir 4 s, expir 6 s) // Eliberare lentă; repetă pe partea opusă // 1–3 ori pe zi¦Degete, cot, bile de lemn, minge de tenis, capete rotunjite de lemn¦30–90 s/punct, 3–6 puncte/sesiune, 1–3 sesiuni/zi¦PC6, ST36, LI4, GB20, SP6, HT7, GV20 etc.¦Greață (P6), cefalee de tensiune, stres, insomnie, dureri menstruale ușoare, oboseală, dureri musculare¦Moderate pentru greață (P6); limitate–moderate pentru oboseală, anxietate și durere.¦În general sigură. Fără presiune pe răni, vene varicoase severe, tumori, fracturi; punctele ⚠ se evită în sarcină. Oprește la durere ascuțită sau amețeală.¦Oricine, cu instruire de bază; terapeuți de masaj/acupresori
+shiatsu¦Shiatsu (Namikoshi și Zen Shiatsu Masunaga)¦pres¦0¦1¦l¦p¦Japonia; Tokujiro Namikoshi (Institutul de Shiatsu, 1940; recunoscut oficial în 1955), Shizuto Masunaga (Zen Shiatsu, anii 1970)¦Presiune cu degetele mari, palme, coate, genunchi pe corp îmbrăcat, plus întinderi. Stilul Namikoshi are bază anatomică și fiziologică; Zen Shiatsu (Masunaga) lucrează cu meridiane extinse și evaluarea abdomenului (hara).¦Interviu scurt și observație a posturii // (Masunaga) evaluarea hara și a pulsului // Poziționare comodă pe saltea (futon) // Presiune perpendiculară, lentă, cu greutatea corpului, 3–10 s pe punct // Mobilizări și întinderi pasive // Încheiere cu relaxare și respirație¦Saltea, haine largi; fără uleiuri¦30–60 min, 1/săptămână sau 2/săptămână, apoi lunar¦Spate, gât, șolduri, abdomen, picioare¦Tensiune musculară, stres, oboseală, dureri cervicale/lombare ușoare¦Limitate; calitatea studiilor este scăzută.¦Nu în febră, tromboză, osteoporoză severă, fracturi recente; atenție în sarcină (zone-cheie).¦Terapeuți shiatsu autorizați/formați
+tuina¦Tuina (Tui Na) — masaj terapeutic chinez¦pres¦0¦2¦l¦n¦China, parte a MTC; spital și învățământ universitar¦Un sistem medical de manevre manuale pe meridiane, puncte și articulații. Cele opt manevre de bază: împingere (Tui), apucare (Na), apăsare (An), frecare circulară (Mo), rulare (Gun), frământare (Rou), frecare rapidă (Ca), scuturare (Dou).¦Diagnostic MTC // Alegerea manevrelor după sindrom și zonă // Încălzirea țesuturilor cu manevre ușoare // Manevre specifice (rulare, împingere, apăsare, frământare) // Mobilizarea articulațiilor (tracțiuni, rotații) numai de către practicieni instruiți // Încheiere cu manevre de calmare¦Mâinile practicantului; uneori uleiuri sau unguente cu plante¦20–40 min, 1–3/săptămână¦Gât, umeri, spate, șold, genunchi; mână și brațe la copii¦Cervicalgie, lombalgie, tensiune musculară, dureri de umăr, tulburări funcționale ale copilului (tuina pediatrică)¦Limitate–moderate pentru dureri cervicale și lombare.¦Manevrele articulare sunt riscante fără instruire; atenție la osteoporoză, tromboză, hernii de disc acute.¦Terapeuți de tuina formați (în China, medici)
+anma¦Anma (Amma) japonez¦pres¦0¦1¦l¦n¦China → Japonia (sec. VI–VII), forma istorică a masajului japonez¦Masaj tradițional pe linii, cu frământare și presiune blândă; precursor al shiatsului. În Japonia a fost tradițional o profesie a persoanelor nevăzătoare.¦Pacientul stă așezat sau întins, îmbrăcat // Frecări ușoare pentru încălzire // Frământare și presiuni pe mușchi // Stretching ușor // Presiune scurtă pe puncte sensibile¦Mâini; scaun sau pat¦20–45 min¦Umeri, ceafă, spate, picioare¦Relaxare, tensiune musculară¦Foarte limitate.¦Siguranță comparabilă cu masajul clasic.¦Terapeuți de masaj
+jsj¦Jin Shin Jyutsu și Jin Shin Do¦pres¦0¦1¦w¦p¦Japonia (Jiro Murai, 1886–1960; Mary Burmeister a răspândit-o în SUA din anii 1950–60) / SUA (Iona Teeguarden, Jin Shin Do, anii 1970)¦Jin Shin Jyutsu: atingere blândă, menținută, pe 26 „încuietori de siguranță a energiei” (Safety Energy Locks), uneori cu respirație. Jin Shin Do: presiune sacadată pe puncte de acupunctură combinată cu lucru emoțional (influență Reich).¦Pacientul stă îmbrăcat, întins // Practicantul ține mâinile pe două puncte simultan (JSJ) // Menține 1–5 min, urmărind „pulsul” local // Jin Shin Do: presiune fermă în pași succesivi, cu respirație și atenție la zonele tensionate // Încheiere cu relaxare¦Mâinile; salteaua sau patul¦45–60 min¦Mâini, umeri, spate, abdomen¦Relaxare, stres, tensiune; auto-aplicare pentru mâini și degete (JSJ)¦Foarte limitate; efecte probabil de relaxare.¦Siguranță bună; nu înlocuiește tratamentul medical.¦Practicieni certificați de școli private
+thai¦Nuad Thai (masaj tradițional thailandez)¦pres¦0¦2¦l¦n¦Thailanda, tradiția Nuad Boran; înscris de UNESCO în 2019 pe lista patrimoniului imaterial¦Presiune cu palmele, degetele mari, coatele, genunchii și picioarele pe zece linii energetice (Sen Sib), plus întinderi pasive asemănătoare yoga, pe corp îmbrăcat.¦Salut (wai) și interviu scurt // Presiune pe linii de la picioare spre șolduri, apoi spate, brațe, gât // Stretching și mobilizare pasivă (yoga-like) // Presiune cu palmele pe puncte // Încheiere cu relaxare¦Saltea tare, haine largi, uneori comprese cu plante¦60–120 min¦Picioare, spate, șolduri, umeri¦Durere lombară, rigiditate, stres¦Limitate–moderate pentru durere lombară; studii mici.¦Fără întinderi forțate; atenție în osteoporoză, hernie de disc acută, sarcină, tromboză.¦Terapeuți Nuad Thai formați (în Thailanda, licențiați)
+marma¦Marma (Ayurveda)¦pres¦0¦2¦w¦p¦India; Sushruta Samhita (sec. VI î.Hr.–sec. III d.Hr.), Kalaripayattu în Kerala¦107 puncte vitale (marma) unde se întâlnesc mușchi, vase, nervi, oase și articulații; se masează cu ulei de plante prin presiune circulară sau menținută pentru a echilibra cele trei doșa (vata, pitta, kapha).¦Evaluarea constituției (prakriti) // Ungere ușoară cu ulei medicinal // Presiune circulară sau menținută pe marma cu degetul mare // Mișcări lente, uneori cu respirație // Încheiere cu relaxare¦Uleiuri ayurvedice, mâini¦20–40 min¦Marma de pe picior (Kshipra), mână (Talahridaya), cap și gât¦Relaxare, durere musculară, stres (uz tradițional)¦Foarte limitate.¦Unele marma sunt zone vulnerabile (gât, abdomen, cap); presiune blândă; precauție în sarcină.¦Practicieni ayurvedici formați
+trigger¦Compresie ischemică a punctelor trigger¦pres¦0¦1¦m¦d¦Medicina occidentală (Janet Travell și David Simons, anii 1950–1990)¦Presiune sustinută și progresivă pe o bandă musculară încordată, cu durere locală sau iradiată, până când sensibilitatea scade. Principiul: opreste spasmul și îmbunătățește circulația locală.¦Localizarea punctului trigger prin palpare // Presiune lentă până la „durere suportabilă” (6–7 din 10) // Menținere 30–90 s sau până când durerea scade cu 50% // Respirație lentă, relaxare musculară // Întindere ușoară a mușchiului după aceea // Repetare 2–3 ori¦Degete, cot, minge de tenis, Theracane, bile de masaj¦30–90 s/punct, 1–2 ori/zi¦Trapez superior, infraspinos, gluteu mijlociu, gambă¦Tensiune cronică, dureri miofasciale, cefalee de tensiune¦Moderate pentru ameliorare pe termen scurt a durerii miofasciale.¦Evită presiunea pe artere, nervi, zone inflamate, tumori; oprește la furnicături sau amorțeală.¦Kinetoterapeuți, terapeuți de masaj; auto-aplicare
+acufacial¦Acupresură facială cosmetică și masaj cu jad¦pres¦0¦1¦w¦d¦Tradiții asiatice; Kobido (Japonia) și masaj cu role din jad/cuarț în trend modern¦Presiune ușoară și mișcări pe puncte ale feței (ST2, LI20, GB14, GV24) pentru relaxare musculară și circulație locală; se folosește frecvent cu rolă din jad sau cuarț.¦Fața curată, ulei sau ser // Presiune blândă 5–10 s pe fiecare punct // Mișcări ascendente și spre exterior, fără tragere de piele // Pe frunte, obraji și maxilar // Respirație lentă¦Degete, rolă de jad/cuarț, gua sha facial¦5–10 min/zi¦ST2, ST6, ST7, LI20, GB14, EX-HN5, BL2¦Relaxare facială, tensiune de maxilar, cefalee de tensiune¦Foarte limitate pentru efecte antirid/„lifting”; relaxarea este reală.¦Fără presiune pe acnee inflamată, rozacee, piele iritată; fără presiune pe globul ocular.¦Cosmeticieni instruiți sau auto-aplicare
+moxa-d¦Moxibustie directă (con pe piele)¦cald¦1¦3¦l¦n¦China, antică; Japonia (okyu, sec. VI–VII)¦Un con mic de pelin (Artemisia) se arde direct pe punct. În varianta cu cicatrice, arsura este deliberată; în varianta fără cicatrice, conul se scoate înainte de a se arde pielea.¦Alegerea punctului și marcarea // Aplicarea unui strat subțire de pastă sau ulei // Așezarea conului (de mărimea unui bob de orez) // Aprinderea cu bețișor de tămâie // Scoaterea conului când pacientul simte căldură intensă // Repetarea 3–7 conuri // Curățarea zonei, pansament¦Moxă fină (Artemisia argyi), bețișor de tămâie, recipient pentru cenușă¦1–3 ședințe pe săptămână¦ST36, CV4, CV6, GV4, BL23¦Slăbiciune, frig, dureri articulare reci, digestie lentă (tradițional)¦Limitate; calitate scăzută.¦Risc de arsuri, cicatrici, infecții; fum iritant. Nu se aplică în febră mare, pe piele lezată sau pe abdomen în sarcină.¦Practicieni formați
+moxa-i¦Moxibustie indirectă (ghimbir, usturoi, sare, cutie)¦cald¦1¦2¦l¦p¦China antică; descrisă în texte clasice¦Între moxă și piele se interpune un strat izolator: felie de ghimbir, usturoi sau sare în ombilic (CV8), sau o cutie/bol cu moxă așezat pe piele. Căldura este mai blândă și mai uniformă.¦Alegerea zonei // Pregătirea feliei (ghimbir 2–3 mm cu găuri mici) sau a stratului de sare // Plasarea conului de moxă pe izolator // Aprinderea // Înlocuirea conului când se consumă (3–7 repetări) // Verificarea pielii // Sau: așezarea cutiei de moxă pe abdomen/spate cu un prosop sub ea¦Ghimbir proaspăt, usturoi, sare, cutie de moxă, prosop¦15–30 min¦CV8 (ombilic), CV4, CV6, ST36, BL23, lombar¦Frig, balonare, dureri abdominale „reci”, dureri lombare, oboseală¦Limitate; unele studii pentru dureri articulare și digestie.¦Risc de arsuri minore; ventilează. Nu se aplică la febră mare, piele lezată, la persoane cu sensibilitate redusă a pielii.¦Practicieni formați sau auto-aplicare cu dispozitive sigure
+moxa-s¦Țigară de moxă (moxă ținută deasupra pielii)¦cald¦1¦2¦l¦p¦China și Japonia¦Un baton de pelin presat se aprinde și se ține la 2–3 cm de piele. Se folosesc trei tehnici: ciocănirea de vrabie (mișcări scurte, în sus și în jos), cercul (rotire deasupra zonei) și încălzirea fixă.¦Aprinderea batonului // Menținerea la 2–3 cm de punct // Una dintre tehnici // Verificarea căldurii cu degetul liber // Oprire când pielea devine ușor roșie (5–10 min/punct) // Stingerea batonului în recipient cu nisip sau tub sigilat¦Baton de moxă (fără fum sau clasic), bol cu nisip, recipient de stingere¦5–15 min/punct, zilnic sau la câteva zile¦BL67 (prezentație pelviană — dovezi mixte, sub îndrumare), ST36, CV4, CV6, BL23¦Frig, dureri articulare, slăbiciune; BL67 în sarcină sub îndrumare¦Limitate; pentru prezentația pelviană dovezi mixte.¦Ventilație bună; risc de arsuri; fum iritant la astmatici; fără somn cu baton aprins.¦Practicieni formați sau auto-aplicare atentă
+compresa¦Comprese calde cu plante (Luk Pra Kob)¦cald¦0¦1¦l¦p¦Thailanda, medicina tradițională; similar în Ayurveda și China¦Un săculeț cu ierburi (plai, turmeric, lemongrass, camfor) se încălzește la abur și se aplică pe corp, combinând căldura cu uleiurile volatile ale plantelor.¦Încălzirea compresei la abur 5–10 min // Testarea temperaturii pe încheietură // Aplicarea pe zonă cu presiune blândă // Mișcări de ștampilare și rulare // Reîncălzirea la nevoie¦Săculeți cu plante, oală cu abur¦15–30 min¦Spate, umăr, gât, picioare¦Rigiditate, dureri musculare, relaxare¦Foarte limitate.¦Atenție la arsuri; nu pe piele lezată; alergii la plante.¦Terapeuți Nuad Thai sau acasă
+vent-u¦Ventuze uscate (staționare, glisante, flash)¦vid¦0¦2¦l¦p¦China, Egipt antic, Orient Mijlociu, Europa (sec. XIX)¦Ventuze din sticlă, silicon sau plastic creează vid pe piele, ridicând țesutul și mărind fluxul sanguin local. Tipuri: staționar (5–15 min), glisant (ventuza se mișcă pe uleiul aplicat), flash (aplicare și scoatere repetate).¦Piele curată, fără rănire // Ungere cu ulei (pentru glisat) // Aplicarea ventuzei (pompă, flacără sau silicon) // Staționar 5–15 min sau glisare lentă // Eliberarea vidului apăsând pielea lângă ventuză // Curățarea zonei, hidratare¦Ventuze din sticlă/silicon, pompă, ulei¦5–15 min, 1/săptămână¦Spate (lângă coloană), umăr, coapsă, gambă¦Tensiune musculară, dureri cervicale/lombare¦Limitate; calitatea studiilor este scăzută; unele pentru dureri cervicale și lombare.¦Vânătăi circulare 3–10 zile; arsuri la ventuzele cu flacără; nu pe piele lezată, la coagulopatii, anticoagulante, sarcină (abdomen/lombar).¦Terapeuți formați; auto-aplicare cu ventuze din silicon
+hijama¦Ventuze umede (Hijama / Hijamah)¦vid¦2¦3¦w¦n¦Orientul Mijlociu (tradiția islamică și medicina persană), Egipt, China¦Se aplică ventuza uscat, apoi se fac mici incizii superficiale și se reaplică vidul pentru a extrage mici cantități de sânge, în scopul „purificării”.¦Dezinfecție, ventuze aplicate 3–5 min // Scoaterea ventuzelor // Incizii superficiale cu lanțetă sterilă // Reaplicarea ventuzelor 3–5 min // Scoatere, curățare, pansament // Eliminarea materialelor în containere speciale¦Ventuze sterile, lanțete de unică folosință, mănuși, dezinfectante¦1–3 ședințe/an uzual¦Spate, între omoplați, zona C7¦Durere, cefalee, hipertensiune (uz tradițional)¦Slabe; unele studii mici pentru durere, calitate scăzută.¦Risc de infecții și transmiterea patogenilor din sânge dacă materialele nu sunt sterile; anemie; fără coagulopatii/anticoagulante.¦Practicieni autorizați cu igienă strictă
+gua¦Gua Sha (răzuire terapeutică)¦vid¦0¦1¦l¦d¦China; echivalente: Cao Gio (Vietnam), Kerokan (Indonezia), coining (Occident)¦Pielea unsă cu ulei se răzuiește cu un instrument neted (jad, corn, oțel, ceramică, monedă) până apar peteșii roșii (sha). Tradițional se consideră că eliberează stagnarea și „căldura” din țesut.¦Ungere cu ulei // Răzuire unidirecțională, cu unghi ~45°, 10–30 mișcări pe zonă // Presiune moderată, 3–5 min/zonă // Apariția peteșiilor roșii (sha), care dispar în 2–7 zile // Curățarea uleiului // Evitarea frigului și a dușului fierbinte imediat după¦Instrument neted (jad, oțel, corn), ulei de masaj¦Ședință 10–20 min, la 5–7 zile¦Gât, umeri, spate (de-a lungul coloanei), picioare¦Tensiune musculară, dureri cervicale, răceli (tradițional)¦Limitate; unele studii pentru durere cervicală.¦Peteșii/echimoze temporare; nu pe piele lezată, cu coagulopatii, anticoagulante, infecții, vene varicoase.¦Terapeuți MTC; auto-aplicare ușoară
+plum¦Ciocănel Mei Hua / Qi Xing („floare de prun” / „șapte stele”)¦vid¦1¦2¦w¦p¦China, tradițional¦Un ciocănel cu 5–7 ace scurte se aplică percutant pe piele, ritmic, cu intensitate ușoară, medie sau puternică, pentru a stimula zona. Se spune că dispersează stagnarea și stimulează circulația.¦Dezinfecția pielii și a instrumentului // Ciocănire ușoară cu încheietura mâinii, 70–100 lovituri/min // Intensitate adaptată zonei // Parcurgerea zonei de-a lungul meridianului // Curățarea pielii, eliminarea instrumentului sau sterilizare¦Ciocănel cu 5–7 ace, dezinfectant¦5–15 min, 1–3/săptămână¦Scalp, ceafă, spate (linia BL), zone dermatologice¦Insomnie, cefalee, alopecie areata, dermatoze (uz tradițional)¦Slabe; studii mici.¦Poate provoca sângerare ușoară; risc de infecție dacă instrumentul nu este steril; fără piele lezată.¦Practicieni formați
+laser¦Laserpunctură (acupunctură cu laser de nivel scăzut)¦tehno¦0¦1¦l¦n¦Sec. XX (anii 1970); popular în Europa de Est și Asia¦Un laser de nivel scăzut (650–1064 nm, 5–100 mW) iradiază punctul fără a străpunge pielea. Propune efecte fotochimice și neuromodulatoare. Atractiv pentru copii și pentru cei care se tem de ace.¦Alegerea punctului // Echipament cu protecție pentru ochi // Plasarea sondei perpendicular pe piele // Iradiere 10–60 s/punct // Repetare pe 4–8 puncte // Curățarea sondei între pacienți¦Laser terapeutic cu sondă, ochelari de protecție¦8–15 ședințe, 2–3/săptămână¦Puncte de acupunctură, articulații, zone dureroase¦Durere musculo-scheletică, tendinopatii, copii (fără ace), dureri ale ATM¦Limitate–moderate pentru unele dureri musculo-scheletice; rezultate variabile.¦Protecția ochilor obligatorie; nu pe tumori, pe abdomen în sarcină, pe glanda tiroidă; precauție la fotosensibilizare.¦Clinicieni cu aparat autorizat
+teas¦TENS / TEAS (stimulare electrică transcutanată a punctelor)¦tehno¦0¦1¦m¦p¦Anii 1960–70 (TENS), adaptat la acupunctură în China¦Electrozi de suprafață trimit curent slab pe piele, în zonele durerii sau pe puncte de acupunctură (TEAS). Mecanism: poartă de control a durerii și eliberare de endorfine.¦Piele curată, fără răni // Electrozi lipiți pe punct sau pe zonă // Alegerea frecvenței (2–4 Hz sau 80–100 Hz) // Creșterea intensității până la furnicătură confortabilă // 20–30 min // Oprirea aparatului înainte de scoaterea electrozilor¦Aparat TENS, electrozi autoadezivi¦20–30 min, 1–3 ori/zi¦Zonă dureroasă, puncte locale, PC6, ST36, LI4¦Durere cronică, dureri postoperatorii, greață¦Moderate pentru unele dureri și greață; rezultate dependente de parametri.¦Contraindicat cu stimulator cardiac, în sarcină (abdomen), epilepsie; nu pe gât anterior, ochi, piele lezată.¦Fizioterapeuți, medici; aparat de uz personal
+band¦Brățări electrice și mecanice pentru greață (P6)¦tehno¦0¦1¦m¦d¦Anii 1980–90¦Stimulează punctul PC6 la încheietură cu un buton care apasă mecanic (Sea-Band) sau cu impulsuri electrice (ReliefBand). Folosit pentru rău de mișcare și greață.¦Găsirea PC6 (2 cun deasupra pliului încheieturii) // Poziționarea butonului pe punct // Verificarea presiunii fără a întrerupe circulația // Purtare cu 15–30 min înainte de călătorie sau tratament // Reglarea intensității (modelele electrice)¦Brățară elastică cu buton sau dispozitiv electric¦Purtare continuă în episod¦PC6 (ambele încheieturi)¦Rău de mișcare, greață postoperatorie, greață de sarcină (cu medic)¦Moderate pentru greață postoperatorie și chimioterapie; mixte pentru sarcină.¦Foarte sigură; nu strânge prea tare; dispozitivele electrice nu se folosesc cu stimulator cardiac.¦Pacientul singur
+magnet¦Magnetopunctură¦tehno¦0¦1¦x¦d¦Sec. XX; popular în Rusia și Asia¦Magneți mici se aplică pe puncte cu plasture. Se atribuie un efect asupra circulației și durerii.¦Alegerea punctelor // Curățarea pielii // Aplicarea magnetului cu plasture // Păstrare 1–3 zile // Îndepărtare la iritație¦Magneți mici cu plasture¦1–3 zile per aplicare¦Puncte pe ureche, mână, picior¦Durere, relaxare (uz comercial)¦Foarte slabe; studii controlate nu arată un efect specific.¦Nu pe stimulator cardiac; poate irita pielea.¦Nu este necesar practicant; de obicei auto-aplicare
+led¦Lumină colorată / cromopunctură (LED)¦tehno¦0¦1¦w¦n¦Sec. XX; influență din cromoterapie¦Lumină LED sau laser colorată pe puncte, cu ipoteza că lungimi de undă diferite au efecte diferite.¦Alegerea punctelor // Sonda LED la 0–2 cm de piele // Iradiere 30–120 s // Schimbarea culorii după indicație // Igiena sondei¦Dispozitiv LED cu sondă¦Câteva minute/ședință¦Puncte de acupunctură¦Relaxare, durere ușoară (uz comercial)¦Foarte slabe.¦Protecția ochilor; fără fotosensibilizare.¦Practicieni cu dispozitiv
+shock¦Ultrasunete și unde de șoc pe puncte (ESWT)¦tehno¦0¦2¦l¦n¦Medicina modernă; aplicată pe puncte de acupunctură în ultimele două decenii¦Unde acustice sau mecanice focalizate pe puncte sau pe zone de tendon pentru stimulare mecanică profundă. Ultrasunetele pot fi aplicate pe puncte ca alternativă fără ace.¦Evaluare clinică // Aplicare de gel // Parcurgerea punctului cu aplicatorul // Intensitate adaptată // 5–10 min // Curățare¦Aparat ESWT/ultrasunete terapeutic¦1/săptămână, 3–5 ședințe¦Tendoane, puncte trigger, puncte locale¦Tendinopatii, talalgie, dureri musculare¦Moderate pentru unele tendinopatii; pe puncte de acupunctură dovezi emergente.¦Contraindicat în sarcină, la stimulator cardiac, tumori, tromboză locală.¦Fizioterapeuți, medici
+diap¦Diapazoane și vibrație (acutonics)¦tehno¦0¦1¦w¦p¦Sec. XX; Acutonics (Donna Carey, anii 1990)¦Un diapazon vibrant (de ex. 128 Hz) se aplică pe punctele de acupunctură sau se ține lângă ele pentru stimulare acustică și vibratorie, fără ace.¦Activarea diapazonului lovit // Plasarea piciorului diapazonului pe punct // Menținere 10–30 s // Mutarea pe punctul următor // Respirație calmă¦Diapazoane medicale (128 Hz, 64 Hz etc.)¦10–20 min¦Puncte pe încheieturi, glezne, spate¦Relaxare, durere ușoară, copii¦Foarte limitate.¦Nu pe oase fracturate, implanturi; evită vibrația pe zone inflamate.¦Practicieni formați; auto-aplicare ușoară
+tdp¦Lampă cu infraroșu / TDP¦tehno¦0¦2¦l¦p¦China, lămpi de căldură cu spectru de infraroșu (inclusiv tip TDP)¦O lampă radiază căldură infraroșie pe zonă sau pe puncte, pentru încălzire profundă blândă, ca alternativă la moxă (fără fum).¦Piele curată // Lampa la 30–40 cm // Verificarea căldurii cu mâna // 15–30 min // Oprire la roșeață excesivă¦Lampă infraroșu/TDP¦15–30 min, zilnic sau la 2 zile¦Lombar, articulații, abdomen¦Dureri articulare, rigiditate, frig local¦Limitate–moderate pentru durere musculo-scheletică.¦Risc de arsuri; protecția ochilor; nu pe piele insensibilă, febră, în sarcină pe abdomen.¦Fizioterapeuți; uz personal
+aur¦Auriculoterapie (ureche)¦micro¦1¦2¦l¦p¦China antică; sistemul modern: Paul Nogier (Lyon, 1950–57); hartă chineză standardizată după 1980¦Pavilionul urechii este considerat un microsistem care reflectă corpul (silueta unui făt inversat, cu capul la lob). Se stimulează puncte cu ace mici, semințe (Vaccaria), magneți, laser sau electro.¦Inspecția urechii și identificarea zonelor sensibile // Dezinfecția urechii // Alegerea a 3–6 puncte (Shenmen, simpatic, organ, punct Zero etc.) // Aplicarea semințelor cu plasture sau a acelor mici // Pacientul apasă 20–30 s de 3–4 ori pe zi // Scoatere după 3–7 zile sau la iritație¦Semințe Vaccaria, ace mici, pensetă, plasturi, sondă de detecție¦Cure de 5–10 ședințe, aplicare 3–7 zile¦Shenmen, Simpatic, Punctul Zero, Rinichi, Ficat, Plămân, Stomac¦Durere acută, anxietate, insomnie, dependențe (adjuvant)¦Limitate–moderate pentru durere acută; calitatea variază și hărțile diferă între școli.¦Risc de infecții ale cartilajului (pericondrită) la ace; piele iritată; nu în infecții ale urechii.¦Medici și acupuncturiști formați; semințe cu auto-apăsare
+bfa¦Battlefield Acupuncture (BFA)¦micro¦2¦2¦l¦n¦SUA, Dr. Richard Niemtzow (USAF), 2001¦Protocol rapid de 5 puncte auriculare (cerebral cortex, thalamus, omega 2, point zero, Shenmen), cu ace semipermanente, pentru durere acută.¦Examinarea urechii, curățare // Aplicare ace semipermanente (cu aplicator) pe ambele urechi // Verificarea poziționării // Evaluarea durerii la 15–30 min // Ace păstrate 3–4 zile // Scoaterea acelor¦Ace auriculare semipermanente (ASP), aplicator¦O aplicare, ace 3–4 zile¦5 puncte pe ureche¦Durere acută, dureri postoperatorii, durere de urgență¦Limitate; unele studii mici arată reducerea durerii pe termen scurt.¦Risc de infecție; nu în infecții ale pavilionului; se instruiește pacientul în privința îngrijirii.¦Medici și personal instruit (adesea în spitale militare)
+nada¦Protocolul NADA (dependențe și stres)¦micro¦2¦2¦w¦n¦SUA, Lincoln Hospital din Bronx (Dr. Michael Smith), anii 1970¦Cinci puncte auriculare standard (Shenmen, simpatic, rinichi, ficat, plămân), ace cu tratament în grup, folosite ca adjuvant în dependențe și stres.¦Grup de pacienți așezați confortabil // Dezinfecție // Ace la cele 5 puncte pe ambele urechi // Relaxare 30–45 min în liniște // Scoaterea acelor // Reflexii scurte¦Ace fine, scaune confortabile, cameră liniștită¦30–45 min, 3–5 ori/săptămână în programe de dezintoxicare¦5 puncte auriculare¦Dependențe (adjuvant), stres, tulburări de somn¦Slabe–limitate; rezultate mixte; efect limitat în fața controlului.¦Ace ca la acupunctura clasică; infecții rare; nu înlocuiește tratamentul.¦Personal instruit NADA
+scalp¦Acupunctură a scalpului (Jiao și YNSA)¦micro¦2¦2¦l¦n¦China (Jiao Shunfa, anii 1970) și Japonia (Toshikatsu Yamamoto, YNSA, 1973)¦Se folosesc zone ale scalpului corespunzătoare funcțiilor corticale (motor, senzitiv, vorbire etc.). YNSA descrie puncte pe scalp (Y), gât și față pentru diverse organe.¦Evaluarea neurologică sau a durerii // Alegerea liniei/zonei scalpului // Inserție oblică a acului în planul subgaleal // Rotire rapidă 1–2 min // Retenție 20–30 min cu mobilizarea activă a membrului afectat // Scoatere¦Ace lungi fine, tampoane¦20–30 min, 2–3/săptămână¦Zone motorii, sensibile, de vorbire pe scalp¦Recuperare după AVC (adjuvant), durere, vertij¦Limitate; unele rezultate pozitive în reabilitare, dar calitatea scăzută.¦Aceleași riscuri ca la ace; hematom scalp frecvent; fără scalp infectat.¦Medici și acupuncturiști formați
+hand¦Acupunctura mâinii (Koryo Sooji Chim)¦micro¦2¦2¦w¦p¦Coreea, Yoo Tae-woo (1971)¦Mâna este considerată o hartă a corpului (microsistem), cu 14 meridiane „mici” și puncte corespunzătoare organelor; se folosesc ace fine, magneți sau presiune.¦Inspectarea mâinii și identificarea zonei sensibile // Dezinfecție // Presiune sau ac fin în punct // Retenție 10–20 min // Mobilizarea zonei durerii în timpul tratamentului¦Ace fine, sondă de presiune, magneți mici¦10–20 min, 1–2/săptămână¦Puncte pe palmă și dosul mâinii¦Durere musculo-scheletică, cefalee, tulburări funcționale¦Foarte limitate.¦Aceleași riscuri ca la ace; presiunea poate fi făcută singur.¦Practicieni formați
+abd¦Acupunctură abdominală (Bo Zhiyun)¦micro¦2¦2¦w¦n¦China, Bo Zhiyun (anii 1970)¦Se consideră că ombilicul (Shen Que) este centrul unui sistem de puncte pe abdomen care corespunde întregului corp.¦Pacientul întins, relaxat // Dezinfecție // Inserție superficială, lentă, la nivelul pielii și țesutului subcutanat // Fără stimulare puternică // Retenție 30 min¦Ace fine de 0,20 mm, 1–1,5 inch¦30 min, 1–2/săptămână¦CV4–CV12 și puncte din jurul ombilicului¦Durere cronică, tulburări digestive, ginecologice (uz tradițional)¦Foarte limitate.¦Precauție în sarcină și la persoane cu ascită; fără înțepare în ombilic.¦Practicieni formați
+refl-t¦Reflexologie plantară¦micro¦0¦1¦w¦p¦Zone-terapia lui William Fitzgerald (SUA, 1913); Eunice Ingham (anii 1930) a dezvoltat hărțile talpei¦Se presupune că tălpile oglindesc corpul („zone reflexe”) și că presiunea pe zone anume influențează organele corespunzătoare. Ca efect real, apare relaxarea și confortul.¦Poziție comodă, picioare la înălțimea mâinilor // Încălzirea tălpii cu frecare // Presiune cu degetele prin „mersul degetului mare” (thumb walking) // Rotire pe un punct sensibil // Presiune menținută pe zone // Încheiere cu masaj de relaxare¦Mâini, ulei sau pudră, uneori bețe de lemn¦30–60 min, 1/săptămână¦Arcul tălpii, călcâi, baza degetelor, marginea internă¦Relaxare, confort, dureri ușoare de picior¦Slabe pentru efecte specifice asupra organelor; relaxarea este reală.¦Atenție la tromboză, ulcerații diabetice, răni, sarcină (puncte de călcâi/gleznă, conform școlii).¦Reflexologi autorizați; auto-masaj
+refl-p¦Reflexologie palmară¦micro¦0¦1¦w¦d¦Aceeași tradiție ca la reflexologia plantară; folosită în auto-îngrijire¦Palma și degetele sunt împărțite în zone reflexe: degete (cap), mijlocul palmei (digestie), baza palmei (pelvis).¦Mâini curate, relaxate // Presiune 3–5 s pe zonă // Mers cu degetul mare pe linii // Masaj ușor al degetelor // Încheiere cu stretching¦Mâini, bile mici de masaj¦5–10 min, de câteva ori pe zi¦Palma, degetele, marginea mâinii¦Relaxare, tensiune la birou, dureri de mână¦Slabe.¦Foarte sigură; evită zonele inflamate.¦Auto-aplicare
+dien¦Dien Chan (reflexologie facială vietnameză)¦micro¦0¦1¦x¦d¦Vietnam, Bui Quoc Chau (1980)¦Se consideră că fața conține sute de puncte reflexe care corespund organelor și segmentelor corpului; se stimulează cu bețe, bile și role speciale.¦Piele curată // Stimularea punctelor cu stick-ul cu bile // Presiune 3–5 s sau percuție // Parcurgerea zonei // Încheiere cu aplicarea unui obiect cald¦Stick cu bile, rolă, vârf rotunjit¦10–20 min¦Frunte, nas, obraji, maxilar¦Relaxare facială, cefalee de tensiune (uz declarat)¦Fără dovezi pentru efecte asupra organelor.¦Fără presiune pe piele iritată; nu înlocuiește tratamentul.¦Practicieni formați în metoda
+mtc¦Acupunctura MTC standardizată (modernă)¦scoli¦2¦2¦m¦n¦China, după 1950–1960; sistemul de nomenclatură OMS, 1990–2008¦Versiune sistematizată a acupuncturii în învățământul universitar din China. Se folosesc diagnostic pe sindroame (Bian Zheng), tipuri de puncte, tratament combinat cu fitoterapie, moxă și masaj.¦Diagnostic după sindrom // Alegerea principiului terapeutic // Formula de puncte // Tehnică de ac // Combinare cu moxă sau ventuze // Evaluare și ajustare¦Ace, moxă, ventuze, plante¦Cure de 6–12 ședințe¦Puncte din sistemul standard OMS¦Durere, afecțiuni funcționale, reabilitare¦Moderate pentru unele durere; restul variabil.¦Aceleași ca la acupunctură.¦Medici de MTC și acupuncturiști autorizați
+5el¦Școala Cinci Elemente (Worsley)¦scoli¦2¦2¦w¦n¦Marea Britanie, J. R. Worsley (1923–2003), anii 1960–70¦Se caută „Factorul Cauzal” (CF), un element constituțional (Lemn, Foc, Pământ, Metal, Apă) pe baza culorii feței, sunetului vocii, mirosului și emoției dominante, și se tratează emoțional și fizic prin puncte specifice.¦Observarea culorii, sunetului, mirosului, emoției (CSOE) // Stabilirea CF // Evacuarea energiei agresive (Aggressive Energy drain) // Tonifierea CF prin punctele Yuan și altele // Moxă sau ace // Reevaluare¦Ace, moxă¦Cure de 6–12 ședințe, 1/săptămână¦Puncte pe spate (Shu dorsale), Yuan, Luo¦Tulburări emoționale și funcționale (tradițional)¦Foarte limitate.¦Ca la acupunctură; relații terapeutice intense; practicantul trebuie să fie bine instruit.¦Practicieni formați
+jap¦Acupunctura japoneză (Meridian Therapy, Toyohari, Shonishin)¦scoli¦2¦1¦l¦n¦Japonia; tub-ghid atribuit lui Sugiyama Waichi (sec. XVII); Toyohari (asociație fondată în 1959 de practicieni nevăzători)¦Ace foarte fine, inserție superficială sau fără inserție, stimulare ușoară și timpi scurți. Accent pe palparea pulsului și a abdomenului (hara). Shonishin: tehnici ale copiilor, fără inserție, cu frecare, percuție și atingere cu instrumente.¦Palparea pulsului radial și a abdomenului // Alegerea punctelor Yuan, Luo, puncte de rădăcină // Inserție de 1–3 mm sau doar contact // Stimulare minimă // Retenție 5–10 min sau deloc // Scoatere¦Ace de 0,12–0,16 mm, tub-ghid, instrumente Shonishin¦10–30 min, 1–2/săptămână¦Meridiane, hara, puncte Shu, ureche¦Durere, tulburări funcționale, copii (Shonishin)¦Limitate.¦Risc mai mic de efecte adverse la stimulare ușoară; aceleași reguli de igienă.¦Practicieni autorizați; în Japonia, o profesie recunoscută
+sa¦Acupunctura coreeană Saam și Sasang¦scoli¦2¦2¦w¦n¦Coreea; Saam atribuit unui călugăr cu același nume (Joseon, sec. XVI–XVII); Sasang: Lee Je-ma (1894)¦Saam folosește doar puncte sub coate și genunchi, alese după relațiile celor cinci elemente (tonifierea mamei, dispersarea copilului). Sasang împarte oamenii în patru constituții cu tratamente diferite.¦Stabilirea dezechilibrului prin pulsul și semne // Alegerea schemei Saam (ex. tonifiere 5 puncte Shu) // Inserție la 4–8 puncte distale // Retenție 15–30 min // Sasang: recomandări de dietă și stil de viață¦Ace fine¦20–30 min, 1–2/săptămână¦Puncte sub cot și sub genunchi¦Durere, tulburări funcționale (tradițional)¦Foarte limitate.¦Aceleași reguli; clasificarea constituțională nu are validare științifică.¦Practicieni formați în medicina coreeană
+fr¦Acupunctura franceză (Soulié de Morant, Nogier)¦scoli¦2¦2¦l¦n¦Franța, George Soulié de Morant (1930–1940); Paul Nogier (1950–1957)¦Soulié de Morant a introdus termenul „acupunctură” în Occident și a popularizat meridianele; Nogier a descris reflexele auriculare și detecția pulsului vascular autonom (RAC).¦Anamneză // Puncte clasice // Auriculoterapie după Nogier // Puncte de reflex locale // Evaluare¦Ace, sondă auriculară¦Cure de 6–12 ședințe¦Meridiane, puncte auriculare¦Durere, tulburări funcționale¦Limitate; unele componente (auriculo) cu dovezi mixte.¦Ca la acupunctură.¦Medici formați în acupunctură
+tib¦Medicina tibetană: Ku Nye și Me-tsa¦scoli¦1¦2¦w¦p¦Tibet; tradiția medicală Sowa Rigpa¦Combină masajul cu uleiuri medicinale (Ku Nye), moxa (Me-tsa), ventuze și presiuni pe „puncte vitale” pentru echilibrarea celor trei „umori” (rLung, mKhris-pa, Bad-kan).¦Evaluarea umorilor // Ungere cu ulei cald // Masaj Ku Nye // Moxă pe puncte (Me-tsa) // Ventuze sau comprese // Recomandări de dietă și stil de viață¦Uleiuri, moxă, ventuze¦45–90 min¦Cap, gât, spate, picioare, puncte vitale¦Tensiune, tulburări de somn, dureri (uz tradițional)¦Foarte limitate.¦Moxă/ventuze: aceleași riscuri; masaj: precauții uzuale.¦Medici tibetani; practicieni formați
+bio¦Acupunctura medicală (biomedicală, occidentală)¦scoli¦2¦2¦m¦n¦Europa și America de Nord; medici instruiți (DMA, ÖÄK, BMAS etc.)¦Medicii folosesc ace pe baza anatomiei, a neurofiziologiei și a punctelor trigger, fără explicații despre Qi, și o integrează în tratamentul medical convențional.¦Diagnostic medical standard // Selectarea punctelor după zonă, dermatom și mușchi // Inserție cu ac fin // Eventual electrostimulare // Evaluare obiectivă a durerii (scale) // Documentare¦Ace sterile, aparat de electrostimulare¦6–10 ședințe¦Puncte locale, segmentare, trigger¦Durere cronică, cefalee, greață, osteoartrită¦Moderate pentru indicațiile clasice (durere cronică, migrenă, greață).¦Ca la acupunctură; diagnostic complet înainte.¦Medici cu diplomă specifică de acupunctură
+doin¦Do-In / Dao Yin (auto-masaj energetic)¦self¦0¦1¦l¦d¦China (Dao Yin, sec. IV î.Hr.); Japonia (Do-In), popularizat de Michio Kushi și Georges Ohsawa¦Secvență de auto-masaj, percuție ușoară și întinderi de-a lungul meridianelor, combinată cu respirație, pentru a „deschide” fluxul de Qi dimineața sau seara.¦Frecarea palmelor // Masaj al feței și al scalpului // Percuție ușoară pe meridianele brațelor și picioarelor // Presiune pe puncte-cheie (ST36, GB20, LI4) // Respirație lentă // Întinderi ușoare // Încheiere cu relaxare¦Doar mâini; saltea¦5–15 min/zi¦Față, scalp, brațe, picioare, abdomen¦Rigiditate matinală, stres, tonus¦Limitate; efect probabil prin mișcare și respirație.¦Sigur; fără presiune pe răni; adaptează la durere.¦Auto-practică; instruire opțională
+acuyoga¦Acu-Yoga¦self¦0¦1¦w¦d¦SUA, Michael Reed Gach (1981)¦Combină posturi yoga simple cu menținerea presiunii pe puncte de acupresură, pentru a adânci relaxarea și mobilitatea.¦Alegerea unei posturi blânde (ex. îndoire în față) // Poziționarea degetelor pe punctul asociat // Respirație lentă 1–3 min // Menținerea presiunii ușoare // Ieșire lentă din postură¦Saltea, bolsters¦10–20 min¦Puncte pe cap, ceafă, picioare, spate¦Stres, tensiune, somn¦Foarte limitate.¦Adaptează la limitele corpului; fără forțare.¦Auto-practică, cursuri
+qigong¦Qigong medical și Qi extern (Wai Qi)¦self¦0¦1¦l¦p¦China, tradiția Dao Yin; modernizat după 1950¦Qigong: exerciții de mișcare lentă, respirație și concentrare. Qi extern: un practicant își îndreaptă mâinile spre pacient, fără sau cu atingere ușoară, pentru a „transmite” Qi.¦Postură stabilă // Respirație abdominală lentă // Mișcări lente coordonate // Concentrare asupra Dantian // (Wai Qi) mâini deasupra punctelor sau zonei, 5–20 min // Încheiere cu închiderea energiei¦Spațiu liber, haine largi¦10–30 min/zi¦Dantian, Laogong (PC8), Baihui (GV20)¦Stres, echilibru, rigiditate, reabilitare¦Limitate–moderate pentru qigong (practicat); Wai Qi: foarte limitate.¦Sigur ca mișcare ușoară; Wai Qi nu înlocuiește tratamentul.¦Instructori de qigong; practicanți
+eft¦Tapping (EFT) pe puncte¦self¦0¦1¦l¦d¦SUA, Gary Craig (anii 1990), derivat din Roger Callahan (TFT, 1980)¦Se percută ușor cu vârful degetelor pe nouă puncte ale feței și corpului în timp ce se rostesc afirmații despre un disconfort. Se discută rolul de expunere graduală și relaxare.¦Evaluarea disconfortului (0–10) // Formularea unei afirmații // Percuție 5–7 bătăi pe: marginea mâinii, sprânceană, tâmplă, sub ochi, sub nas, bărbie, claviculă, sub braț, creștet // Respirație // Reevaluarea disconfortului // Repetare până scade¦Doar degete¦5–15 min¦Karate chop, EB (BL2), SE (GB1), UE (ST1), UN (GV26), Ch (CV24), CB (KI27), UA (SP21), TH (GV20)¦Stres, anxietate ușoară, fobii (adjuvant)¦Limitate–slabe; rolul specific al punctelor nu este demonstrat.¦Sigur; nu înlocuiește psihoterapia sau tratamentul.¦Auto-practică; terapeuți formați
+mats¦Covorașe, mingi și role de acupresură¦self¦0¦1¦l¦d¦Inspirație modernă (covorașe cu spini, tip Shakti)¦Obiecte cu proeminențe sau mingi care aplică presiune pe zone mari de piele sau pe puncte, pentru auto-stimulare.¦Hainele subțiri sau piele curată // Așezare treptată pe covoraș cu spini // Respirație lentă 10–20 min // Mingea de tenis pe perete pentru spate // Rola pe picior // Încheiere cu stretching¦Covoraș cu spini, minge, rolă¦10–30 min, 1/zi¦Spate, gât, tălpi¦Relaxare, dureri musculare ușoare¦Limitate; unele studii pentru durere de spate și relaxare.¦Disconfort inițial; fără răni, vene varicoase, osteoporoză severă, sarcină.¦Auto-aplicare
+eav¦Electroacupunctura după Voll (EAV) și bioresonanța¦ctrl¦0¦3¦x¦n¦Germania, Reinhold Voll (anii 1950)¦Măsurarea rezistenței electrice a pielii pe puncte, interpretată ca „stare a organelor”, și tratament prin „frecvențe”. Studii controlate nu confirmă validitatea.¦Aplicarea unui electrod pe puncte // Citire a valorilor // Interpretare după harta Voll // „Testare” de medicamente sau alimente // Terapie cu dispozitiv¦Aparat EAV/bioresonanță, electrozi¦Variabil¦Puncte pe mână/picior¦Diagnostic alternativ (neștiințific), alergii, intoleranțe¦Fără dovezi; metoda nu este validă pentru diagnostic.¦Poate duce la diagnostice false și la amânarea tratamentului real; costuri mari; evită dacă promite „diagnostic complet”.¦Terapeuți alternativi (fără validare medicală)
+ryo¦Ryodoraku (măsurarea conductanței punctelor)¦ctrl¦0¦2¦w¦n¦Japonia, Yoshio Nakatani (1950)¦Măsurarea conductanței pielii pe puncte (puncte Ryodoraku) pentru a evalua echilibrul dintre meridiane și a ghida tratamentul. Rezultatele de reproductibilitate sunt limitate.¦Pregătirea electrodului și a pacientului // Măsurarea la 24 de puncte pe mâini și picioare // Grafic de echilibru // Alegerea tratamentului după dezechilibru // Reevaluare¦Aparat Ryodoraku¦10–20 min¦Puncte pe încheieturi și glezne¦Evaluare complementară în acupunctura japoneză¦Foarte limitate; reproductibilitatea măsurătorilor e discutabilă.¦Nu înlocuiește diagnosticul medical.¦Practicieni formați
+kin¦Kinesiologie aplicată (test muscular)¦ctrl¦0¦2¦x¦n¦SUA, George Goodheart (1964)¦Se testează forța unui mușchi (de obicei brațul) în timp ce pacientul ține o substanță sau gândește un cuvânt, interpretând „slăbirea” ca indicator al dezechilibrului. Studiile controlate nu arată fiabilitate peste șansă.¦Pacientul ține brațul în poziție // Practicantul apasă // Se introduce o substanță sau o afirmație // Se observă slăbirea // „Corectare” prin presiune pe puncte¦Mâinile practicantului¦15–30 min¦Puncte de acupresură, zone reflexe¦„Alergii”, „intoleranțe”, tulburări funcționale (neștiințific)¦Fără dovezi; fiabilitate nulă în studii dublu-orb.¦Poate duce la diete restrictive și la amânarea îngrijirii medicale.¦Practicieni alternativi`;
+const VAR=VX.split('\n').filter(l=>l.trim()&&!l.startsWith('#')).map(l=>{const a=l.split('¦');return{id:a[0],n:a[1],cat:a[2],inv:+a[3],risc:+a[4],ev:a[5],auto:a[6],or:a[7],pr:a[8],pas:(a[9]||'').split(' // '),ins:a[10],dur:a[11],zon:a[12],ind:a[13],dov:a[14],sig:a[15],who:a[16]}});
+
+/* ================= DATE: glosar ================= */
+const GLO=[
+ ['Qi (Chi)','Energia vitală în MTC; circulă prin meridiane și animă funcțiile corpului. Concept tradițional, nu o entitate măsurată de biologia modernă.'],
+ ['Xue','Sânge — în MTC nu doar fluidul fizic, ci și funcția de hrănire și ancorare a Shen-ului.'],
+ ['Jing','Esență: rezerva moștenită și dobândită care susține creșterea, reproducerea și îmbătrânirea. Se asociază Rinichiului.'],
+ ['Shen','Spirit, conștiință, claritate mentală; „locuiește" în Inimă.'],
+ ['Yin / Yang','Doi poli complementari: Yin — rece, interior, rezervă, substanță; Yang — cald, exterior, activitate, funcție.'],
+ ['Zang-Fu','Organele pline (Zang: Inimă, Plămân, Splină, Ficat, Rinichi + Pericard) și organele goale (Fu: intestin subțire/gros, stomac, vezică biliară, vezică urinară, Triplu încălzitor). Funcții, nu doar organe anatomice.'],
+ ['Jing-Luo','Rețeaua meridianelor (Jing) și a colateralelor (Luo) prin care circulă Qi.'],
+ ['Cun','„Țol" proporțional: unitate de măsură a corpului individual; 1 cun ≈ lățimea policelui la articulația interfalangiană.'],
+ ['De Qi','Senzația la stimulare: greutate, amorțeală, căldură, mică „distensie" în jurul punctului; considerată de tradiție ca semn al eficacității.'],
+ ['Ashi','„Ah, aici!" — puncte dureroase locale; se tratează pe baza sensibilității, în afara punctelor clasice.'],
+ ['Tsubo','Termen japonez pentru punct de acupunctură.'],
+ ['Moxă','Pelin (Artemisia) ars pentru a încălzi punctele.'],
+ ['Tuina','Masaj terapeutic chinez, parte a MTC.'],
+ ['Sanjiao (Triplu încălzitor)','Funcție care coordonează transformarea apei și energiei în trei „încălzitoare" (superior, mijlociu, inferior).'],
+ ['Ba Gang','Cele opt principii de diagnostic: Yin/Yang, Exterior/Interior, Rece/Cald, Gol/Plin.'],
+ ['Puncte Yuan','Puncte „sursă": folosite pentru a tonifia organul/meridianul respectiv (ex. LI4, LR3, HT7, KI3, LU9).'],
+ ['Puncte Luo','Puncte de legătură între meridianele cuplate yin–yang (ex. LU7, ST40).'],
+ ['Puncte Xi','Puncte de „fisură": folosite în stări acute și dureroase ale meridianului (ex. ST34, SP8).'],
+ ['Puncte Mu (alarmă)','Puncte frontale pe torace/abdomen asociate fiecărui organ (ex. CV12 pentru stomac, LR14 pentru ficat).'],
+ ['Puncte Shu dorsale','Puncte pe meridianul vezicii urinare, pe spate, asociate fiecărui organ (ex. BL13 pentru plămân).'],
+ ['Puncte de influență (Hui)','Opt puncte care controlează câte un țesut: Zang LR13, Fu CV12, Qi CV17, Sânge BL17, Tendoane GB34, Vase LU9, Os BL11, Măduvă GB39.'],
+ ['Puncte-cheie ale celor opt vase extraordinare','LU7–Ren, SP4–Chong, PC6–Yin Wei, GB41–Dai, TE5–Yang Wei, SI3–Du, BL62–Yang Qiao, KI6–Yin Qiao.'],
+ ['Puncte Jing-puț','Puncte la extremitatea degetelor, tradițional pentru urgențe sau febră.'],
+ ['Puncte He mare','Puncte de „mare" la cot și genunchi (ex. LI11, ST36, BL40).'],
+ ['Ciclul Sheng','Ciclul de generare al celor cinci elemente: Lemn → Foc → Pământ → Metal → Apă → Lemn.'],
+ ['Ciclul Ke','Ciclul de control: Lemn → Pământ → Apă → Foc → Metal → Lemn.'],
+ ['Hara','Abdomenul ca zonă de diagnostic în tradiția japoneză.'],
+ ['Sen','Liniile energetice din masajul tradițional thailandez.'],
+ ['Marma','Puncte vitale din Ayurveda.'],
+ ['TENS','Stimulare electrică transcutanată: curent slab prin electrozi de suprafață; mecanism analog cu electroacupunctura, fără ace.'],
+ ['Sham','Procedură de control („acupunctură placebo") în studii: ac neinvaziv sau puncte neadecvate.'],
+ ['Gate control','Teoria „porții de control" a durerii (Melzack și Wall, 1965): stimulii tactili pot inhiba semnalele dureroase la nivel medular.'],
+ ['Meridian clock','Orar tradițional: fiecare meridian are un interval de 2 ore de activitate maximă; nu este validat de ritmurile biologice măsurate.']
+];
+
+/* ================= HELPERS ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function ptCard(p){
+  const fav=S.fav.includes(p.c+'|'+p.p);
+  const m=MER.find(x=>x.c===p.m);
+  return `<div class="card pt" id="pt-${esc(p.c)}">
+   <button class="star" onclick="toggleFav('${p.c}','${p.p}')" aria-label="fav">${fav?'★':'☆'}</button>
+   <h3><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h3>
+   <p class="mut">${m?esc(m.n):'Puncte extra'} · ${esc(REG[p.r])}</p>
+   ${p.mn?`<p class="mut"><i>${esc(p.mn)}</i></p>`:''}
+   ${p.tg?`<p>${p.tg.split(',').filter(Boolean).map(t=>`<span class="tag">${esc(t.trim())}</span>`).join('')}</p>`:''}
+   <p><b>Localizare:</b> ${esc(p.l)}</p>
+   <p><b>Indicații tradiționale:</b> ${esc(p.u)}</p>
+   ${p.w?`<p class="w">${esc(p.w)}</p>`:''}
+  </div>`}
+function toggleFav(c,p){const k=c+'|'+p;const i=S.fav.indexOf(k);if(i<0)S.fav.push(k);else S.fav.splice(i,1);save();if(view()==='pts')renderPtsList();else render();}
+function goPoint(c){PF.q=c;PF.m='';PF.r='';PF.fav=false;go('pts')}
+function ptLink(c){return `<a href="#pts" onclick="goPoint('${c}')">${c}</a>`}
+function linkify(s){return esc(s).replace(/\b(LU|LI|ST|SP|HT|SI|BL|KI|PC|TE|GB|LR|CV|GV)(\d{1,2})\b/g,(m,a,b)=>`<a href="#pts" onclick="goPoint('${m}')">${m}</a>`)}
+function warnBox(txt){return `<div class="warn">⚠ ${txt}</div>`}
+function disc(){return `<div class="warn">ℹ ${esc(T().disc)}</div>`}
+
+/* ================= ROUTER ================= */
+const PF={q:'',m:'',r:'',fav:false};
+function view(){return (location.hash||'#home').slice(1).split(':')[0]||'home'}
+function go(v){if(location.hash==='#'+v)render();else location.hash='#'+v}
+window.addEventListener('hashchange',()=>{$('#q').value='';render();window.scrollTo(0,0)});
+function renderNav(){
+  const v=view();const L=T().nav;
+  $('#nav').innerHTML=NAVK.map((k,i)=>`<a href="#${k}" class="${k===v?'on':''}">${esc(L[i])}</a>`).join('');
+}
+function setLang(l){S.lang=l;save();document.documentElement.lang=l;applyI18n();render()}
+function applyI18n(){
+  $('#lang').value=S.lang;$('#q').placeholder=T().ph;$('#sub').textContent=T().sub;
+  $('#ftxt').textContent=T().disc;
+  const d=new Date(2026,10,4);let ds;try{ds=d.toLocaleDateString(S.lang,{day:'numeric',month:'long',year:'numeric'})}catch(e){ds='2026-11-04'}
+  $('#fver').textContent=T().ver+' '+ds;
+}
+function toggleTheme(){const order=['auto','light','dark'];S.theme=order[(order.indexOf(S.theme)+1)%3];save();applyTheme()}
+function applyTheme(){const r=document.documentElement;if(S.theme==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);$('#thm').textContent=S.theme==='dark'?'☾':S.theme==='light'?'☀':'◐'}
+
+/* ================= VIEWS ================= */
+function vHome(){
+  const now=new Date();const h=now.getHours();const idx=Math.floor((((h-3)+24)%24)/2);const cur=CLOCKO[idx];
+  const cm=MER.find(x=>x.c===cur);
+  const tiles=[['theory','☯','Teorie','Qi, Yin-Yang, cinci elemente, Zang-Fu, tipuri de puncte, ipoteze moderne.'],
+   ['mer','〰','Meridiane','12 meridiane principale + Ren Mai și Du Mai, cu traseu și puncte-cheie.'],
+   ['pts','•','Puncte','Peste 90 de puncte, filtrabile după meridian și regiune, cu favorite.'],
+   ['acu','✋','Presopunctură','15 protocoale de auto-îngrijire și sesiuni ghidate cu cronometru.'],
+   ['tech','⚘','Variante','60 de variante detaliate pas cu pas: ace, presiune, moxă, ventuze, laser, microsisteme, școli și practici controversate.'],
+   ['ear','👂','Ureche & tălpi','Auriculoterapie și reflexologie.'],
+   ['cun','📏','Măsurare (cun)','Cum găsești punctele, cu calculator personalizat.'],
+   ['safe','🛡','Siguranță & dovezi','Contraindicații, riscuri și ce spun studiile.'],
+   ['quiz','?','Quiz','Verifică-ți cunoștințele cu întrebări generate aleatoriu.']];
+  return `<div class="hero"><h1>PUNCTUM</h1>
+   <p>Atlas educativ offline al terapiilor prin puncte: acupunctură, presopunctură (acupresură), moxibustie, ventuze, gua sha, laser, auriculoterapie, reflexologie și alte variante, fiecare detaliată cu origine, tehnică pas cu pas, dovezi și siguranță.</p><p style="font-size:.9rem;opacity:.9"><b>PUNCTUM</b> (lat. „punct”): numele reunește toate variantele, care au în comun punctul ca unitate de lucru, indiferent dacă îl înțepi, îl apeși, îl încălzești, îl aspiri, îl stimulezi cu lumină sau îl atingi.</p>
+   <p style="font-size:.9rem;opacity:.85">Un singur fișier HTML · fără internet · fără urmărire · licență MIT</p></div>
+   ${disc()}
+   <h2>Ceasul meridianelor (acum)</h2>
+   <div class="clock">${CLOCKO.map((c,i)=>{const m=MER.find(x=>x.c===c);return `<span class="${c===cur?'now':''}">${m.t} · ${esc(m.n.split(' ')[0])}</span>`}).join('')}</div>
+   <p class="mut">Conform orarului tradițional (ora locală a dispozitivului), perioada maximă este a meridianului <b>${esc(cm.n)}</b> (${cm.t}). Este un cadru tradițional; ritmurile biologice măsurate nu confirmă acest orar.</p>
+   <h2>Începe de aici</h2>
+   <div class="grid">${tiles.map(t=>`<a class="card" href="#${t[0]}" style="text-decoration:none;color:inherit"><div style="font-size:1.6rem">${t[1]}</div><h3>${t[2]}</h3><span class="mut">${t[3]}</span></a>`).join('')}</div>
+   <h2>Ce este acupunctura?</h2>
+   <div class="card"><p>Acupunctura este un sistem de medicină tradițională chineză (MTC) în care sunt stimulate puncte specifice de pe corp, în mod clasic cu ace fine. Tradiția descrie un flux de <b>Qi</b> prin <b>meridiane</b>, iar tratamentul urmărește restabilirea echilibrului dintre Yin și Yang. Din ea au derivat sau s-au dezvoltat paralel presopunctura (acupresura), moxibustia, ventuzele, gua sha, tuina, shiatsu, auriculoterapia și reflexologia.</p>
+   <p>Cercetarea modernă arată că stimularea acestor puncte poate modula durerea prin mecanisme nervoase și neurochimice (ex. endorfine, adenozină, poarta de control a durerii), dar nu a demonstrat structuri anatomice ale „meridianelor". Studiile sunt amestecate: unele beneficii sunt reale, altele sunt în mare parte efecte nespecifice (așteptare, atingere, relaxare). Citește secțiunea <a href="#safe">Siguranță & dovezi</a>.</p></div>
+   <p class="mut" style="margin-top:1rem">${esc(T().note)}</p>`;
+}
+
+function vTheory(){
+  const el=EL[selEl.i];
+  return `<h1>Teorie</h1>${disc()}
+  <h2>Concepte fundamentale</h2>
+  <details open><summary>Qi, Yin și Yang</summary><p><b>Qi</b> — energie vitală, funcție dinamică. <b>Yin</b> și <b>Yang</b> sunt doi poli complementari, nu opuși absoluți: noapte/zi, rece/cald, repaus/activitate, interior/exterior. Boala este văzută ca dezechilibru: exces, deficit, stagnare sau blocaj.</p></details>
+  <details><summary>Cele trei comori: Jing, Qi, Shen</summary><p><b>Jing</b> (esență), <b>Qi</b> (energie) și <b>Shen</b> (spirit) sunt cele trei niveluri ale vitalității: Jing este rezerva profundă, Qi este energia funcțională, Shen este claritatea conștiinței.</p></details>
+  <details><summary>Substanțele fundamentale</summary><ul><li><b>Qi</b> — motricitate, căldură, protecție</li><li><b>Xue</b> (sânge) — hrănire, ancorare</li><li><b>Jin Ye</b> — fluidele corporale, umezire</li><li><b>Jing</b> — esență, dezvoltare</li><li><b>Shen</b> — conștiință</li></ul></details>
+  <details><summary>Organele Zang-Fu</summary><p>În MTC organele sunt <i>sisteme funcționale</i>, nu doar structuri anatomice. <b>Zang</b> (yin, pline): Inimă, Plămân, Splină, Ficat, Rinichi (+ Pericard). <b>Fu</b> (yang, goale): Intestin subțire, Intestin gros, Stomac, Vezică biliară, Vezică urinară, Triplu încălzitor. Fiecare Zang e cuplat cu un Fu din același element.</p></details>
+  <details><summary>Cauzele bolii în MTC</summary><ul><li><b>Externe:</b> vânt, frig, căldură, umezeală, uscăciune, foc/vară</li><li><b>Interne:</b> cele șapte emoții (bucurie, furie, tristețe, grijă, gândire excesivă, frică, șoc)</li><li><b>Alte cauze:</b> alimentație, surmenaj, lipsa mișcării, traumatisme, constituție</li></ul></details>
+  <details><summary>Cele patru metode de diagnostic</summary><ul><li><b>Observație</b> — înfățișare, culoare, limbă</li><li><b>Auscultare/olfacție</b> — voce, respirație, mirosuri</li><li><b>Interogare</b> — simptome, somn, digestie, frig/căldură, durere</li><li><b>Palpare</b> — pulsul radial (în mai multe poziții), abdomen, puncte dureroase</li></ul></details>
+  <details><summary>Cele opt principii (Ba Gang)</summary><p>Yin/Yang · Exterior/Interior · Rece/Cald · Gol (deficit) / Plin (exces).</p></details>
+
+  <h2>Cele cinci elemente (Wu Xing)</h2>
+  <div class="card">
+   <p class="mut">Apasă un element. Săgețile continue verzi = generare (Sheng); liniile roșii punctate = control (Ke).</p>
+   <svg viewBox="0 0 320 300" width="100%" style="max-width:380px;display:block;margin:auto" role="img" aria-label="Cinci elemente">
+    <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2e8b57"/></marker><marker id="ak" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c0392b"/></marker></defs>
+    ${elSvg()}
+   </svg>
+   <h3 style="color:${el.c}">${el.n} (${el.zh})</h3>
+   <p class="mut">${el.txt}</p>
+   <div class="tw"><table><tr><th>Organe</th><td>${el.org}</td></tr><tr><th>Anotimp</th><td>${el.sez}</td></tr><tr><th>Climat</th><td>${el.cl}</td></tr><tr><th>Emoție</th><td>${el.em}</td></tr><tr><th>Culoare</th><td>${el.col}</td></tr><tr><th>Gust</th><td>${el.gust}</td></tr><tr><th>Țesut</th><td>${el.tes}</td></tr><tr><th>Organ de simț</th><td>${el.sim}</td></tr>
+   <tr><th>Generează</th><td>${EL[(selEl.i+1)%5].n}</td></tr><tr><th>Controlează</th><td>${EL[(selEl.i+2)%5].n}</td></tr><tr><th>Este generat de</th><td>${EL[(selEl.i+4)%5].n}</td></tr><tr><th>Este controlat de</th><td>${EL[(selEl.i+3)%5].n}</td></tr></table></div>
+  </div>
+
+  <h2>Tipuri speciale de puncte</h2>
+  <div class="tw"><table><tr><th>Tip</th><th>Rol</th><th>Exemple</th></tr>
+  <tr><td>Yuan (sursă)</td><td>Tonifierea organului</td><td>${ptLink('LI4')}, ${ptLink('LR3')}, ${ptLink('HT7')}, ${ptLink('KI3')}, ${ptLink('LU9')}</td></tr>
+  <tr><td>Luo (legătură)</td><td>Leagă meridianele cuplate</td><td>${ptLink('LU7')}, ${ptLink('ST40')}</td></tr>
+  <tr><td>Xi (fisură)</td><td>Stări acute, durere</td><td>${ptLink('ST34')}, ${ptLink('SP8')}</td></tr>
+  <tr><td>Mu (alarmă)</td><td>Diagnostic și tratament al organului</td><td>${ptLink('CV12')}, ${ptLink('LR14')}, ${ptLink('ST25')}, ${ptLink('LU1')}</td></tr>
+  <tr><td>Shu dorsale</td><td>Reglarea organelor pe spate</td><td>${ptLink('BL13')}, ${ptLink('BL18')}, ${ptLink('BL20')}, ${ptLink('BL23')}</td></tr>
+  <tr><td>Hui (influență)</td><td>Controlează țesuturi</td><td>${ptLink('LR13')}, ${ptLink('CV12')}, ${ptLink('CV17')}, ${ptLink('BL17')}, ${ptLink('GB34')}, ${ptLink('LU9')}, ${ptLink('GB39')}</td></tr>
+  <tr><td>Chei ale celor 8 vase</td><td>Deschid vasele extraordinare</td><td>LU7–Ren, SP4–Chong, PC6–Yin Wei, GB41–Dai, TE5–Yang Wei, SI3–Du, BL62–Yang Qiao, KI6–Yin Qiao</td></tr>
+  <tr><td>Comandă (4 Gates)</td><td>Zone ale corpului</td><td>${ptLink('LI4')} față, ${ptLink('LU7')} cap/ceafă, ${ptLink('BL40')} spate, ${ptLink('ST36')} abdomen, ${ptLink('PC6')} torace</td></tr></table></div>
+
+  <h2>Ce spune știința modernă (ipoteze)</h2>
+  <ul><li><b>Poarta de control a durerii:</b> stimularea fibrelor mari modulează semnalele dureroase la nivel medular.</li>
+  <li><b>Sistemul opioid endogen:</b> eliberare de endorfine și alți neurotransmițători; efect parțial blocat de naloxonă în unele studii.</li>
+  <li><b>Adenozină locală:</b> în studii pe animale, eliberarea locală de adenozină după acupunctură are efect analgezic.</li>
+  <li><b>Țesut conjunctiv/fascie:</b> înțepatul și rotirea acului pot stimula fibroblaști și mecanoreceptori.</li>
+  <li><b>Modulare autonomă (vagală):</b> unele efecte pe digestie și inflamație ar putea trece prin sistemul nervos autonom.</li>
+  <li><b>Efecte contextuale:</b> așteptare, atenție, relația terapeutică, ritual: reale, dar nespecifice.</li></ul>`;
+}
+const selEl={i:0};
+function elSvg(){
+  const cx=160,cy=150,R=105;
+  const pos=EL.map((e,i)=>{const a=(-90+i*72)*Math.PI/180;return[cx+R*Math.cos(a),cy+R*Math.sin(a)]});
+  const sh=(a,b,rr)=>{const dx=b[0]-a[0],dy=b[1]-a[1],d=Math.hypot(dx,dy),ux=dx/d,uy=dy/d;return[a[0]+ux*rr,a[1]+uy*rr,b[0]-ux*rr,b[1]-uy*rr]};
+  let s='';
+  for(let i=0;i<5;i++){const l=sh(pos[i],pos[(i+2)%5],27);s+=`<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ak)"/>`}
+  for(let i=0;i<5;i++){const l=sh(pos[i],pos[(i+1)%5],27);s+=`<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}" stroke="#2e8b57" stroke-width="2.5" marker-end="url(#ah)"/>`}
+  for(let i=0;i<5;i++){const sel=i===selEl.i;s+=`<g class="elp" onclick="selectEl(${i})"><circle cx="${pos[i][0]}" cy="${pos[i][1]}" r="${sel?27:23}" fill="${EL[i].c}" stroke="${sel?'#fff':'none'}" stroke-width="3"/><text x="${pos[i][0]}" y="${pos[i][1]+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${EL[i].n}</text></g>`}
+  return s;
+}
+function selectEl(i){selEl.i=i;render()}
+
+function vMer(){
+  return `<h1>Meridiane</h1>${disc()}
+  <p class="mut">Cele 12 meridiane principale (Zheng Jing) sunt pereche yin–yang și au traseu bilateral. Cele două „vase" mediane (Ren și Du) completează sistemul major. Numărul de puncte pe meridian este conform nomenclaturii OMS.</p>
+  <div class="tw"><table><tr><th>Meridian</th><th>Element</th><th>Yin/Yang</th><th>Puncte</th><th>Maxim</th><th>Sens</th></tr>
+  ${MER.map(m=>`<tr><td><span class="badge" style="background:${MCOL[m.c]}">${m.c}</span>${esc(m.n)}</td><td>${m.el}</td><td>${m.yy}</td><td>${m.pts}</td><td>${m.t}</td><td>${esc(m.dir)}</td></tr>`).join('')}</table></div>
+  <h2>Detalii pe meridian</h2>
+  ${MER.map(m=>`<details><summary><span class="badge" style="background:${MCOL[m.c]}">${m.c}</span>${esc(m.n)} <span class="mut">(${esc(m.zh)})</span></summary>
+    <p><b>Traseu:</b> ${esc(m.path)}</p>
+    <p><b>Puncte-cheie:</b> ${linkify(m.key)}</p>
+    <p><b>Utilizare tradițională:</b> ${esc(m.use)}</p>
+    <p class="mut">Element: ${m.el} · ${m.yy} · ${esc(m.lim)} · ${m.pts} puncte${m.t!=='—'?` · maxim ${m.t}`:''}</p>
+    <p><a href="#pts" onclick="PF.m='${m.c}';PF.q='';PF.r='';PF.fav=false;go('pts')">Vezi toate punctele din listă →</a></p></details>`).join('')}
+  <h2>Circulația în ciclul de 24 de ore</h2>
+  <p>LU → LI → ST → SP → HT → SI → BL → KI → PC → TE → GB → LR → LU. Fiecare meridian este considerat mai activ într-un interval de 2 ore (vezi Acasă).</p>
+  <h2>Cuplări yin–yang</h2>
+  <ul><li>Plămân ↔ Intestin gros (Metal)</li><li>Splină ↔ Stomac (Pământ)</li><li>Inimă ↔ Intestin subțire (Foc)</li><li>Rinichi ↔ Vezică urinară (Apă)</li><li>Pericard ↔ Triplu încălzitor (Foc ministerial)</li><li>Ficat ↔ Vezică biliară (Lemn)</li></ul>`;
+}
+
+function filterPts(){
+  const q=PF.q.trim().toLowerCase();
+  return PT.filter(p=>(!PF.m||p.m===PF.m)&&(!PF.r||p.r===PF.r)&&(!PF.fav||S.fav.includes(p.c+'|'+p.p))&&(!q||(p.c+' '+p.p+' '+p.l+' '+p.u+' '+p.tg+' '+p.mn+' '+(MER.find(x=>x.c===p.m)||{n:''}).n).toLowerCase().includes(q)));
+}
+function renderPtsList(){const L=filterPts();$('#plist').innerHTML=L.length?L.map(ptCard).join(''):`<p class="mut">${esc(T().noRes)}</p>`;$('#pcount').textContent=L.length+' / '+PT.length}
+function vPts(){
+  return `<h1>Puncte</h1>${disc()}
+  <div class="bar"><input id="pq" placeholder="Filtrează (cod, nume, simptom)…" value="${esc(PF.q)}" oninput="PF.q=this.value;renderPtsList()">
+   <select id="pm" onchange="PF.m=this.value;renderPtsList()"><option value="">Toate meridianele</option>${MER.map(m=>`<option value="${m.c}" ${PF.m===m.c?'selected':''}>${m.c} — ${esc(m.n)}</option>`).join('')}<option value="EX" ${PF.m==='EX'?'selected':''}>EX — Puncte extra</option></select>
+   <select id="pr" onchange="PF.r=this.value;renderPtsList()"><option value="">Toate zonele</option>${Object.keys(REG).map(k=>`<option value="${k}" ${PF.r===k?'selected':''}>${REG[k]}</option>`).join('')}</select>
+   <button class="b alt" onclick="PF.fav=!PF.fav;this.style.outline=PF.fav?'2px solid var(--gold)':'none';renderPtsList()" style="${PF.fav?'outline:2px solid var(--gold)':''}">★ Favorite</button>
+   <span class="mut" id="pcount" style="align-self:center"></span></div>
+  <div class="grid" id="plist"></div>
+  <p class="mut">Descrierile urmează convențiile standard OMS; locațiile exacte variază individual. Indicațiile sunt cele tradiționale, nu promisiuni terapeutice. Marcajul ⚠ indică precauții.</p>`;
+}
+
+/* --- sesiune presopunctură --- */
+const SES={on:false,pts:[],i:0,sec:60,left:60,paused:false,timer:null,beep:true,title:''};
+let AC=null;
+function beep(f){if(!SES.beep)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f||660;g.gain.value=.08;o.connect(g);g.connect(AC.destination);o.start();setTimeout(()=>o.stop(),180)}catch(e){}}
+function startSes(i){
+  const pr=PROT[i];SES.title=pr.t;SES.pts=pr.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean);SES.i=0;SES.left=SES.sec;SES.on=true;SES.paused=false;
+  clearInterval(SES.timer);SES.timer=setInterval(tick,1000);beep(880);drawSes();
+}
+function tick(){
+  if(SES.paused)return;SES.left--;
+  if(SES.left<=0){beep(660);if(SES.i<SES.pts.length-1){SES.i++;SES.left=SES.sec}else{endSes(true);return}}
+  drawSes();
+}
+function endSes(done){clearInterval(SES.timer);SES.on=false;if(done){$('#modal').innerHTML=`<div class="modal"><div class="box"><h2>✔ Sesiune încheiată</h2><p>Stai încă 1–2 minute, respiră lent. Bea apă dacă dorești.</p><button class="b" onclick="$('#modal').innerHTML=''">OK</button></div></div>`;beep(990)}else $('#modal').innerHTML=''}
+function sesNext(d){SES.i=Math.max(0,Math.min(SES.pts.length-1,SES.i+d));SES.left=SES.sec;drawSes()}
+function sesPause(){SES.paused=!SES.paused;drawSes()}
+function sesTime(v){SES.sec=+v;SES.left=SES.sec;drawSes()}
+function drawSes(){
+  if(!SES.on)return;const p=SES.pts[SES.i];
+  $('#modal').innerHTML=`<div class="modal"><div class="box">
+   <p class="mut">${esc(SES.title)} · ${SES.i+1}/${SES.pts.length}</p>
+   <h2 style="margin:.2rem 0"><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h2>
+   <p style="margin:.3rem 0"><b>Localizare:</b> ${esc(p.l)}</p>
+   ${p.w?`<p class="w" style="color:var(--acc2)">${esc(p.w)}</p>`:''}
+   <div class="breath">${SES.left}</div>
+   <p class="mut">Presiune fermă dar confortabilă · inspiră 4 s · expiră 6 s · ambele părți unde e cazul</p>
+   <div class="bar" style="justify-content:center">
+    <button class="b alt" onclick="sesNext(-1)" ${SES.i===0?'disabled':''}>◀</button>
+    <button class="b" onclick="sesPause()">${SES.paused?'▶':'❚❚'}</button>
+    <button class="b alt" onclick="sesNext(1)" ${SES.i===SES.pts.length-1?'disabled':''}>▶</button>
+    <button class="b alt" onclick="endSes(false)">✕</button></div>
+   <div class="bar" style="justify-content:center"><select onchange="sesTime(this.value)">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s / punct</option>`).join('')}</select>
+   <label class="mut" style="align-self:center"><input type="checkbox" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
+  </div></div>`;
+}
+
+function vAcu(){
+  return `<h1>Presopunctură (acupresură)</h1>${disc()}
+  <p>Acupresura folosește presiunea manuală pe aceleași puncte ca acupunctura, fără ace. Este cea mai accesibilă formă de auto-îngrijire, cu risc scăzut când se respectă regulile de mai jos.</p>
+  <h2>Tehnica de bază</h2>
+  <ul><li>Mâinile curate, unghiile scurte; poziție stabilă, relaxată (șezând sau întins).</li>
+  <li>Găsește punctul (vezi <a href="#cun">Măsurare</a>); caută o mică sensibilitate sau „adâncitură".</li>
+  <li>Folosește pulpa degetului mare sau a arătătorului; crește presiunea treptat, 3–5 s.</li>
+  <li>Menține <b>30–90 s</b> cu presiune fixă sau mici cercuri; respirație lentă și adâncă.</li>
+  <li>Intensitate: „durere bună", plictisitoare/caldă, niciodată ascuțită sau care radiază cu furnicături.</li>
+  <li>De 1–3 ori pe zi; punctele pereche (stânga–dreapta) se fac pe ambele părți.</li>
+  <li>După sesiune: bea apă, odihnește-te câteva minute.</li></ul>
+  <div class="warn"><b>Oprește sesiunea</b> dacă apar: durere ascuțită, amețeală puternică, amorțeală persistentă, palpitații sau stare de leșin. Evită presiunea pe răni, vene varicoase severe, umflături, tumori, zone fracturate sau operate recent, febră mare și imediat după mese copioase. În sarcină evită punctele marcate ⚠.</div>
+  <h2>Protocoale pe situații (auto-îngrijire)</h2>
+  <div class="bar"><label class="mut">Durată/punct: <select onchange="SES.sec=+this.value">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s</option>`).join('')}</select></label><label class="mut"><input type="checkbox" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
+  ${PROT.map((p,i)=>{
+    const pts=p.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean);const preg=pts.filter(x=>/Contraindicat în sarcină|Evită în sarcină|Doar sub îndrumare/.test(x.w)).map(x=>x.c);
+    return `<details><summary>${esc(p.t)}</summary>
+     <p>${pts.map(x=>`<span class="tag" title="${esc(x.l)}">${ptLink(x.c)} ${esc(x.p)}</span>`).join('')}</p>
+     <p>${esc(p.n)}</p>
+     ${preg.length?`<p class="w" style="color:var(--acc2)">⚠ În sarcină evită: ${preg.join(', ')}.</p>`:''}
+     <button class="b" onclick="startSes(${i})">▶ Pornește sesiunea ghidată</button> <p></p></details>`}).join('')}
+  <h2>Autostimulare cu obiecte</h2>
+  <ul><li><b>Minge de tenis / lacrosse</b> lângă coloană, pe perete sau pe podea — pentru spate și fese (BL, GB30).</li>
+  <li><b>Pieptene sau perie</b> pentru stimularea ușoară a scalpului (GV20, EX-HN1).</li>
+  <li><b>Brățări de acupresură</b> (PC6) — pentru greață/rău de mișcare, cu dovezi moderate.</li>
+  <li><b>Rola cu spini</b> doar peste haine sau piele sănătoasă, fără presiune excesivă.</li></ul>
+  <h2>Când nu te trata singur</h2>
+  <ul><li>Durere toracică, dificultăți de respirație, durere abdominală intensă, febră mare.</li>
+  <li>Slăbiciune bruscă a unui membru, tulburări de vorbire sau vedere, durere de cap „cea mai gravă din viață".</li>
+  <li>Pierdere neexplicată în greutate, sângerări anormale, simptome care se agravează sau durează săptămâni.</li>
+  <li>Sarcină, afecțiuni cronice grave, tratament anticoagulant sau chimioterapie: întreabă medicul înainte.</li></ul>`;
+}
+
+const TF={q:'',cat:'',noNeedle:false,self:false,ev:false,view:'cards',sort:'cat',open:''};
+function varFilter(){
+  const q=TF.q.trim().toLowerCase();
+  let L=VAR.filter(v=>(!TF.cat||v.cat===TF.cat)&&(!TF.noNeedle||v.inv<2)&&(!TF.self||v.auto!=='n')&&(!TF.ev||v.ev==='m')&&(!q||(v.n+' '+v.pr+' '+v.or+' '+v.zon+' '+v.ind+' '+v.id+' '+CATN[v.cat]).toLowerCase().includes(q)));
+  const order=Object.keys(CATN);
+  if(TF.sort==='cat')L=L.slice().sort((a,b)=>order.indexOf(a.cat)-order.indexOf(b.cat));
+  else if(TF.sort==='name')L=L.slice().sort((a,b)=>cmp(a.n,b.n));
+  else if(TF.sort==='risk')L=L.slice().sort((a,b)=>a.risc-b.risc||cmp(a.n,b.n));
+  else if(TF.sort==='ev'){const o='mlwx';L=L.slice().sort((a,b)=>o.indexOf(a.ev)-o.indexOf(b.ev)||cmp(a.n,b.n))}
+  return L;
+}
+function vBadges(v){
+  return `<span class="badge" style="background:${CATC[v.cat]}">${esc(CATN[v.cat].split(' (')[0])}</span>`+
+  `<span class="badge" style="background:${v.inv===2?'#b5573a':v.inv===1?'#c99a2e':'#2f7d6d'}">${INVN[v.inv]}</span>`+
+  `<span class="badge" style="background:${v.risc===3?'#b5573a':v.risc===2?'#c99a2e':'#2f7d6d'}">${RISKN[v.risc]}</span>`+
+  `<span class="badge" style="background:${EVC[v.ev]}">${EVN[v.ev]}</span>`+
+  `<span class="badge" style="background:#566">${AUTN[v.auto]}</span>`;
+}
+function vCard(v,open){
+  return `<details id="v-${esc(v.id)}" ${open?'open':''}><summary>${esc(v.n)}</summary>
+   <p>${vBadges(v)}</p>
+   <p><b>Origine:</b> ${esc(v.or)}</p>
+   <p><b>Principiu:</b> ${esc(v.pr)}</p>
+   <h3>Cum se face, pas cu pas</h3><ol>${v.pas.map(p=>`<li>${esc(p)}</li>`).join('')}</ol>
+   <div class="tw"><table>
+    <tr><th>Instrumente / materiale</th><td>${esc(v.ins)}</td></tr>
+    <tr><th>Durată și frecvență</th><td>${esc(v.dur)}</td></tr>
+    <tr><th>Puncte / zone tipice</th><td>${linkify(v.zon)}</td></tr>
+    <tr><th>Indicații tradiționale / uz</th><td>${esc(v.ind)}</td></tr>
+    <tr><th>Ce spun dovezile</th><td>${esc(v.dov)}</td></tr>
+    <tr><th>Siguranță</th><td style="color:var(--acc2)">${esc(v.sig)}</td></tr>
+    <tr><th>Cine o practică</th><td>${esc(v.who)}</td></tr></table></div></details>`;
+}
+function renderVarList(){
+  const L=varFilter();
+  const box=$('#vlist');if(!box)return;
+  $('#vcount').textContent=L.length+' / '+VAR.length;
+  if(!L.length){box.innerHTML=`<p class="mut">${esc(T().noRes)}</p>`;return}
+  if(TF.view==='table'){
+    box.innerHTML=`<div class="tw"><table><tr><th>Variantă</th><th>Categorie</th><th>Invazivitate</th><th>Risc</th><th>Dovezi</th><th>Autoaplicare</th></tr>${L.map(v=>`<tr><td><a href="#tech" onclick="TF.view='cards';TF.q='${esc(v.n).replace(/'/g,'')}';TF.open='${esc(v.id)}';render();return false">${esc(v.n)}</a></td><td>${esc(CATN[v.cat].split(' (')[0])}</td><td>${INVN[v.inv]}</td><td>${RISKN[v.risc]}</td><td><span class="badge" style="background:${EVC[v.ev]}">${esc(EVN[v.ev].split(' (')[0])}</span></td><td>${AUTN[v.auto]}</td></tr>`).join('')}</table></div>`;
+    return;
+  }
+  const order=Object.keys(CATN);let h='';
+  if(TF.sort==='cat'){
+    order.forEach(k=>{const g=L.filter(v=>v.cat===k);if(!g.length)return;h+=`<h2 style="color:${CATC[k]}">${esc(CATN[k])} <span class="mut">(${g.length})</span></h2>`+g.map(v=>vCard(v,TF.open===v.id)).join('')});
+  }else h=L.map(v=>vCard(v,TF.open===v.id)).join('');
+  box.innerHTML=h;
+  if(TF.open){const e=document.getElementById('v-'+TF.open);if(e)e.scrollIntoView({block:'start'});TF.open=''}
+}
+function vTech(){
+  const cnt={};VAR.forEach(v=>cnt[v.cat]=(cnt[v.cat]||0)+1);
+  return `<h1>Variante</h1>${disc()}
+  <p>Atlas al <b>${VAR.length}</b> de variante, de la acupunctura cu ace la presopunctură, moxă, ventuze, laser, reflexologie și practici controversate. Fiecare fișă descrie originea, principiul, pașii, instrumentele, durata, zonele, indicațiile, dovezile și siguranța.</p>
+  <div class="bar"><input id="vq" placeholder="Caută o variantă, o zonă, un simptom…" value="${esc(TF.q)}" oninput="TF.q=this.value;renderVarList()">
+   <select onchange="TF.sort=this.value;renderVarList()"><option value="cat" ${TF.sort==='cat'?'selected':''}>Grupat pe categorii</option><option value="name" ${TF.sort==='name'?'selected':''}>Alfabetic</option><option value="risk" ${TF.sort==='risk'?'selected':''}>Risc crescător</option><option value="ev" ${TF.sort==='ev'?'selected':''}>Dovezi (cele mai bune întâi)</option></select>
+   <button class="b alt" onclick="TF.view=TF.view==='cards'?'table':'cards';render()">${TF.view==='cards'?'▦ Tabel comparativ':'☰ Fișe'}</button>
+   <span class="mut" id="vcount" style="align-self:center"></span></div>
+  <div class="bar" id="vchips">
+   <button class="b ${!TF.cat?'':'alt'}" onclick="TF.cat='';render()">Toate</button>
+   ${Object.keys(CATN).map(k=>`<button class="b ${TF.cat===k?'':'alt'}" onclick="TF.cat='${k}';render()">${esc(CATN[k].split(' (')[0])} (${cnt[k]||0})</button>`).join('')}</div>
+  <div class="bar">
+   <label class="mut"><input type="checkbox" ${TF.noNeedle?'checked':''} onchange="TF.noNeedle=this.checked;renderVarList()"> Fără ace</label>
+   <label class="mut"><input type="checkbox" ${TF.self?'checked':''} onchange="TF.self=this.checked;renderVarList()"> Pot face singur (parțial sau total)</label>
+   <label class="mut"><input type="checkbox" ${TF.ev?'checked':''} onchange="TF.ev=this.checked;renderVarList()"> Doar dovezi moderate</label></div>
+  <div id="vlist"></div>
+  <h2>Cum alegi între variante</h2>
+  <div class="tw"><table><tr><th>Dacă vrei…</th><th>Variante potrivite</th></tr>
+   <tr><td>Auto-îngrijire acasă, fără ace</td><td>Acupresură, compresie pe puncte trigger, brățări P6, Do-In, minge/rolă, tapping, auto-masaj plantar/palmar</td></tr>
+   <tr><td>Durere musculo-scheletică persistentă</td><td>Acupunctură clasică sau medicală, dry needling, electroacupunctură, tuina, shiatsu, laser, TENS</td></tr>
+   <tr><td>Teamă de ace sau copii</td><td>Acupresură, laserpunctură, Shonishin, diapazon, tuina pediatrică, semințe auriculare</td></tr>
+   <tr><td>Greață sau rău de mișcare</td><td>Acupresură/brățară PC6, acupunctură P6, TEAS</td></tr>
+   <tr><td>Relaxare și stres</td><td>Shiatsu, Nuad Thai, reflexologie, acu-yoga, qigong, masaj facial</td></tr>
+   <tr><td>Senzație de frig, articulații „reci”</td><td>Moxă (țigară, indirectă), compresă caldă, lampă infraroșu</td></tr>
+   <tr><td>Tensiune musculară profundă</td><td>Ventuze, gua sha, tuina, trigger point, shiatsu</td></tr>
+   <tr><td>Să ocolești</td><td>EAV/bioresonanță, kinesiologie aplicată, promisiuni de „diagnostic complet” prin aparat</td></tr></table></div>
+  <div class="warn">Regula generală: cu cât o variantă este mai invazivă (ace, incizii, injecții, foc), cu atât ai nevoie de practicant calificat, material steril și informare asupra riscurilor. Nicio variantă nu înlocuiește diagnosticul medical.</div>`;
+}
+
+const AUR=[
+ ['Shenmen','Vârful fosei triunghiulare, în treimea superioară','Calmare, durere, anxietate'],
+ ['Punctul Zero','Rădăcina helixului, la intrarea în concha','Homeostazie, echilibrare'],
+ ['Simpatic','La joncțiunea ramurii inferioare a antihelixului cu helixul','Durere viscerală, spasm'],
+ ['Rinichi','În cymba conchae, sub ramura superioară a antihelixului','Oboseală, urechi, lombar'],
+ ['Ficat','Cymba conchae, porțiunea postero-inferioară','Stres, ochi'],
+ ['Stomac','În jurul terminației ramurii helixului','Digestie, greață'],
+ ['Plămân','În cavum conchae, în jurul punctului Inimă','Tuse, piele, dependențe'],
+ ['Inimă','În centrul cavum conchae','Anxietate, palpitații'],
+ ['Apexul urechii','Vârful pavilionului, la îndoirea helixului','Febră, alergii, tensiune'],
+ ['Zona coloanei','Pe antihelix: cervical aproape de lob, lombo-sacrat spre ramura superioară','Dureri de coloană'],
+ ['Membrul inferior (genunchi, șold)','Ramura superioară a antihelixului','Durere articulară'],
+ ['Lob (ochi, dinți, față)','Lobul urechii, pe diferite zone','Ochi, dinți, față']
+];
+const REF=[
+ ['Degete de la picior','Cap, sinusuri'],['Baza degetelor','Ochi, urechi'],['Antepicior (pernuța)','Plămâni, torace, inimă'],
+ ['Arcul (mijlocul tălpii)','Stomac, ficat (dreapta), splină (stânga), pancreas, rinichi'],['Călcâi','Pelvis, nerv sciatic'],
+ ['Marginea internă a piciorului','Coloana vertebrală'],['Marginea externă','Umăr, braț, șold, genunchi']
+];
+function vEar(){
+  return `<h1>Ureche & tălpi</h1>${disc()}
+  <h2>Auriculoterapie</h2>
+  <div class="card"><p>Urechea este văzută ca un <b>microsistem</b>: forma ei seamănă cu un făt inversat (cap la lob, picioare sus). Stimularea se face cu ace mici, semințe adezive (Vaccaria), magneți sau laser. Există diferențe între școli (Nogier vs. harta chineză); locațiile de mai jos sunt orientative.</p>
+  <ul><li><b>Helix</b> — marginea exterioară; <b>Antihelix</b> — creasta paralelă interioară, cu două ramuri superioare.</li>
+  <li><b>Concha</b> — cavitatea centrală (<i>cymba</i> sus, <i>cavum</i> jos), <b>Tragus</b> și <b>Antitragus</b> — proeminențe, <b>Lob</b> — partea moale.</li></ul></div>
+  <div class="tw"><table><tr><th>Punct / zonă</th><th>Poziție</th><th>Folosit pentru</th></tr>${AUR.map(a=>`<tr><td>${esc(a[0])}</td><td>${esc(a[1])}</td><td>${esc(a[2])}</td></tr>`).join('')}</table></div>
+  <div class="warn">Semințele se aplică pe piele curată, 3–5 zile; se apasă ușor 20–30 s de câteva ori pe zi. Se scot la apariția roșeții, durerii sau secreției.</div>
+  <h2>Reflexologie plantară</h2>
+  <div class="card"><p>Se presupune că talpa reflectă corpul (zone Fitzgerald). Nu există dovezi că presiunea pe talpă influențează organele; poate aduce relaxare și confort.</p></div>
+  <div class="tw"><table><tr><th>Zonă</th><th>Corespondență pretinsă</th></tr>${REF.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}</table></div>
+  <h3>Reflexologie palmară</h3><p>Aceeași schemă pe palmă: degetele pentru cap, mijlocul palmei pentru zona digestivă, baza palmei pentru pelvis. Tehnica: presiune moderată, 3–5 s pe zonă.</p>
+  <h3>Mâini — puncte utile</h3><ul><li>${ptLink('LI4')} (între police și arătător)</li><li>${ptLink('PC8')} (palmă)</li><li>${ptLink('SI3')} (marginea ulnară)</li><li>${ptLink('LU9')}, ${ptLink('HT7')}, ${ptLink('PC6')} (încheietură)</li></ul>
+  <h3>Tălpi — puncte utile</h3><ul><li>${ptLink('KI1')} (talpă)</li><li>${ptLink('LR3')}, ${ptLink('SP4')}, ${ptLink('GB41')}, ${ptLink('ST44')} (dosul piciorului)</li><li>${ptLink('KI3')}, ${ptLink('BL60')} (de o parte și de alta a tendonului lui Ahile)</li></ul>`;
+}
+
+function vCun(){
+  const th=+(CUN.th)||20;
+  const seg=[['Între mameloane',8],['Apendice xifoid – ombilic',8],['Ombilic – simfiza pubiană',5],['Linia anterioară a părului – linia posterioară',12],['Pliul axilar anterior – pliul cotului',9],['Pliul cotului – pliul încheieturii',12],['Trohanter mare – pliul poplitee',19],['Pliul poplitee – vârful maleolei laterale',16],['Marginea inferioară a condilului medial al tibiei – vârful maleolei mediale',13]];
+  return `<h1>Măsurare (cun)</h1>${disc()}
+  <p><b>Cun</b> este o unitate proporțională, adaptată fiecărei persoane. Ea nu se măsoară în centimetri universali, ci în raport cu propriul corp.</p>
+  <h2>Metoda degetelor („cun-ul degetelor")</h2>
+  <ul><li><b>1 cun</b> = lățimea policelui la nivelul articulației interfalangiene.</li><li><b>1,5 cun</b> = lățimea degetelor II + III (arătător + mijlociu) unite, la nivelul articulației dintre falange.</li><li><b>2 cun</b> = lățimea a trei degete (II–IV) la nivelul falangei mijlocii a degetului III.</li><li><b>3 cun</b> = lățimea a patru degete (II–V) la nivelul falangei mijlocii a degetului III.</li></ul>
+  <div class="card"><h3>Calculator personalizat</h3>
+   <label>Lățimea policelui tău (mm): <input id="thm2" type="number" min="10" max="35" step="0.5" value="${th}" style="width:90px;padding:.4rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)" oninput="CUN.th=this.value;cunTab()"></label>
+   <div id="cuntab">${cunTable(th)}</div></div>
+  <h2>Repere proporționale ale corpului</h2>
+  <div class="tw"><table><tr><th>Segment</th><th>Cun</th></tr>${seg.map(s=>`<tr><td>${esc(s[0])}</td><td>${s[1]}</td></tr>`).join('')}</table></div>
+  <h2>Exemple</h2>
+  <ul><li>${ptLink('ST36')}: 3 cun sub ST35 → patru degete sub marginea rotulei, un deget lateral de creasta tibiei.</li><li>${ptLink('SP6')}: 3 cun deasupra vârfului maleolei mediale → patru degete deasupra, pe marginea tibiei.</li><li>${ptLink('PC6')}: 2 cun deasupra pliului încheieturii → trei degete.</li><li>${ptLink('CV12')}: 4 cun deasupra ombilicului (jumătatea distanței apendice xifoid–ombilic).</li></ul>
+  <h2>Sfaturi</h2>
+  <ul><li>Fiecare persoană își măsoară propriul corp: nu folosi mâna altcuiva.</li><li>Caută și un indiciu palpabil: o mică depresiune, un loc sensibil, o tensiune.</li><li>Memorează repere osoase și tendinoase, nu doar măsurători.</li></ul>`;
+}
+const CUN={th:20};
+function cunTable(th){
+  return `<div class="tw"><table><tr><th>Cun</th><th>≈ mm</th><th>≈ cm</th></tr>${[0.5,1,1.5,2,3,4,5,6,8,12].map(c=>`<tr><td>${c}</td><td>${(c*th).toFixed(0)}</td><td>${(c*th/10).toFixed(1)}</td></tr>`).join('')}</table></div><p class="mut">Calcul orientativ (1 cun = lățimea policelui). Pentru segmente mari se folosesc proporțiile corpului.</p>`;
+}
+function cunTab(){const th=+CUN.th||20;$('#cuntab').innerHTML=cunTable(th)}
+
+function vSafe(){
+  return `<h1>Siguranță & dovezi</h1>${disc()}
+  <h2>Acupunctura cu ace — riscuri</h2>
+  <ul><li><b>Frecvente, ușoare:</b> durere la înțepare, mici echimoze, amețeală, oboseală trecătoare, agravare temporară a simptomelor.</li>
+  <li><b>Rare, grave:</b> pneumotorax (ace pe torace/spate/umăr), infecții (ace nesterile), lezarea nervilor, perforarea organelor, leșin.</li>
+  <li>Cu ace sterile, de unică folosință, de către personal calificat, riscul de evenimente grave este foarte mic.</li>
+  <li>Cere întotdeauna: ace de unică folosință, igienă a mâinilor și a pielii, cabinet curat, informare asupra riscurilor.</li></ul>
+  <h2>Contraindicații și precauții</h2>
+  <div class="tw"><table><tr><th>Situație</th><th>Ce faci</th></tr>
+   <tr><td>Sarcină</td><td>Evită punctele marcate ⚠ (SP6, LI4, BL60, GB21 etc.) și punctele abdominale inferioare, doar cu medic/practician cu experiență în sarcină.</td></tr>
+   <tr><td>Anticoagulante / tulburări de coagulare</td><td>Fără ace fără acordul medicului; presopunctură blândă.</td></tr>
+   <tr><td>Stimulator cardiac / implant electric</td><td>Fără electroacupunctură.</td></tr>
+   <tr><td>Imunosupresie, diabet cu complicații</td><td>Precauție cu ace; piele sănătoasă; igienă strictă.</td></tr>
+   <tr><td>Infecții cutanate, răni, tumori</td><td>Nu aplica ace/presiune în zonă.</td></tr>
+   <tr><td>Febră mare, urgențe</td><td>Medic imediat.</td></tr>
+   <tr><td>Copii</td><td>Doar pediatri/practicieni cu experiență; adesea laser sau presiune blândă, fără ace.</td></tr>
+   <tr><td>Tulburări psihice severe, panică</td><td>Nu ca înlocuitor al tratamentului; conlucrare cu medicul.</td></tr></table></div>
+  <h2>Ce spun dovezile</h2>
+  <div class="card">
+   <p><b>Unde există dovezi mai bune (beneficii mici-moderate):</b> durere cronică lombară, osteoartrită de genunchi, cefalee de tensiune și migrenă (profilaxie), greață și vomă postoperatorie și după chimioterapie (inclusiv acupresura PC6).</p>
+   <p><b>Unde dovezile sunt slabe sau amestecate:</b> multe alte afecțiuni (depresie, fertilitate, astm, obezitate, tulburări de somn); rezultatele variază cu calitatea studiilor.</p>
+   <p><b>Placebo și sham:</b> în multe studii acupunctura reală diferă puțin de acupunctura sham (ace superficiale sau în puncte nespecifice), ceea ce sugerează că o parte din efect este contextual (așteptare, atingere, ritual). Efectul contextual poate fi totuși util, mai ales în durere.</p>
+   <p><b>Ghiduri:</b> unele ghiduri clinice includ acupunctura printre opțiunile non-farmacologice pentru lombalgie cronică (de ex. American College of Physicians, 2017), altele au restrâns recomandarea (de ex. NICE, Marea Britanie, pentru durerea cronică primară). Verifică ghidurile țării tale.</p>
+   <p><b>Mecanisme:</b> există efecte neurobiologice demonstrate (modulare a durerii), dar meridianele ca structuri anatomice nu au fost identificate.</p>
+   <p><b>Recunoaștere:</b> în 2010 UNESCO a înscris „acupunctura și moxibustia MTC" pe lista patrimoniului cultural imaterial al umanității.</p></div>
+  <h2>Abordare responsabilă</h2>
+  <ul><li>Folosește acupunctura și presopunctura ca <b>adjuvante</b>, nu ca înlocuitor al diagnosticului și tratamentului medical.</li>
+  <li>Nu întrerupe medicamentele fără acordul medicului.</li>
+  <li>Fii atent la promisiuni de „vindecări" miraculoase, cure scumpe sau diagnostice fără examinare.</li>
+  <li>Verifică reglementarea practicii în țara ta (în multe țări acupunctura se practică de medici sau de personal înregistrat).</li></ul>
+  <h2>Istorie pe scurt</h2>
+  <ul><li><b>Sec. II–I î.Hr.:</b> <i>Huangdi Neijing</i> (Canonul Intern al Împăratului Galben) pune bazele teoriei.</li><li><b>Sec. III d.Hr.:</b> Huangfu Mi compilează <i>Zhenjiu Jiayijing</i> (sistematizare a punctelor).</li><li><b>1601:</b> Yang Jizhou, <i>Zhenjiu Dacheng</i>.</li><li><b>1971–1972:</b> Interesul occidental crește după vizita lui Nixon în China și relatările despre acupunctura în chirurgie.</li><li><b>1979–1991:</b> OMS publică liste de afecțiuni și nomenclatura standard a punctelor.</li><li><b>2010:</b> UNESCO — patrimoniu cultural imaterial.</li></ul>`;
+}
+
+/* --- QUIZ --- */
+const QM=[
+ ['Câți cun măsoară distanța dintre mameloane?','8',['6','10','12']],
+ ['Care punct este „punctul de comandă" al feței și gurii?','LI4',['ST36','LU7','PC6']],
+ ['Care punct este cel mai folosit pentru greață și rău de mișcare?','PC6',['LI4','BL60','GB41']],
+ ['În ciclul Sheng, Lemnul generează:','Focul',['Pământul','Metalul','Apa']],
+ ['În ciclul Ke, Apa controlează:','Focul',['Lemnul','Pământul','Metalul']],
+ ['Elementul asociat toamnei:','Metal',['Lemn','Foc','Apă']],
+ ['Tehnica japoneză cu presiune cu degetele:','Shiatsu',['Tuina','Moxa','Gua sha']],
+ ['Moxibustia folosește arderea de:','Pelin (Artemisia)',['Salvie','Ghimbir','Cedru']],
+ ['Care punct este evitat clasic în sarcină?','SP6',['PC6','HT7','GV20']],
+ ['Câte puncte are meridianul vezicii urinare (BL)?','67',['45','54','72']],
+ ['GV20 (Baihui) se află:','Pe creștet',['Pe frunte','În ceafă','În palmă']],
+ ['Cine a compilat Zhenjiu Jiayijing?','Huangfu Mi',['Yang Jizhou','Sun Simiao','Hua Tuo']],
+ ['Harta urechii în auriculoterapie seamănă cu:','Un făt inversat',['O inimă','O tigaie','O floare']],
+ ['Gua Sha constă în:','Răzuirea pielii',['Arderea pelinului','Ventuze','Percuție ușoară']],
+ ['Punctul-cheie pentru Dai Mai:','GB41',['SP4','TE5','KI6']],
+ ['Punctul de influență al vaselor:','LU9',['GB34','BL17','CV17']],
+ ['Punctul Yuan (sursă) al Inimii:','HT7',['PC6','LU7','SI3']],
+ ['Cum se numește unitatea proporțională de măsurare a corpului?','Cun',['Li','Chi','Sen']],
+ ['Care dintre meridiane NU face parte din cele 12 principale?','Ren Mai',['Plămân','Ficat','Rinichi']],
+ ['Presopunctura este numită și:','Acupresură',['Acupunctură cu laser','Moxibustie','Auriculoterapie']],
+ ['Ce înseamnă Hijama?','Ventuze umede',['Moxibustie','Gua sha','Reflexologie plantară']],
+ ['Dien Chan este o formă de reflexologie:','Facială',['Plantară','Palmară','Auriculară']],
+ ['Cine a descris hărțile auriculare moderne în Franța?','Paul Nogier',['William Fitzgerald','Tokujiro Namikoshi','Reinhold Voll']],
+ ['Masajul tradițional thailandez a intrat pe lista UNESCO în:','2019',['1998','2005','2012']],
+ ['Care variantă folosește un ciocănel cu 5–7 ace scurte?','Mei Hua / Qi Xing',['Fire needling','Ryodoraku','Tui Na']],
+ ['Care dintre acestea este considerată fără dovezi științifice?','Kinesiologia aplicată (test muscular)',['Acupresura PC6 pentru greață','Acupunctura pentru lombalgie','Gua sha pentru tensiune']],
+ ['Zen Shiatsu este asociat cu:','Shizuto Masunaga',['Tokujiro Namikoshi','Paul Nogier','Gary Craig']],
+ ['Protocolul NADA folosește:','5 puncte auriculare',['3 puncte pe mână','12 puncte pe spate','1 punct pe creștet']]
+];
+const QZ={q:[],i:0,sc:0,ans:false};
+function sh(a){return a.map(x=>[Math.random(),x]).sort((a,b)=>a[0]-b[0]).map(x=>x[1])}
+function genQ(){
+  const out=[];
+  for(const q of sh(QM).slice(0,6))out.push({t:q[0],a:q[1],o:sh([q[1],...q[2]])});
+  for(let k=0;k<2;k++){const p=sh(PT.filter(x=>x.p&&x.c!=='EX'))[0];const w=sh(PT.filter(x=>x.p!==p.p)).slice(0,3).map(x=>x.p);out.push({t:`Care este numele pinyin al punctului ${p.c}?`,a:p.p,o:sh([p.p,...w])})}
+  for(let k=0;k<1;k++){const m=sh(MER.filter(x=>x.t!=='—'))[0];const w=sh(MER.filter(x=>x.t!=='—'&&x.t!==m.t)).slice(0,3).map(x=>x.t);out.push({t:`În ce interval orar este maximul meridianului ${m.n}?`,a:m.t,o:sh([m.t,...w])})}
+  for(let k=0;k<1;k++){const m=sh(MER.filter(x=>x.el!=='Extra'))[0];const w=['Lemn','Foc','Pământ','Metal','Apă'].filter(x=>x!==m.el);out.push({t:`Cărui element aparține meridianul ${m.n}?`,a:m.el,o:sh([m.el,...sh(w).slice(0,3)])})}
+  return sh(out);
+}
+function vQuiz(){
+  if(!QZ.q.length){QZ.q=genQ();QZ.i=0;QZ.sc=0;QZ.ans=false}
+  if(QZ.i>=QZ.q.length){
+    if(QZ.sc>S.best){S.best=QZ.sc;save()}
+    return `<h1>Quiz</h1><div class="card"><h2>Rezultat: ${QZ.sc} / ${QZ.q.length}</h2><p>Cel mai bun scor: ${S.best}</p><button class="b" onclick="QZ.q=[];render()">Din nou</button></div>`;
+  }
+  const q=QZ.q[QZ.i];
+  return `<h1>Quiz</h1><p class="mut">Întrebarea ${QZ.i+1} din ${QZ.q.length} · scor ${QZ.sc} · record ${S.best}</p>
+  <div class="card"><h3>${esc(q.t)}</h3><div id="opts">${q.o.map((o,i)=>`<button class="opt" onclick="ansQ(${i})">${esc(o)}</button>`).join('')}</div>
+  <div id="qres"></div></div>`;
+}
+function ansQ(i){
+  if(QZ.ans)return;QZ.ans=true;const q=QZ.q[QZ.i];const btn=document.querySelectorAll('.opt');
+  btn.forEach((b,j)=>{if(q.o[j]===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});
+  if(q.o[i]===q.a)QZ.sc++;
+  $('#qres').innerHTML=`<button class="b" onclick="QZ.i++;QZ.ans=false;render()">${QZ.i<QZ.q.length-1?'Următoarea →':'Rezultat'}</button>`;
+}
+
+function vGloss(){
+  const g=GLO.slice().sort((a,b)=>cmp(a[0],b[0]));
+  return `<h1>Glosar</h1>${disc()}<div class="bar"><input id="gq" placeholder="Caută în glosar…" oninput="gFilter(this.value)"></div><div id="glist">${g.map(x=>`<details class="gl"><summary>${esc(x[0])}</summary><p>${esc(x[1])}</p></details>`).join('')}</div>`;
+}
+function gFilter(v){v=v.toLowerCase();document.querySelectorAll('.gl').forEach(d=>d.style.display=d.textContent.toLowerCase().includes(v)?'':'none')}
+
+/* --- căutare globală --- */
+function doSearch(){
+  const v=$('#q').value.trim().toLowerCase();
+  if(v.length<2){render();return}
+  const pts=PT.filter(p=>(p.c+' '+p.p+' '+p.l+' '+p.u+' '+p.tg+' '+p.mn).toLowerCase().includes(v)).slice(0,30);
+  const mer=MER.filter(m=>(m.c+' '+m.n+' '+m.zh+' '+m.path+' '+m.key+' '+m.use).toLowerCase().includes(v));
+  const glo=GLO.filter(g=>(g[0]+' '+g[1]).toLowerCase().includes(v));
+  const tech=VAR.filter(t=>(t.n+' '+t.pr+' '+t.zon+' '+t.ind).toLowerCase().includes(v));
+  const pro=PROT.filter(p=>(p.t+' '+p.n+' '+p.p.join(' ')).toLowerCase().includes(v));
+  const any=pts.length+mer.length+glo.length+tech.length+pro.length;
+  $('#main').innerHTML=`<h1>${esc(T().ph.replace('…',''))}: “${esc(v)}”</h1>${any?'':`<p class="mut">${esc(T().noRes)}</p>`}
+  ${pts.length?`<h2>Puncte (${pts.length})</h2><div class="grid">${pts.map(ptCard).join('')}</div>`:''}
+  ${mer.length?`<h2>Meridiane</h2>${mer.map(m=>`<div class="card" style="margin:.4rem 0"><h3><span class="badge" style="background:${MCOL[m.c]}">${m.c}</span>${esc(m.n)}</h3><p>${esc(m.path)}</p></div>`).join('')}`:''}
+  ${pro.length?`<h2>Protocoale</h2>${pro.map(p=>`<div class="card" style="margin:.4rem 0"><h3>${esc(p.t)}</h3><p>${p.p.map(c=>`<span class="tag">${c}</span>`).join('')}</p></div>`).join('')}`:''}
+  ${tech.length?`<h2>Variante (${tech.length})</h2>${tech.slice(0,25).map(t=>`<div class="card" style="margin:.4rem 0"><h3>${esc(t.n)}</h3><p>${esc(t.pr)}</p><a href="#tech" onclick="TF.q='${esc(t.n).replace(/'/g,'')}';TF.cat='';TF.open='${esc(t.id)}';$('#q').value='';render();return false">Vezi fișa →</a></div>`).join('')}`:''}
+  ${glo.length?`<h2>Glosar</h2>${glo.map(g=>`<details open><summary>${esc(g[0])}</summary><p>${esc(g[1])}</p></details>`).join('')}`:''}`;
+}
+
+/* ================= RENDER ================= */
+function render(){
+  renderNav();const v=view();const m=$('#main');
+  const map={home:vHome,theory:vTheory,mer:vMer,pts:vPts,acu:vAcu,tech:vTech,ear:vEar,cun:vCun,safe:vSafe,quiz:vQuiz,gloss:vGloss};
+  m.innerHTML=(map[v]||vHome)();
+  if(v==='pts')renderPtsList();
+  if(v==='tech')renderVarList();
+  if(v==='quiz'&&!QZ.q.length){}
+}
+/* init */
+load();document.documentElement.lang=S.lang;applyTheme();applyI18n();render();
+</script>
+</body>
+</html>

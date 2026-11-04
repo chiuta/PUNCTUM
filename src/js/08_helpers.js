@@ -1,0 +1,23 @@
+/* ================= HELPERS ================= */
+const $=s=>document.querySelector(s);
+const esc=s=>String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]));
+function ptCard(p){
+  const fav=S.fav.includes(p.c+'|'+p.p);
+  const m=MER.find(x=>x.c===p.m);
+  return `<div class="card pt" id="pt-${esc(p.c)}">
+   <button class="star" onclick="toggleFav('${p.c}','${p.p}')" aria-label="fav">${fav?'★':'☆'}</button>
+   <h3><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h3>
+   <p class="mut">${m?esc(m.n):'Puncte extra'} · ${esc(REG[p.r])}</p>
+   ${p.mn?`<p class="mut"><i>${esc(p.mn)}</i></p>`:''}
+   ${p.tg?`<p>${p.tg.split(',').filter(Boolean).map(t=>`<span class="tag">${esc(t.trim())}</span>`).join('')}</p>`:''}
+   <p><b>Localizare:</b> ${esc(p.l)}</p>
+   <p><b>Indicații tradiționale:</b> ${esc(p.u)}</p>
+   ${p.w?`<p class="w">${esc(p.w)}</p>`:''}
+  </div>`}
+function toggleFav(c,p){const k=c+'|'+p;const i=S.fav.indexOf(k);if(i<0)S.fav.push(k);else S.fav.splice(i,1);save();if(view()==='pts')renderPtsList();else render();}
+function goPoint(c){PF.q=c;PF.m='';PF.r='';PF.fav=false;go('pts')}
+function ptLink(c){return `<a href="#pts" onclick="goPoint('${c}')">${c}</a>`}
+function linkify(s){return esc(s).replace(/\b(LU|LI|ST|SP|HT|SI|BL|KI|PC|TE|GB|LR|CV|GV)(\d{1,2})\b/g,(m,a,b)=>`<a href="#pts" onclick="goPoint('${m}')">${m}</a>`)}
+function warnBox(txt){return `<div class="warn">⚠ ${txt}</div>`}
+function disc(){return `<div class="warn">ℹ ${esc(T().disc)}</div>`}
+

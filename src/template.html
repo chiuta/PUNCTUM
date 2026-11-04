@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ro">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#2f7d6d">
+<title>PUNCTUM — atlas al terapiilor prin puncte</title>
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232f7d6d'/%3E%3Cpath d='M32 8v40' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='52' r='4' fill='%23e9c46a'/%3E%3C/svg%3E">
+<!--
+  PUNCTUM — aplicație educațională offline, un singur fișier HTML.
+  MIT License — Copyright (c) 2026 Alexandru-Ionuț Chiuță (Alexio)
+  Permission is hereby granted, free of charge, to any person obtaining a copy of this software
+  and associated documentation files, to deal in the Software without restriction, including without
+  limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies,
+  subject to inclusion of this notice. THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND.
+-->
+<style>
+{{CSS}}</style>
+</head>
+<body>
+<header>
+  <div class="top">
+    <div class="logo" onclick="go('home')">PUNCTUM<small id="sub"></small></div>
+    <input type="search" id="q" oninput="doSearch()" autocomplete="off">
+    <select id="lang" onchange="setLang(this.value)" aria-label="Language">
+      <option value="ro">Română</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="es">Español</option><option value="pt">Português</option><option value="de">Deutsch</option><option value="hu">Magyar</option>
+    </select>
+    <button class="ib" id="thm" onclick="toggleTheme()" aria-label="Theme">◐</button>
+  </div>
+  <nav id="nav"></nav>
+</header>
+<main id="main"></main>
+<footer>
+  <div id="ftxt"></div>
+  <div id="fver"></div>
+  <div>MIT License · © 2026 Alexandru-Ionuț Chiuță (Alexio)</div>
+  <a href="https://buymeacoffee.com/echo.of.the.strings" target="_blank" rel="noopener">☕ Buy Me a Coffee</a>
+</footer>
+<div id="modal"></div>
+
+<script>
+{{JS}}</script>
+</body>
+</html>
