@@ -5,7 +5,7 @@ ro:{title:'Curs',intro:'Parcurs în 6 niveluri, de la fundamente la practică re
 en:{title:'Course',intro:'A 6-level path from fundamentals to responsible practice. Progress is saved on this device.',lessons:'lessons',done:'done',min:'min',key:'Key ideas',practice:'Practical exercise',points:'Points mentioned',vars:'Variants mentioned',check:'Check your understanding',markDone:'Mark lesson as done',undo:'Undo “done”',back:'← Back to levels',backLvl:'← Back to level',next:'Next lesson →',prev:'← Previous lesson',prog:'Progress',reset:'Reset progress',confirmReset:'Delete course progress?',correct:'Correct',wrong:'Wrong',empty:'Course content is not available in this build.',start:'Start',cont:'Continue',review:'Review',overall:'Overall progress'}
 };
 const cu=k=>(CRSUI[S.lang]||CRSUI.ro)[k]||CRSUI.ro[k]||k;
-function cst(){if(!S.course||typeof S.course!=='object')S.course={done:{},ans:{}};S.course.done=S.course.done||{};S.course.ans=S.course.ans||{};return S.course}
+function cst(){const o=x=>x&&typeof x==='object'&&!Array.isArray(x);if(!o(S.course))S.course={done:{},ans:{}};if(!o(S.course.done))S.course.done={};if(!o(S.course.ans))S.course.ans={};return S.course}
 const CR={lvl:null,les:null};
 function allLessons(){const o=[];COURSE.forEach(l=>(l.lectii||[]).forEach(x=>o.push({lv:l,le:x})));return o}
 function lvlProg(l){const n=(l.lectii||[]).length;const d=(l.lectii||[]).filter(x=>cst().done[x.id]).length;return{n,d,p:n?Math.round(100*d/n):0}}

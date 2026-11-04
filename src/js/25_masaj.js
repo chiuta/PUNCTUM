@@ -8,10 +8,13 @@ function masTech(id){return (MAST.tehnici||[]).find(t=>t.id===id)}
 function masPts(codes){return (codes||[]).map(c=>PT.find(x=>x.c===c)).filter(Boolean)}
 function masPreg(codes){return [...new Set(masPts(codes).filter(isPregPt).map(x=>x.c))]}
 function masTags(codes){return masPts(codes).map(x=>`<span class="tag" title="${esc(x.l)}">${ptLink(x.c)} ${esc(x.p)}</span>`).join('')}
+/* pași cu presiune ușoară: tehnica „ușoară”, text cu „ușor/blând” sau sesiuni pe zone sensibile (abdomen, ochi, stern, tâmple, creștet) */
+const LIGHT_S=['s03','s04','s25','s26','s30','s31'],LIGHT_R=['r07','r08','r09'];
+function masLight(txt,t,force){return !!(force||(t&&t.presiune==='ușoară')||/ușor|blând|foarte ușoar/i.test(txt||''))}
 function masStart(kind,i){
   let title,steps,o;
-  if(kind==='s'){const c=MASS[i];title=c.n;steps=[{grp:masPts(c.pts),t:c.cum,s:c.sec,th:'Presiune simultană'}];o={fixed:true,partner:c.cine==='partener',R:profR('sim',c)}}
-  else{const r=MASC[i];title=r.n;steps=r.pasi.map(p=>{const t=masTech(p.teh);return{grp:masPts(p.pts),t:p.t,s:p.sec,th:t?t.n:''}});o={fixed:true,partner:r.cine==='partener',R:profR('seq',r)}}
+  if(kind==='s'){const c=MASS[i];title=c.n;steps=[{grp:masPts(c.pts),t:c.cum,s:c.sec,th:'Presiune simultană',pr:masLight(c.cum,null,LIGHT_S.includes(c.id))?'u':'m'}];o={fixed:true,partner:c.cine==='partener',R:profR('sim',c),warn:c.nota||''}}
+  else{const r=MASC[i];title=r.n;steps=r.pasi.map(p=>{const t=masTech(p.teh);return{grp:masPts(p.pts),t:p.t,s:p.sec,th:t?t.n:'',pr:masLight(p.t,t,LIGHT_R.includes(r.id))?'u':'m'}});o={fixed:true,partner:r.cine==='partener',R:profR('seq',r),reg:r.regiune,warn:[r.evita,r.nota].filter(Boolean).join(' ')}}
   sesBegin(title,steps,o);
 }
 function masFilter(a){return !MF.cine||a.cine===MF.cine}

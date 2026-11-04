@@ -2,6 +2,7 @@
 <html lang="ro">
 <head>
 <meta charset="utf-8">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#2f7d6d">
 <title>PUNCTUM — atlas al terapiilor prin puncte</title>
@@ -18,17 +19,17 @@
 {{CSS}}</style>
 </head>
 <body>
-<a class="skip" href="#main" onclick="document.getElementById('main').focus();return false">Skip to content</a>
+<a class="skip" href="#main" onclick="document.getElementById('main').focus();return false">Sari la conținut</a>
 <header>
   <div class="top">
     <div class="logo" role="link" tabindex="0" onclick="go('home')" onkeydown="if(event.key==='Enter')go('home')">PUNCTUM<small id="sub"></small></div>
-    <input type="search" id="q" aria-label="Search" oninput="doSearch()" autocomplete="off">
-    <select id="lang" onchange="setLang(this.value)" aria-label="Language">
+    <input type="search" id="q" aria-label="Caută" oninput="dbRun('q',doSearch)" autocomplete="off">
+    <select id="lang" onchange="setLang(this.value)" aria-label="Limba">
       <option value="ro">Română</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="es">Español</option><option value="pt">Português</option><option value="de">Deutsch</option><option value="hu">Magyar</option>
     </select>
-    <button class="ib" id="thm" onclick="toggleTheme()" aria-label="Theme">◐</button>
+    <button class="ib" id="thm" onclick="toggleTheme()" aria-label="Tema">◐</button>
   </div>
-  <nav id="nav" aria-label="Main"></nav>
+  <nav id="nav" aria-label="Navigare principală"></nav>
 </header>
 <main id="main" tabindex="-1" aria-live="polite"></main>
 <footer>
@@ -38,9 +39,10 @@
   <a href="https://buymeacoffee.com/echo.of.the.strings" target="_blank" rel="noopener">☕ Buy Me a Coffee</a>
 </footer>
 <div id="modal"></div>
+<div id="sesLive" class="vh" role="status" aria-live="polite" aria-atomic="true"></div>
 
-{{I18N}}
 <script>
 {{JS}}</script>
+{{I18N}}
 </body>
 </html>

@@ -25,7 +25,7 @@ h1{font-size:1.7rem;margin:.2rem 0 .6rem}h2{font-size:1.3rem;margin:1.4rem 0 .5r
 .mut{color:var(--mut);font-size:.9rem}
 .badge{position:relative;isolation:isolate;display:inline-block;padding:.12rem .55rem;border-radius:999px;font-size:.78rem;font-weight:700;color:#fff;margin-right:.35rem}
 .tag{display:inline-block;padding:.1rem .5rem;border-radius:8px;font-size:.78rem;background:var(--soft);color:var(--ink);margin:.1rem .15rem .1rem 0}
-.pt{position:relative}.pt h3{margin:.1rem 0}.pt .star{position:absolute;right:.6rem;top:.5rem;background:none;border:0;font-size:1.3rem;cursor:pointer;color:var(--gold)}
+.pt{position:relative;content-visibility:auto;contain-intrinsic-size:auto 250px}.pt h3{margin:.1rem 0}.pt .star{position:absolute;right:.6rem;top:.5rem;background:none;border:0;font-size:1.3rem;cursor:pointer;color:var(--gold)}
 .pt p{margin:.25rem 0;font-size:.93rem}.pt .w{color:var(--acc2);font-size:.88rem}.w.pw,.pt .w.pw{border-left:4px solid var(--acc2);background:var(--warn);padding:.35rem .6rem;border-radius:6px;font-size:.9rem;font-weight:600;color:var(--ink)}
 .bar{display:flex;gap:.5rem;flex-wrap:wrap;margin:.6rem 0}.bar input{flex:1;min-width:140px;padding:.5rem .7rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)}
 button.b{background:var(--acc);color:var(--onacc);border:0;border-radius:10px;padding:.55rem .95rem;font-size:.95rem;cursor:pointer}
@@ -71,3 +71,27 @@ html.hc .card,html.hc .warn,html.hc details,html.hc .modal .box{border:2px solid
 html.hc a{color:#8fd3ff;text-decoration:underline}
 #cprint .pcards{display:grid;grid-template-columns:1fr 1fr;gap:.6rem}
 #cprint .pcard{border:1px solid #000;padding:.5rem;break-inside:avoid}
+
+/* ---- accesibilitate: text ascuns vizual, ținte tactile ≥44 px, câmpuri ≥16 px (fără zoom pe iOS), reflow la text mărit, contrast ---- */
+.vh{position:absolute;width:1px;height:1px;margin:-1px;padding:0;border:0;overflow:hidden;clip:rect(0 0 0 0);clip-path:inset(50%);white-space:nowrap}
+header .ib,#thm{min-width:44px;min-height:44px}
+header select,header input[type=search],select{min-height:44px}
+nav a{display:inline-flex;align-items:center;min-height:44px}
+button.b,.opt{min-height:44px}
+.tag a,a.tag{position:relative}
+.tag a::after{content:'';position:absolute;inset:-15px -4px} /* zonă de atingere ≥44 px, aspect neschimbat */
+a.tag::after{content:'';position:absolute;inset:-11px -4px}
+input[type=checkbox]{width:24px!important;height:24px!important;min-width:24px!important}
+label:has(>input[type=checkbox]){min-height:44px;align-items:center}
+html input:not([type=checkbox]):not([type=radio]):not([type=range]),html select,html textarea{font-size:max(16px,1rem)}
+.logo,.logo small{white-space:normal;overflow-wrap:anywhere}
+select,.top input,.bar input{max-width:min(100%,calc(100vw - 2.5rem))}
+main{overflow-wrap:break-word}
+.bar>label:has(>select){display:flex;flex-wrap:wrap;gap:.3rem .5rem;align-items:center;max-width:100%}
+#mpForm,.mpc,.bar{flex-wrap:wrap}
+h3.ec{color:var(--ec)}
+:root[data-theme=dark] h3.ec{color:color-mix(in srgb,var(--ec) 45%,#fff)}
+@media(prefers-color-scheme:dark){:root:not([data-theme=light]) h3.ec{color:color-mix(in srgb,var(--ec) 45%,#fff)}}
+html.hc.hc h2.cc{color:var(--acc)}
+html.hc.hc h3.ec{color:inherit}
+@media print{.pt{content-visibility:visible}}

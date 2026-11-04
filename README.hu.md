@@ -2,7 +2,7 @@
 
 _pontalapú terápiák atlasza: akupunktúra, akupresszúra, moxa, köpölyözés, fülakupunktúra, reflexológia és más_
 
-**Verzió 2.4 · Utolsó frissítés: 2026-11-04**
+**Verzió 2.5 · Utolsó frissítés: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 

@@ -221,20 +221,20 @@ function mpCount(){let n=0;VORD.forEach(k=>{if(VW[k].ear)return;const v=compPos(
 /* ---------- vizualizare ---------- */
 const MPCSS=`<style>
 .mp .mpt{display:flex;gap:.3rem;overflow-x:auto;padding:.1rem 0 .4rem;margin:.2rem 0 .3rem}
-.mp .mpt button,.mp .mpc button.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:.42rem .8rem;border-radius:999px;font-size:.88rem;cursor:pointer;min-height:36px}
+.mp .mpt button,.mp .mpc button.chip{white-space:nowrap;border:1px solid var(--line);background:var(--card);color:var(--ink);padding:.42rem .8rem;border-radius:999px;font-size:.88rem;cursor:pointer;min-height:44px}
 .mp .mpt button[aria-selected=true],.mp .mpc button.chip.on{background:var(--acc);color:var(--onacc);border-color:var(--acc)}
-.mp .mpg{display:grid;gap:.8rem;grid-template-areas:"ctrl" "fig" "info"}
-.mp .mpc{grid-area:ctrl}.mp .mpf{grid-area:fig;position:relative;padding:.5rem}.mp .mpi{grid-area:info;min-width:0}
+.mp .mpg{display:grid;gap:.8rem;grid-template-columns:minmax(0,1fr);grid-template-areas:"ctrl" "fig" "info"}
+.mp .mpc{grid-area:ctrl;min-width:0}.mp .mpf{grid-area:fig;position:relative;padding:.5rem}.mp .mpi{grid-area:info;min-width:0}
 @media(min-width:900px){.mp .mpg{grid-template-columns:minmax(320px,480px) 1fr;grid-template-areas:"fig ctrl" "fig info";align-items:start}.mp .mpf{position:sticky;top:7.5rem}}
 .mp form{display:flex;gap:.4rem;align-items:center;flex-wrap:wrap}
 .mp form input{flex:1;min-width:120px;padding:.5rem .7rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);font-size:1rem}
 .mp .chips{display:flex;flex-wrap:wrap;gap:.3rem;margin:.55rem 0}
 .mp .chip i{display:inline-block;width:.65rem;height:.65rem;border-radius:50%;margin-right:.3rem;vertical-align:-1px}
 .mp .mpz{position:absolute;right:.5rem;top:.5rem;display:flex;flex-direction:column;gap:.3rem;z-index:2}
-.mp .mpz button{width:38px;height:38px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.15rem;cursor:pointer;box-shadow:var(--sh)}
+.mp .mpz button{width:44px;height:44px;border-radius:10px;border:1px solid var(--line);background:var(--card);color:var(--ink);font-size:1.15rem;cursor:pointer;box-shadow:var(--sh)}
 .mp svg{display:block;width:100%;height:auto;max-height:82vh;margin:auto;user-select:none;-webkit-user-select:none}
 .mp .p{cursor:pointer;outline:none}.mp .hit{fill:transparent;stroke:none}
-.mp .dot{stroke:var(--card);stroke-width:1.2;r:var(--dr,3.6px)}.mp .hit{r:var(--hr,9px)}
+.mp .dot{stroke:var(--card);stroke-width:1.2;r:var(--dr,3.6px)}.mp .hit{r:calc(var(--hr,9px)*var(--hf,1))}
 .mp .p.k .dot{stroke:var(--gold);stroke-width:1.6}
 .mp .lb{display:none;font-size:var(--lf,9px);fill:var(--ink);paint-order:stroke;stroke:var(--card);stroke-width:3px;stroke-linejoin:round;pointer-events:none;transform:translate(var(--lo,5px),calc(var(--lo,5px)*-1))}
 .mp svg.zl .lb,.mp .p:hover .lb,.mp .p:focus .lb,.mp .p.sel .lb,.mp .p.hl .lb{display:block}
@@ -246,7 +246,7 @@ const MPCSS=`<style>
 .mp .zn{cursor:pointer;outline:none}.mp .zn:hover *,.mp .zn:focus-visible *{opacity:.75!important}.mp .zn.on *{opacity:.8!important;stroke:var(--ink)}
 .mp .ep .dot{fill:var(--acc2)}
 .mp .stat{min-height:1.3rem;margin:.2rem 0}
-.mp .ezl{display:flex;flex-wrap:wrap;gap:.3rem;margin:.5rem 0}.mp .ezl button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:.25rem .5rem;font-size:.82rem;cursor:pointer}
+.mp .ezl{display:flex;flex-wrap:wrap;gap:.3rem;margin:.5rem 0}.mp .ezl button{border:1px solid var(--line);background:var(--card);color:var(--ink);border-radius:8px;padding:.25rem .5rem;font-size:.82rem;cursor:pointer;min-height:44px}
 .mp .lgd{display:flex;flex-wrap:wrap;gap:.5rem 1rem;font-size:.82rem;color:var(--mut);margin:.3rem 0}
 .mp .lgd svg{width:26px;height:8px;vertical-align:middle;margin-right:.3rem;display:inline-block}
 @media(prefers-reduced-motion:reduce){.mp .ring{animation:none}}
@@ -267,19 +267,23 @@ function vMaps(){
  <div class="mpf card"><div class="mpz"><button type="button" id="mpZi" title="${esc(mu('zin'))}" aria-label="${esc(mu('zin'))}">+</button><button type="button" id="mpZo" title="${esc(mu('zout'))}" aria-label="${esc(mu('zout'))}">−</button><button type="button" id="mpZr" title="${esc(mu('reset'))}" aria-label="${esc(mu('reset'))}">⟲</button></div><div id="mpBox"></div></div>
  <div class="mpi" id="mpInfo"></div></div></div>`}
 
+/* zonă de atingere extinsă (până la ≈44 px) pentru fiecare punct, limitată la jumătate din distanța până la cel mai apropiat vecin: zonele nu se suprapun */
+function mpHitF(P,W){const R=22*W/340/9,f=[];for(let i=0;i<P.length;i++){let d=1e9;for(let j=0;j<P.length;j++){if(i!==j){const x=Math.hypot(P[i][0]-P[j][0],P[i][1]-P[j][1]);if(x<d)d=x}}f.push(+Math.max(1,Math.min(R,5,d/18)).toFixed(2))}return f}
 function mpSvg(){
  const v=VW[M.view],W=v.vb[0],Hh=v.vb[1];
  let s=`<svg id="mpSvg" viewBox="0 0 ${W} ${Hh}" role="group" aria-label="${esc(mu('mapAria')+': '+mu(M.view))}" xmlns="http://www.w3.org/2000/svg">`+v.svg();
  if(v.refl&&M.refl)s+=reflSvg(v.refl);
  if(v.ear){
+  const HF=mpHitF(EAR.map(e=>[e[2],e[3]]),W);
   EAR.forEach((e,i)=>{const nm=S.lang==='ro'?e[0]:e[1];
-   s+=`<g class="p ep" data-e="${i}" tabindex="0" role="button" aria-label="${esc(nm)}"><circle class="hit" cx="${e[2]}" cy="${e[3]}" r="9"/><circle class="dot" cx="${e[2]}" cy="${e[3]}" r="3.6"/><text class="lb" x="${e[2]}" y="${e[3]}">${esc(nm)}</text></g>`})
+   s+=`<g class="p ep" data-e="${i}" tabindex="0" role="button" aria-label="${esc(nm)}"><circle class="hit" style="--hf:${HF[i]}" cx="${e[2]}" cy="${e[3]}" r="9"/><circle class="dot" cx="${e[2]}" cy="${e[3]}" r="3.6"/><text class="lb" x="${e[2]}" y="${e[3]}">${esc(nm)}</text></g>`})
  }else{
   const c=compPos(M.view);
   c.lines.forEach(l=>{const me=MER.find(m=>m.c===l.m);s+=`<path class="ml" data-m="${l.m}" d="${l.d}" stroke="${MCOL[l.m]}"${me&&me.yy==='Yang'?' stroke-dasharray="5 3"':''}/>`});
+  const PL=[];Object.keys(c.pos).forEach(code=>{if(ptBy(code))c.pos[code].forEach(q=>PL.push(q))});const HF=mpHitF(PL,W);let hi=0;
   Object.keys(c.pos).forEach(code=>{const p=ptBy(code);if(!p)return;
    c.pos[code].forEach((q,i)=>{const k=KEYPTS.has(code);
-    s+=`<g class="p${k?' k':''}" data-c="${code}" data-m="${p.m}" tabindex="0" role="button" aria-label="${esc(code+' '+p.p)}"><circle class="hit" cx="${q[0]}" cy="${q[1]}" r="9"/><circle class="dot" cx="${q[0]}" cy="${q[1]}" r="${k?4.6:3.6}" fill="${MCOL[p.m]||MCOL.EX}"/><text class="lb" x="${q[0]}" y="${q[1]}">${esc(code)}</text></g>`})})
+    s+=`<g class="p${k?' k':''}" data-c="${code}" data-m="${p.m}" tabindex="0" role="button" aria-label="${esc(code+' '+p.p)}"><circle class="hit" style="--hf:${HF[hi++]}" cx="${q[0]}" cy="${q[1]}" r="9"/><circle class="dot" cx="${q[0]}" cy="${q[1]}" r="${k?4.6:3.6}" fill="${MCOL[p.m]||MCOL.EX}"/><text class="lb" x="${q[0]}" y="${q[1]}">${esc(code)}</text></g>`})})
  }
  return s+'</svg>'}
 

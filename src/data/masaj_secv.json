@@ -77,7 +77,7 @@
    }
   ],
   "evita": "Rană, infecție sau erupție pe scalp, febră, cefalee bruscă și severă, traumatism recent al capului.",
-  "nota": "Presiunea rămâne ușoară; fără apăsare pe gâtul lateral. În sarcină cere avizul medicului; secvența nu conține puncte marcate „În sarcină evită”, dar păstrează presiunea ușoară."
+  "nota": "Presiunea rămâne ușoară; fără apăsare pe gâtul lateral. În sarcină cere avizul medicului; secvența nu conține puncte marcate „În sarcină evită”, dar păstrează presiunea ușoară. Dacă ai peste 50 de ani și durerea de cap este nouă, cu sensibilitate la atingerea tâmplei sau a scalpului, durere la mestecat ori tulburări de vedere, nu face acupresură: cere evaluare medicală în aceeași zi."
  },
  {
   "id": "r02",
@@ -167,7 +167,7 @@
   "cine": "singur",
   "dur_min": 7,
   "material": "minge de tenis, perete liber, haine subțiri",
-  "poz": "În picioare, spatele sprijinit de perete, mingea între perete și spate, lângă coloană (nu pe ea).",
+  "poz": "În picioare, spatele sprijinit de perete, mingea între perete și spate, lângă coloană (nu pe ea). Dacă ești vârstnic, ai amețeli sau echilibru precar, fă secvența șezând, cu mingea între spătar și spate.",
   "scop": "Relaxarea mușchilor lombari și ai fesei după statul prelungit pe scaun.",
   "pasi": [
    {
@@ -247,19 +247,25 @@
   "scop": "Reîmprospătarea gambelor și a coapselor după o zi pe picioare, cu presiune blândă.",
   "pasi": [
    {
+    "t": "Compară cele două gambe: dacă diferă (una mai umflată, mai caldă, roșie sau dureroasă), oprește secvența.",
+    "teh": "ef",
+    "pts": [],
+    "sec": 30
+   },
+   {
     "t": "Cu ambele palme mângâie piciorul de la gleznă spre genunchi și apoi spre șold, de 8–10 ori, în sus.",
     "teh": "ef",
     "pts": [],
     "sec": 40
    },
    {
-    "t": "Frământă gamba între palme, fără a apăsa direct în spatele genunchiului.",
+    "t": "Dacă ambele gambe arată la fel, frământă gamba între palme, fără a apăsa direct în spatele genunchiului.",
     "teh": "pe",
     "pts": [],
     "sec": 60
    },
    {
-    "t": "Apasă cu degetul mare pe mușchiul de lângă creasta tibiei, la 3 lățimi de deget sub rotulă (ST36), apoi în adâncitura de sub marginea interioară a osului, sub genunchi (SP9); nu apăsa pe os, cu presiune constantă.",
+    "t": "Apasă cu degetul mare pe mușchiul de lângă creasta tibiei, la 4 lățimi de deget (aprox. 3 cun) sub rotulă (ST36), apoi în adâncitura de sub marginea interioară a osului, sub genunchi (SP9); nu apăsa pe os, cu presiune constantă.",
     "teh": "ps",
     "pts": [
      "ST36",
@@ -302,7 +308,7 @@
     "sec": 60
    }
   ],
-  "evita": "Vene varicoase severe, tromboză, edem sau umflătură unilaterală cu durere, răni, piele inflamată.",
+  "evita": "Înainte de orice, privește și pipăie ambele gambe: dacă una este mai umflată, mai caldă, roșie sau dureroasă la apăsare, mai ales după o călătorie lungă, imobilizare, operație, în sarcină sau după naștere, nu masa și mergi la urgențe în aceeași zi (la lipsă de aer sau durere în piept: 112). De asemenea: varice severe, edem, răni, piele inflamată.",
   "nota": "Presiunea rămâne ușoară pe vene; nu apăsa în spatele genunchiului. În sarcină nu frământa și nu apăsa gambele (risc crescut de tromboză) și cere avizul medicului; secvența nu conține puncte marcate „În sarcină evită”."
  },
  {
@@ -461,7 +467,7 @@
     "sec": 30
    }
   ],
-  "evita": "Inflamație acută, umflătură sau durere puternică la încheietură, fracturi recente, amorțeală persistentă a degetelor.",
+  "evita": "Inflamație acută, umflătură sau durere puternică la încheietură, fracturi recente, amorțeală persistentă a degetelor. Brațul cu limfedem, cu ganglioni axilari excizați sau iradiat, cu fistulă de dializă, cateter sau port: nu masa fără avizul medicului.",
   "nota": "Fă secvența pe ambele mâini. Furnicături sau amorțeli la degete: oprește-te și cere sfat medical. În sarcină omite LI4 (pasul 5) și cere avizul medicului."
  },
  {
@@ -472,7 +478,7 @@
   "dur_min": 5,
   "material": "nimic (opțional: un strop de ulei, doar pe obraji și frunte, niciodată în jurul ochilor)",
   "poz": "Șezând, coatele pe masă, mâinile curate.",
-  "scop": "Destinderea mușchilor feței și o senzație de ușurare în zona nasului; nu înlocuiește tratamentul sinuzitei.",
+  "scop": "Destinderea mușchilor feței și o senzație de relaxare a feței; nu tratează sinuzita.",
   "pasi": [
    {
     "t": "Cu palmele mângâie ușor fața, din centru spre exterior, de 6 ori.",
@@ -609,7 +615,7 @@
     "sec": 60
    }
   ],
-  "evita": "Sarcină, la mai puțin de 1–2 ore după masă, durere abdominală intensă, febră, vărsături, operație abdominală recentă, hernie, sângerare, menstruație abundentă, ciroză sau lichid în abdomen, anevrism de aortă, stomă, boală inflamatorie acută.",
+  "evita": "Sarcină, la mai puțin de 1–2 ore după masă, durere abdominală intensă, febră, vărsături, operație abdominală recentă, hernie abdominală sau inghinală, sângerare, menstruație abundentă, ciroză sau lichid în abdomen, anevrism de aortă, stomă, boală inflamatorie acută. Nu începe dacă ai vărsături repetate, abdomen umflat și dur, nu elimini gaze sau scaun, vezi sânge în scaun sau în vărsătură, ai durere în flanc cu febră sau ai menstruația întârziată și sarcina nu e exclusă.",
   "nota": "NU în sarcină (pașii cu abdomenul: CV12, ST25, CV6, CV4) și nu imediat după masă. Presiunea rămâne foarte ușoară; oprește-te la durere sau la senzația de rău."
  },
  {
@@ -629,7 +635,7 @@
     "sec": 60
    },
    {
-    "t": "Cu degetele mari apasă ușor, pe rând, pe interiorul încheieturii: în adâncitura dinspre degetul mic (HT7), apoi la mijloc, la 3 lățimi de deget deasupra pliului (PC6), ținând constant.",
+    "t": "Cu degetele mari apasă ușor, pe rând, pe interiorul încheieturii: în adâncitura dinspre degetul mic (HT7), apoi la mijloc, la 3 lățimi de deget (aprox. 2 cun) deasupra pliului (PC6), ținând constant.",
     "teh": "bl",
     "pts": [
      "HT7",
@@ -685,7 +691,7 @@
    }
   ],
   "evita": "Imediat după efort intens, febră, stare de rău, amețeală; dacă te trezește energia, scurtează secvența.",
-  "nota": "Păstrează presiunea ușoară (3–5 din 10) și lumina slabă. Dacă insomnia durează peste 3 săptămâni, cere consult. În sarcină omite punctul de la gleznă (KI3) și cere avizul medicului."
+  "nota": "Păstrează presiunea ușoară (2–3 din 10) și lumina slabă. Dacă insomnia durează peste 3 săptămâni, cere consult. În sarcină omite punctul de la gleznă (KI3) și cere avizul medicului. Dacă ai gânduri de a-ți face rău sau de a nu mai trăi, sună la 112; nu rămâne singur."
  },
  {
   "id": "r10",
@@ -694,7 +700,7 @@
   "cine": "singur",
   "dur_min": 8,
   "material": "nimic",
-  "poz": "În picioare sau șezând pe marginea patului.",
+  "poz": "În picioare sau șezând pe marginea patului. Dacă ești vârstnic sau ai amețeli, fă secvența șezând.",
   "scop": "Trezire ușoară a corpului la începutul zilei, fără stimulare excesivă.",
   "pasi": [
    {
@@ -845,7 +851,7 @@
     "sec": 45
    }
   ],
-  "evita": "Febră, răni sau erupții pe spate, fracturi recente, dureri puternice sau radiante, sarcină (în orice trimestru), osteoporoză severă; nicio presiune pe coloană, pe rinichi sau pe coaste.",
+  "evita": "Febră, răni sau erupții pe spate, fracturi recente, dureri puternice sau radiante, sarcină (în orice trimestru), osteoporoză severă; nicio presiune pe coloană, pe rinichi sau pe coaste. Cancer cu afectare osoasă sau durere osoasă nocturnă: nu apăsa pe coloană, coaste sau bazin; durerea osoasă nouă cere consult.",
   "nota": "Stabiliți un semnal de oprire (cuvântul „stop” sau mâna ridicată) înainte să începeți; cel care masează întreabă la 1–2 minute „cum e presiunea?” (ținta: 4–6 din 10), iar cel masat poate cere oricând mai ușor, mai greu sau oprire, fără explicații. La cerere sau la durere ascuțită, amorțeală ori amețeală te oprești imediat. În sarcină nu face această secvență (poziția pe burtă și zona lombo-sacră — BL25, BL26, GB30 — sunt de evitat)."
  },
  {
@@ -924,7 +930,7 @@
    }
   ],
   "evita": "Dureri puternice, amorțeală în brațe, amețeli, traumatism recent al gâtului, hernie cervicală acută; fără presiune pe lateralul gâtului.",
-  "nota": "Stabiliți un semnal de oprire (cuvântul „stop” sau mâna ridicată) înainte să începeți; cel care masează întreabă la 1–2 minute „cum e presiunea?” (ținta: 4–6 din 10), iar cel masat poate cere oricând mai ușor, mai greu sau oprire, fără explicații. La cerere sau la durere ascuțită, amorțeală ori amețeală te oprești imediat. În sarcină omite GB21 (pasul 2) și cere avizul medicului."
+  "nota": "Stabiliți un semnal de oprire (cuvântul „stop” sau mâna ridicată) înainte să începeți; cel care masează întreabă la 1–2 minute „cum e presiunea?” (ținta: 4–6 din 10), iar cel masat poate cere oricând mai ușor, mai greu sau oprire, fără explicații. La cerere sau la durere ascuțită, amorțeală ori amețeală te oprești imediat. În sarcină omite GB21 (pasul 2) și cere avizul medicului. Presiunea merge pe mușchi, nu în adâncime, fără a extinde capul pe spate. Dacă apare amețeală, vedere dublă, vorbire încurcată, dificultăți la înghițit, slăbiciune într-un braț sau durere nouă și intensă în ceafă, oprește și sună la 112."
  },
  {
   "id": "r13",

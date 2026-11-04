@@ -10,18 +10,21 @@ const DZ=[
  {id:'brate',n:'Brațe, mâini, încheieturi',e:'✋',prot:[],reg:['brate'],pr:['bra']},
  {id:'picioare',n:'Picioare și tălpi',e:'🦶',prot:['Picioare grele'],reg:['picioare'],pr:['pic']},
  {id:'general',n:'General: oboseală, somn, stres',e:'😴',prot:['Oboseală & energie','Insomnie & agitație','Stres & anxietate'],reg:['intreg'],pr:[]}];
-const DS=['Încordare musculară','Înțepenire','Durere surdă','Durere ascuțită sau înjunghiere','Arsură sau furnicături','Oboseală sau greutate'];
+const DS=['Încordare musculară','Înțepenire','Durere surdă','Durere ascuțită sau înjunghiere','Arsură sau furnicături','Oboseală sau greutate','Slăbiciune sau amorțeală'];
 const DD=['Începută azi sau ieri','De câteva zile','De peste 3 săptămâni','Revine des'];
-const DR={z:'',s:'',d:'',red:[false,false,false,false,false]};
+const DR={z:'',s:'',d:'',red:RED.map(()=>false)};
+const ZALERT={cap:'Durere de cap nouă, apărută brusc sau după 50 de ani, cu sensibilitate la tâmple sau scalp, durere la mestecat ori tulburări de vedere: cere evaluare medicală în aceeași zi; dacă e „cea mai puternică din viața ta”, sună la 112.',abdomen:'Durere abdominală nouă, puternică sau care se agravează, cu febră, vărsături, abdomen dur ori sânge în scaun: nu masa, mergi la urgențe. În sarcină, orice durere abdominală sau sângerare cere evaluare imediată.',picioare:'Durere sau crampă nouă la o gambă, cu umflare, căldură sau roșeață pe o singură parte: nu masa piciorul și mergi la urgențe în aceeași zi.',lombar:'Durere lombară cu amorțeală între picioare, slăbiciune la unul sau ambele picioare ori probleme noi cu urinarea sau scaunul: sună la 112 sau mergi imediat la camera de gardă.',ceafa:'Durere de ceafă cu febră și înțepenire, după traumatism sau cu slăbiciune într-un braț: urgență, nu acupresură.','spate-sup':'Durere între omoplați sau în piept, cu lipsă de aer, transpirații sau iradiere în braț/maxilar: sună la 112.'};
+const ZHIDE=['cap','abdomen','picioare','lombar'];
 function drSet(k,v){DR[k]=v;const y=window.scrollY;render();window.scrollTo(0,y)}
 function drRed(i,v){DR.red[i]=v;const y=window.scrollY;render();window.scrollTo(0,y)}
 function protIdx(pref){return PROT.findIndex(p=>p.t.startsWith(pref))}
 function vDurere(){
   const z=DZ.find(x=>x.id===DR.z);const red=DR.red.some(Boolean);
-  const sharp=DR.s===DS[3]||DR.s===DS[4];
+  const sharp=DR.s===DS[3]||DR.s===DS[4]||DR.s===DS[6];
+  const acute=!!z&&ZHIDE.includes(z.id)&&DR.d===DD[0];
   const chip=(arr,k,cur)=>arr.map(t=>`<button class="b ${cur===t?'':'alt'}" onclick="drSet('${k}',this.dataset.v)" data-v="${esc(t)}" aria-pressed="${cur===t}">${esc(t)}</button>`).join('');
   let out='';
-  if(red)out=`<div class="warn" role="alert"><b>Nu face masaj sau presopunctură acum.</b> Dacă simptomele sunt severe sau au apărut brusc, sună la 112; altfel vorbește cu medicul.</div>`;
+  if(red)out=`<div class="warn" role="alert">${redAlarm(DR.red.map((v,i)=>v?i:-1).filter(i=>i>=0))}</div>`;
   else if(z){
     const notes=[];
     if(sharp)notes.push('Durerea ascuțită, arsura sau furnicăturile pot indica o problemă a nervilor sau a articulațiilor. Evită presiunea pe zonă și cere un consult.');
@@ -29,11 +32,12 @@ function vDurere(){
     const pr=z.prot.map(protIdx).filter(i=>i>=0);
     const sq=MASC.map((r,i)=>({r,i})).filter(o=>z.reg.includes(o.r.regiune)).slice(0,4);
     const sm=MASS.map((c,i)=>({c,i})).filter(o=>masPts(o.c.pts).some(p=>z.pr.includes(p.r))).slice(0,4);
-    out=`${notes.map(t=>`<div class="warn" role="note">${esc(t)}</div>`).join('')}
-    ${sharp?'':`<h2>Sugestii pentru această zonă</h2>
-    ${pr.length?`<h3>Presopunctură</h3>${pr.map(i=>`<div class="card" style="margin:.4rem 0"><h3>${esc(PROT[i].t)}</h3><p>${PROT[i].p.map(c=>cPtTag(c)).join('')}</p><button class="b" onclick="startSes(${i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
-    ${sm.length?`<h3>Puncte apăsate simultan</h3>${sm.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.c.n)}</h3><p>${masTags(o.c.pts)}</p>${profBadges(profR('sim',o.c))}<button class="b" onclick="masStart('s',${o.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
-    ${sq.length?`<h3>Secvențe de masaj</h3>${sq.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.r.n)}</h3><p class="mut">${esc(o.r.scop)}</p>${profBadges(profR('seq',o.r))}<button class="b" onclick="masStart('c',${o.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
+    out=`${ZALERT[z.id]?`<div class="warn" role="note">${esc(ZALERT[z.id])}</div>`:''}${notes.map(t=>`<div class="warn" role="note">${esc(t)}</div>`).join('')}
+    ${acute?`<p class="mut">Dacă niciunul dintre aceste semne nu se potrivește și durerea persistă peste 48 de ore, vezi medicul.</p>`:''}
+    ${sharp||acute?'':`<h2>Sugestii pentru această zonă</h2>
+    ${pr.length?`<h3>Presopunctură</h3>${pr.map(i=>`<div class="card" style="margin:.4rem 0"><h3>${esc(PROT[i].t)}</h3><p>${PROT[i].p.map(c=>cPtTag(c)).join('')}</p><p class="w">${esc(PROT[i].n)}</p><button class="b" onclick="startSes(${i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
+    ${sm.length?`<h3>Puncte apăsate simultan</h3>${sm.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.c.n)}</h3><p>${masTags(o.c.pts)}</p>${profBadges(profR('sim',o.c))}${o.c.nota?`<p class="w">${esc(o.c.nota)}</p>`:''}<button class="b" onclick="masStart('s',${o.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
+    ${sq.length?`<h3>Secvențe de masaj</h3>${sq.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.r.n)}</h3><p class="mut">${esc(o.r.scop)}</p>${profBadges(profR('seq',o.r))}${o.r.evita?`<p class="w">${esc(o.r.evita)}</p>`:''}${o.r.nota?`<p class="w">${esc(o.r.nota)}</p>`:''}<button class="b" onclick="masStart('c',${o.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
     ${!pr.length&&!sm.length&&!sq.length?`<p class="mut">${esc(T().noRes)}</p>`:''}`}`;
   }
   return `<h1>Unde te doare?</h1>${disc()}
@@ -49,7 +53,7 @@ regView('durere',vDurere,{ro:'Unde te doare?',en:'Where does it hurt?',fr:'Où a
 
 /* ---------- căutare în limbaj natural ---------- */
 const NLM=[[/gat|ceaf|cervical|umar|umeri/,'ceaf'],[/cap|cefal|migren|tample/,'cefalee'],[/somn|dorm|insomn|noapte/,'insomnie'],[/burt|stomac|digest|balon|constipa|abdomen/,'digestie'],[/spate|lomb|sale|coloan/,'lombalgie'],[/ochi|ecran|vedere|calculator/,'ochi'],[/\bnas\b|sinus|raceal|infundat/,'nas'],[/stres|anxie|nelinist|agita|panica|nervos/,'stres'],[/obosea|energie|epuiz|extenuat/,'oboseal'],[/tuse|gat iritat|raguseal/,'tuse'],[/menstru|ciclu|crampe/,'menstruale'],[/picio|gamb|umfl|tali|talp/,'picioare'],[/dint|maxilar|atm|masea/,'dinți'],[/great|voma|rau de miscare|rau de masina|navet/,'greață'],[/\bman|incheiet|tastatur|tunel|degete/,'mâini'],[/concentr|studiu|memor|examen/,'concentrare']];
-const NLR=/durere (in|la) piept|dureri in piept|nu pot respira|respir.*greu|lesin|paralizi|slabiciune brusc|vorbire|febra mare|sangerare|infarct|avc|gambe? umflat/;
+const NLR=/dur(ere|eri)?\s+(de\s+|in\s+|la\s+)?piept|doare\s+pieptul|(strang|apas|presiun)\w*\s+(in|la|pe)\s+piept|\binima\b|nu\s+pot\s+(sa\s+)?(respir\w*|vorbi|misca)|respir\w*\s+(greu|dificil)|(greu|dificil)\w*\s+(sa\s+)?respir|dificultat\w*\s+(de|la|in)\s+respir|sufoc|lesin|paralizi|slabiciune|amortit|amorteal|gura\s+stramba|fata\s+(cazuta|stramba)|vorbire|vorbesc\s+(greu|incurcat)|nu\s+vad|vedere\s+dubla|pierd\w*\s+(brusc\s+)?vederea|cefalee\s+(brusca|violenta)|cea\s+mai\s+(puternica|rea)\s+durere|durere\s+de\s+cap\s+(brusca|cumplita|groaznica)|ceaf\w*\s+(teap|tepen|intepen|rigid)|febra\s+(mare|3[89]|4[01])|sange|sangerar|sangerez|infarct|\bavc\b|accident\s+vascular|gamb\w*\s+(umflat|dureros|cald)|picior\w*\s+(umflat|cald|dureros)|nu\s+pot\s+urina|retentie|sinucid|nu\s+mai\s+vreau\s+sa\s+(traiesc|exist)|vreau\s+sa\s+mor|sa\s+ma\s+omor|sa-mi\s+fac\s+rau/;
 function nlNorm(s){return String(s).toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'')}
 function nlExpand(v){const n=nlNorm(v);const o=[];NLM.forEach(m=>{if(m[0].test(n))o.push(m[1])});return o}
 function nlUrgent(v){return NLR.test(nlNorm(v))}
@@ -63,7 +67,7 @@ function exNext(){
   const pool=exPool();if(!pool.length)return;
   const q=pool[Math.floor(Math.random()*pool.length)];EX.code=q.c;EX.view=q.v;EX.res=null;EX.tip=false;render();
 }
-function exMode(m){EX.mode=m;EX.code='';render()}
+function exMode(m){EX.mode=m;EX.code='';EX.res=null;EX.tip=false;render()}
 function exTip(){EX.tip=true;render()}
 function exTap(e){
   if(EX.res)return;

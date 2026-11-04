@@ -20,6 +20,7 @@ for(const l of ['en','fr','it','es','pt','de','hu']){
   const RO=/[ăĂşŞţŢșȘțȚ]|\b(și|pentru|este|sunt|dacă|sau|fără|după|prin|când|mai|dar|care|această|acest|puncte|punct)\b/;
   const w=document.createTreeWalker(box,NodeFilter.SHOW_TEXT);let n;const left=new Map();let tot=0;
   while(n=w.nextNode()){const t=n.data.replace(/\s+/g,' ').trim();if(t.length<4)continue;tot++;if(/[ăĂşŞţŢșȘțȚ]/.test(t)||/\b(și|pentru|dacă|sau|fără|după|când|această)\b/.test(t))left.set(t,(left.get(t)||0)+1)}
-  box.remove();return{tot,left:[...left.keys()]}},l);
+  box.remove();const D=i18nDict(l),chain=[];for(const k in D){const v=D[k];if(v!==k&&D[v]!==undefined&&D[v]!==v)chain.push(k+' → '+v+' → '+D[v])}return{tot,left:[...left.keys()],chain}},l);
+ if(r.chain.length)console.log('  ATENȚIE '+l+': '+r.chain.length+' traduceri a căror valoare este ea însăși cheie cu altă traducere (risc de buclă/lanț în observator; protejat în cod prin TR_DONE, dar de reparat în '+l+'.json):',r.chain.slice(0,6));
  total+=r.left.length;console.log(l,`${r.left.length} șiruri cu rămășițe românești din ${r.tot}`);r.left.slice(0,12).forEach(x=>console.log('   ',x.slice(0,110)));}
 await b.close();process.exit(0)})();

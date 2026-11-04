@@ -47,12 +47,21 @@ function cPt(c){return PT.find(x=>x.c===c)}
 function cPtTag(c){const p=cPt(c);return p?`<span class="tag" title="${esc(p.l)}">${ptLink(c)} ${esc(p.p)}</span>`:''}
 
 /* ---- sesiune ghidată pe puncte proprii ---- */
-function startCustom(title,codes,sec){
+function startCustom(title,codes,sec,extra){
   const pts=(codes||[]).map(c=>PT.find(x=>x.c===c)).filter(Boolean);
   if(!pts.length)return;
-  sesBegin(title,pts,{sec:sec||0});
+  sesBegin(title,pts,Object.assign({sec:sec||0},extra||{}));
 }
-function cndStart(id){const c=COND.find(x=>x.id===id);if(c)startCustom(c.n,c.pts,c.g==='Copii'?30:0)}
+/* afecțiuni: semnalele de alarmă ajung în poarta de siguranță; grupul „Copii” = atingere foarte ușoară, fără presiune pe puncte */
+function cndStart(id){
+  const c=COND.find(x=>x.id===id);if(!c)return;
+  if(c.g==='Copii'){
+    const pts=c.pts.map(cPt).filter(Boolean);if(!pts.length)return;
+    sesBegin(c.n,pts.map(p=>Object.assign({},p,{s:20})),{child:true,fixed:true,warn:c.al,guide:c.pr});
+    return;
+  }
+  startCustom(c.n,c.pts,0,{warn:c.al});
+}
 
 /* ---- index ---- */
 function cndFilter(){
@@ -71,7 +80,7 @@ function cndVarLink(id){
 }
 function cndCard(c){
   const pts=c.pts.map(cPt).filter(Boolean);
-  const preg=pts.filter(p=>CPREG.test(p.w||'')).map(p=>p.c);
+  const preg=pts.filter(isPregPt).map(p=>p.c);
   const vl=c.vr.map(cndVarLink).filter(Boolean).join(' ');
   return `<details id="c-${esc(c.id)}" ${CNF.open===c.id?'open':''}><summary>${esc(c.n)} <span class="badge" style="background:${EVC[c.ev]||EVC.x}">${esc(CNU('evL')[c.ev]||'')}</span><span class="tag">${esc(CNUg(c.g))}</span></summary>
    <p>${esc(c.d)}</p>
@@ -150,15 +159,15 @@ function rtnPrint(id){
   d=document.createElement('div');d.id='cprint';
   d.innerHTML=`<h1>${esc(r.name)}</h1><p>${esc(CNU('pTitle'))} · PUNCTUM</p><table><tr><th>${esc(CNU('pStep'))}</th><th>${esc(CNU('points'))}</th><th>${esc(CNU('pLoc'))}</th><th>${esc(CNU('pDur'))}</th></tr>${rows}</table>${warnList}<p><i>${esc(CNU('pFoot'))}</i></p>`;
   document.body.appendChild(d);document.body.classList.add('cprinting');
-  const done=()=>{document.body.classList.remove('cprinting');const x=document.getElementById('cprint');if(x)x.remove();window.removeEventListener('afterprint',done)};
+  let tm=0;const done=()=>{clearTimeout(tm);document.body.classList.remove('cprinting');const x=document.getElementById('cprint');if(x)x.remove();window.removeEventListener('afterprint',done)};
   window.addEventListener('afterprint',done);
   try{window.print()}catch(e){}
-  setTimeout(done,500);
+  tm=setTimeout(done,120000); // curățarea reală se face la „afterprint”
 }
 function rtnExport(){
   const data=JSON.stringify({punctum:'routines',v:1,routines:cRoutines().map(r=>({name:r.name,pts:r.pts,sec:r.sec,fav:!!r.fav}))},null,1);
   CRT.io=data;
-  try{const b=new Blob([data],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='punctum-routines.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),2000)}catch(e){}
+  try{const b=new Blob([data],{type:'application/json'}),u=URL.createObjectURL(b),a=document.createElement('a');a.href=u;a.download='punctum-routines.json';document.body.appendChild(a);a.click();a.remove();setTimeout(()=>URL.revokeObjectURL(u),30000)}catch(e){}
   CRT.msg=CNU('ioExp');rtnDraw();
 }
 function rtnImport(){
@@ -181,7 +190,7 @@ function rtnDraw(){
     <td style="white-space:nowrap"><button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rUp'))}" aria-label="${esc(CNU('rUp'))}" onclick="rtnMove(${i},-1)" ${i===0?'disabled':''}>▲</button>
     <button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rDown'))}" aria-label="${esc(CNU('rDown'))}" onclick="rtnMove(${i},1)" ${i===CRT.pts.length-1?'disabled':''}>▼</button>
     <button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rDel'))}" aria-label="${esc(CNU('rDel'))}" onclick="rtnDel(${i})">✕</button></td></tr>`}).join('');
-  const pregWarn=CRT.pts.map(cPt).filter(p=>p&&CPREG.test(p.w||'')).map(p=>p.c);
+  const pregWarn=CRT.pts.map(cPt).filter(p=>p&&isPregPt(p)).map(p=>p.c);
   box.innerHTML=`<div class="card" id="rtn-ed">
    <div class="bar"><input id="rtn-name" maxlength="80" placeholder="${esc(CNU('rNamePh'))}" aria-label="${esc(CNU('rName'))}" value="${esc(CRT.name)}" oninput="CRT.name=this.value">
     <select aria-label="${esc(CNU('rSec'))}" onchange="CRT.sec=+this.value">${CSEC.map(s=>`<option value="${s}" ${CRT.sec===s?'selected':''}>${s} ${esc(CNU('rSecU'))} / ${esc(CNU('perPt'))}</option>`).join('')}</select></div>
@@ -198,7 +207,7 @@ function rtnDraw(){
      <button class="b alt" onclick="rtnFav('${esc(r.id)}')">${r.fav?'★':'☆'} ${esc(CNU('rFav'))}</button><button class="b alt" onclick="rtnPrint('${esc(r.id)}')">🖨 ${esc(CNU('rPrint'))}</button>
      <button class="b alt" onclick="rtnDup('${esc(r.id)}')">${esc(CNU('rDup'))}</button><button class="b alt" onclick="rtnRemove('${esc(r.id)}')">${esc(CNU('rDel'))}</button></div></details>`).join(''):`<p class="mut">${esc(CNU('rNone'))}</p>`}
   <details><summary>${esc(CNU('ioT'))}</summary>
-   <textarea id="rtn-io" rows="6" style="width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem;font:13px monospace" placeholder="${esc(CNU('ioPh'))}" aria-label="JSON" oninput="CRT.io=this.value">${esc(CRT.io)}</textarea>
+   <textarea id="rtn-io" rows="6" style="width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem;font:13px monospace;font-size:max(16px,1rem)" placeholder="${esc(CNU('ioPh'))}" aria-label="JSON" oninput="CRT.io=this.value">${esc(CRT.io)}</textarea>
    <div class="bar"><button class="b alt" onclick="rtnExport()">${esc(CNU('rExport'))}</button><button class="b" onclick="rtnImport()">${esc(CNU('rImport'))}</button></div></details>`;
 }
 

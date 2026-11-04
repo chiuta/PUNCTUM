@@ -2,7 +2,7 @@
 
 _atlas al terapiilor prin puncte: acupunctură, presopunctură/acupresură, moxă, ventuze, auriculoterapie, reflexologie și altele_
 
-**Versiune 2.4 · Ultima actualizare: 2026-11-04**
+**Versiune 2.5 · Ultima actualizare: 2026-11-04**
 
 [Română](README.ro.md) · [English](README.en.md) · [Français](README.fr.md) · [Italiano](README.it.md) · [Español](README.es.md) · [Português](README.pt.md) · [Deutsch](README.de.md) · [Magyar](README.hu.md)
 

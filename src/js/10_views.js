@@ -23,7 +23,7 @@ function vHome(){
    <h2>Începe de aici</h2>
    <div class="grid">${tiles.map(t=>`<a class="card" href="#${t[0]}" style="text-decoration:none;color:inherit"><div style="font-size:1.6rem">${t[1]}</div><h3>${t[2]}</h3><span class="mut">${t[3]}</span></a>`).join('')}</div>
    <h2>Ce este presopunctura?</h2>
-   <div class="card"><p>Presopunctura (acupresura) stimulează aceleași puncte ca acupunctura, dar prin presiune cu degetul, fără ace și fără a străpunge pielea. Se aplică 30–60 de secunde, cu presiune fermă dar suportabilă, respirând lent. Este cea mai sigură cale de a învăța despre puncte, dar are reguli: unele puncte se evită în sarcină și există situații în care trebuie să mergi la medic.</p>
+   <div class="card"><p>Presopunctura (acupresura) stimulează aceleași puncte ca acupunctura, dar prin presiune cu degetul, fără ace și fără a străpunge pielea. Se aplică 30–60 de secunde, cu presiune confortabilă, niciodată dureroasă, respirând lent. Este cea mai sigură cale de a învăța despre puncte, dar are reguli: unele puncte se evită în sarcină și există situații în care trebuie să mergi la medic.</p>
    <p>Cercetarea modernă arată că stimularea acestor puncte poate modula durerea prin mecanisme nervoase și neurochimice (ex. endorfine, adenozină, poarta de control a durerii), dar nu a demonstrat structuri anatomice ale „meridianelor". Studiile sunt amestecate: unele beneficii sunt reale, altele sunt în mare parte efecte nespecifice (așteptare, atingere, relaxare). Citește secțiunea <a href="#safe">Siguranță & dovezi</a>.</p></div>
    <h2>Despre acupunctură (doar informativ)</h2>
    <div class="card"><p>Acupunctura este un sistem de medicină tradițională chineză (MTC) în care sunt stimulate puncte specifice de pe corp, în mod clasic cu ace fine. Tradiția descrie un flux de <b>Qi</b> prin <b>meridiane</b>, iar tratamentul urmărește restabilirea echilibrului dintre Yin și Yang. Din ea au derivat sau s-au dezvoltat paralel presopunctura (acupresura), moxibustia, ventuzele, gua sha, tuina, shiatsu, auriculoterapia și reflexologia.</p></div>
@@ -49,7 +49,7 @@ function vTheory(){
     <defs><marker id="ah" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#2e8b57"/></marker><marker id="ak" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#c0392b"/></marker></defs>
     ${elSvg()}
    </svg>
-   <h3 style="color:${el.c}">${el.n} (${el.zh})</h3>
+   <h3 class="ec" style="--ec:${el.c}">${el.n} (${el.zh})</h3>
    <p class="mut">${el.txt}</p>
    <div class="tw"><table><tr><th>Organe</th><td>${el.org}</td></tr><tr><th>Anotimp</th><td>${el.sez}</td></tr><tr><th>Climat</th><td>${el.cl}</td></tr><tr><th>Emoție</th><td>${el.em}</td></tr><tr><th>Culoare</th><td>${el.col}</td></tr><tr><th>Gust</th><td>${el.gust}</td></tr><tr><th>Țesut</th><td>${el.tes}</td></tr><tr><th>Organ de simț</th><td>${el.sim}</td></tr>
    <tr><th>Generează</th><td>${EL[(selEl.i+1)%5].n}</td></tr><tr><th>Controlează</th><td>${EL[(selEl.i+2)%5].n}</td></tr><tr><th>Este generat de</th><td>${EL[(selEl.i+4)%5].n}</td></tr><tr><th>Este controlat de</th><td>${EL[(selEl.i+3)%5].n}</td></tr></table></div>
@@ -105,15 +105,17 @@ function vMer(){
   <ul><li>Plămân ↔ Intestin gros (Metal)</li><li>Splină ↔ Stomac (Pământ)</li><li>Inimă ↔ Intestin subțire (Foc)</li><li>Rinichi ↔ Vezică urinară (Apă)</li><li>Pericard ↔ Triplu încălzitor (Foc ministerial)</li><li>Ficat ↔ Vezică biliară (Lemn)</li></ul>`;
 }
 
+const MERN=Object.create(null);MER.forEach(m=>{MERN[m.c]=m.n});
+const ptHayF=p=>(p.c+' '+p.p+' '+p.l+' '+p.u+' '+p.tg+' '+p.mn+' '+(MERN[p.m]||'')).toLowerCase();
 function filterPts(){
   const q=PF.q.trim().toLowerCase();
-  return PT.filter(p=>(!PF.m||p.m===PF.m)&&(!PF.r||p.r===PF.r)&&(!PF.fav||S.fav.includes(p.c+'|'+p.p))&&(!q||(p.c+' '+p.p+' '+p.l+' '+p.u+' '+p.tg+' '+p.mn+' '+(MER.find(x=>x.c===p.m)||{n:''}).n).toLowerCase().includes(q)));
+  return PT.filter(p=>(!PF.m||p.m===PF.m)&&(!PF.r||p.r===PF.r)&&(!PF.fav||S.fav.includes(p.c+'|'+p.p))&&(!q||hayOf(p,ptHayF).includes(q)));
 }
-function renderPtsList(){const L=filterPts();$('#plist').innerHTML=L.length?L.map(ptCard).join(''):`<p class="mut">${esc(T().noRes)}</p>`;$('#pcount').textContent=L.length+' / '+PT.length}
+function renderPtsList(){const pl=$('#plist');if(!pl)return;const L=filterPts();pl.innerHTML=L.length?L.map(ptCard).join(''):`<p class="mut">${esc(T().noRes)}</p>`;$('#pcount').textContent=L.length+' / '+PT.length}
 function vPts(){
   return `<h1>Puncte</h1>${disc()}
   <div class="card"><p><b>Presopunctură:</b> apasă cu pulpa degetului, ferm dar fără durere ascuțită, 30–60 de secunde, respirând lent. Dacă apar durere intensă, amorțeală sau amețeală, oprește-te. Avertismentele despre „înțepare" privesc doar practicanții de acupunctură.</p></div>
-  <div class="bar"><input id="pq" placeholder="Filtrează (cod, nume, simptom)…" value="${esc(PF.q)}" oninput="PF.q=this.value;renderPtsList()">
+  <div class="bar"><input id="pq" placeholder="Filtrează (cod, nume, simptom)…" value="${esc(PF.q)}" oninput="PF.q=this.value;dbRun('pts',renderPtsList)">
    <select id="pm" onchange="PF.m=this.value;renderPtsList()"><option value="">Toate meridianele</option>${MER.map(m=>`<option value="${m.c}" ${PF.m===m.c?'selected':''}>${m.c} — ${esc(m.n)}</option>`).join('')}<option value="EX" ${PF.m==='EX'?'selected':''}>EX — Puncte extra</option></select>
    <select id="pr" onchange="PF.r=this.value;renderPtsList()"><option value="">Toate zonele</option>${Object.keys(REG).map(k=>`<option value="${k}" ${PF.r===k?'selected':''}>${REG[k]}</option>`).join('')}</select>
    <button class="b alt" onclick="PF.fav=!PF.fav;this.style.outline=PF.fav?'2px solid var(--gold)':'none';renderPtsList()" style="${PF.fav?'outline:2px solid var(--gold)':''}">★ Favorite</button>
@@ -123,43 +125,56 @@ function vPts(){
 }
 
 /* --- sesiune presopunctură --- */
-const SES={fixed:false,on:false,pts:[],i:0,sec:60,left:60,paused:false,timer:null,beep:true,title:''};
-let AC=null;
+const SES={fixed:false,on:false,pts:[],i:0,sec:60,dur:60,end:0,left:60,paused:false,timer:null,beep:true,title:'',ann:-1,a5:-1};
+let AC=null,WL=null;
 function beep(f){if(!SES.beep)return;try{AC=AC||new (window.AudioContext||window.webkitAudioContext)();const o=AC.createOscillator(),g=AC.createGain();o.frequency.value=f||660;g.gain.value=.08;o.connect(g);g.connect(AC.destination);o.start();setTimeout(()=>o.stop(),180)}catch(e){}}
-function stepSec(i){const x=SES.pts[i];return (x&&x.s)||SES.sec}
-function startSes(i){const pr=PROT[i];sesBegin(pr.t,pr.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean),{})}
+function stepSec(i){const x=SES.pts[i];return (x&&x.s)||SES.dur||SES.sec}
+function startSes(i){const pr=PROT[i];sesBegin(pr.t,pr.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean),{warn:pr.n})}
+/* anunț pentru cititoare de ecran (regiune aria-live stabilă, în afara ferestrei care se redesenează) */
+function announce(t){const e=document.getElementById('sesLive');if(e)e.textContent=t||''}
+function wakeOn(){try{if(navigator.wakeLock&&!WL)navigator.wakeLock.request('screen').then(l=>{WL=l;l.addEventListener('release',()=>{if(WL===l)WL=null});if(!SES.on)wakeOff()}).catch(()=>{})}catch(e){}}
+function wakeOff(){try{if(WL){const l=WL;WL=null;l.release().catch(()=>{})}}catch(e){}}
+function sesArm(){SES.end=Date.now()+SES.left*1000} // cronometrul se măsoară în timp real, nu în apeluri setInterval
+/* tick actualizează doar numărătoarea; fereastra se redesenează numai la schimbarea pasului */
 function tick(){
-  if(SES.paused)return;SES.left--;
-  if(SES.left<=0){beep(660);if(SES.i<SES.pts.length-1){SES.i++;SES.left=stepSec(SES.i)}else{endSes(true);return}}
-  drawSes();
+  if(!SES.on||SES.paused)return;
+  SES.left=Math.max(0,Math.round((SES.end-Date.now())/1000));
+  if(SES.left<=0){beep(660);if(SES.i<SES.pts.length-1){SES.i++;SES.left=stepSec(SES.i);sesArm();drawSes()}else endSes(true);return}
+  const b=document.getElementById('sesT');
+  if(!b){drawSes();return}
+  const t=String(SES.left);if(b.textContent!==t)b.textContent=t;
+  if(SES.left===5&&stepSec(SES.i)>5&&SES.a5!==SES.i){SES.a5=SES.i;announce(TX('s5'))}
 }
-function endSes(done){clearInterval(SES.timer);SES.on=false;speechStop();if(done){$('#modal').innerHTML=sesDoneHtml();beep(990)}else $('#modal').innerHTML=''}
-function sesNext(d){SES.i=Math.max(0,Math.min(SES.pts.length-1,SES.i+d));SES.left=stepSec(SES.i);drawSes()}
-function sesPause(){SES.paused=!SES.paused;drawSes()}
-function sesTime(v){SES.sec=+v;SES.left=stepSec(SES.i);drawSes()}
+function endSes(done){clearInterval(SES.timer);clearTimeout(SES.fbT);SES.on=false;wakeOff();speechStop();announce('');if(done){$('#modal').innerHTML=sesDoneHtml();beep(990)}else $('#modal').innerHTML=''}
+function sesNext(d){SES.i=Math.max(0,Math.min(SES.pts.length-1,SES.i+d));SES.left=stepSec(SES.i);sesArm();drawSes()}
+function sesPause(f){const to=f===true?true:!SES.paused;if(to===SES.paused)return;SES.paused=to;if(!to){sesArm();wakeOn()}announce(TX(to?'sPaused':'sResumed'));drawSes()}
+function sesTime(v){SES.sec=SES.dur=+v;SES.left=stepSec(SES.i);sesArm();drawSes()}
+document.addEventListener('visibilitychange',()=>{if(document.hidden&&SES.on&&!SES.paused)sesPause(true)}); // fundal/ecran blocat: pauză (temporizatoarele ascunse sunt încetinite)
+function sesStepName(p){return p.grp?((p.th?p.th+' ':'')+p.grp.map(x=>x.c).join(', ')):(p.c+' '+p.p)}
 function drawSes(){
   if(!SES.on)return;const p=SES.pts[SES.i];
   const head=p.grp?`<h2 style="margin:.2rem 0">${p.grp.map(x=>`<span class="badge" style="background:${MCOL[x.m]}">${esc(x.c)}</span>`).join(' ')} ${esc(p.th||'')}</h2>
    <p style="margin:.3rem 0">${esc(p.t)}</p>
-   ${p.grp.map(x=>`<p style="margin:.3rem 0"><b>${esc(x.c)} ${esc(x.p)}:</b> ${esc(x.l)}</p>${x.w?`<p class="w pw" role="note">${esc(x.w)}</p>`:''}`).join('')}`
+   ${p.grp.map(x=>`<p style="margin:.3rem 0"><b>${esc(x.c)} ${esc(x.p)}:</b> ${esc(x.l)}</p>${x.w?`<p class="w pw" role="note">${NEEDLEW.test(x.w)&&!PREGRE.test(x.w)?'<span class="mut">Pentru acupunctori: </span>':''}${esc(x.w)}</p>`:''}`).join('')}`
    :`<h2 style="margin:.2rem 0"><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h2>
    <p style="margin:.3rem 0"><b>Localizare:</b> ${esc(p.l)}</p>
-   ${p.w?`<p class="w pw" role="note">${esc(p.w)}</p>`:''}`;
+   ${p.w&&!SES.child?`<p class="w pw" role="note">${NEEDLEW.test(p.w)&&!PREGRE.test(p.w)?'<span class="mut">Pentru acupunctori: </span>':''}${esc(p.w)}</p>`:''}`;
   sesSpeak(p);
+  if(SES.ann!==SES.i){SES.ann=SES.i;announce(TX('sStep').replace('{i}',SES.i+1).replace('{n}',SES.pts.length).replace('{p}',sesStepName(p)).replace('{s}',stepSec(SES.i)))}
   $('#modal').innerHTML=`<div class="modal"><div class="box">
-   <p class="mut">${esc(SES.title)} · ${SES.i+1}/${SES.pts.length}</p>
+   <p class="mut"><span data-mt>${esc(SES.title)}</span> · ${SES.i+1}/${SES.pts.length}</p>
    ${head}
    ${ringHtml()}
-   <div class="breath">${SES.left}</div>
+   <div class="breath" id="sesT" aria-hidden="true">${SES.left}</div>
    ${SES.partner?partnerBar():''}
-   <p class="mut">Presiune fermă dar confortabilă · inspiră 4 s · expiră 6 s · ambele părți unde e cazul</p>
+   <p class="mut">${SES.child?'Atingere foarte ușoară, fără presiune pe puncte · oprește imediat dacă plânge mai tare':`Presiune confortabilă, niciodată dureroasă · ${(p.pr==='u'||profOn('anticoag'))?(profOn('anticoag')?'ușoară (maximum 3 din 10)':'ușoară (2–3 din 10)'):'medie (4–6 din 10)'} · inspiră 4 s · expiră 6 s · ambele părți unde e cazul`}</p>
    <div class="bar" style="justify-content:center">
-    <button class="b alt" onclick="sesNext(-1)" ${SES.i===0?'disabled':''}>◀</button>
-    <button class="b" onclick="sesPause()">${SES.paused?'▶':'❚❚'}</button>
-    <button class="b alt" onclick="sesNext(1)" ${SES.i===SES.pts.length-1?'disabled':''}>▶</button>
-    <button class="b alt" onclick="endSes(false)">✕</button></div>
-   <div class="bar" style="justify-content:center">${SES.fixed?'':`<select onchange="sesTime(this.value)">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s / punct</option>`).join('')}</select>`}
-   <label class="mut" style="align-self:center"><input type="checkbox" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
+    <button class="b alt" data-f="prev" aria-label="${esc(TX('sPrev'))}" onclick="sesNext(-1)" ${SES.i===0?'disabled':''}>◀</button>
+    <button class="b" data-f="pause" data-af aria-label="${esc(TX(SES.paused?'sResume':'sPause'))}" onclick="sesPause()">${SES.paused?'▶':'❚❚'}</button>
+    <button class="b alt" data-f="next" aria-label="${esc(TX('sNext'))}" onclick="sesNext(1)" ${SES.i===SES.pts.length-1?'disabled':''}>▶</button>
+    <button class="b alt" data-f="end" aria-label="${esc(TX('sStop'))}" onclick="endSes(false)">✕</button></div>
+   <div class="bar" style="justify-content:center">${SES.fixed?'':`<select data-f="time" aria-label="${esc(TX('sDur'))}" onchange="sesTime(this.value)">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.dur===s?'selected':''}>${s} s / punct</option>`).join('')}</select>`}
+   <label class="mut" style="align-self:center"><input type="checkbox" data-f="beep" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
   </div></div>`;
 }
 
@@ -171,7 +186,8 @@ function vAcu(){
   <li>Găsește punctul (vezi <a href="#cun">Măsurare</a>); caută o mică sensibilitate sau „adâncitură".</li>
   <li>Folosește pulpa degetului mare sau a arătătorului; crește presiunea treptat, 3–5 s.</li>
   <li>Menține <b>30–90 s</b> cu presiune fixă sau mici cercuri; respirație lentă și adâncă.</li>
-  <li>Intensitate: o senzație de presiune fermă, plictisitoare sau caldă, niciodată ascuțită sau care radiază cu furnicături; orientativ 4–6 din 10.</li>
+  <li>Intensitate: o senzație de presiune confortabilă, plictisitoare sau caldă, niciodată ascuțită sau care radiază cu furnicături; orientativ 4–6 din 10 (la abdomen, ochi, stern și tâmple, mai ușor; la vârstnici fragili și copii, maximum 3 din 10).</li>
+  <li>Dacă iei anticoagulante sau ai o tulburare de coagulare: doar presiune ușoară (maximum 3 din 10), fără minge sau antebraț, câte 20–30 s pe punct; oprește dacă apare vânătaie. Întreabă medicul.</li>
   <li>De 1–3 ori pe zi; punctele pereche (stânga–dreapta) se fac pe ambele părți.</li>
   <li>După sesiune: bea apă, odihnește-te câteva minute.</li></ul>
   <div class="warn"><b>Oprește sesiunea</b> dacă apar: durere ascuțită, amețeală puternică, amorțeală persistentă, palpitații sau stare de leșin. Evită presiunea pe răni, vene varicoase severe, tromboză venoasă, umflături, tumori, zone fracturate sau operate recent, febră mare și imediat după mese copioase. La anticoagulante, osteoporoză severă, epilepsie, cancer sau boli cardiace grave, și la copii mici, cere întâi sfatul medicului. În sarcină evită punctele marcate ⚠ și zonele abdominală și lombo-sacrată, și cere avizul medicului.</div>
@@ -190,8 +206,9 @@ function vAcu(){
   <li><b>Brățări de acupresură</b> (PC6) — pentru greață/rău de mișcare; dovezi limitate (calitate scăzută până la moderată, mai ales postoperator).</li>
   <li><b>Rola cu spini</b> doar peste haine sau piele sănătoasă, fără presiune excesivă.</li></ul>
   <h2>Când nu te trata singur</h2>
-  <ul><li>Durere toracică, dificultăți de respirație, durere abdominală intensă, febră mare.</li>
-  <li>Slăbiciune bruscă a unui membru, tulburări de vorbire sau vedere, durere de cap „cea mai gravă din viață".</li>
+  <ul><li>Durere în piept, lipsă de aer, slăbiciune bruscă pe o parte a corpului, vorbire încurcată sau durere de cap ca o lovitură: sună imediat la 112.</li>
+  <li>Durere abdominală intensă, febră mare, gambă sau braț umflat, cald și dureros pe o singură parte: nu masa și mergi la urgențe.</li>
+  <li>Slăbiciune bruscă a unui membru, tulburări de vorbire sau vedere, durere de cap „cea mai gravă din viață”: urgență, nu acupresură.</li>
   <li>Pierdere neexplicată în greutate, sângerări anormale, simptome care se agravează sau durează săptămâni.</li>
   <li>Sarcină, afecțiuni cronice grave, tratament anticoagulant sau chimioterapie: întreabă medicul înainte.</li></ul>`;
 }
@@ -306,6 +323,7 @@ function vEar(){
   <div class="tw"><table><tr><th>Punct / zonă</th><th>Poziție</th><th>Folosit pentru</th></tr>${AUR.map(a=>`<tr><td>${esc(a[0])}</td><td>${esc(a[1])}</td><td>${esc(a[2])}</td></tr>`).join('')}</table></div>
   <div class="warn">Semințele se aplică pe piele curată, 3–5 zile; se apasă ușor 20–30 s de câteva ori pe zi. Se scot la apariția roșeții, durerii sau secreției.</div>
   <h2>Reflexologie plantară</h2>
+  <div class="warn" role="note">În sarcină nu masa tălpile, gleznele și mâna (LI4, SP6, BL60, LR3, SP4, KI3) decât cu avizul medicului sau al moașei. Cu diabet și sensibilitate redusă la picior, doar cu avizul medicului.</div>
   <div class="card"><p>Se presupune că talpa reflectă corpul (zone Fitzgerald). Nu există dovezi că presiunea pe talpă influențează organele; poate aduce relaxare și confort.</p></div>
   <div class="tw"><table><tr><th>Zonă</th><th>Corespondență pretinsă</th></tr>${REF.map(r=>`<tr><td>${esc(r[0])}</td><td>${esc(r[1])}</td></tr>`).join('')}</table></div>
   <h3>Reflexologie palmară</h3><p>Aceeași schemă pe palmă: degetele pentru cap, mijlocul palmei pentru zona digestivă, baza palmei pentru pelvis. Tehnica: presiune moderată, 3–5 s pe zonă.</p>
@@ -346,7 +364,7 @@ function vSafe(){
   <h2>Contraindicații și precauții</h2>
   <div class="tw"><table><tr><th>Situație</th><th>Ce faci</th></tr>
    <tr><td>Sarcină</td><td>Evită punctele marcate ⚠ (SP6, LI4, BL60, GB21 etc.), punctele abdominale inferioare și zona lombo-sacrată; moxibustia și electrostimularea nu se folosesc; orice utilizare doar cu medic/practician cu experiență în sarcină.</td></tr>
-   <tr><td>Anticoagulante / tulburări de coagulare</td><td>Fără ace fără acordul medicului; presopunctură blândă.</td></tr>
+   <tr><td>Anticoagulante / tulburări de coagulare</td><td>Fără ace fără acordul medicului; doar presiune ușoară (maximum 3 din 10), fără minge sau antebraț, câte 20–30 s pe punct; oprește dacă apare vânătaie.</td></tr>
    <tr><td>Stimulator cardiac / implant electric</td><td>Fără electroacupunctură sau TENS/TEAS; nu se trece curent prin torace, cap sau gât.</td></tr>
    <tr><td>Imunosupresie, diabet cu complicații</td><td>Precauție cu ace; piele sănătoasă; igienă strictă.</td></tr>
    <tr><td>Infecții cutanate, răni, tumori</td><td>Nu aplica ace/presiune în zonă.</td></tr>
@@ -357,7 +375,8 @@ function vSafe(){
    <tr><td>Tromboză venoasă, varice severe, fracturi recente, osteoporoză severă</td><td>Nu masa și nu apăsa zona; întreabă medicul.</td></tr>
    <tr><td>Febră mare, urgențe</td><td>Medic imediat.</td></tr>
    <tr><td>Copii</td><td>Doar pediatri/practicieni cu experiență; adesea laser sau presiune blândă, fără ace.</td></tr>
-   <tr><td>Tulburări psihice severe, panică</td><td>Nu ca înlocuitor al tratamentului; conlucrare cu medicul.</td></tr></table></div>
+   <tr><td>Tulburări psihice severe, panică</td><td>Nu ca înlocuitor al tratamentului; conlucrare cu medicul.</td></tr>
+   <tr><td>Gânduri de a-ți face rău sau de a nu mai trăi / depresie severă</td><td>Presopunctura nu este un tratament. Sună la 112 sau mergi la cea mai apropiată cameră de gardă; nu rămâne singur și spune cuiva de încredere.</td></tr></table></div>
   <h2>Ce spun dovezile</h2>
   <div class="card">
    <p><b>Unde există dovezi ceva mai consistente (de calitate scăzută până la moderată; beneficii în general mici):</b> durere cronică musculoscheletală (inclusiv lombară), cefalee de tensiune și migrenă (profilaxie), greață și vomă postoperatorie (PC6). Pentru osteoartrita de genunchi diferența față de sham este mică și adesea sub pragul de relevanță clinică; pentru greața din chimioterapie dovezile sunt mai slabe și de calitate mixtă.</p>
@@ -441,18 +460,21 @@ function vGloss(){
 function gFilter(v){v=v.toLowerCase();document.querySelectorAll('.gl').forEach(d=>d.style.display=d.textContent.toLowerCase().includes(v)?'':'none')}
 
 /* --- căutare globală --- */
+let SRCH=false; // true cât timp #main arată rezultate de căutare
+const ptHayS=p=>(p.c+' '+p.p+' '+p.l+' '+p.u+' '+p.tg+' '+p.mn).toLowerCase();
 function doSearch(){
   const v=$('#q').value.trim().toLowerCase();
-  if(v.length<2){render();return}
-  const pts=PT.filter(p=>(p.c+' '+p.p+' '+p.l+' '+p.u+' '+p.tg+' '+p.mn).toLowerCase().includes(v)).slice(0,30);
+  if(v.length<2){if(SRCH){SRCH=false;render()}return}
+  SRCH=true;
+  const pts=PT.filter(p=>hayOf(p,ptHayS).includes(v)).slice(0,30);
   const mer=MER.filter(m=>(m.c+' '+m.n+' '+m.zh+' '+m.path+' '+m.key+' '+m.use).toLowerCase().includes(v));
   const glo=GLO.filter(g=>(g[0]+' '+g[1]).toLowerCase().includes(v));
   const tech=VAR.filter(t=>(t.n+' '+t.pr+' '+t.zon+' '+t.ind).toLowerCase().includes(v));
   const nlx=nlExpand(v).map(nlNorm);const nlHit=h=>{const n=nlNorm(h);return nlx.some(t=>n.includes(t))};
   const pro=PROT.filter(p=>(p.t+' '+p.n+' '+p.p.join(' ')).toLowerCase().includes(v)||nlHit(p.t));
-  const mq=v.toLowerCase();const mas=(typeof MASS!=='undefined'?MASS.map((c,i)=>({k:'s',i,n:c.n,x:c.cum,hay:(c.n+' '+c.cum+' '+c.ef+' '+c.pts.join(' ')).toLowerCase()})).concat(MASC.map((r,i)=>({k:'c',i,n:r.n,x:r.scop,hay:(r.n+' '+r.scop+' '+r.regiune+' '+r.pasi.map(p=>p.t+' '+(p.pts||[]).join(' ')).join(' ')).toLowerCase()}))):[]).filter(m=>m.hay.includes(mq)).slice(0,12);
+  const mq=v.toLowerCase();const mas=(typeof MASS!=='undefined'?MASS.map((c,i)=>({k:'s',i,n:c.n,x:c.cum,hay:hayOf(c,c=>(c.n+' '+c.cum+' '+c.ef+' '+c.pts.join(' ')).toLowerCase())})).concat(MASC.map((r,i)=>({k:'c',i,n:r.n,x:r.scop,hay:hayOf(r,r=>(r.n+' '+r.scop+' '+r.regiune+' '+r.pasi.map(p=>p.t+' '+(p.pts||[]).join(' ')).join(' ')).toLowerCase())}))):[]).filter(m=>m.hay.includes(mq)).slice(0,12);
   const any=pts.length+mer.length+glo.length+tech.length+pro.length+mas.length||nlUrgent(v);
-  $('#main').innerHTML=`<h1>${esc(T().ph.replace('…',''))}: “${esc(v)}”</h1>${nlUrgent(v)?'<div class="warn" role="alert"><b>Ce descrii poate fi o urgență.</b> Dacă ai durere în piept, dificultăți de respirație, slăbiciune bruscă, tulburări de vorbire sau sângerare importantă, sună la 112. Nu folosi presopunctura în locul ajutorului medical.</div>':''}${any?'':`<p class="mut">${esc(T().noRes)}</p>`}
+  $('#main').innerHTML=`<h1>${esc(T().ph.replace('…',''))}: “${esc(v)}”</h1>${nlUrgent(v)?'<div class="warn" role="alert"><b>Ce descrii poate fi o urgență.</b> Dacă ai durere sau presiune în piept, lipsă de aer, slăbiciune bruscă pe o parte, vorbire încurcată, durere de cap ca o lovitură, sângerare importantă sau gânduri de a-ți face rău, sună acum la 112. Nu folosi presopunctura în locul ajutorului medical.</div>':''}${any?'':`<p class="mut">${esc(T().noRes)}</p>`}
   ${pts.length?`<h2>Puncte (${pts.length})</h2><div class="grid">${pts.map(ptCard).join('')}</div>`:''}
   ${mer.length?`<h2>Meridiane</h2>${mer.map(m=>`<div class="card" style="margin:.4rem 0"><h3><span class="badge" style="background:${MCOL[m.c]}">${m.c}</span>${esc(m.n)}</h3><p>${esc(m.path)}</p></div>`).join('')}`:''}
   ${mas.length?`<h2>Masaj</h2>${mas.map(m=>`<div class="card" style="margin:.4rem 0"><h3>${esc(m.n)}</h3><p class="mut">${esc(m.x)}</p><button class="b" onclick="masStart('${m.k}',${m.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}

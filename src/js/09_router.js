@@ -9,17 +9,23 @@ function navList(){
   const ai=arr.findIndex(y=>y.k==='acu');if(ai>1){arr.splice(1,0,arr.splice(ai,1)[0]);['masaj','durere'].forEach((k,n)=>{const mi=arr.findIndex(y=>y.k===k);if(mi>2+n)arr.splice(2+n,0,arr.splice(mi,1)[0])})}
   return arr;
 }
+let NAVSIG='';
 function renderNav(){
-  const v=view();
-  $('#nav').innerHTML=navList().map(x=>`<a href="#${x.k}" class="${x.k===v?'on':''}">${esc(x.t)}</a>`).join('');
+  const v=view(),L=navList(),nav=$('#nav'),sig=S.lang+'|'+L.map(x=>x.k+':'+x.t).join('|');
+  if(sig!==NAVSIG||!nav.firstElementChild){ // se reconstruiește doar dacă s-au schimbat linkurile (altfel focusul de tastatură se pierde)
+    NAVSIG=sig;nav.innerHTML=L.map(x=>`<a href="#${x.k}" data-k="${x.k}">${esc(x.t)}</a>`).join('');
+  }
+  nav.querySelectorAll('a').forEach(a=>{const on=a.getAttribute('data-k')===v;a.classList.toggle('on',on);if(on)a.setAttribute('aria-current','page');else a.removeAttribute('aria-current')});
 }
-function setLang(l){S.lang=l;save();document.documentElement.lang=l;applyI18n();render();if(typeof trAll==='function')trAll()}
+function setLang(l){if(typeof l!=='string'||!Object.prototype.hasOwnProperty.call(I18N,l))return;S.lang=l;save();document.documentElement.lang=l;applyI18n();render();if(typeof trShell==='function')trShell()}
 function applyI18n(){
   $('#lang').value=S.lang;$('#q').placeholder=T().ph;$('#sub').textContent=T().sub;
+  $('.skip').textContent=TX('skip');$('#q').setAttribute('aria-label',TX('search'));$('#lang').setAttribute('aria-label',TX('lang'));$('#nav').setAttribute('aria-label',TX('navMain'));themeLabel();
   $('#ftxt').textContent=T().disc;
   const d=new Date(2026,10,4);let ds;try{ds=d.toLocaleDateString(S.lang,{day:'numeric',month:'long',year:'numeric'})}catch(e){ds='2026-11-04'}
   $('#fver').textContent=T().ver+' '+ds;
 }
 function toggleTheme(){const order=['auto','light','dark'];S.theme=order[(order.indexOf(S.theme)+1)%3];save();applyTheme()}
-function applyTheme(){const r=document.documentElement;if(S.theme==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);$('#thm').textContent=S.theme==='dark'?'☾':S.theme==='light'?'☀':'◐'}
+function applyTheme(){const r=document.documentElement;if(S.theme==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);$('#thm').textContent=S.theme==='dark'?'☾':S.theme==='light'?'☀':'◐';themeLabel()}
+function themeLabel(){$('#thm').setAttribute('aria-label',TX('theme')+': '+TX('themes')[['auto','light','dark'].indexOf(S.theme)])}
 
