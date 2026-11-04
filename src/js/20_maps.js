@@ -22,7 +22,7 @@ const MAPUI={
   reflNote:'Reflexology zones (claimed correspondences, no proof of efficacy).',earArea:'Area',side:'Right',mapAria:'Interactive SVG map',
   a:{hx:'helix',ah:'antihelix',sc:'scapha',tf:'triangular fossa',cy:'cymba conchae',cv:'cavum conchae',tg:'tragus',at:'antitragus',lb:'lobe',cr:'helix root',nt:'intertragic notch'}}
 };
-function mu(k){const l=(typeof S!=='undefined'&&S.lang)||'ro';return (MAPUI[l]&&MAPUI[l][k])||MAPUI.en[k]||k}
+function mu(k){const l=(typeof S!=='undefined'&&S.lang)||'ro';return (MAPUI[l]&&MAPUI[l][k])||MAPUI.ro[k]||MAPUI.en[k]||k}
 
 /* ---------- geometrie ---------- */
 const fx=n=>Math.round(n*10)/10;
@@ -35,8 +35,10 @@ function smp(p,closed){const n=p.length,g=i=>closed?p[((i%n)+n)%n]:p[Math.max(0,
 function limb(p,cap){const L=[],R=[];
  p.forEach((q,i)=>{const a=p[Math.max(0,i-1)],b=p[Math.min(p.length-1,i+1)];let tx=b[0]-a[0],ty=b[1]-a[1];const l=Math.hypot(tx,ty)||1;tx/=l;ty/=l;
   L.push([q[0]-ty*q[2],q[1]+tx*q[2]]);R.push([q[0]+ty*q[2],q[1]-tx*q[2]])});
- const e=p[p.length-1],s=p[0],c=cap==null?.6:cap;
- const te=[e[0]+0,e[1]+e[2]*c],ts=[s[0],s[1]-s[2]*c];
+ const e=p[p.length-1],s=p[0],c=cap==null?.6:cap,n=p.length;
+ const tg=(a,b)=>{const dx=b[0]-a[0],dy=b[1]-a[1],l=Math.hypot(dx,dy)||1;return [dx/l,dy/l]};
+ const t1=tg(p[n-2],e),t0=tg(p[1],s);
+ const te=[e[0]+t1[0]*e[2]*c,e[1]+t1[1]*e[2]*c],ts=[s[0]+t0[0]*s[2]*c,s[1]+t0[1]*s[2]*c];
  return smp([...L,te,...R.reverse(),ts],true)}
 function limbAt(p,y,k){let i=0;while(i<p.length-2&&y>p[i+1][1])i++;const a=p[i],b=p[i+1],t=Math.max(0,Math.min(1,(y-a[1])/((b[1]-a[1])||1)));
  return [fx(a[0]+(b[0]-a[0])*t+k*(a[2]+(b[2]-a[2])*t)),y]}
@@ -165,7 +167,7 @@ function earShapes(){
  <g font-size="9" fill="var(--mut)" opacity=".7" style="pointer-events:none"><text x="64" y="40">${esc(mu('a').hx)}</text><text x="66" y="192">${esc(mu('a').sc)}</text><text x="124" y="64">${esc(mu('a').tf)}</text><text x="130" y="205">${esc(mu('a').cv)}</text><text x="150" y="112">${esc(mu('a').cy)}</text><text x="100" y="314">${esc(mu('a').lb)}</text></g>`}
 
 /* ---------- decor mână/picior, siluete, zone reflexologie ---------- */
-function sil(inner,tf){return `<g${tf?` transform="${tf}"`:''}><g fill="var(--line)" stroke="var(--line)" stroke-width="4" stroke-linejoin="round">${inner}</g><g fill="var(--soft)" stroke="none">${inner}</g></g>`}
+function sil(inner,tf){return `<g${tf?` transform="${tf}"`:''}><g fill="var(--mut)" stroke="var(--mut)" stroke-width="3" stroke-linejoin="round">${inner}</g><g fill="var(--soft)" stroke="none">${inner}</g></g>`}
 const ZC=['#d9534f','#e8a33d','#7cb342','#26a69a','#5c6bc0','#ab47bc','#8d6e63'];
 function handDeco(dors){const s='fill="none" stroke="var(--mut)" stroke-width="1" opacity=".5" stroke-linecap="round"';
  return dors?`<g ${s}>${HAND_FING.map(f=>`<path d="M${f[0]-5} ${f[1]+14}q5-8 10 0"/>`).join('')}<path d="M258 196q4-6 8 0" transform="translate(-4 4)"/></g>`
