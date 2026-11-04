@@ -87,7 +87,7 @@ GV26|Renzhong|cap|În treimea superioară a șanțului subnazal (filtrum)|Urgen�
 EX-HN3|Yintang|cap|La mijlocul distanței dintre sprâncene|Insomnie, anxietate, cefalee frontală, sinuzită|
 EX-HN5|Taiyang|cap|În depresiunea de la cca 1 cun posterior de mijlocul liniei dintre capătul lateral al sprâncenei și unghiul extern al ochiului|Cefalee temporală, migrenă, ochi obosiți|
 EX-HN1|Sishencong|cap|Patru puncte, la 1 cun în față, în spate și lateral de GV20|Insomnie, cefalee, amețeală, concentrare|
-EX|Anmian|cap|Pe mijlocul liniei dintre TE17 și GB20 (în spatele urechii)|Insomnie, agitație, cefalee|
+EX-Anmian|Anmian|cap|Pe mijlocul liniei dintre TE17 și GB20 (în spatele urechii)|Insomnie, agitație, cefalee|⚠ Punct nestandard OMS: codificarea diferă între surse; verifică localizarea înainte de aplicare||„Somn liniștit”
 EX-B1|Dingchuan|spa|0,5 cun lateral de GV14|Tuse, astm, respirație dificilă|
 EX-B2|Huatuojiaji|spa|0,5 cun lateral de marginea inferioară a proceselor spinoase T1–L5 (pe ambele părți)|Durere vertebrală, organe corespunzătoare nivelului|
 EX-UE11|Shixuan|bra|Vârfurile celor zece degete|Urgențe (tradițional: sângerare punctiformă)|

@@ -12,7 +12,7 @@ function renderNav(){
   const v=view();
   $('#nav').innerHTML=navList().map(x=>`<a href="#${x.k}" class="${x.k===v?'on':''}">${esc(x.t)}</a>`).join('');
 }
-function setLang(l){S.lang=l;save();document.documentElement.lang=l;applyI18n();render()}
+function setLang(l){S.lang=l;save();document.documentElement.lang=l;applyI18n();render();if(typeof trAll==='function')trAll()}
 function applyI18n(){
   $('#lang').value=S.lang;$('#q').placeholder=T().ph;$('#sub').textContent=T().sub;
   $('#ftxt').textContent=T().disc;

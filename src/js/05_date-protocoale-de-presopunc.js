@@ -2,7 +2,7 @@
 const PROT=[
  {t:'Greață & rău de mișcare',p:['PC6','ST36','CV12'],n:'PC6 este punctul cu cele mai bune dovezi clinice. Presează pe ambele încheieturi (poți folosi și brățări de presopunctură).'},
  {t:'Cefalee de tensiune',p:['GB20','LI4','EX-HN5','EX-HN3','LR3'],n:'Masează încet baza craniului (GB20) cu degetele mari, apoi tâmplele.'},
- {t:'Insomnie & agitație seara',p:['HT7','EX','EX-HN3','KI1','SP6'],n:'Fă sesiunea cu 30–60 min înainte de somn, într-o cameră liniștită. „EX" = Anmian.'},
+ {t:'Insomnie & agitație seara',p:['HT7','EX-Anmian','EX-HN3','KI1','SP6'],n:'Fă sesiunea cu 30–60 min înainte de somn, într-o cameră liniștită. „EX" = Anmian.'},
  {t:'Stres & anxietate',p:['GV20','EX-HN3','PC6','HT7','LR3'],n:'Respirație lentă pe nas: 4 secunde inspir, 6 secunde expir.'},
  {t:'Ceafă & umeri încordați',p:['GB20','GB21','SI3','SI11','LI4'],n:'Poți combina cu înclinări lente ale capului. Evită presiunea puternică pe lateralul gâtului (arterele).'},
  {t:'Lombalgie ușoară (fără semne de alarmă)',p:['BL23','GV4','BL25','BL40','GB30','BL60'],n:'Presiune cu degetele mari sau cu o minge de tenis lângă coloană; niciodată direct pe coloana vertebrală.'},

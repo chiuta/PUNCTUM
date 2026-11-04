@@ -1,0 +1,777 @@
+[
+ {
+  "id": "L4",
+  "titlu": "Acupresură practică",
+  "descriere": "Învață să aplici presiunea corect și în siguranță, să urmezi protocoale simple pentru disconfortul de zi cu zi și să alegi între mâini, obiecte și masaj. Accentul cade pe autoîngrijire blândă, nu pe tratarea bolilor.",
+  "lectii": [
+   {
+    "id": "L4-1",
+    "titlu": "Tehnica de bază: presiune, durată, respirație, poziții",
+    "minute": 8,
+    "text": [
+     "Acupresura se bazează pe un gest simplu: presezi un punct cu degetul mare, cu index sau cu articulația degetului, fără să zgârii pielea și fără să tremuri. Presiunea corectă este fermă, dar confortabilă. Pe o scală de la 0 la 10, țintește 4–6: simți o „durere plăcută”, o senzație de greutate sau de căldură, nu o durere ascuțită. Dacă îți încleștezi maxilarul sau îți ții respirația, apeși prea tare.",
+     "Procedura are patru pași. Mai întâi găsește punctul: caută o mică adâncitură sau o zonă ușor mai sensibilă, în jurul locului indicat de hartă. Apoi apasă perpendicular pe piele, crescând presiunea lent, în 3–5 secunde. Menține 30–90 de secunde, fie static, fie cu mici mișcări circulare de 1–2 mm. La final eliberează la fel de lent cum ai intrat. Poți repeta de 2–3 ori pe punct, alternând părțile corpului.",
+     "Respirația face jumătate din tehnică. Inspiră pe nas câteva secunde, iar pe expirație lungă mărește ușor presiunea; la următoarea expirație menține-o. O respirație calmă scade tensiunea musculară și face senzația mai ușor de suportat. În tradiția MTC, expirația lentă ajută „Qi-ul să circule”; în explicația modernă, respirația lentă activează sistemul parasimpatic, iar atenția la senzație poate modifica percepția durerii.",
+     "Poziția contează: stai așezat sau întins, cu spatele sprijinit și mușchii din zona tratată relaxați. Pentru puncte de la mână sau antebraț, sprijină cotul pe o masă. Pentru picior, așază glezna pe genunchiul opus. Nu lucra într-o poziție în care trebuie să menții efort pentru a ajunge la punct, pentru că tensiunea ta anulează relaxarea.",
+     "Reguli de prudență: evită pielea lezată, inflamată sau cu erupții, varicele vizibile, zonele cu vânătăi recente și zonele operate. Nu apăsa puternic pe abdomen după masă sau în sarcină fără sfatul medicului; unele puncte (de exemplu LI4, SP6) sunt evitate în sarcină în tradiție. Oprește-te dacă apar amețeli, amorțeli persistente sau durere crescândă. Acupresura este o îngrijire de confort și nu înlocuiește evaluarea medicală pentru simptome noi, intense sau persistente."
+    ],
+    "cheie": [
+     "Intensitate țintă 4–6 din 10: fermă, dar confortabilă, fără durere ascuțită.",
+     "Presiune lentă în 3–5 secunde, menținere 30–90 de secunde, eliberare lentă.",
+     "Expirația lungă și relaxarea mușchilor fac tehnica mai eficientă și mai sigură.",
+     "Evită pielea lezată, zonele operate și apăsarea intensă în sarcină.",
+     "Rațiunea MTC (Qi) și cea modernă (răspuns nervos, relaxare) sunt explicații diferite, nu dovezi una pentru alta."
+    ],
+    "practica": "Așază-te comod, sprijină antebrațul pe o masă și caută LI4 în mușchiul dintre police și index. Apasă la intensitate 4–5 din 10 timp de 45 de secunde, respirând lent (inspir 4 secunde, expir 6). Eliberează lent și repetă pe cealaltă mână. Dacă ești însărcinată, omite exercițiul.",
+    "puncte": [
+     "LI4",
+     "PC6",
+     "ST36"
+    ],
+    "variante": [
+     "acupresura",
+     "doin"
+    ],
+    "intrebari": [
+     {
+      "q": "Ce intensitate a presiunii este recomandată la acupresura de bază?",
+      "corect": "Fermă, dar confortabilă, în jur de 4–6 din 10",
+      "gresite": [
+       "Cât mai puternică, până apare durere ascuțită",
+       "Doar o atingere foarte ușoară, fără presiune",
+       "Variabilă, crescând până la limita suportabilității"
+      ],
+      "explicatie": "Scopul este o senzație de „durere plăcută”. Durerea ascuțită duce la tensionare musculară și poate irita țesuturile."
+     },
+     {
+      "q": "Cum se apasă și se eliberează un punct?",
+      "corect": "Lent, perpendicular pe piele, cu menținere de 30–90 de secunde și eliberare lentă",
+      "gresite": [
+       "Brusc, cu lovituri scurte repetate",
+       "Cu unghia, prin zgâriere ușoară",
+       "Cât mai scurt, sub 5 secunde, pentru a nu irita"
+      ],
+      "explicatie": "Creșterea și scăderea graduală a presiunii sunt mai confortabile și reduc riscul de vânătăi."
+     },
+     {
+      "q": "De ce se asociază presiunea cu expirația lentă?",
+      "corect": "Pentru că respirația calmă favorizează relaxarea musculară și tolerarea senzației",
+      "gresite": [
+       "Pentru că expirația este singura fază în care punctul „se deschide” anatomic",
+       "Pentru că aerul expirat încălzește punctul",
+       "Pentru că fără ea acupresura nu are niciun efect posibil"
+      ],
+      "explicatie": "Respirația lentă scade tensiunea și activează răspunsul parasimpatic; MTC o descrie în termeni de Qi, dar beneficiul practic este de relaxare."
+     }
+    ]
+   },
+   {
+    "id": "L4-2",
+    "titlu": "Protocoale pentru greață, cefalee de tensiune, insomnie și stres",
+    "minute": 9,
+    "text": [
+     "Un protocol de acupresură este o succesiune scurtă de puncte, aleasă după un scop. În PUNCTUM găsești patru protocoale de bază. Ele sunt propuneri de confort, nu tratamente medicale: dacă simptomul este puternic, nou sau nu trece, cere sfat medical.",
+     "Greață și rău de mișcare: punctul central este PC6 (Neiguan), pe față interioară a antebrațului, la trei lățimi de deget deasupra pliului încheieturii, între cele două tendoane. În MTC, PC6 „calmează stomacul și pieptul”. Pentru stimularea PC6 în greața de după operație, o sinteză Cochrane (Lee, Chan și Fan, 2015) a găsit dovezi de calitate scăzută că este mai bună decât placebo și dovezi moderate că nu diferă de medicamentele antiemetice. Se adaugă uneori ST36 și CV12 pentru digestie. Apasă PC6 un minut pe fiecare braț, cu respirație lentă.",
+     "Cefalee de tensiune: tensiunea din ceafă și umeri întreține adesea durerea. Începe cu GB20, în adânciturile de la baza craniului, apăsând cu degetele mari și lăsând capul să se sprijine ușor înapoi. Continuă cu LI4 și cu tâmplele (EX-HN5), apoi cu zona dintre sprâncene (EX-HN3), prin atingeri mici și lente. Rațiunea MTC: GB20 „eliberează vântul” din cap; rațiunea modernă: relaxarea mușchilor suboccipitali și distragerea atenției de la durere.",
+     "Insomnie și agitație seara: fă sesiunea cu 30–60 de minute înainte de culcare, în semiîntuneric. HT7, în pliul încheieturii, pe partea mică a degetului mic, este punctul „calmului minții” în MTC; adaugă KI1, în talpă, și SP6, deasupra gleznei (evită SP6 în sarcină). Cercetările despre acupresură pentru somn există, dar sunt mici și de calitate variabilă; igiena somnului rămâne baza.",
+     "Stres și anxietate: GV20 în creștetul capului, EX-HN3, PC6, HT7 și LR3 între primele două degete de la picior. Combină cu respirația 4 secunde inspir, 6 secunde expir. Efectul probabil este de relaxare și de atenție îndreptată spre corp, ceea ce este valoros, dar nu înlocuiește psihoterapia sau tratamentul în anxietate persistentă. Regula practică: alege un singur protocol, aplică-l 5–10 minute și notează ce ai simțit. Dacă greața este intensă sau însoțită de febră, durere abdominală puternică sau vărsături repetate, ori dacă o cefalee este bruscă și neobișnuit de severă, mergi la medic."
+    ],
+    "cheie": [
+     "PC6 este punctul cu cele mai multe studii pentru greață, dar dovezile sunt de calitate limitată.",
+     "Cefaleea de tensiune: GB20, LI4 și tâmplele, cu accent pe relaxarea cefei.",
+     "Insomnie: sesiune scurtă seara, HT7, KI1 și SP6, împreună cu igiena somnului.",
+     "Stres: GV20, EX-HN3, PC6, HT7, LR3 și respirație 4–6.",
+     "Semnele de alarmă (cefalee bruscă severă, vărsături repetate, febră) cer consult medical, nu acupresură."
+    ],
+    "practica": "Seara, cu 30 de minute înainte de culcare, apasă HT7 (pliul încheieturii, partea dinspre degetul mic) 45 de secunde pe fiecare mână, apoi masează blând talpa în zona KI1. Respiră 4 secunde inspir, 6 expir. Oprește-te dacă apare disconfort.",
+    "puncte": [
+     "PC6",
+     "ST36",
+     "CV12",
+     "GB20",
+     "LI4",
+     "EX-HN5",
+     "EX-HN3",
+     "HT7",
+     "KI1",
+     "SP6",
+     "GV20",
+     "LR3"
+    ],
+    "variante": [
+     "acupresura",
+     "band"
+    ],
+    "intrebari": [
+     {
+      "q": "Ce punct este cel mai studiat pentru greață?",
+      "corect": "PC6 (Neiguan), pe antebraț",
+      "gresite": [
+       "GB20, la baza craniului",
+       "KI1, în talpă",
+       "GV20, în creștet"
+      ],
+      "explicatie": "PC6 este punctul pentru care există cele mai multe studii, inclusiv sinteze Cochrane, deși calitatea dovezilor rămâne în general limitată."
+     },
+     {
+      "q": "Ce a arătat sinteza Cochrane 2015 (Lee și colab.) despre PC6 în greața postoperatorie?",
+      "corect": "Dovezi de calitate scăzută de superioritate față de sham și dovezi moderate de efect similar cu antiemeticele",
+      "gresite": [
+       "Dovezi de calitate înaltă că PC6 este superior medicamentelor",
+       "Dovezi clare că PC6 nu are niciun efect",
+       "Concluzii valabile și pentru greața din sarcină"
+      ],
+      "explicatie": "Sinteza a vizat greața postoperatorie și nu a stabilit superioritatea față de medicamente; nu se aplică automat altor situații."
+     },
+     {
+      "q": "Care este o situație în care nu folosești un protocol de acupresură, ci mergi la medic?",
+      "corect": "Cefalee bruscă, neobișnuit de severă",
+      "gresite": [
+       "Tensiune ușoară în ceafă după muncă la birou",
+       "Dificultate ușoară de a adormi într-o seară",
+       "Oboseală după o zi stresantă"
+      ],
+      "explicatie": "O cefalee instalată brusc și foarte intens poate indica o problemă gravă și necesită evaluare medicală."
+     }
+    ]
+   },
+   {
+    "id": "L4-3",
+    "titlu": "Auto-îngrijire pentru spate, gât, umeri și ochi la ecran",
+    "minute": 9,
+    "text": [
+     "Munca la calculator înseamnă ore în aceeași poziție: capul înainte, umerii ridicați, privirea fixă. Autoacupresura nu corectează postura, dar poate reduce tensiunea musculară și poate fi o pauză utilă între perioade de lucru. Ea funcționează cel mai bine împreună cu mișcarea, hidratarea și pauzele regulate.",
+     "Gât și umeri: începe cu GB20, la baza craniului, apoi coboară spre GB21, pe mijlocul mușchiului trapez, deasupra umărului. Apasă GB21 cu degetele opuse, cu brațul relaxat. În MTC, GB21 „coboară Qi-ul” și relaxează umerii; modern, este o zonă de tensiune frecventă a trapezului. Adaugă BL10, lateral de coloană, la nivelul cefei, și TE14 dacă ai disconfort pe umăr. Menține fiecare punct un minut, cu respirație lentă.",
+     "Spate: partea inferioară a spatelui se tratează mai ușor cu un ajutor sau cu un obiect (vezi lecția următoare), dar poți ajunge la BL23, de o parte și de alta a coloanei lombare, cu pumnii strânși, sprijinindu-ți spatele de scaun. Un punct distal util este BL40, la mijlocul pliului genunchiului, și BL60, lângă gleznă. Pentru muncă prelungită, ridică-te la fiecare 45–60 de minute și mișcă-ți umerii. Dacă durerea coboară în picior, apare slăbiciune sau amorțeală sau durerea durează săptămâni, cere consult.",
+     "Ochii la ecran: oboseala vizuală include uscăciune, tensiune în jurul ochilor și cefalee ușoară. Puncte tradiționale: BL2, la capătul interior al sprâncenei, ST2, sub ochi, pe marginea osului, și GB14, deasupra sprâncenei. Apasă blând, doar cu vârful degetului, fără a atinge globul ocular. În școlile din China există o serie de exerciții oculare; dovezile pentru acupresura oculară sunt limitate și mici, deci tratează-o ca pe o pauză de relaxare. Regula 20-20-20 (la fiecare 20 de minute, privește 20 de secunde la 6 metri) are suport mai bun.",
+     "Nu aplica presiune pe ochi dacă porți lentile de contact, ai glaucom, ai suferit o operație oculară recentă sau ai o infecție oculară. Presiunea se exercită doar pe osul din jurul ochiului. Dacă apar tulburări de vedere, durere oculară sau cefalee intensă, consultă medicul oftalmolog."
+    ],
+    "cheie": [
+     "Autoacupresura completează, dar nu înlocuiește postura bună, pauzele și mișcarea.",
+     "GB20, GB21 și BL10 sunt punctele cheie pentru gât și umeri.",
+     "BL23, BL40 și BL60 sunt folosite în autoîngrijirea spatelui; durerea cu iradiere în picior cere consult.",
+     "Pentru ochi se apasă doar pe osul din jurul orbitei, niciodată pe globul ocular.",
+     "Regula 20-20-20 are dovezi mai bune decât acupresura oculară."
+    ],
+    "practica": "Stai pe scaun cu umerii relaxați. Apasă GB20 cu degetele mari, 45 de secunde, lăsând capul ușor înapoi. Apoi apasă GB21 pe fiecare parte, cu mâna opusă, 45 de secunde, respirând lent. Încheie privind pe fereastră la distanță 20 de secunde.",
+    "puncte": [
+     "GB20",
+     "GB21",
+     "BL10",
+     "BL23",
+     "BL40",
+     "BL60",
+     "BL2",
+     "ST2",
+     "GB14"
+    ],
+    "variante": [
+     "acupresura",
+     "doin",
+     "acuyoga"
+    ],
+    "intrebari": [
+     {
+      "q": "Unde se aplică presiunea în jurul ochilor?",
+      "corect": "Pe osul orbitei, nu pe globul ocular",
+      "gresite": [
+       "Direct pe globul ocular, cu forță mică",
+       "Pe pleoape, cu masaj circular",
+       "Pe cornee, cu un deget curat"
+      ],
+      "explicatie": "Globul ocular nu se apasă niciodată; punctele BL2, ST2 și GB14 se află pe marginea osoasă."
+     },
+     {
+      "q": "Care dintre acestea este un semn pentru care ceri consult în loc de autoîngrijire?",
+      "corect": "Durere de spate care coboară în picior cu slăbiciune sau amorțeală",
+      "gresite": [
+       "Rigiditate ușoară în ceafă după o zi la birou",
+       "Oboseală musculară după o plimbare lungă",
+       "Tensiune în umeri la sfârșit de săptămână"
+      ],
+      "explicatie": "Iradierea cu deficit neurologic poate indica compresie nervoasă și trebuie evaluată medical."
+     },
+     {
+      "q": "Ce măsură pentru oboseala ochilor are, în general, dovezi mai bune decât acupresura oculară?",
+      "corect": "Pauze regulate de privire la distanță (regula 20-20-20)",
+      "gresite": [
+       "Presiunea puternică pe BL2",
+       "Închiderea ochilor timp de o oră",
+       "Aplicarea de căldură pe pleoape timp de o oră"
+      ],
+      "explicatie": "Pauzele de focalizare la distanță sunt o recomandare standard; acupresura oculară are dovezi limitate."
+     }
+    ]
+   },
+   {
+    "id": "L4-4",
+    "titlu": "Autoacupresură cu obiecte; comparație cu masajul și când nu",
+    "minute": 8,
+    "text": [
+     "Unele zone, mai ales spatele între omoplați și bazinul, sunt greu de ajuns cu degetele. Aici ajută obiectele: o minge de tenis sau lacrosse, o rolă de spumă, un covoraș cu proeminențe sau un băț cu vârf rotunjit. Principiul este același ca la degete: presiune lentă, fermă, dar suportabilă, cu respirație calmă.",
+     "Mingea: așază-te cu spatele pe un perete sau pe podea și plasează mingea lângă coloană (nu pe coloană), la nivelul punctelor BL13–BL17 sau BL23. Lasă greutatea corpului să facă presiunea, menține 30–60 de secunde și apoi mută ușor. Pentru fese, mingea pe punctul GB30 este un clasic. Rola de spumă este mai bună pentru mușchi mari (coapse, spate lombar) prin rulare lentă, dar nu rula direct pe regiunea lombară joasă dacă te doare.",
+     "Covorașul cu proeminențe sau cu vârfuri: se stă 5–10 minute, începând cu o durată scurtă. Cercetările pe acest tip de dispozitive arată mai ales efecte de relaxare și de distragere, nu un mecanism special. Dacă apar vânătăi, roșeață persistentă sau durere ascuțită, reduci timpul sau renunți.",
+     "Comparație cu masajul: acupresura aplică presiune locală, statică sau lentă, pe puncte cu sens tradițional; masajul lucrează pe grupuri de mușchi cu mișcări de alunecare, frământare și fricțiune. În practică, granița este neclară, iar studiile moderne arată că ambele reduc tensiunea și durerea cronică musculoscheletală într-o măsură modestă. Alegerea ține de preferință, accesibilitate și toleranță. Un masaj profesionist adaptează presiunea și poate depista probleme pe care autoîngrijirea nu le vede.",
+     "Când nu: evită obiectele și presiunea intensă dacă ai osteoporoză severă, trombembolism sau tromboflebită, tulburări de coagulare sau anticoagulante (risc de hematom), infecții de piele, tumori neevaluate, febră, sarcină (zone abdominale și lombare, plus unele puncte), diabet cu neuropatie (sensibilitate redusă, risc de leziuni) sau durere inexplicabilă ori nocturnă. Nu folosi acest tip de autoîngrijire pe o zonă cu traumatism recent. În caz de dubii, cere sfatul medicului."
+    ],
+    "cheie": [
+     "Mingea, rola și covorașul permit presiune în zone greu accesibile, cu greutatea corpului.",
+     "Plasează mingea lângă coloană, niciodată direct pe coloană sau pe regiunea lombară dureroasă.",
+     "Efectul principal documentat este relaxarea; nu există un mecanism special al obiectelor.",
+     "Masajul și acupresura se suprapun; alegerea ține de preferință și toleranță.",
+     "Contraindicații: anticoagulante, tulburări de coagulare, osteoporoză severă, infecții cutanate, neuropatie diabetică."
+    ],
+    "practica": "Stai cu spatele sprijinit de un perete și o minge de tenis între omoplat și coloană, în zona BL13. Lasă greutatea corpului pe minge 30 de secunde, respirând lent, apoi mută-te 2 cm. Fă maximum 3 minute pe o parte și oprește-te dacă ai furnicături sau durere ascuțită.",
+    "puncte": [
+     "BL13",
+     "BL15",
+     "BL17",
+     "BL23",
+     "GB30",
+     "ST36"
+    ],
+    "variante": [
+     "mats",
+     "trigger",
+     "acupresura"
+    ],
+    "intrebari": [
+     {
+      "q": "Unde se plasează mingea la autoacupresura spatelui?",
+      "corect": "Lângă coloană, nu pe coloană",
+      "gresite": [
+       "Direct pe vertebre, pentru presiune maximă",
+       "Pe coloana lombară dureroasă",
+       "Pe ceafă, rulând forțat"
+      ],
+      "explicatie": "Presiunea se aplică pe mușchii paravertebrali, nu pe oase, pentru a evita iritarea sau leziunile."
+     },
+     {
+      "q": "Care este o contraindicație importantă pentru presiune intensă cu obiecte?",
+      "corect": "Tratamentul cu anticoagulante sau tulburări de coagulare",
+      "gresite": [
+       "Tensiune musculară ușoară",
+       "Prima utilizare a mingii de tenis",
+       "Pauze scurte între sesiuni"
+      ],
+      "explicatie": "Anticoagulantele cresc riscul de hematoame după presiune intensă."
+     },
+     {
+      "q": "Cum se compară acupresura cu masajul în privința dovezilor?",
+      "corect": "Ambele par să aibă efecte modeste asupra tensiunii și durerii cronice musculoscheletale",
+      "gresite": [
+       "Acupresura este dovedit superioară masajului",
+       "Masajul nu are niciun efect măsurat",
+       "Acupresura vindecă cauzele durerii cronice"
+      ],
+      "explicatie": "Studiile arată efecte modeste pentru ambele; nu există dovezi că una o depășește clar pe cealaltă."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "L5",
+  "titlu": "Variante conexe",
+  "descriere": "O privire critică asupra terapiilor înrudite cu acupunctura: moxibustia, ventuzele, masajele tradiționale, microsistemele și tehnologiile moderne. Pentru fiecare vezi ce susține tradiția și ce arată cercetarea.",
+  "lectii": [
+   {
+    "id": "L5-1",
+    "titlu": "Moxibustia, ventuzele și gua sha",
+    "minute": 9,
+    "text": [
+     "Aceste trei practici folosesc căldura, aspirația sau răzuirea pe piele, nu ace. Sunt printre cele mai vechi tehnici ale medicinei tradiționale chineze și au echivalente în alte culturi. Fiecare are riscuri proprii de care trebuie să știi înainte de orice încercare.",
+     "Moxibustia folosește frunze de Artemisia (pelin) arse aproape de puncte. Tradițional, se spune că „încălzește meridianele” și alungă „frigul”. Tipuri: moxa directă (un con mic pe piele, care poate lăsa cicatrice și se practică rar), moxa indirectă (cu strat de ghimbir, usturoi sau sare între con și piele), țigara de moxă ținută deasupra pielii și moxa în cutie. Riscul principal este arsura, apoi fumul, care poate irita căile respiratorii; spațiul trebuie aerisit. Se evită în caz de febră, pe piele lezată, pe față, în sarcină (zona abdomenului) și la persoane cu sensibilitate redusă. Dovezi: există studii pentru unele situații, cum ar fi întoarcerea fătului din prezentație pelviană, dar calitatea este variabilă și nu înlocuiește îngrijirea obstetricală.",
+     "Ventuzele (cupping) creează vid, care ridică ușor pielea și țesuturile. Se disting ventuzele uscate (statice, glisante) și cele umede (hijama), unde se fac mici incizii superficiale și se extrage puțin sânge. Marcile circulare nu sunt vânătăi traumatice, dar pot dura zile. Ventuzele umede implică risc de infecție, inclusiv transmiterea virusurilor din sânge, dacă instrumentele nu sunt sterile, deci doar la profesioniști cu igienă strictă. Dovezile pentru durere sunt de calitate scăzută și afectate de lipsa unui control sham credibil.",
+     "Gua sha este răzuirea pielii lubrifiate cu un obiect neted, până apar pete roșii (petechii). Tradițional se spune că „eliberează stagnarea”; modern se discută o creștere temporară a circulației locale. Evită-l pe piele lezată, cu erupții sau varice, în caz de anticoagulante, tulburări de coagulare sau boli de piele, și nu răzui deasupra zonei cu inflamații.",
+     "Pentru cele trei, mesajul comun este: efectele pot fi reale la nivel de senzație de relaxare și ameliorare a durerii musculare, dar sunt greu de separat de expectativă și de contextul terapeutic, iar riscurile sunt reale. Alege practicieni formați și cere igiena instrumentelor."
+    ],
+    "cheie": [
+     "Moxa: tipuri directă, indirectă, țigară de moxă; riscul principal este arsura și fumul.",
+     "Ventuzele umede (hijama) implică risc de infecție, deci doar în condiții sterile.",
+     "Gua sha produce petechii; contraindicat la anticoagulante și piele lezată.",
+     "Tradiția vorbește despre „frig”, „stagnare” și „Qi”; cercetarea modernă vorbește despre circulație locală și percepția durerii.",
+     "Dovezile sunt în general de calitate scăzută, cu studii greu de legat de un control sham."
+    ],
+    "practica": "Aplicație sigură fără foc sau aspirație: încălzește-ți mâinile și așază-le 2 minute peste zona lombară (peste haine), cu respirație lentă. Nu folosi moxă, ventuze sau gua sha acasă fără instruire și fără a verifica contraindicațiile cu un specialist.",
+    "puncte": [
+     "CV6",
+     "ST36",
+     "BL23",
+     "GB21"
+    ],
+    "variante": [
+     "moxa-d",
+     "moxa-i",
+     "moxa-s",
+     "vent-u",
+     "hijama",
+     "gua"
+    ],
+    "intrebari": [
+     {
+      "q": "Care este riscul principal al moxibustiei?",
+      "corect": "Arsurile și iritația cauzată de fum",
+      "gresite": [
+       "Hemoragia internă",
+       "Pierderea permanentă a sensibilității",
+       "Scăderea bruscă a tensiunii"
+      ],
+      "explicatie": "Moxa implică ardere aproape de piele; arsurile și fumul sunt riscurile cele mai frecvente."
+     },
+     {
+      "q": "De ce este hijama (ventuzele umede) mai riscantă decât ventuzele uscate?",
+      "corect": "Implică incizii superficiale, cu risc de infecție dacă igiena nu este strictă",
+      "gresite": [
+       "Folosește temperaturi foarte mari",
+       "Aplică substanțe toxice pe piele",
+       "Produce întotdeauna cicatrici adânci"
+      ],
+      "explicatie": "Ruperea pielii și contactul cu sângele impun instrumente sterile și igienă strictă."
+     },
+     {
+      "q": "Ce descrie corect gua sha?",
+      "corect": "Răzuirea pielii lubrifiate cu un obiect neted, care produce petechii",
+      "gresite": [
+       "Înțeparea pielii cu ace foarte fine",
+       "Aplicarea de plante arse pe piele",
+       "Aspirarea pielii cu o pompă de vid"
+      ],
+      "explicatie": "Gua sha este o tehnică de răzuire; petechiile apar la presiune și pot dura câteva zile."
+     }
+    ]
+   },
+   {
+    "id": "L5-2",
+    "titlu": "Tuina, shiatsu, Nuad Thai și Marma",
+    "minute": 9,
+    "text": [
+     "Multe culturi au dezvoltat sisteme de masaj terapeutic cu presiune pe puncte sau pe linii. Ele seamănă în mod evident cu acupresura, dar diferă prin istorie, teorie și stil. Vom compara patru: Tuina (China), Shiatsu (Japonia), Nuad Thai (Thailanda) și Marma (India, Ayurveda).",
+     "Tuina („a împinge și a apuca”) face parte din MTC și folosește manevre variate: împingere, frământare, rulare, apăsare și mobilizări articulare. Se practică în spitale și clinici chineze, adesea pentru durere musculoscheletală și dureri cervicale. Teoria urmează meridianele, punctele și diagnosticul MTC.",
+     "Shiatsu („presiune cu degetul”) s-a dezvoltat în Japonia în secolul XX, pornind din Anma, un masaj japonez mai vechi, cu influențe occidentale. Se lucrează de obicei îmbrăcat, pe saltea, cu presiune de palmă, degete mari și coate. Stilul Namikoshi pune accent pe anatomia occidentală, iar Zen Shiatsu (Masunaga) pe meridianele extinse și pe diagnostic prin palpare abdominală.",
+     "Nuad Thai (masaj thailandez) combină presiuni lungi pe linii numite „Sen”, întinderi asistate și poziții asemănătoare yoga. Rădăcinile sunt atribuite tradiției budiste și ayurvedice; teoria folosește linii energetice (Sen), nu meridianele MTC. Este mai dinamic și solicită corpul prin întinderi.",
+     "Marma provine din Ayurveda; marmele sunt puncte vitale, asociate cu structuri anatomice (articulații, vase, nervi), considerate în tradiție puncte unde „Prana” se acumulează. Terapia Marma folosește presiuni blânde, uneori cu uleiuri. Tradiția vorbește de 107 marme; apar aici asemănări cu acupunctura, dar teoria este diferită. Ce au în comun: toate lucrează cu presiune, au o teorie energetică și sunt, în practică, forme de masaj terapeutic. Ce diferă: concepția despre corp, stilul fizic și formarea practicienilor. Cercetarea asupra lor este limitată și de calitate variabilă; există dovezi modeste pentru reducerea durerii și a tensiunii cu masaj și manipulare moale, dar nu pentru teoria energetică. Tratează-le ca îngrijire de confort, cu aceleași precauții ca la acupresură."
+    ],
+    "cheie": [
+     "Tuina: sistem MTC cu manevre diverse, practicat în clinici chineze.",
+     "Shiatsu: Japonia, presiune cu degetul mare/palma, stiluri Namikoshi și Zen Shiatsu.",
+     "Nuad Thai: presiuni pe linii Sen plus întinderi asistate.",
+     "Marma: puncte vitale ayurvedice, presiune blândă, teorie diferită de MTC.",
+     "Teoriile energetice diferă; dovezile existente susțin mai ales beneficiile generale ale masajului."
+    ],
+    "practica": "Alege o linie de pe antebraț, de la încheietură spre cot, și apasă ușor din 2 în 2 cm cu degetul mare, 5 secunde fiecare, în stil „presiune pe linie”. Respiră lent și oprește-te dacă apare durere. Nu efectua manevre de întindere forțată fără instruire.",
+    "puncte": [
+     "PC6",
+     "LI10",
+     "LI11",
+     "TE5"
+    ],
+    "variante": [
+     "tuina",
+     "shiatsu",
+     "thai",
+     "marma",
+     "anma"
+    ],
+    "intrebari": [
+     {
+      "q": "Care sistem folosește „linii Sen” și întinderi asistate?",
+      "corect": "Nuad Thai",
+      "gresite": [
+       "Tuina",
+       "Shiatsu",
+       "Marma"
+      ],
+      "explicatie": "Nuad Thai combină presiuni pe linii Sen cu întinderi și mobilizări."
+     },
+     {
+      "q": "Care este originea shiatsu?",
+      "corect": "A pornit din Anma, un masaj japonez, și s-a dezvoltat în secolul XX",
+      "gresite": [
+       "Provine direct din Ayurveda",
+       "Este varianta thailandeză a Tuina",
+       "Este o tehnică modernă fără legătură cu tradițiile asiatice"
+      ],
+      "explicatie": "Shiatsu s-a dezvoltat în Japonia pornind din Anma, cu influențe occidentale."
+     },
+     {
+      "q": "Ce arată cercetarea despre aceste masaje tradiționale?",
+      "corect": "Dovezi modeste pentru durere și relaxare, fără sprijin pentru teoria energetică",
+      "gresite": [
+       "Dovezi clare că vindecă boli cronice",
+       "Dovezi că sunt periculoase în orice condiții",
+       "Dovezi că funcționează doar în cultura de origine"
+      ],
+      "explicatie": "Studiile sunt puține și de calitate variabilă; beneficiile sunt asociate cu masajul în general, nu cu teoria energetică."
+     }
+    ]
+   },
+   {
+    "id": "L5-3",
+    "titlu": "Microsisteme: auriculoterapie, reflexologie și Dien Chan",
+    "minute": 9,
+    "text": [
+     "Un microsistem este ideea că o parte mică a corpului (urechea, talpa, palma, fața) conține o „hartă” a întregului organism. Stimulând un punct de pe hartă, se spune că influențezi organul corespondent. Ideea este atractivă și simplă, dar trebuie examinată critic.",
+     "Auriculoterapia: în MTC există puncte pe ureche încă din textele vechi. Harta modernă a urechii, ca un fetus cu capul în jos, a fost dezvoltată în anii 1950 de medicul francez Paul Nogier. Se folosesc ace mici, semințe de vaccaria, mici bile sau stimulare electrică. Protocoale cunoscute: NADA (dependențe și stres) și Battlefield Acupuncture (BFA), folosit în medicina militară pentru durere. Există studii care sugerează ameliorarea durerii, dar rezultatele sunt eterogene; pentru dependențe, dovezile din studii controlate sunt neconcludente.",
+     "Reflexologia plantară și palmară pornește de la ideea că zone din talpă sau palmă corespund organelor. Practicanții masează „zonele reflexe”. Istoric, ideea s-a răspândit în Occident în secolul XX (William Fitzgerald, Eunice Ingham). Studiile arată în general că reflexologia poate reduce anxietatea și poate crește confortul, dar nu există dovezi robuste că diagnosticarea unor boli din talpă este posibilă sau că tratează boli ale organelor interne. Studiile de calitate înaltă sunt puține.",
+     "Dien Chan este o metodă vietnameză creată de Bui Quoc Chau în anii 1980, care folosește fața ca hartă reflexă, cu bastoane și rulouri. Tradiția susține corespondențe între puncte faciale și organe, dar acest sistem este recent, nu are rădăcini clasice documentate, iar studiile clinice de calitate sunt, din câte știm, absente sau foarte puține.",
+     "Cum le privim: distinge între ce spune tradiția (harta funcționează, deci ai putea trata un organ prin ureche, talpă sau față), ce arată cercetarea (efecte posibile asupra durerii, relaxării și confortului, dar harta nu este validată) și ce nu se poate afirma (diagnostic prin reflexe, vindecare de boli). Cea mai onestă concluzie: pot fi plăcute și relaxante, dar nu le folosi în locul diagnosticului sau al tratamentului medical."
+    ],
+    "cheie": [
+     "Microsistem înseamnă ideea unei „hărți” a corpului pe o parte mică (ureche, talpă, palmă, față).",
+     "Harta urechii moderne datează din anii 1950 (Nogier); NADA și BFA sunt protocoale de auriculoterapie.",
+     "Reflexologia: dovezi pentru relaxare și confort, nu pentru diagnostic sau tratarea organelor.",
+     "Dien Chan este o metodă recentă (anii 1980), fără dovezi clinice solide.",
+     "Distinge întotdeauna afirmația tradițională de rezultatul studiilor."
+    ],
+    "practica": "Masează-ți 2 minute talpa cu degetele mari, cu presiune moale, în jurul zonei KI1 (aproximativ unde se unesc treimea anterioară și mijlocie a tălpii), respirând lent. Scopul este relaxarea; nu urmări „corespondențe cu organe”. Evită dacă ai răni, infecții sau tromboză la picior.",
+    "puncte": [
+     "KI1",
+     "GV20",
+     "EX-HN3"
+    ],
+    "variante": [
+     "aur",
+     "bfa",
+     "nada",
+     "refl-t",
+     "refl-p",
+     "dien"
+    ],
+    "intrebari": [
+     {
+      "q": "Ce susține ideea unui microsistem?",
+      "corect": "O parte mică a corpului ar conține o hartă a întregului organism",
+      "gresite": [
+       "Fiecare organ are un singur punct de acupunctură",
+       "Boala poate fi diagnosticată doar prin ureche",
+       "Presiunea se transmite întotdeauna direct organului"
+      ],
+      "explicatie": "Microsistemul este un concept de corespondență; validitatea hărților nu este demonstrată."
+     },
+     {
+      "q": "Ce arată în general cercetarea despre reflexologie?",
+      "corect": "Posibile efecte de relaxare și confort, fără dovezi robuste pentru tratarea bolilor organelor",
+      "gresite": [
+       "Eficacitate clară în boli de ficat și rinichi",
+       "Eficacitate demonstrată doar în diabet",
+       "Riscuri majore în orice situație"
+      ],
+      "explicatie": "Beneficiile raportate sunt legate de relaxare; nu există dovezi robuste pentru afecțiuni ale organelor interne."
+     },
+     {
+      "q": "Ce se poate spune corect despre Dien Chan?",
+      "corect": "Este o metodă recentă, creată în anii 1980, fără dovezi clinice solide",
+      "gresite": [
+       "Este o tehnică din textele clasice chineze",
+       "A fost validată prin numeroase studii randomizate",
+       "Este varianta oficială a auriculoterapiei"
+      ],
+      "explicatie": "Dien Chan a fost creat de Bui Quoc Chau; lipsesc rădăcini clasice și studii clinice de calitate."
+     }
+    ]
+   },
+   {
+    "id": "L5-4",
+    "titlu": "Tehnologii: laser, TENS/TEAS, electroacupunctură, brățări P6",
+    "minute": 9,
+    "text": [
+     "Tehnologia a adus puncte de acupunctură în aparate: laser, curent electric, magneți, brățări. Întrebarea corectă este mereu aceeași: există studii bine controlate care arată ceva dincolo de placebo?",
+     "Electroacupunctura conectează ace la un aparat care trimite impulsuri electrice mici. Este folosită în clinici pentru durere și în cercetare, unde permite standardizarea stimulării. Beneficiile sunt similare cu cele ale acupuncturii clasice în multe studii, cu aceleași limite de dovezi. Se evită la persoane cu stimulator cardiac sau epilepsie necontrolată, fără acordul medicului.",
+     "TENS (stimulare electrică nervoasă transcutanată) folosește electrozi pe piele și curenți mici, pentru durere. TEAS este varianta aplicată pe puncte de acupunctură. Pentru TENS există dovezi mixte: unele studii susțin beneficii în durere, în special în anumite afecțiuni, dar calitatea studiilor este variabilă și efectul poate fi mic. Pentru TEAS, studiile din perioada perioperatorie și din alte contexte sunt promițătoare, dar eterogene. Contraindicații: stimulator cardiac, sarcină (regiuni specifice), piele lezată, zone cu pierdere de sensibilitate.",
+     "Laserpunctura folosește lumină laser de nivel scăzut, fără înțepare. Este atractivă pentru copii. Dovezile sunt amestecate: doze, lungimi de undă și durate variază mult între studii, ceea ce face comparațiile dificile. Unele studii sugerează un beneficiu în durere, dar sinteza concluziilor este prudentă. Aparatele necertificate pot fi ineficiente sau periculoase pentru ochi; nu privi în fascicul.",
+     "Brățările P6: brățările cu un nasture care apasă pe PC6 sau brățările electrice sunt vândute pentru rău de mișcare și greață. Sinteza Cochrane 2015 (Lee și colab.) a evaluat stimularea PC6 prin mai multe metode, inclusiv acupresura, pentru greața postoperatorie, cu dovezi de calitate limitată, iar rezultatele nu pot fi extrapolate automat la orice brățară sau la orice situație. Pentru rău de mișcare, dovezile sunt mai slabe. Riscurile sunt reduse, dar costul și așteptările exagerate pot fi o problemă. Regulă generală: o tehnologie nu devine mai eficientă doar pentru că arată științific. Caută studii randomizate, cu control sham, dimensiune adecvată, rezultate replicate. Dacă apar promisiuni de vindecare, fii sceptic."
+    ],
+    "cheie": [
+     "Electroacupunctura: ace plus curent; același nivel de dovezi ca acupunctura, cu precauții la stimulator cardiac.",
+     "TENS/TEAS: dovezi mixte; efectul poate fi mic; contraindicate la stimulator cardiac.",
+     "Laserpunctura: protocoale foarte diferite, dovezi amestecate; protejează ochii.",
+     "Brățările P6: bazate pe PC6, dovezile pentru greață sunt limitate și nu se aplică automat oricărei brățări.",
+     "Aspectul tehnologic nu înseamnă eficacitate; contează studiile controlate."
+    ],
+    "practica": "Dacă ai o brățară P6, verifică poziția: butonul trebuie să stea pe PC6, trei lățimi de deget deasupra pliului încheieturii, între tendoane. Poartă-o în confort, fără să oprești circulația; scoate-o dacă apare roșeață. Notează în jurnal dacă observi o diferență, fără a renunța la tratamentul recomandat.",
+    "puncte": [
+     "PC6",
+     "LI4",
+     "ST36"
+    ],
+    "variante": [
+     "laser",
+     "teas",
+     "ea",
+     "band"
+    ],
+    "intrebari": [
+     {
+      "q": "Ce persoane trebuie să evite electroacupunctura și TENS fără aviz medical?",
+      "corect": "Cele cu stimulator cardiac",
+      "gresite": [
+       "Cele care citesc mult",
+       "Cele cu pielea sănătoasă",
+       "Cele fără alergii"
+      ],
+      "explicatie": "Curentul poate interfera cu dispozitivele implantate; avizul medicului este necesar."
+     },
+     {
+      "q": "Ce limită principală au studiile despre laserpunctură?",
+      "corect": "Dozele, lungimile de undă și duratele diferă mult, ceea ce face comparațiile dificile",
+      "gresite": [
+       "Nu există niciun studiu publicat",
+       "Toate studiile arată vindecare completă",
+       "Laserul nu a fost niciodată testat pe puncte"
+      ],
+      "explicatie": "Eterogenitatea protocoalelor face greu de tras concluzii generale."
+     },
+     {
+      "q": "Ce arată sinteza Cochrane 2015 despre stimularea PC6?",
+      "corect": "Dovezi de calitate limitată în greața postoperatorie, nu pentru orice brățară sau situație",
+      "gresite": [
+       "Dovezi de calitate înaltă pentru orice brățară din comerț",
+       "Dovezi că brățările electrice vindecă rău de mișcare",
+       "Dovezi că PC6 este mai bun decât orice medicament"
+      ],
+      "explicatie": "Sinteza a evaluat stimularea PC6 în greața postoperatorie; nu confirmă toate produsele sau indicațiile."
+     }
+    ]
+   }
+  ]
+ },
+ {
+  "id": "L6",
+  "titlu": "Dovezi, cercetare și practică responsabilă",
+  "descriere": "Învață să citești critic un studiu, să înțelegi ce spun sintezele și ghidurile, să alegi un practicant calificat și să recunoști pseudoștiința fără a închide mintea.",
+  "lectii": [
+   {
+    "id": "L6-1",
+    "titlu": "Cum citești un studiu clinic",
+    "minute": 9,
+    "text": [
+     "Când auzi „studiile arată că…”, merită să știi ce fel de studiu este și ce poate demonstra. Acupunctura este o provocare specială, pentru că terapeutul știe ce face și pacientul simte ceva, deci „orbirea” este dificilă.",
+     "Randomizarea înseamnă că participanții sunt repartizați la întâmplare în grupuri, pentru ca diferențele dintre grupuri să nu explice rezultatul. Alocarea ascunsă împiedică cercetătorii să influențeze cine ajunge unde. Fără randomizare, un grup poate fi mai tânăr sau mai motivat, iar rezultatul poate fi înșelător.",
+     "Placebo este un tratament fără mecanism activ, care poate totuși ameliora simptomele prin așteptare, atenție și context. În acupunctură se folosește „sham” (simulare): ace care nu pătrund (ace retractabile Streitberger) sau înțepare în puncte „greșite”. Problema: și acupunctura sham poate stimula pielea, deci poate avea un efect propriu. Dacă diferența dintre acupunctura reală și sham este mică, există două interpretări: fie punctul exact nu contează mult, fie contează, dar sham-ul nu e inert. De aceea, mai multe tipuri de comparații sunt utile: acupunctură vs. sham, vs. fără tratament și vs. tratament standard.",
+     "Mărimea efectului arată cât de mare este diferența, nu doar dacă este „semnificativă statistic”. Un efect poate fi sigur (p mic), dar neimportant pentru pacient. Se folosesc diferențe medii pe scale de durere (de exemplu 0–10), diferențe standardizate (unde 0,2 este mic, 0,5 mediu, 0,8 mare) și diferența minimă importantă clinic. În sinteza lui Vickers și colab. (2018, J Pain), pe date individuale din 39 de studii, acupunctura a fost mai bună decât lipsa tratamentului cu o diferență mai mare și decât sham cu o diferență mică, ceea ce arată că o parte din beneficiu ține de context.",
+     "Alte aspecte: mărimea eșantionului, abandonurile, durata urmăririi, conflictele de interese, replicarea. O sinteză sistematică (meta-analiză) reunește studiile, dar rezultatul depinde de calitatea lor. Scala GRADE descrie încrederea în dovezi (înaltă, moderată, scăzută, foarte scăzută). Un rezultat izolat nu este o dovadă."
+    ],
+    "cheie": [
+     "Randomizarea și alocarea ascunsă reduc diferențele sistematice dintre grupuri.",
+     "Sham-ul nu este întotdeauna inert, ceea ce complică interpretarea.",
+     "Mărimea efectului contează mai mult decât semnificația statistică singură.",
+     "În durerea cronică, efectul față de sham este mic, iar față de lipsa tratamentului este mai mare (Vickers, 2018).",
+     "Încrederea în dovezi se descrie prin GRADE: înaltă, moderată, scăzută, foarte scăzută."
+    ],
+    "practica": "Alege un titlu de știre despre o terapie și răspunde la cinci întrebări: Ce tip de studiu este? Cine a fost comparat cu cine? Câți participanți? Cât de mare a fost diferența, nu doar dacă a fost „semnificativă”? Cine a finanțat? Notează ce nu știi. Nu schimba tratamentul pe baza unui singur titlu.",
+    "puncte": [],
+    "variante": [
+     "acu-cl"
+    ],
+    "intrebari": [
+     {
+      "q": "Care este rolul randomizării?",
+      "corect": "Distribuie participanții la întâmplare pentru a reduce diferențele sistematice dintre grupuri",
+      "gresite": [
+       "Garantează că tratamentul funcționează",
+       "Asigură că toți pacienții primesc același tratament",
+       "Elimină necesitatea unui grup de control"
+      ],
+      "explicatie": "Randomizarea echilibrează, în medie, caracteristicile grupurilor, dar nu garantează eficacitatea."
+     },
+     {
+      "q": "De ce este dificilă interpretarea acupuncturii sham?",
+      "corect": "Pentru că sham-ul poate avea și el un efect propriu, nu doar placebo",
+      "gresite": [
+       "Pentru că nu poate fi folosit în studii",
+       "Pentru că este întotdeauna identic cu acupunctura reală",
+       "Pentru că se aplică doar copiilor"
+      ],
+      "explicatie": "Înțeparea superficială sau atingerea pielii pot stimula receptori, deci sham-ul nu este perfect inert."
+     },
+     {
+      "q": "Ce arată mărimea efectului?",
+      "corect": "Cât de mare este diferența dintre grupuri, nu doar dacă ea este statistic semnificativă",
+      "gresite": [
+       "Numărul de participanți",
+       "Dacă studiul a fost publicat",
+       "Dacă tratamentul este tradițional"
+      ],
+      "explicatie": "Un efect semnificativ statistic poate fi mic și irelevant clinic; mărimea efectului ajută la evaluarea importanței."
+     }
+    ]
+   },
+   {
+    "id": "L6-2",
+    "titlu": "Ce spun sintezele și ghidurile",
+    "minute": 10,
+    "text": [
+     "Pentru a nu depinde de un singur studiu, comunitatea științifică folosește sinteze sistematice și ghiduri clinice. Nu uita: datele de mai jos sunt orientative și pot fi depășite; verifică întotdeauna ultimele versiuni.",
+     "Hartă a dovezilor (2022): Allen și colab. au publicat în JAMA Network Open o sinteză a sintezelor, privind acupunctura pentru afecțiuni la adulți. Din multe zeci de afecțiuni, doar o parte au concluzii cu certitudine înaltă sau moderată; unele dintre acestea sunt pentru beneficiu (de exemplu migrenă, cefalee de tip tensional, durere musculoscheletală cronică, fibromialgie), iar altele sunt pentru lipsa beneficiului. Dovezile pentru superioritate față de alte tratamente active sunt rare.",
+     "Durere cronică: sinteza lui Vickers și colab. (2018) a găsit un efect modest față de sham și mai mare față de lipsa tratamentului. Ghidurile se contrazic: American College of Physicians (2017) include acupunctura printre opțiunile nefarmacologice în lombalgie, pe baza unor dovezi de calitate scăzută, în timp ce ghidul NICE NG59 (2016) recomanda să nu se ofere acupunctura în lombalgie. O revizie a ghidurilor din 2025 (Ho și colab., BMC Complement Medicine and Therapies), privind durerea musculoscheletală cronică, a găsit 17 ghiduri și 35 de recomandări, în mare parte slabe sau condiționate, cu o minoritate împotrivă. Mesajul: nu există consens.",
+     "Migrenă și cefalee: acupunctura este menționată în unele ghiduri ca opțiune pentru profilaxie; ghidul britanic NICE pentru cefalee (CG150) sugerează, din câte știm, considerarea unui curs de acupunctură pentru profilaxia migrenei și a cefaleei de tip tensional. Verifică versiunea curentă. În 2025 a apărut un protocol Cochrane pentru profilaxia migrenei episodice cu acupunctură; el nu are încă rezultate.",
+     "Greață: sinteza Cochrane (Lee, Chan și Fan, 2015) pe 59 de studii și 7667 de participanți a găsit pentru stimularea PC6 în greața postoperatorie dovezi de calitate scăzută de superioritate față de sham și dovezi moderate de efect similar cu antiemeticele. O meta-analiză din 2023 (Xiao și colab., Supportive Care in Cancer) privind acupresura PC6 în greața din chimioterapie a găsit o reducere a greții, dar cu studii puține și de calitate mixtă. Poziția OMS: strategia globală pentru medicina tradițională 2025–2034 este un cadru general, nu o recomandare clinică pentru acupunctură. Concluzie prudentă: există dovezi pentru ameliorări modeste în anumite dureri și în greață, dar calitatea este adesea scăzută și ghidurile diferă."
+    ],
+    "cheie": [
+     "Hartă a dovezilor JAMA Netw Open 2022: puține concluzii cu certitudine înaltă; dovezi rare pentru superioritate față de tratamente active.",
+     "Ghidurile diferă: ACP 2017 include acupunctura în lombalgie, NICE NG59 recomanda să nu fie oferită.",
+     "Revizia din 2025 a ghidurilor pentru durere musculoscheletală: recomandări mai ales slabe sau condiționate.",
+     "Greață: Cochrane 2015 arată dovezi de calitate scăzută până la moderată pentru PC6 în greața postoperatorie.",
+     "Protocolul Cochrane 2025 pentru migrenă nu are încă rezultate."
+    ],
+    "practica": "Alege o afecțiune (de exemplu lombalgia) și caută ultimul ghid clinic național sau o sinteză Cochrane. Notează: ce recomandă, cât de puternică este recomandarea, cât de sigure sunt dovezile și data. Compară cu o a doua sursă și vezi dacă se contrazic.",
+    "puncte": [
+     "PC6"
+    ],
+    "variante": [
+     "acu-cl",
+     "acupresura",
+     "band"
+    ],
+    "intrebari": [
+     {
+      "q": "Ce arată în general harta dovezilor JAMA Netw Open 2022 despre acupunctură?",
+      "corect": "Puține concluzii cu certitudine înaltă; dovezi rare pentru superioritate față de alte tratamente active",
+      "gresite": [
+       "Certitudine înaltă pentru aproape toate afecțiunile",
+       "Lipsa totală de studii",
+       "Superioritate clară față de toate medicamentele"
+      ],
+      "explicatie": "Din multe afecțiuni, doar o minoritate au certitudine înaltă; majoritatea comparațiilor sunt vs. sham sau lipsa tratamentului."
+     },
+     {
+      "q": "Ce exemplu ilustrează dezacordul dintre ghiduri?",
+      "corect": "ACP (2017) include acupunctura în lombalgie, iar NICE NG59 (2016) recomanda să nu fie oferită",
+      "gresite": [
+       "Toate ghidurile recomandă la fel pentru toate durerile",
+       "Niciun ghid nu menționează acupunctura",
+       "Ghidurile OMS interzic acupunctura"
+      ],
+      "explicatie": "Aceleași dovezi limitate au fost interpretate diferit, ceea ce arată că decizia depinde de judecata ghidurilor."
+     },
+     {
+      "q": "Ce este protocolul Cochrane din 2025 privind migrena?",
+      "corect": "Un plan al revizuirii, fără rezultate încă",
+      "gresite": [
+       "O sinteză finală care confirmă eficacitatea",
+       "O interdicție a acupuncturii",
+       "Un ghid oficial al OMS"
+      ],
+      "explicatie": "Un protocol descrie metoda de lucru; nu poate fi citat ca dovadă de eficacitate."
+     }
+    ]
+   },
+   {
+    "id": "L6-3",
+    "titlu": "Reglementare, formare, igiena acelor, consimțământ",
+    "minute": 9,
+    "text": [
+     "Când alegi un practicant, siguranța depinde mai mult de formare și igienă decât de școala de acupunctură. Regulile diferă de la țară la țară, iar în Europa nu există o reglementare armonizată a acupuncturii; unele țări o rezervă profesiilor medicale.",
+     "În România, practicile complementare sunt vizate de Legea 118/2007. Potrivit unor surse, acupunctura este practicată de medici, medici stomatologi sau farmaciști cu competență atestată, dar normele de aplicare au fost mult timp absente, iar în 2025 instanța supremă a obligat Ministerul Sănătății să le emită. Nu putem garanta aici situația la zi: verifică legislația în vigoare și întreabă practicantul ce calificare are.",
+     "Formare: Organizația Mondială a Sănătății a publicat în 2021 „WHO benchmarks for the training of acupuncture”, un cadru pentru nivelurile de pregătire pe categorii de furnizori. Un practicant bun poate explica studiile sale, legitimația profesională, asigurarea de răspundere și experiența cu afecțiunea ta. Întreabă dacă este medic sau dacă lucrează în echipă cu un medic.",
+     "Igiena acelor: acele trebuie să fie sterile și de unică folosință, deschise în fața ta, și aruncate într-un container pentru obiecte ascuțite. Pielea se dezinfectează, iar mâinile se spală sau se folosesc mănuși. Infecțiile, inclusiv cele transmise prin sânge, sunt rare dacă regulile sunt respectate, dar pot fi grave. Alte riscuri rare: pneumotorax, lezarea unui nerv, leșin. Nu accepta ace reutilizate, ventuze nesterilizate sau cameră murdară.",
+     "Consimțământ informat: practicantul trebuie să-ți spună ce urmează să facă, riscurile, alternativele, ce se știe și nu se știe despre eficacitate, costul și numărul probabil de ședințe. Ai dreptul să refuzi sau să oprești oricând. Spune ce medicamente iei (mai ales anticoagulante), dacă ești însărcinată, ai stimulator cardiac sau tulburări de coagulare. Semne de alarmă: promisiunea de vindecare, sfaturi de a opri medicamentele, preț foarte mare pentru pachete lungi, presiune de a continua, lipsa unei evaluări și a unui plan clar."
+    ],
+    "cheie": [
+     "În Europa nu există reglementare armonizată; în România, cadrul este Legea 118/2007, cu norme de aplicare întârziate.",
+     "Verifică calificarea, asigurarea de răspundere și colaborarea cu medicul.",
+     "Ace sterile, de unică folosință, deschise în fața ta, într-un container pentru ascuțite.",
+     "Consimțământul informat include riscuri, alternative, limite ale dovezilor și dreptul de a opri.",
+     "Semne de alarmă: promisiuni de vindecare, sfaturi de a opri tratamentul medical, presiune comercială."
+    ],
+    "practica": "Fă-ți o listă de verificare înainte de prima ședință: calificarea practicantului, igiena (ace sterile și unică folosință), riscuri și costuri explicate, ce medicamente trebuie să raportezi. Pune cel puțin trei întrebări la telefon sau prin mesaj și notează răspunsurile.",
+    "puncte": [],
+    "variante": [
+     "acu-cl",
+     "dry"
+    ],
+    "intrebari": [
+     {
+      "q": "Ce caracteristici au acele folosite în siguranță?",
+      "corect": "Sterile, de unică folosință, deschise în fața pacientului",
+      "gresite": [
+       "Reutilizabile după clătire cu apă",
+       "Dezinfectate cu alcool între pacienți",
+       "Păstrate într-un recipient comun"
+      ],
+      "explicatie": "Acele de unică folosință elimină riscul de transmitere încrucișată; refolosirea este inacceptabilă."
+     },
+     {
+      "q": "Ce trebuie să cuprindă consimțământul informat?",
+      "corect": "Ce se face, riscurile, alternativele, limitele dovezilor și dreptul de a refuza sau opri",
+      "gresite": [
+       "Doar semnătura pe o foaie cu tarife",
+       "Garanția unui rezultat",
+       "Interdicția de a pune întrebări"
+      ],
+      "explicatie": "Consimțământul informat înseamnă înțelegere reală, nu o formalitate."
+     },
+     {
+      "q": "Care este un semn de alarmă la un practicant?",
+      "corect": "Promite vindecare și te sfătuiește să oprești medicamentele",
+      "gresite": [
+       "Explică riscurile",
+       "Îți cere lista medicamentelor",
+       "Folosește ace sterile"
+      ],
+      "explicatie": "Promisiunile de vindecare și sfaturile de a opri tratamentul indică practică iresponsabilă."
+     }
+    ]
+   },
+   {
+    "id": "L6-4",
+    "titlu": "Semne de pseudoștiință: EAV, kinesiologie, promisiuni de vindecare",
+    "minute": 9,
+    "text": [
+     "Nu tot ce se leagă de puncte este la fel de bine fundamentat. Acupunctura clasică are studii, cu rezultate mixte; alte practici au aspect științific, dar lipsesc dovezile. A recunoaște diferența este o competență.",
+     "EAV (electroacupunctura după Voll) și bioresonanța pretind că măsoară conductanța electrică a pielii în puncte și că pot depista alergii, infecții sau dezechilibre ale organelor. Studiile controlate nu au arătat că aceste măsurători distinge fiabil persoanele cu și fără alergii sau alte afecțiuni; aparatul dă valori care se pot influența prin presiunea electrodului și umiditatea pielii. Dispozitivele acestea pot duce la diagnostice false sau la cheltuieli inutile. Ryodoraku, o metodă japoneză de măsurare a conductanței, ridică întrebări similare despre fiabilitate.",
+     "Kinesiologia aplicată (testul muscular) susține că slăbiciunea unui mușchi arată o alergie sau un deficit. Testele în studii cu dublu orb nu au confirmat acuratețea metodei: rezultatul depinde de așteptările examinatorului, nu de substanța testată.",
+     "Semne generale de pseudoștiință: promisiuni de vindecare pentru boli multiple (cancer, autism, diabet); un singur mecanism pentru toate bolile; limbaj tehnic vag („frecvențe”, „energii cuantice”); dovezi doar prin mărturii; teorii care nu pot fi infirmate; suspiciune față de medicina oficială; aparate scumpe cu rezultate spectaculoase; presiunea să cumperi produse suplimentare.",
+     "Cum rămâi sceptic dar deschis: pune două întrebări. Ce s-ar putea întâmpla dacă ar fi greșit? Ce observație ar schimba părerea mea? Pentru o terapie nouă, cere un studiu randomizat, controlat, publicat și replicat. Acceptă că unele practici tradiționale pot aduce confort chiar dacă teoria lor nu este validată. Evită ironia față de oameni; criticile vizează afirmațiile, nu pe cei care le caută ajutor. Reținere: nu confunda „nu s-a demonstrat” cu „s-a demonstrat că nu funcționează”. Mențiunile din lecțiile precedente (de exemplu PC6 pentru greață) arată cum arată o poziție nuanțată: dovezi limitate, dar suficiente pentru o încercare prudentă, fără promisiuni."
+    ],
+    "cheie": [
+     "EAV și bioresonanța nu au fost validate ca metode de diagnostic.",
+     "Kinesiologia aplicată nu a trecut testele în dublu orb.",
+     "Semne de alarmă: vindecare pentru multe boli, jargon vag, mărturii în loc de studii, aparate scumpe.",
+     "„Nu s-a demonstrat” nu este același lucru cu „s-a demonstrat că nu funcționează”.",
+     "Scepticismul sănătos cere dovezi, rămâne deschis la date noi și respectă oamenii."
+    ],
+    "practica": "Alege o reclamă la un aparat sau o terapie și bifează semnele de alarmă: promite vindecare pentru boli diferite? Se bazează pe mărturii? Are studii randomizate publicate? Notează ce ai verifica. Nu cumpăra și nu opri un tratament pe baza reclamei.",
+    "puncte": [],
+    "variante": [
+     "eav",
+     "kin",
+     "ryo"
+    ],
+    "intrebari": [
+     {
+      "q": "Ce pretinde EAV (electroacupunctura după Voll)?",
+      "corect": "Că măsurarea conductanței pielii în puncte poate depista afecțiuni ale organelor",
+      "gresite": [
+       "Că ace sterile tratează toate bolile",
+       "Că presiunea manuală înlocuiește medicamentele",
+       "Că ventuzele detectează alergii"
+      ],
+      "explicatie": "Studiile controlate nu au arătat că aceste măsurători sunt fiabile ca diagnostic."
+     },
+     {
+      "q": "Ce au arătat testele în dublu orb ale kinesiologiei aplicate?",
+      "corect": "Metoda nu a depășit întâmplarea, iar rezultatul depindea de așteptările examinatorului",
+      "gresite": [
+       "O acuratețe de peste 90%",
+       "Detectează fiabil orice alergie",
+       "Este mai exactă decât analizele de sânge"
+      ],
+      "explicatie": "Fără știința examinatorului despre substanță, testul muscular nu a distins corect."
+     },
+     {
+      "q": "Care este o atitudine sceptică, dar deschisă?",
+      "corect": "Ceri dovezi bune și rămâi dispus să-ți schimbi părerea dacă apar date noi",
+      "gresite": [
+       "Respingi orice terapie tradițională fără să o analizezi",
+       "Accepți orice cu mărturii convingătoare",
+       "Consideri că „nu s-a demonstrat” înseamnă „s-a demonstrat că nu funcționează”"
+      ],
+      "explicatie": "Scepticismul sănătos nu respinge din reflex și nu acceptă fără dovezi; ține cont de nivelul datelor."
+     }
+    ]
+   }
+  ]
+ }
+]

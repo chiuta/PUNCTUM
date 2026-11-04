@@ -8,5 +8,3 @@ function render(){
   if(v==='tech')renderVarList();
   if(reg&&reg.post)reg.post();
 }
-/* init */
-load();document.documentElement.lang=S.lang;applyTheme();applyI18n();render();

@@ -9,6 +9,7 @@ function ptCard(p){
    <h3><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h3>
    <p class="mut">${m?esc(m.n):'Puncte extra'} · ${esc(REG[p.r])}</p>
    ${p.mn?`<p class="mut"><i>${esc(p.mn)}</i></p>`:''}
+   ${p.vf?`<p class="mut" style="font-size:.8rem">${p.vf==='v'?'✓ Localizare verificată în textul OMS (2008)':'≈ Localizare confirmată din surse secundare'}</p>`:`<p class="mut" style="font-size:.8rem">○ Localizare de verificat în sursa oficială</p>`}
    ${p.tg?`<p>${p.tg.split(',').filter(Boolean).map(t=>`<span class="tag">${esc(t.trim())}</span>`).join('')}</p>`:''}
    <p><b>Localizare:</b> ${esc(p.l)}</p>
    <p><b>Indicații tradiționale:</b> ${esc(p.u)}</p>
