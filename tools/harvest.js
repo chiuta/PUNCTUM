@@ -24,6 +24,7 @@ const strs=await p.evaluate(()=>{
  safe(()=>GLO.forEach(g=>g.forEach&&g.forEach(x=>typeof x==='string'&&set.add(norm(x)))));
  safe(()=>MER.forEach(m=>Object.values(m).forEach(x=>typeof x==='string'&&set.add(norm(x)))));
  // UI-ul tradus deja în I18N/CRSUI/CONDUI nu se mai traduce prin dicționar; filtrat mai jos
+ safe(()=>{MER.forEach(m=>{if(m.key)set.add(norm(m.key))});VAR.forEach(v=>{if(v.zon)set.add(norm(v.zon))})});
  ['CONDUI','MAPUI','CRSUI','STUI','REFUI'].forEach(n=>safe(()=>{const d=eval(n).ro;const add=v=>{if(typeof v==='string')set.add(norm(v));else if(Array.isArray(v))v.forEach(add);else if(v&&typeof v==='object')Object.values(v).forEach(add)};add(d)}));
  // nuclee: fără cifre/punctuație la capete (pt. șiruri dinamice precum „60 / 60 afecțiuni”)
  [...set].forEach(t=>{const c=t.replace(/^[\d\s\/()%.,+\-–:·]+/,'').replace(/[\d\s\/()%.,+\-–:·]+$/,'');if(c&&c!==t&&c.length>2&&t.length<60&&/\d/.test(t))set.add(c)});

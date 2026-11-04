@@ -39,6 +39,7 @@ function qBegin(){
 }
 function qPick(i){
   const r=SQ.run;if(!r||r.done)return;const it=r.items[r.i];const val=it.o[i];
+  if(SQ.mode==='practice'&&r.ans===null){r.log=r.log||[];r.log[r.i]=val} // reținut pentru recapitulare
   if(SQ.mode==='practice'){if(r.ans!==null)return;r.ans=val}
   else{r.picks[r.i]=val}
   const ok=val===it.ok;if(SQ.mode==='practice'||!r.counted||!r.counted[r.i]){r.counted=r.counted||{};r.counted[r.i]=true;if(ok)r.sc++;
@@ -75,16 +76,12 @@ function qReview(r){
   return `<h3>${esc(su('review'))}</h3>`+miss.map(m=>`<div class="card" style="margin:.4rem 0"><p><b>${esc(m.it.q)}</b></p><p class="mut">${esc(su('yourAns'))}: ${esc(m.p||'—')} · ${esc(su('correctAns'))}: <b>${esc(m.it.ok)}</b></p>${m.it.e?`<p class="mut">${esc(m.it.e)}</p>`:''}</div>`).join('');
 }
 function qRetryWrong(){const r=SQ.run;if(!r||!r.wrongItems||!r.wrongItems.length){SQ.run=null;render();return}SQ.n='all';qStart(r.wrongItems)}
-/* în practică: reține răspunsul în r.log pentru recapitulare */
-const _qPick=qPick;
-qPick=function(i){const r=SQ.run;if(r&&!r.done&&SQ.mode==='practice'&&r.ans===null){r.log=r.log||[];r.log[r.i]=r.items[r.i].o[i]}_qPick(i)};
-
 /* --- flashcarduri (Leitner) --- */
 const LEIT=[0,1,3,7,16,35];
 function fcDeck(k){
   if(k==='pts')return PT.map(p=>({id:'pt:'+p.c,f:`<b style="font-size:1.5rem">${esc(p.c)}</b>`,b:`<b>${esc(p.p)}</b>${p.mn?' — <i>'+esc(p.mn)+'</i>':''}<br>${esc(p.l)}<br><span class="mut">${esc(p.u)}</span>${p.w?'<br><span style="color:var(--acc2)">'+esc(p.w)+'</span>':''}`}));
   if(k==='loc')return PT.filter(p=>p.l).map(p=>({id:'pl:'+p.c,f:esc(p.l),b:`<b style="font-size:1.4rem">${esc(p.c)}</b> ${esc(p.p)}`}));
-  if(k==='mer')return MER.map(m=>({id:'m:'+m.c,f:`<b>${esc(m.n)}</b> (${esc(m.c)})`,b:`${esc(m.el)} · ${esc(m.yy)} · ${m.pts} puncte${m.t!=='—'?' · maxim '+esc(m.t):''}<br>${esc(m.path)}<br><span class="mut">${esc(m.key)}</span>`}));
+  if(k==='mer')return MER.map(m=>({id:'m:'+m.c,f:`<b>${esc(m.n)}</b> (${esc(m.c)})`,b:`Element: ${esc(m.el)} · ${esc(m.yy)} · ${esc(m.lim)} · ${m.pts} puncte${m.t!=='—'?` · maxim ${esc(m.t)}`:''}<br>${esc(m.path)}<br><span class="mut">${esc(m.key)}</span>`}));
   if(k==='var')return VAR.map(v=>({id:'v:'+v.id,f:`<b>${esc(v.n)}</b>`,b:`${esc(v.pr)}<br><span class="mut">${esc(v.sig)}</span>`}));
   if(k==='glo')return GLO.map((g,i)=>({id:'g:'+i,f:`<b>${esc(g[0])}</b>`,b:esc(g[1])}));
   return [];

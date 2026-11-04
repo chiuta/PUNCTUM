@@ -20,7 +20,10 @@ function ptCard(p){
 function toggleFav(c,p){const k=c+'|'+p;const i=S.fav.indexOf(k);if(i<0)S.fav.push(k);else S.fav.splice(i,1);save();if(view()==='pts')renderPtsList();else render();}
 function goPoint(c){PF.q=c;PF.m='';PF.r='';PF.fav=false;go('pts')}
 function ptLink(c){return `<a href="#pts" onclick="goPoint('${c}')">${c}</a>`}
-function linkify(s){return esc(s).replace(/\b(LU|LI|ST|SP|HT|SI|BL|KI|PC|TE|GB|LR|CV|GV)(\d{1,2})\b/g,(m,a,b)=>`<a href="#pts" onclick="goPoint('${m}')">${m}</a>`)}
+function trWhole(s){ // traduce șirul întreg înainte de a-l sparge în linkuri (ordinea cuvintelor diferă între limbi)
+  if(typeof S==='undefined'||S.lang==='ro'||typeof i18nDict!=='function')return s;
+  const d=i18nDict(S.lang);const t=d&&d[String(s).replace(/\s+/g,' ').trim()];return t||s}
+function linkify(s){return esc(trWhole(s)).replace(/(^|[^\w-])(LU|LI|ST|SP|HT|SI|BL|KI|PC|TE|GB|LR|CV|GV)(\d{1,2})\b/g,(m,pre,a,b)=>`${pre}<a href="#pts" onclick="goPoint('${a}${b}')">${a}${b}</a>`)}
 function warnBox(txt){return `<div class="warn">⚠ ${txt}</div>`}
 function disc(){return `<div class="warn">ℹ ${esc(T().disc)}</div>`}
 

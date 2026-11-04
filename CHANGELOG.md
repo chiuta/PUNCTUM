@@ -1,5 +1,13 @@
 # PUNCTUM — jurnal de versiuni
 
+## 2.2 — 2026-11-04
+Verificare și reparare completă (a treia trecere).
+- Test nou `tests/i18n_deep.js`: randează toate punctele, variantele, lecțiile, afecțiunile, cardurile și întrebările în fiecare limbă; 0 rămășițe românești în ~13.000 de șiruri/limbă.
+- Fragmentele din jurul linkurilor (`linkify`) se traduc întregi, cu ordinea corectă a cuvintelor.
+- Cardul de meridian (flashcard) folosește șirul tradus; 4 șiruri noi traduse în 7 limbi.
+- Referințe: Cochrane și ACP (Ann Intern Med 2017;166:514–530) trec la DOI; Ho 2025 la DOI. `legislatie.just.ro` rămâne generic (neverificat), iar Springer 2025 nu a putut fi deschis automat.
+- Test nou `tests/data.js` (integritate încrucișată a datelor), `a11y.js` extins.
+
 ## 2.1 (2026-11-04) — audit adversarial
 - **Securitate**: reparat XSS prin id de rutină; stare coruptă din localStorage nu mai blochează aplicația (`research/audit_adversarial_cod.md`)
 - **Conținut medical**: audit independent al afecțiunilor (82 corecturi: dovezi coborâte la „limitat” unde ghidurile nu susțin, semnale de alarmă noi), quiz (56), curs/protocoale/siguranță (74), avertismente per punct (46 de puncte), 43 de corecturi de traducere (ex. maghiară „vérvétel”→„vérengedés”)

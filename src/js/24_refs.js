@@ -5,11 +5,11 @@ const REFS=[
  ['Koo S-T et al., Korean J Acupunct 27(2):1–11, 2010 (contextul standardizării)','https://www.koreascience.or.kr/article/JAKO201025665646098.page','']]},
 {g:'Dovezi clinice',i:[
  ['Allen J et al., JAMA Netw Open 2022 — hartă a dovezilor, 434 sinteze','https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2798899','Certitudine moderată/înaltă pentru unele afecțiuni; dovezi rare de superioritate față de alte terapii active.'],
- ['Ho L et al., BMC Complement Med Ther 2025 — ghiduri pentru durerea musculoscheletală','https://link.springer.com/article/10.1186/s12906-025-05070-y','Ghidurile se contrazic privind utilizarea de rutină.'],
+ ['Ho L et al., BMC Complement Med Ther 2025 — ghiduri pentru durerea musculoscheletală','https://doi.org/10.1186/s12906-025-05070-y','Ghidurile se contrazic privind utilizarea de rutină.'],
  ['Vickers AJ et al., J Pain 2018 — meta-analiză pe date individuale (PMC5927830)','https://pmc.ncbi.nlm.nih.gov/articles/PMC5927830/','Efect mic față de sham; cifrele de verificat în text.'],
- ['ACP — Qaseem A et al., Ann Intern Med 2017 (lombalgie)','https://www.aafp.org/pubs/afp/issues/2017/0915/p407.html','Include acupunctura; dovezi de calitate scăzută.'],
+ ['ACP — Qaseem A et al., Ann Intern Med 2017;166:514–530 (lombalgie)','https://doi.org/10.7326/M16-2367','Include acupunctura; dovezi de calitate scăzută.'],
  ['NICE NG59 — lombalgie și sciatică (recomandarea 1.2.8)','https://www.nice.org.uk/guidance/ng59/chapter/Recommendation','Contrar ACP: exemplu de dezacord între ghiduri.'],
- ['Cochrane — Lee A et al., PC6 pentru greață postoperatorie, CD003281.pub4','https://cochranelibrary.com/cdsr/doi/10.1002/14651858.CD003281.pub4/information','Calitate scăzută vs. sham; moderată: fără diferență față de antiemetice.'],
+ ['Cochrane — Lee A et al., PC6 pentru greață postoperatorie, CD003281.pub4','https://doi.org/10.1002/14651858.CD003281.pub4','Calitate scăzută vs. sham; moderată: fără diferență față de antiemetice.'],
  ['Xiao C et al., Support Care Cancer 2023;31:510 — acupresiune PC6 în chimioterapie','https://link.springer.com/content/pdf/10.1007/s00520-023-07976-0.pdf','']]},
 {g:'OMS, reglementare',i:[
  ['OMS, <i>Benchmarks for the training of acupuncture</i>, 2021 (CC BY-NC-SA 3.0 IGO)','https://www.who.int/publications/i/item/9789240017962',''],
