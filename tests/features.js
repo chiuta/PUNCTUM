@@ -1,5 +1,7 @@
 // funcții noi: profil, triaj, partener, jurnal, plan/ICS, transfer, durere, căutare naturală, examen, accesibilitate
 const {chromium}=require('playwright');const path=require('path');
+// Confirmările folosesc FFF.dialog (modal), nu confirm() nativ: testele apasă „Da”.
+const yes=async p=>{await p.waitForSelector('dialog[data-fff-dialog=confirm] .fff-primary');await p.click('dialog[data-fff-dialog=confirm] .fff-primary');await p.waitForTimeout(150)};
 const U='file://'+path.resolve(process.argv[2]||'dist/punctum.html');
 let fail=0;const ok=(c,m)=>{console.log((c?'OK   ':'FAIL ')+m);if(!c)fail++};
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});const c=await b.newContext({viewport:{width:420,height:900}});const p=await c.newPage();const errs=[];p.on('pageerror',e=>errs.push(e.message));p.on('dialog',d=>d.accept());
@@ -52,9 +54,9 @@ ok(/BEGIN:VEVENT/.test(ics)&&/RRULE:FREQ=WEEKLY;BYDAY=/.test(ics)&&ics.split('\r
 const code=await ev(()=>{S.fav=['LI4|Hegu'];stCode();return EU.code});
 ok(code.startsWith('PUNCTUM1:'),'cod de transfer generat');
 await ev(()=>{S.fav=[];S.log=[];EU.tab='setari';render()});
-await ev(()=>{$('#stTxt').value=EU.code;stImportCode()});
+await ev(()=>{$('#stTxt').value=EU.code;stImportCode()});await yes(p);
 ok(await ev(()=>S.fav.length===1&&S.fav[0]==='LI4|Hegu'),'import din cod restaurează starea');
-await ev(()=>stApply(JSON.stringify({"__proto__":{"x":1},"fav":{"a":1},"prof":{"preg":"da"},"acc":{"size":99},"plan":[{"k":"s","i":9999,"time":"99:99","days":[9]}],"log":"x"})));
+await ev(()=>{stApply(JSON.stringify({"__proto__":{"x":1},"fav":{"a":1},"prof":{"preg":"da"},"acc":{"size":99},"plan":[{"k":"s","i":9999,"time":"99:99","days":[9]}],"log":"x"}))});await yes(p);
 ok(await ev(()=>Array.isArray(S.fav)&&!S.prof.preg&&S.acc.size===0&&S.plan.length===0&&S.log.length===0&&({}).x===undefined),'import ostil: sanitizat');
 // durere
 await ev(()=>{location.hash='#durere';DR.z='lombar';DR.s=DS[0];DR.d=DD[1];DR.red=RED.map(()=>false);render()});

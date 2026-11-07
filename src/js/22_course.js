@@ -20,7 +20,7 @@ function vCourse(){
   return `<h1>${esc(cu('title'))}</h1>${disc()}<p>${esc(cu('intro'))}</p>
   <div class="card"><b>${esc(cu('overall'))}:</b> ${dn} / ${all.length} (${pct}%)${crBar(pct)}</div>
   <div class="grid" style="margin-top:.8rem">${COURSE.map((l,i)=>{const p=lvlProg(l);return `<div class="card"><h3>${i+1}. ${esc(l.titlu)}</h3><p class="mut">${esc(l.descriere||'')}</p><p class="mut">${p.n} ${esc(cu('lessons'))} · ${p.d} ${esc(cu('done'))}</p>${crBar(p.p)}<p><button class="b" onclick="CR.lvl='${esc(l.id)}';CR.les=null;render();window.scrollTo(0,0)">${p.d?(p.d>=p.n?esc(cu('review')):esc(cu('cont'))):esc(cu('start'))}</button></p></div>`}).join('')}</div>
-  <p><button class="b alt" onclick="if(confirm(cu('confirmReset'))){S.course={done:{},ans:{}};save();render()}">${esc(cu('reset'))}</button></p>`;
+  <p><button class="b alt" onclick="FFF.dialog.confirm(cu('confirmReset')).then(function(ok){if(ok){S.course={done:{},ans:{}};save();render()}})">${esc(cu('reset'))}</button></p>`;
 }
 function crLevel(lv){
   const p=lvlProg(lv);

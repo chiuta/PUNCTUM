@@ -1,5 +1,12 @@
 # PUNCTUM — jurnal de versiuni
 
+## 2.5 (fff-kit alignment, 2026-11-07)
+- Aligned with fff-kit (core, store, dialog, label, bundle): transparency label on `#app-version`, `app.json`, application-version/last-updated meta.
+- Native `confirm()`/`alert()` replaced by `FFF.dialog` (accessible modal, translated); tests press "Yes" in the dialog.
+- Footer button contrast fixed (axe: 0 violations in 8 scenarios).
+- `fff.config.json` documents two exceptions: `script-unsafe-inline` (about 150 inline handlers, migration to event delegation pending) and unprefixed storage keys `punctum` / `acupunctura` (existing user data).
+- `tests/suite.test.mjs` runs the whole suite.
+
 ## 2.5 — 2026-11-04
 Audit super adversarial (4 auditori independenți: medical, cod/securitate, performanță/accesibilitate, traduceri) și aplicarea tuturor corecturilor. Rapoartele sunt în `research/audit2_*.md`, iar ce s-a aplicat în `research/audit2_*_aplicat.md`.
 - **Siguranță medicală** (35 de constatări aplicate): lista de semne de alarmă crește la 9 (cefalee „în trăsnet", AVC, coada de cal, abdomen acut, ideație suicidară etc.); mesajul de alarmă depinde de semn (112 pentru piept/AVC); detectorul de urgență din căutare prinde formulări uzuale; textele de siguranță ale combinațiilor/secvențelor/protocoalelor apar în poarta de siguranță și în „Unde te doare?"; profil necompletat → avertisment; 6 bife noi de profil; sarcina marchează încă 10 puncte (extindere prudențială) și blochează secvențele relevante; tromboza blochează și protocoalele; sesiunile pentru copii devin atingere ușoară, fără cronometru de presiune; BL1 scos din auto-presiune; bifă de acord medical la motivele „doar cu acordul medicului".

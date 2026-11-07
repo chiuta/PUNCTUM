@@ -36,8 +36,8 @@ function euJurnal(){
   ${S.log.length?`<div class="tw"><table><tr><th>Data</th><th>Sesiune</th><th>Înainte</th><th>După</th><th>Notă</th><th></th></tr>${S.log.slice().reverse().map((x,i)=>{const ix=S.log.length-1-i;return `<tr><td>${esc(fmtD(x.t))}</td><td>${esc(x.ti)}</td><td>${x.b==null?'—':x.b}</td><td>${x.a==null?'—':x.a}</td><td>${esc(x.n)}</td><td><button class="b alt" aria-label="Șterge" onclick="jrDel(${ix})">✕</button></td></tr>`}).join('')}</table></div>
   <div class="bar"><button class="b alt" onclick="jrCsv()">⬇ Exportă CSV</button><button class="b alt" onclick="jrClear()">Șterge tot jurnalul</button></div>`:''}`;
 }
-function jrDel(i){if(!confirm(trWhole('Ștergi această intrare din jurnal?')))return;S.log.splice(i,1);save();render()}
-function jrClear(){if(confirm(trWhole('Ștergi tot jurnalul? Nu se poate anula.'))){S.log=[];save();render()}}
+function jrDel(i){FFF.dialog.confirm(trWhole('Ștergi această intrare din jurnal?')).then(ok=>{if(!ok)return;S.log.splice(i,1);save();render()})}
+function jrClear(){FFF.dialog.confirm(trWhole('Ștergi tot jurnalul? Nu se poate anula.')).then(ok=>{if(ok){S.log=[];save();render()}})}
 function dl(name,mime,text){const a=document.createElement('a');a.href=URL.createObjectURL(new Blob([text],{type:mime}));a.download=name;document.body.appendChild(a);a.click();setTimeout(()=>{URL.revokeObjectURL(a.href);a.remove()},30000)}
 function csvCell(s){let t=String(s==null?'':s);if(/^[=+\-@\t\r]/.test(t))t="'"+t;return '"'+t.replace(/"/g,'""')+'"'}
 function jrCsv(){
@@ -105,7 +105,7 @@ function printHtml(html){
 }
 function printFavs(){
   const L=S.fav.map(k=>{const c=k.split('|')[0];return PT.find(p=>p.c===c)}).filter(Boolean);
-  if(!L.length){alert(trWhole('Nu ai puncte favorite.'));return}
+  if(!L.length){FFF.dialog.alert(trWhole('Nu ai puncte favorite.'));return}
   printHtml(`<h1>PUNCTUM — carduri de puncte</h1><p>Material educativ; nu înlocuiește sfatul medicului. Presiune confortabilă, 30–60 s, respirație lentă.</p><div class="pcards">${L.map(p=>`<div class="pcard"><h3>${esc(p.c)} ${esc(p.p)}</h3><p><b>Localizare:</b> ${esc(p.l)}</p><p><b>Indicații tradiționale:</b> ${esc(p.u)}</p>${p.w?`<p><b>⚠</b> ${esc(p.w)}</p>`:''}</div>`).join('')}</div>`);
 }
 function planPrint(){
@@ -141,7 +141,9 @@ function stCode(){EU.code='PUNCTUM1:'+b64e(stState());render()}
 function stApply(txt){
   let j;try{j=JSON.parse(txt)}catch(e){EU.msg='Datele nu sunt valide.';render();return}
   if(!j||typeof j!=='object'||Array.isArray(j)){EU.msg='Datele nu sunt valide.';render();return}
-  if(!confirm(trWhole('Înlocuiești datele curente cu cele importate?')))return;
+  FFF.dialog.confirm(trWhole('Înlocuiești datele curente cu cele importate?')).then(ok=>{if(ok)stApplyGo(j)});
+}
+function stApplyGo(j){
   // doar cheile cunoscute (fără triaj recent); se salvează întâi, iar dacă stocarea eșuează starea curentă rămâne neatinsă
   const clean={};SKEYS.forEach(k=>{if(k!=='pre'&&k!=='preReg'&&Object.prototype.hasOwnProperty.call(j,k))clean[k]=j[k]});
   const hadProf=Object.prototype.hasOwnProperty.call(clean,'prof');
@@ -153,7 +155,7 @@ function stApply(txt){
 }
 function stImportFile(f){if(!f)return;if(f.size>5e6){EU.msg='Fișier prea mare.';render();return}const r=new FileReader();r.onload=()=>stApply(String(r.result));r.onerror=()=>{EU.msg='Datele nu sunt valide.';render()};r.readAsText(f)}
 function stImportCode(){const t=($('#stTxt').value||'').trim();if(!t.startsWith('PUNCTUM1:')){EU.msg='Cod invalid.';render();return}let s;try{s=b64d(t.slice(9))}catch(e){EU.msg='Cod invalid.';render();return}stApply(s)}
-function stReset(){if(confirm(trWhole('Ștergi toate datele (favorite, rutine, jurnal, plan, profil)? Nu se poate anula.'))){try{localStorage.removeItem('punctum');localStorage.removeItem('acupunctura')}catch(e){}Object.keys(S).forEach(k=>delete S[k]);Object.assign(S,{lang:'ro',theme:'auto',fav:[],best:0});load();applyAcc();applyTheme();applyI18n();EU.msg='';render();if(typeof trAll==='function')trAll()}}
+function stReset(){FFF.dialog.confirm(trWhole('Ștergi toate datele (favorite, rutine, jurnal, plan, profil)? Nu se poate anula.')).then(ok=>{if(ok){try{localStorage.removeItem('punctum');localStorage.removeItem('acupunctura')}catch(e){}Object.keys(S).forEach(k=>delete S[k]);Object.assign(S,{lang:'ro',theme:'auto',fav:[],best:0});load();applyAcc();applyTheme();applyI18n();EU.msg='';render();if(typeof trAll==='function')trAll()}})}
 
 /* ---------- vederea ---------- */
 function vEu(){

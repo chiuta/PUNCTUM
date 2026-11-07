@@ -146,9 +146,10 @@ function rtnEdit(id){const r=rtnById(id);if(!r)return;CRT.id=r.id;CRT.name=r.nam
 function rtnFav(id){const R=cRoutines();const r=rtnById(id);if(!r)return;const v=!r.fav;R.forEach(x=>x.fav=false);r.fav=v;cSave();rtnDraw()}
 function rtnDup(id){const r=rtnById(id);if(!r)return;cRoutines().push({id:'r'+Date.now().toString(36)+Math.random().toString(36).slice(2,6),name:(r.name+' (2)').slice(0,80),pts:r.pts.slice(),sec:r.sec,fav:false});cSave();rtnDraw()}
 function rtnRemove(id){
-  let ok=true;try{ok=confirm(CNU('rConfirm'))}catch(e){}
-  if(!ok)return;
-  S.routines=cRoutines().filter(x=>x.id!==id);if(CRT.id===id)CRT.id=null;cSave();rtnDraw();
+  FFF.dialog.confirm(CNU('rConfirm')).then(ok=>{
+    if(!ok)return;
+    S.routines=cRoutines().filter(x=>x.id!==id);if(CRT.id===id)CRT.id=null;cSave();rtnDraw();
+  });
 }
 function rtnPrint(id){
   const r=rtnById(id);if(!r)return;

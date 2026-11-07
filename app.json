@@ -1,0 +1,87 @@
+{
+  "schema": 1,
+  "slug": "punctum",
+  "name": "PUNCTUM — atlas al terapiilor prin puncte",
+  "version": "2.5",
+  "updated": "2026-11-04",
+  "description": "",
+  "egress": [],
+  "permissions": [
+    "speechSynthesis",
+    "serviceWorker",
+    "localStorage"
+  ],
+  "storageKeys": [
+    "acupunctura",
+    "punctum"
+  ],
+  "sizeBytes": 5184829,
+  "sha256": "8dd46a462f7b6bbbff9f9f1626cc6e51209958fa31fd5551e8d1bda330017ecb",
+  "csp": {
+    "present": true,
+    "directives": {
+      "default-src": "'none'",
+      "script-src": "'self' 'unsafe-inline'",
+      "style-src": "'unsafe-inline'",
+      "img-src": "'self' data: blob:",
+      "manifest-src": "'self'",
+      "worker-src": "'self'",
+      "base-uri": "'none'",
+      "form-action": "'none'"
+    },
+    "scriptInline": "unsafe-inline",
+    "connect": "'none'"
+  },
+  "features": {
+    "export": true,
+    "import": true,
+    "i18n": [
+      "ro",
+      "en",
+      "fr",
+      "it",
+      "es",
+      "pt",
+      "hu",
+      "de"
+    ],
+    "pwa": {
+      "manifest": true,
+      "serviceWorker": true
+    },
+    "modules": [
+      "core",
+      "store",
+      "dialog",
+      "label",
+      "bundle"
+    ]
+  },
+  "kit": {
+    "version": "1.2.0",
+    "modules": [
+      "core",
+      "store",
+      "dialog",
+      "label",
+      "bundle"
+    ]
+  },
+  "selfSerializing": false,
+  "cspExceptions": [
+    {
+      "rule": "script-unsafe-inline",
+      "reason": "Interfața generează ~150 de handlere inline (onclick/onchange/oninput) în șabloane; migrarea la delegare de evenimente e planificată, nu s-a făcut aici ca să nu se strice funcționalitatea. connect-src rămâne 'none'."
+    }
+  ],
+  "exceptions": [
+    {
+      "rule": "unprefixed-storage",
+      "reason": "Cheile «punctum» (starea) și «acupunctura» (denumirea veche, doar citită/ștearsă la reset) sunt datele deja salvate ale utilizatorilor; redenumirea ar pierde datele existente."
+    }
+  ],
+  "storagePrefixes": [
+    "punctum",
+    "acupunctura"
+  ]
+}

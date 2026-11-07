@@ -118,7 +118,7 @@ function vProgress(){
   const rows=keys.map(k=>({k,ok:s.by[k][0],n:s.by[k][1],p:Math.round(100*s.by[k][0]/s.by[k][1])})).sort((a,b)=>a.p-b.p);
   return `<div class="card"><b>${s.ok} / ${s.n}</b> ${esc(su('answered'))} · ${esc(su('acc'))} ${Math.round(100*s.ok/s.n)}%</div>
   <h3>${esc(su('weak'))}</h3><div class="tw"><table>${rows.map(r=>`<tr><td>${esc(suc(r.k))}</td><td style="width:50%"><div style="height:8px;border-radius:6px;background:var(--soft);overflow:hidden"><div style="height:100%;width:${r.p}%;background:${r.p<60?'var(--acc2)':'var(--acc)'}"></div></div></td><td>${r.p}% (${r.ok}/${r.n})</td></tr>`).join('')}</table></div>
-  <p><button class="b alt" onclick="if(confirm(su('confirmReset'))){S.study={by:{},fc:{},n:0,ok:0};save();SQ.fc.built=null;render()}">${esc(su('resetStats'))}</button></p>`;
+  <p><button class="b alt" onclick="FFF.dialog.confirm(su('confirmReset')).then(function(ok){if(ok){S.study={by:{},fc:{},n:0,ok:0};save();SQ.fc.built=null;render()}})">${esc(su('resetStats'))}</button></p>`;
 }
 function vStudy(){
   const tab=SQ.tab;

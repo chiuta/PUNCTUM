@@ -1,5 +1,7 @@
 // teste ostile: stare coruptă, hash-uri deformate, import cu payload, XSS
 const {chromium}=require('playwright');const path=require('path');
+// Confirmările folosesc FFF.dialog (modal), nu confirm() nativ: testele apasă „Da”.
+const yes=async p=>{await p.waitForSelector('dialog[data-fff-dialog=confirm] .fff-primary');await p.click('dialog[data-fff-dialog=confirm] .fff-primary');await p.waitForTimeout(150)};
 const U='file://'+path.resolve(process.argv[2]||'dist/punctum.html');
 let fails=0;const F=m=>{fails++;console.log('FAIL',m)},O=m=>console.log('OK  ',m);
 (async()=>{const b=await chromium.launch({executablePath:'/usr/bin/google-chrome',args:['--no-sandbox']});
@@ -39,7 +41,7 @@ for(const L of ['constructor','__proto__','toString','hasOwnProperty']){
  const m=await mk2(null);await m.p.addInitScript(l=>{try{localStorage.setItem('punctum','{"lang":"'+l+'"}')}catch(e){}},L);
  await m.p.goto(U);const r=await m.p.evaluate(()=>({lang:S.lang,ftxt:document.getElementById('ftxt').textContent.length,sel:document.getElementById('lang').value,h:document.documentElement.lang}));
  r.lang==='ro'&&r.ftxt>50&&r.sel==='ro'&&!m.errs.length?O('lang prototip '+L):F('lang prototip '+L+JSON.stringify(r)+m.errs);await m.c.close()}
-{const {c,p,errs}=await mk2(null);await p.goto(U);await p.evaluate(()=>stApply('{"lang":"constructor"}'));
+{const {c,p,errs}=await mk2(null);await p.goto(U);await p.evaluate(()=>{stApply('{"lang":"constructor"}')});await yes(p);
  const r=await p.evaluate(()=>({lang:S.lang,ftxt:document.getElementById('ftxt').textContent.length}));
  r.lang==='ro'&&r.ftxt>50&&!errs.length?O('import ostil lang:"constructor"'):F('import lang constructor '+JSON.stringify(r)+errs);await c.close()}
 // 7. S.pre din viitor nu dezactivează triajul
@@ -51,21 +53,24 @@ for(const pre of [9e15,'Date.now()+3600000']){
  !r.has&&r.fav===1?O('export fără S.pre/S.preReg'):F('export conține pre '+JSON.stringify(r));await c.close()}
 // 8. import: „Importat.” doar la succes; stocare picată → starea curentă rămâne; chei necunoscute eliminate
 {const {c,p,errs}=await mk2(null);await p.goto(U);
- const r=await p.evaluate(()=>{S.fav=['LI4|Hegu'];S.prof={tromboza:true};save();const orig=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw new Error('QuotaExceeded')};
-  stApply('{"prof":{"preg":true},"fav":[]}');Storage.prototype.setItem=orig;return{msg:EU.msg,prof:JSON.stringify(S.prof),fav:S.fav.length}});
+ await p.evaluate(()=>{S.fav=['LI4|Hegu'];S.prof={tromboza:true};save();const orig=Storage.prototype.setItem;Storage.prototype.setItem=function(){throw new Error('QuotaExceeded')};
+  stApply('{"prof":{"preg":true},"fav":[]}');window.__orig=orig});await yes(p);
+ const r=await p.evaluate(()=>{Storage.prototype.setItem=window.__orig;return{msg:EU.msg,prof:JSON.stringify(S.prof),fav:S.fav.length}});
  !/^Importat/.test(r.msg)&&r.prof==='{"tromboza":true}'&&r.fav===1?O('import cu stocare picată: eroare, starea neatinsă'):F('import stocare picată: '+JSON.stringify(r));
- const r2=await p.evaluate(()=>{stApply(JSON.stringify({fav:[],junk:'x'.repeat(2e6),__proto__:{a:1},prof:{preg:true}}));return{msg:EU.msg,tab:EU.tab,junk:S.junk,len:(localStorage.getItem('punctum')||'').length,preg:S.prof.preg}});
+ await p.evaluate(()=>{stApply(JSON.stringify({fav:[],junk:'x'.repeat(2e6),__proto__:{a:1},prof:{preg:true}}))});await yes(p);
+ const r2=await p.evaluate(()=>{return{msg:EU.msg,tab:EU.tab,junk:S.junk,len:(localStorage.getItem('punctum')||'').length,preg:S.prof.preg}});
  /^Importat\./.test(r2.msg)&&r2.tab==='profil'&&r2.junk===undefined&&r2.len<20000&&r2.preg===true?O('import reușit: mesaj, tab profil, chei necunoscute eliminate'):F('import reușit: '+JSON.stringify(r2).slice(0,200));
- const r3=await p.evaluate(()=>{stApply('{"fav":["LI4|Hegu"]}');return EU.msg});
+ await p.evaluate(()=>{stApply('{"fav":["LI4|Hegu"]}')});await yes(p);const r3=await p.evaluate(()=>EU.msg);
  /profil/i.test(r3)&&/șters|Completează/.test(r3)?O('import fără profil: avertisment explicit'):F('import fără profil: '+r3);
  errs.length?F('erori import '+errs):O('fără erori JS la import');await c.close()}
 // 9. „Șterge tot” șterge și cheia veche; migrare cheie veche
-{const {c,p,errs}=await mk2(null);await p.addInitScript(()=>{if(!sessionStorage.getItem('seed')){sessionStorage.setItem('seed','1');try{localStorage.removeItem('punctum');localStorage.setItem('acupunctura',JSON.stringify({prof:{preg:true},fav:['LI4|Hegu']}))}catch(e){}}});
+{const {c,p,errs}=await mk2(null);await p.addInitScript(()=>{if(window.name!=='seeded'){window.name='seeded';try{localStorage.removeItem('punctum');localStorage.setItem('acupunctura',JSON.stringify({prof:{preg:true},fav:['LI4|Hegu']}))}catch(e){}}});
  await p.goto(U);const r=await p.evaluate(()=>({preg:S.prof.preg,fav:S.fav.length,oldKey:localStorage.getItem('acupunctura'),newKey:!!localStorage.getItem('punctum')}));
  r.preg&&r.fav===1&&r.oldKey===null&&r.newKey?O('migrare acupunctura → punctum (cheia veche dispare)'):F('migrare: '+JSON.stringify(r));
- const r2=await p.evaluate(()=>{localStorage.setItem('acupunctura',JSON.stringify({prof:{preg:true}}));stReset();return{preg:!!S.prof.preg,oldKey:localStorage.getItem('acupunctura'),newKey:localStorage.getItem('punctum')}});
+ await p.evaluate(()=>{localStorage.setItem('acupunctura',JSON.stringify({prof:{preg:true}}));stReset()});await yes(p);
+ const r2=await p.evaluate(()=>{return{preg:!!S.prof.preg,oldKey:localStorage.getItem('acupunctura'),newKey:localStorage.getItem('punctum')}});
  !r2.preg&&r2.oldKey===null?O('„Șterge tot” șterge și cheia veche acupunctura'):F('stReset: '+JSON.stringify(r2));
- await p.reload();const r3=await p.evaluate(()=>!!S.prof.preg);!r3?O('după reset și reload profilul nu reînvie'):F('profilul a reînviat după reset');await c.close()}
+ await p.waitForTimeout(300);await p.reload();const r3=await p.evaluate(()=>!!S.prof.preg);!r3?O('după reset și reload profilul nu reînvie'):F('profilul a reînviat după reset');await c.close()}
 // 10. scorul „după” nu e presetat la 0
 {const {c,p,errs}=await mk2(null);await p.goto(U);
  const r=await p.evaluate(()=>{SES.title='t';SES.jb=3;SES.fbn=0;S.log=[];$('#modal').innerHTML=sesDoneHtml();const v=document.getElementById('jA').value;jrSave();return{v,a:S.log[0]&&S.log[0].a,len:S.log.length}});

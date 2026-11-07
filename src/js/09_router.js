@@ -23,7 +23,7 @@ function applyI18n(){
   $('.skip').textContent=TX('skip');$('#q').setAttribute('aria-label',TX('search'));$('#lang').setAttribute('aria-label',TX('lang'));$('#nav').setAttribute('aria-label',TX('navMain'));themeLabel();
   $('#ftxt').textContent=T().disc;
   const d=new Date(2026,10,4);let ds;try{ds=d.toLocaleDateString(S.lang,{day:'numeric',month:'long',year:'numeric'})}catch(e){ds='2026-11-04'}
-  $('#fver').textContent=T().ver+' '+ds;
+  $('#app-version').textContent=T().ver+' '+ds;
 }
 function toggleTheme(){const order=['auto','light','dark'];S.theme=order[(order.indexOf(S.theme)+1)%3];save();applyTheme()}
 function applyTheme(){const r=document.documentElement;if(S.theme==='auto')r.removeAttribute('data-theme');else r.setAttribute('data-theme',S.theme);$('#thm').textContent=S.theme==='dark'?'☾':S.theme==='light'?'☀':'◐';themeLabel()}

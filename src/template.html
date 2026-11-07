@@ -2,9 +2,13 @@
 <html lang="ro">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'unsafe-inline'; style-src 'unsafe-inline'; img-src data: blob:; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: blob:; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+<meta name="application-version" content="2.5">
+<meta name="last-updated" content="2026-11-04">
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <meta name="theme-color" content="#2f7d6d">
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="apple-touch-icon" href="icon-192.png">
 <title>PUNCTUM — atlas al terapiilor prin puncte</title>
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Ccircle cx='32' cy='32' r='30' fill='%232f7d6d'/%3E%3Cpath d='M32 8v40' stroke='%23fff' stroke-width='3' stroke-linecap='round'/%3E%3Ccircle cx='32' cy='52' r='4' fill='%23e9c46a'/%3E%3C/svg%3E">
 <!--
@@ -34,7 +38,7 @@
 <main id="main" tabindex="-1" aria-live="polite"></main>
 <footer>
   <div id="ftxt"></div>
-  <div id="fver"></div>
+  <div id="app-version"></div>
   <div>MIT License · © 2026 Alexandru-Ionuț Chiuță (Alexio)</div>
   <a href="https://buymeacoffee.com/echo.of.the.strings" target="_blank" rel="noopener">☕ Buy Me a Coffee</a>
 </footer>
@@ -44,5 +48,6 @@
 <script>
 {{JS}}</script>
 {{I18N}}
+<script>if('serviceWorker' in navigator&&location.protocol.startsWith('http')){navigator.serviceWorker.register('sw.js',{updateViaCache:'none'}).catch(function(){})}</script>
 </body>
 </html>
