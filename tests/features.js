@@ -162,7 +162,7 @@ ok(await ev(()=>!PROT.some(x=>x.t.startsWith('Ochi')&&x.p.includes('BL1'))&&!CON
 
 // ---------- audit runda 2 (cod + accesibilitate): fereastra modală, tick, anunțuri ----------
 await ev(()=>{S.prof={};S.profSeen=true;S.pre=0;GATE=null;$('#modal').innerHTML='';S.lang='ro';SES.sec=60;SES.dur=60;
- document.getElementById('main').insertAdjacentHTML('afterbegin','<button id="xo" class="b" onclick="startSes(0)">xo</button>')});
+ document.getElementById('main').insertAdjacentHTML('afterbegin','<button id="xo" class="b">xo</button>');document.getElementById('xo').addEventListener('click',()=>startSes(0))});
 await p.focus('#xo');await p.keyboard.press('Enter');await p.waitForTimeout(80);
 const dlg=await ev(()=>{const b=document.querySelector('#modal .box');const t=document.getElementById(b.getAttribute('aria-labelledby')||'');return{role:b.getAttribute('role'),modal:b.getAttribute('aria-modal'),lab:!!t&&t.textContent.length>0,inM:document.getElementById('modal').contains(document.activeElement),
  hdr:document.querySelector('header').inert,main:document.getElementById('main').inert,foot:document.querySelector('footer').inert,live:document.getElementById('sesLive').inert}});

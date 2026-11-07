@@ -13,7 +13,7 @@ function ptCard(p){
   const fav=S.fav.includes(p.c+'|'+p.p);
   const m=MER.find(x=>x.c===p.m);
   return `<div class="card pt" id="pt-${esc(p.c)}">
-   <button class="star" onclick="toggleFav('${p.c}','${p.p}',this)" aria-label="${esc(TX('fav')+': '+p.c+' '+p.p)}" aria-pressed="${fav}">${fav?'★':'☆'}</button>
+   <button class="star" data-h-click="1" data-a-1-0="${p.c}" data-a-1-1="${p.p}" aria-label="${esc(TX('fav')+': '+p.c+' '+p.p)}" aria-pressed="${fav}">${fav?'★':'☆'}</button>
    <h3><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h3>
    <p class="mut">${m?esc(m.n):'Puncte extra'} · ${esc(REG[p.r])}</p>
    ${p.mn?`<p class="mut"><i>${esc(p.mn)}</i></p>`:''}
@@ -32,11 +32,11 @@ function toggleFav(c,p,btn){ // actualizează doar butonul atins; lista se redes
   if(view()==='pts'){if(PF.fav||!btn)renderPtsList()}else if(!btn)render();
 }
 function goPoint(c){PF.q=c;PF.m='';PF.r='';PF.fav=false;go('pts')}
-function ptLink(c){return `<a href="#pts" onclick="goPoint('${c}')">${c}</a>`}
+function ptLink(c){return `<a href="#pts" data-h-click="2" data-a-2-0="${c}">${c}</a>`}
 function trWhole(s){ // traduce șirul întreg înainte de a-l sparge în linkuri (ordinea cuvintelor diferă între limbi)
   if(typeof S==='undefined'||S.lang==='ro'||typeof i18nDict!=='function')return s;
   const d=i18nDict(S.lang);const t=d&&d[String(s).replace(/\s+/g,' ').trim()];return t||s}
-function linkify(s){return esc(trWhole(s)).replace(/(^|[^\w-])(LU|LI|ST|SP|HT|SI|BL|KI|PC|TE|GB|LR|CV|GV)(\d{1,2})\b/g,(m,pre,a,b)=>`${pre}<a href="#pts" onclick="goPoint('${a}${b}')">${a}${b}</a>`)}
+function linkify(s){return esc(trWhole(s)).replace(/(^|[^\w-])(LU|LI|ST|SP|HT|SI|BL|KI|PC|TE|GB|LR|CV|GV)(\d{1,2})\b/g,(m,pre,a,b)=>`${pre}<a href="#pts" data-h-click="2" data-a-2-0="${a+b}">${a}${b}</a>`)}
 function warnBox(txt){return `<div class="warn">⚠ ${txt}</div>`}
 function disc(){return `<div class="warn">ℹ ${esc(T().disc)}</div>`}
 

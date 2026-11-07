@@ -8,7 +8,7 @@ function euTab(t){EU.tab=t;EU.msg='';render()}
 function euProfil(){
   return `${EU.msg?`<p class="w pw" role="status">${esc(EU.msg)}</p>`:''}<p>Bifează situațiile care ți se potrivesc. Aplicația le păstrează doar pe acest dispozitiv și le folosește ca să marcheze punctele, variantele și sesiunile nepotrivite pentru tine. Nu este un diagnostic și nu înlocuiește medicul.</p>
   <p class="mut">Profilul marchează puncte, variante, combinații și secvențe de masaj. La sesiunile simple de presopunctură, poarta de siguranță ține cont doar de sarcină, anticoagulante, cancer, circulația și sensibilitatea picioarelor și limfedem; pentru orice altă situație bifată, întreabă medicul înainte de a apăsa ferm.</p>
-  ${PFLAGS.map(f=>`<label class="mut" style="display:flex;gap:.6rem;align-items:flex-start;margin:.5rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto;margin-top:.25rem" ${profOn(f[0])?'checked':''} onchange="euFlag('${f[0]}',this.checked)"> <span>${esc(f[1])}</span></label>`).join('')}
+  ${PFLAGS.map(f=>`<label class="mut" style="display:flex;gap:.6rem;align-items:flex-start;margin:.5rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto;margin-top:.25rem" ${profOn(f[0])?'checked':''} data-h-change="106" data-a-106-0="${f[0]}"> <span>${esc(f[1])}</span></label>`).join('')}
   <div class="warn">Dacă nu bifezi nimic, aplicația nu poate ști ce nu ți se potrivește. Când ai o boală sau iei un tratament, întreabă medicul înainte de masaj sau presopunctură.</div>`;
 }
 function euFlag(k,v){if(v)S.prof[k]=true;else delete S.prof[k];save()}
@@ -33,8 +33,8 @@ function euJurnal(){
   return `<p>Scorurile (0–10) înainte și după fiecare sesiune ghidată se salvează doar pe acest dispozitiv. Notează scorul din fereastra „Înainte de sesiune".</p>
   ${st?`<div class="card"><p><b>${st.n}</b> sesiuni cu scor complet</p><p>Media înainte: <b>${st.mb}</b> · media după: <b>${st.ma}</b> · diferență: <b>${st.d}</b></p><p class="mut">Mai bine: <b>${st.imp}</b> · la fel: <b>${st.same}</b> · mai rău: <b>${st.worse}</b></p>${jrChart()}</div>
   <p class="mut">Atenție: aceste cifre nu dovedesc că metoda funcționează. Relaxarea, atenția acordată, trecerea timpului și variația naturală a durerii influențează scorul. Dacă durerea nu scade sau se agravează, vorbește cu medicul.</p>`:`<p class="mut">Nu există încă sesiuni cu scor complet.</p>`}
-  ${S.log.length?`<div class="tw"><table><tr><th>Data</th><th>Sesiune</th><th>Înainte</th><th>După</th><th>Notă</th><th></th></tr>${S.log.slice().reverse().map((x,i)=>{const ix=S.log.length-1-i;return `<tr><td>${esc(fmtD(x.t))}</td><td>${esc(x.ti)}</td><td>${x.b==null?'—':x.b}</td><td>${x.a==null?'—':x.a}</td><td>${esc(x.n)}</td><td><button class="b alt" aria-label="Șterge" onclick="jrDel(${ix})">✕</button></td></tr>`}).join('')}</table></div>
-  <div class="bar"><button class="b alt" onclick="jrCsv()">⬇ Exportă CSV</button><button class="b alt" onclick="jrClear()">Șterge tot jurnalul</button></div>`:''}`;
+  ${S.log.length?`<div class="tw"><table><tr><th>Data</th><th>Sesiune</th><th>Înainte</th><th>După</th><th>Notă</th><th></th></tr>${S.log.slice().reverse().map((x,i)=>{const ix=S.log.length-1-i;return `<tr><td>${esc(fmtD(x.t))}</td><td>${esc(x.ti)}</td><td>${x.b==null?'—':x.b}</td><td>${x.a==null?'—':x.a}</td><td>${esc(x.n)}</td><td><button class="b alt" aria-label="Șterge" data-h-click="107" data-a-107-0="${ix}">✕</button></td></tr>`}).join('')}</table></div>
+  <div class="bar"><button class="b alt" data-h-click="108">⬇ Exportă CSV</button><button class="b alt" data-h-click="109">Șterge tot jurnalul</button></div>`:''}`;
 }
 function jrDel(i){FFF.dialog.confirm(trWhole('Ștergi această intrare din jurnal?')).then(ok=>{if(!ok)return;S.log.splice(i,1);save();render()})}
 function jrClear(){FFF.dialog.confirm(trWhole('Ștergi tot jurnalul? Nu se poate anula.')).then(ok=>{if(ok){S.log=[];save();render()}})}
@@ -64,13 +64,13 @@ function euPlan(){
   const wd=((new Date().getDay()+6)%7)+1;
   const today=S.plan.map((x,i)=>({x,i})).filter(o=>o.x.days.includes(wd)).sort((a,b)=>a.x.time.localeCompare(b.x.time));
   return `<p>Alcătuiește un plan săptămânal de sesiuni. Poți vedea ce ai azi și poți exporta planul în calendar (fișier .ics) pentru memento-uri.</p>
-  <h3>Azi</h3>${today.length?`<ul>${today.map(o=>`<li><b>${esc(o.x.time)}</b> ${esc(planItem(o.x.k,o.x.i).n)} <button class="b" onclick="planStart(${o.i})">▶</button></li>`).join('')}</ul>`:'<p class="mut">Nimic planificat pentru azi.</p>'}
+  <h3>Azi</h3>${today.length?`<ul>${today.map(o=>`<li><b>${esc(o.x.time)}</b> ${esc(planItem(o.x.k,o.x.i).n)} <button class="b" data-h-click="110" data-a-110-0="${o.i}">▶</button></li>`).join('')}</ul>`:'<p class="mut">Nimic planificat pentru azi.</p>'}
   <h3>Adaugă în plan</h3>
   <div class="bar"><select id="plSel" aria-label="Sesiune">${planOpts()}</select><input id="plTime" type="time" value="${esc(EU.pt)}" aria-label="Ora" style="max-width:8rem"></div>
-  <div class="bar">${DAYN.map((d,i)=>`<label class="mut" style="display:flex;gap:.3rem;align-items:center"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${EU.pd.includes(i+1)?'checked':''} onchange="planDay(${i+1},this.checked)">${esc(d)}</label>`).join('')}<button class="b" onclick="planAdd()">+ Adaugă</button></div>
+  <div class="bar">${DAYN.map((d,i)=>`<label class="mut" style="display:flex;gap:.3rem;align-items:center"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${EU.pd.includes(i+1)?'checked':''} data-h-change="111" data-a-111-0="${i+1}">${esc(d)}</label>`).join('')}<button class="b" data-h-click="112">+ Adaugă</button></div>
   <h3>Planul meu</h3>
-  ${S.plan.length?`<div class="tw"><table><tr><th>Ora</th><th>Sesiune</th><th>Zile</th><th></th></tr>${S.plan.map((x,i)=>`<tr><td>${esc(x.time)}</td><td>${esc(planItem(x.k,x.i).n)}</td><td>${x.days.map(d=>esc(DAYN[d-1])).join(' ')}</td><td><button class="b alt" aria-label="Șterge" onclick="planDel(${i})">✕</button></td></tr>`).join('')}</table></div>
-  <div class="bar"><button class="b alt" onclick="planIcs()">⬇ Exportă în calendar (.ics)</button><button class="b alt" onclick="planPrint()">🖨 Imprimă planul</button></div>`:'<p class="mut">Planul este gol.</p>'}`;
+  ${S.plan.length?`<div class="tw"><table><tr><th>Ora</th><th>Sesiune</th><th>Zile</th><th></th></tr>${S.plan.map((x,i)=>`<tr><td>${esc(x.time)}</td><td>${esc(planItem(x.k,x.i).n)}</td><td>${x.days.map(d=>esc(DAYN[d-1])).join(' ')}</td><td><button class="b alt" aria-label="Șterge" data-h-click="113" data-a-113-0="${i}">✕</button></td></tr>`).join('')}</table></div>
+  <div class="bar"><button class="b alt" data-h-click="114">⬇ Exportă în calendar (.ics)</button><button class="b alt" data-h-click="115">🖨 Imprimă planul</button></div>`:'<p class="mut">Planul este gol.</p>'}`;
 }
 function icsEsc(s){return String(s).replace(/\\/g,'\\\\').replace(/;/g,'\\;').replace(/,/g,'\\,').replace(/\r?\n/g,'\\n')}
 function icsFold(l){ // RFC 5545: maximum 75 de octeți pe linie (UTF-8), fără a tăia un caracter
@@ -118,20 +118,20 @@ function accSet(k,v){S.acc[k]=v;save();applyAcc();render()}
 function euSetari(){
   const a=S.acc;
   return `<h3>Accesibilitate</h3>
-  <div class="bar"><button class="b alt" onclick="accSet('size',Math.max(0,S.acc.size-1))" aria-label="Text mai mic">A−</button><span class="mut" style="align-self:center">${esc(String(Math.round(ACC_FZ[a.size]*100)))}%</span><button class="b alt" onclick="accSet('size',Math.min(3,S.acc.size+1))" aria-label="Text mai mare">A+</button></div>
-  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.hc?'checked':''} onchange="accSet('hc',this.checked)"> Contrast ridicat</label>
-  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.rm?'checked':''} onchange="accSet('rm',this.checked)"> Fără animații</label>
-  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.voice?'checked':''} onchange="accSet('voice',this.checked)"> Voce în sesiunile ghidate (sinteza vocală a browserului)</label>
-  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.ring?'checked':''} onchange="accSet('ring',this.checked)"> Cerc de respirație în sesiuni</label>
+  <div class="bar"><button class="b alt" data-h-click="116" aria-label="Text mai mic">A−</button><span class="mut" style="align-self:center">${esc(String(Math.round(ACC_FZ[a.size]*100)))}%</span><button class="b alt" data-h-click="117" aria-label="Text mai mare">A+</button></div>
+  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.hc?'checked':''} data-h-change="118"> Contrast ridicat</label>
+  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.rm?'checked':''} data-h-change="119"> Fără animații</label>
+  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.voice?'checked':''} data-h-change="120"> Voce în sesiunile ghidate (sinteza vocală a browserului)</label>
+  <label class="mut" style="display:flex;gap:.6rem;margin:.4rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${a.ring?'checked':''} data-h-change="121"> Cerc de respirație în sesiuni</label>
   <h3>Transfer între dispozitive</h3>
   <p class="mut">Datele rămân pe acest dispozitiv. Pentru a le muta, exportă un fișier sau un cod și importă-l pe celălalt dispozitiv.</p>
-  <div class="bar"><button class="b alt" onclick="stExport()">⬇ Exportă fișier</button><label class="b alt" style="cursor:pointer">⬆ Importă fișier<input type="file" accept="application/json,.json" style="display:none" onchange="stImportFile(this.files[0]);this.value=''"></label></div>
-  <div class="bar"><button class="b alt" onclick="stCode()">Generează cod</button></div>
+  <div class="bar"><button class="b alt" data-h-click="122">⬇ Exportă fișier</button><label class="b alt" style="cursor:pointer">⬆ Importă fișier<input type="file" accept="application/json,.json" style="display:none" data-h-change="123"></label></div>
+  <div class="bar"><button class="b alt" data-h-click="124">Generează cod</button></div>
   <textarea id="stTxt" rows="4" aria-label="Cod" style="width:100%;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink);padding:.5rem">${esc(EU.code)}</textarea>
-  <div class="bar"><button class="b alt" onclick="stImportCode()">Importă din cod</button></div>
+  <div class="bar"><button class="b alt" data-h-click="125">Importă din cod</button></div>
   ${EU.msg?`<p class="w pw" role="status">${esc(EU.msg)}</p>`:''}
   <h3>Date</h3>
-  <button class="b alt" onclick="stReset()">Șterge toate datele din această aplicație</button>`;
+  <button class="b alt" data-h-click="126">Șterge toate datele din această aplicație</button>`;
 }
 function stState(){const o=Object.assign({},S);delete o.pre;delete o.preReg;return JSON.stringify(o)} // triajul recent nu se transferă între dispozitive/persoane
 function stExport(){const d=new Date(),p=n=>String(n).padStart(2,'0');dl(`punctum-${d.getFullYear()}${p(d.getMonth()+1)}${p(d.getDate())}.json`,'application/json',stState())}
@@ -162,7 +162,7 @@ function vEu(){
   const T2=[['profil','Profil de siguranță'],['jurnal','Jurnal'],['plan','Plan'],['setari','Setări']];
   const body=EU.tab==='jurnal'?euJurnal():EU.tab==='plan'?euPlan():EU.tab==='setari'?euSetari():euProfil();
   return `<h1>Profil & jurnal</h1>${disc()}
-  <div class="bar" role="tablist">${T2.map(t=>`<button class="b ${EU.tab===t[0]?'':'alt'}" role="tab" aria-selected="${EU.tab===t[0]}" onclick="euTab('${t[0]}')">${esc(t[1])}</button>`).join('')}</div>
+  <div class="bar" role="tablist">${T2.map(t=>`<button class="b ${EU.tab===t[0]?'':'alt'}" role="tab" aria-selected="${EU.tab===t[0]}" data-h-click="127" data-a-127-0="${t[0]}">${esc(t[1])}</button>`).join('')}</div>
   ${body}`;
 }
 regView('eu',vEu,{ro:'Profil & jurnal',en:'Profile & journal',fr:'Profil et journal',it:'Profilo e diario',es:'Perfil y diario',pt:'Perfil e diário',de:'Profil & Tagebuch',hu:'Profil és napló'},{});

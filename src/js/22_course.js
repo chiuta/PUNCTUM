@@ -19,33 +19,33 @@ function vCourse(){
   const all=allLessons();const dn=all.filter(x=>cst().done[x.le.id]).length;const pct=all.length?Math.round(100*dn/all.length):0;
   return `<h1>${esc(cu('title'))}</h1>${disc()}<p>${esc(cu('intro'))}</p>
   <div class="card"><b>${esc(cu('overall'))}:</b> ${dn} / ${all.length} (${pct}%)${crBar(pct)}</div>
-  <div class="grid" style="margin-top:.8rem">${COURSE.map((l,i)=>{const p=lvlProg(l);return `<div class="card"><h3>${i+1}. ${esc(l.titlu)}</h3><p class="mut">${esc(l.descriere||'')}</p><p class="mut">${p.n} ${esc(cu('lessons'))} · ${p.d} ${esc(cu('done'))}</p>${crBar(p.p)}<p><button class="b" onclick="CR.lvl='${esc(l.id)}';CR.les=null;render();window.scrollTo(0,0)">${p.d?(p.d>=p.n?esc(cu('review')):esc(cu('cont'))):esc(cu('start'))}</button></p></div>`}).join('')}</div>
-  <p><button class="b alt" onclick="FFF.dialog.confirm(cu('confirmReset')).then(function(ok){if(ok){S.course={done:{},ans:{}};save();render()}})">${esc(cu('reset'))}</button></p>`;
+  <div class="grid" style="margin-top:.8rem">${COURSE.map((l,i)=>{const p=lvlProg(l);return `<div class="card"><h3>${i+1}. ${esc(l.titlu)}</h3><p class="mut">${esc(l.descriere||'')}</p><p class="mut">${p.n} ${esc(cu('lessons'))} · ${p.d} ${esc(cu('done'))}</p>${crBar(p.p)}<p><button class="b" data-h-click="61" data-a-61-0="${esc(l.id)}">${p.d?(p.d>=p.n?esc(cu('review')):esc(cu('cont'))):esc(cu('start'))}</button></p></div>`}).join('')}</div>
+  <p><button class="b alt" data-h-click="62">${esc(cu('reset'))}</button></p>`;
 }
 function crLevel(lv){
   const p=lvlProg(lv);
-  return `<h1>${esc(lv.titlu)}</h1><p><button class="b alt" onclick="CR.lvl=null;CR.les=null;render()">${esc(cu('back'))}</button></p>
+  return `<h1>${esc(lv.titlu)}</h1><p><button class="b alt" data-h-click="63">${esc(cu('back'))}</button></p>
   <p class="mut">${esc(lv.descriere||'')}</p><div class="card">${esc(cu('prog'))}: ${p.d} / ${p.n}${crBar(p.p)}</div>
-  ${(lv.lectii||[]).map((x,i)=>`<div class="card" style="margin:.5rem 0"><h3>${i+1}. ${esc(x.titlu)} ${cst().done[x.id]?'<span class="badge" style="background:#2f7d6d">✓</span>':''}</h3><p class="mut">${x.minute||5} ${esc(cu('min'))}</p><button class="b" onclick="CR.les='${esc(x.id)}';render();window.scrollTo(0,0)">${cst().done[x.id]?esc(cu('review')):esc(cu('start'))}</button></div>`).join('')}`;
+  ${(lv.lectii||[]).map((x,i)=>`<div class="card" style="margin:.5rem 0"><h3>${i+1}. ${esc(x.titlu)} ${cst().done[x.id]?'<span class="badge" style="background:#2f7d6d">✓</span>':''}</h3><p class="mut">${x.minute||5} ${esc(cu('min'))}</p><button class="b" data-h-click="64" data-a-64-0="${esc(x.id)}">${cst().done[x.id]?esc(cu('review')):esc(cu('start'))}</button></div>`).join('')}`;
 }
 function crLesson(lv,le){
   const list=lv.lectii||[];const i=list.findIndex(x=>x.id===le.id);const done=!!cst().done[le.id];
   const pts=(le.puncte||[]).filter(c=>PT.some(p=>p.c===c));const vs=(le.variante||[]).map(id=>VAR.find(v=>v.id===id)).filter(Boolean);
   return `<h1>${esc(le.titlu)}</h1>
-  <p><button class="b alt" onclick="CR.les=null;render()">${esc(cu('backLvl'))}</button> <span class="mut">${esc(lv.titlu)} · ${i+1}/${list.length} · ${le.minute||5} ${esc(cu('min'))}</span></p>
+  <p><button class="b alt" data-h-click="65">${esc(cu('backLvl'))}</button> <span class="mut">${esc(lv.titlu)} · ${i+1}/${list.length} · ${le.minute||5} ${esc(cu('min'))}</span></p>
   <div class="card">${(le.text||[]).map(t=>`<p>${esc(t)}</p>`).join('')}</div>
   ${(le.cheie||[]).length?`<h2>${esc(cu('key'))}</h2><ul>${le.cheie.map(c=>`<li>${esc(c)}</li>`).join('')}</ul>`:''}
   ${le.practica?`<div class="warn" style="background:var(--soft);border-color:var(--acc)"><b>${esc(cu('practice'))}:</b> ${esc(le.practica)}</div>`:''}
   ${pts.length?`<p><b>${esc(cu('points'))}:</b> ${pts.map(c=>`<span class="tag">${ptLink(c)}</span>`).join('')}</p>`:''}
-  ${vs.length?`<p><b>${esc(cu('vars'))}:</b> ${vs.map(v=>`<span class="tag"><a href="#tech" onclick="goVar('${esc(v.id)}');return false">${esc(v.n)}</a></span>`).join('')}</p>`:''}
+  ${vs.length?`<p><b>${esc(cu('vars'))}:</b> ${vs.map(v=>`<span class="tag"><a href="#tech" data-h-click="66" data-a-66-0="${esc(v.id)}">${esc(v.n)}</a></span>`).join('')}</p>`:''}
   ${(le.intrebari||[]).length?`<h2>${esc(cu('check'))}</h2>${le.intrebari.map((q,qi)=>crQuestion(le,q,qi)).join('')}`:''}
-  <p>${done?`<button class="b alt" onclick="cst().done['${esc(le.id)}']=false;save();render()">${esc(cu('undo'))}</button>`:`<button class="b" onclick="cst().done['${esc(le.id)}']=true;save();render()">${esc(cu('markDone'))}</button>`}</p>
-  <div class="bar">${i>0?`<button class="b alt" onclick="CR.les='${esc(list[i-1].id)}';render();window.scrollTo(0,0)">${esc(cu('prev'))}</button>`:''}${i<list.length-1?`<button class="b" onclick="CR.les='${esc(list[i+1].id)}';render();window.scrollTo(0,0)">${esc(cu('next'))}</button>`:''}</div>`;
+  <p>${done?`<button class="b alt" data-h-click="67" data-a-67-0="${esc(le.id)}">${esc(cu('undo'))}</button>`:`<button class="b" data-h-click="68" data-a-68-0="${esc(le.id)}">${esc(cu('markDone'))}</button>`}</p>
+  <div class="bar">${i>0?`<button class="b alt" data-h-click="64" data-a-64-0="${esc(list[i-1].id)}">${esc(cu('prev'))}</button>`:''}${i<list.length-1?`<button class="b" data-h-click="64" data-a-64-0="${esc(list[i+1].id)}">${esc(cu('next'))}</button>`:''}</div>`;
 }
 function crQuestion(le,q,qi){
   const key=le.id+':'+qi;const a=cst().ans[key];
   const opts=crShuffle([q.corect,...(q.gresite||[])],qi*7+le.id.length*13+3);
-  return `<div class="card" style="margin:.5rem 0"><p><b>${esc(q.q)}</b></p>${opts.map(o=>{let c='';if(a!==undefined){if(o===q.corect)c=' ok';else if(a===o)c=' no'}return `<button class="opt${c}" ${a!==undefined?'disabled':''} onclick="crAnswer('${esc(key)}',${JSON.stringify(o).replace(/"/g,'&quot;')})">${esc(o)}</button>`}).join('')}
+  return `<div class="card" style="margin:.5rem 0"><p><b>${esc(q.q)}</b></p>${opts.map(o=>{let c='';if(a!==undefined){if(o===q.corect)c=' ok';else if(a===o)c=' no'}return `<button class="opt${c}" ${a!==undefined?'disabled':''} data-h-click="69" data-a-69-0="${esc(key)}" data-a-69-1="${esc(JSON.stringify(o))}">${esc(o)}</button>`}).join('')}
   ${a!==undefined?`<p class="mut"><b>${a===q.corect?esc(cu('correct')):esc(cu('wrong'))}.</b> ${esc(q.explicatie||'')}</p>`:''}</div>`;
 }
 function crAnswer(key,o){cst().ans[key]=o;save();render()}

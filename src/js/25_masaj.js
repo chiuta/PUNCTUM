@@ -29,7 +29,7 @@ function masSimCard(c,i){
    ${profBadges(profR('sim',c))}
    ${c.nota?`<p class="w">${esc(c.nota)}</p>`:''}
    ${preg.length?`<p class="w" style="color:var(--acc2)">⚠ În sarcină evită: ${preg.join(', ')}.</p>`:''}
-   <button class="b" onclick="masStart('s',${i})">▶ Pornește sesiunea ghidată</button> <p></p></details>`}
+   <button class="b" data-h-click="90" data-a-90-0="${i}">▶ Pornește sesiunea ghidată</button> <p></p></details>`}
 function masSeqCard(r,i){
   const all=[...new Set(r.pasi.flatMap(p=>p.pts||[]))];const preg=masPreg(all);
   return `<details><summary>${esc(r.n)} <span class="tag">${esc(MREG[r.regiune]||r.regiune)}</span> <span class="tag">${esc(r.cine==='partener'?'Cu partener':'Singur')}</span></summary>
@@ -42,7 +42,7 @@ function masSeqCard(r,i){
    <p class="w">${esc(r.evita)}</p>
    ${r.nota?`<p class="w">${esc(r.nota)}</p>`:''}
    ${preg.length?`<p class="w" style="color:var(--acc2)">⚠ În sarcină evită: ${preg.join(', ')}.</p>`:''}
-   <button class="b" onclick="masStart('c',${i})">▶ Pornește sesiunea ghidată</button> <p></p></details>`}
+   <button class="b" data-h-click="91" data-a-91-0="${i}">▶ Pornește sesiunea ghidată</button> <p></p></details>`}
 function vMasaj(){
   const sg=MAST.siguranta||{};const L=a=>`<ul>${(a||[]).map(x=>`<li>${esc(x)}</li>`).join('')}</ul>`;
   const sim=MASS.map((c,i)=>masFilter(c)?masSimCard(c,i):'').join('');
@@ -50,7 +50,7 @@ function vMasaj(){
   return `<h1>Masaj</h1>${disc()}
   <p>Masajul combină mișcări (alunecare, frământare, fricțiune) cu presiune pe puncte. Aici găsești combinații de puncte apăsate în același timp, secvențe pe regiuni și tehnicile de bază, cu sesiuni ghidate cu cronometru. Totul este pentru relaxare și confort, nu pentru tratarea bolilor.</p>
   <div class="warn" role="note"><b>Înainte de a începe:</b> nu face masaj pe piele rănită sau infectată, pe zone umflate, calde și dureroase (posibilă tromboză), în caz de febră, după operații recente sau fără acordul medicului dacă ai o boală gravă ori iei anticoagulante. Presiunea trebuie să fie confortabilă, niciodată ascuțită. Detalii mai jos, la Siguranța masajului.</div>
-  <div class="bar"><button class="b ${MF.cine?'alt':''}" onclick="MF.cine='';render()">Toate</button><button class="b ${MF.cine==='singur'?'':'alt'}" onclick="MF.cine='singur';render()">Singur</button><button class="b ${MF.cine==='partener'?'':'alt'}" onclick="MF.cine='partener';render()">Cu partener</button></div>
+  <div class="bar"><button class="b ${MF.cine?'alt':''}" data-h-click="92">Toate</button><button class="b ${MF.cine==='singur'?'':'alt'}" data-h-click="93">Singur</button><button class="b ${MF.cine==='partener'?'':'alt'}" data-h-click="94">Cu partener</button></div>
   <h2>Puncte apăsate simultan</h2>
   <p class="mut">Mai multe puncte stimulate în același timp, cu ambele mâini sau cu partener. Fiecare combinație are sesiune ghidată.</p>
   ${sim||`<p class="mut">${esc(T().noRes)}</p>`}

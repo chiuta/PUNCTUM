@@ -2,7 +2,7 @@
 <html lang="ro">
 <head>
 <meta charset="utf-8">
-<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'unsafe-inline'; style-src 'unsafe-inline'; img-src 'self' data: blob:; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
+<meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self' 'sha256-AAAA'; style-src 'unsafe-inline'; img-src 'self' data: blob:; manifest-src 'self'; worker-src 'self'; base-uri 'none'; form-action 'none'">
 <meta name="application-version" content="2.5">
 <meta name="last-updated" content="2026-11-04">
 <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -23,15 +23,15 @@
 {{CSS}}</style>
 </head>
 <body>
-<a class="skip" href="#main" onclick="document.getElementById('main').focus();return false">Sari la conținut</a>
+<a class="skip" href="#main" data-h-click="136">Sari la conținut</a>
 <header>
   <div class="top">
-    <div class="logo" role="link" tabindex="0" onclick="go('home')" onkeydown="if(event.key==='Enter')go('home')">PUNCTUM<small id="sub"></small></div>
-    <input type="search" id="q" aria-label="Caută" oninput="dbRun('q',doSearch)" autocomplete="off">
-    <select id="lang" onchange="setLang(this.value)" aria-label="Limba">
+    <div class="logo" role="link" tabindex="0" data-h-click="137" data-h-keydown="138">PUNCTUM<small id="sub"></small></div>
+    <input type="search" id="q" aria-label="Caută" data-h-input="139" autocomplete="off">
+    <select id="lang" data-h-change="140" aria-label="Limba">
       <option value="ro">Română</option><option value="en">English</option><option value="fr">Français</option><option value="it">Italiano</option><option value="es">Español</option><option value="pt">Português</option><option value="de">Deutsch</option><option value="hu">Magyar</option>
     </select>
-    <button class="ib" id="thm" onclick="toggleTheme()" aria-label="Tema">◐</button>
+    <button class="ib" id="thm" data-h-click="141" aria-label="Tema">◐</button>
   </div>
   <nav id="nav" aria-label="Navigare principală"></nav>
 </header>

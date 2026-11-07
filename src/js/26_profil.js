@@ -91,7 +91,7 @@ function sesBegin(title,steps,o){
   GATE={title,steps,o,R:o.child?[]:sesReasons(steps,o),note,reg};
   gateDraw();
 }
-const GCHK=(cls,t)=>`<label class="mut" style="display:flex;gap:.5rem;align-items:flex-start;margin:.4rem 0"><input type="checkbox" class="${cls}" style="flex:none;min-width:0;width:auto;margin-top:.25rem" onchange="gateChk()"> <span>${t}</span></label>`;
+const GCHK=(cls,t)=>`<label class="mut" style="display:flex;gap:.5rem;align-items:flex-start;margin:.4rem 0"><input type="checkbox" class="${cls}" style="flex:none;min-width:0;width:auto;margin-top:.25rem" data-h-change="95"> <span>${t}</span></label>`;
 function gateDraw(){
   const g=GATE;if(!g)return;
   const child=!!g.o.child;
@@ -99,19 +99,19 @@ function gateDraw(){
   const noProf=!child&&!Object.keys(S.prof||{}).length&&!S.profSeen;
   const stop=g.R.filter(x=>x.lv==='stop');
   const asks=g.R.filter(x=>x.lv==='ask');
-  const body=noProf?`<div id="gProf" class="warn" role="alert"><p><b>Nu ți-ai completat profilul de siguranță.</b> Dacă ești însărcinată, iei anticoagulante, ai pacemaker, osteoporoză, cancer sau probleme de circulație la picioare, completează-l înainte de prima sesiune (durează un minut).</p><div class="bar"><button class="b" onclick="gateProfil()">Completez profilul</button><button class="b alt" onclick="gateProfSeen()">Nu am niciuna dintre acestea</button></div></div><div class="bar"><button class="b alt" onclick="gateCancel()">Anulează</button></div>`
-  :!g.steps.length?`<p><b>Toate punctele acestei sesiuni se evită în profilul tău.</b> Alege altă sesiune sau întreabă medicul.</p><div class="bar"><button class="b" onclick="gateCancel()">Închide</button></div>`
-  :stop.length?`<p><b>Această sesiune nu este potrivită pentru profilul tău.</b> Alege altă variantă sau întreabă medicul.</p><div class="bar"><button class="b" onclick="gateCancel()">Închide</button></div>`
+  const body=noProf?`<div id="gProf" class="warn" role="alert"><p><b>Nu ți-ai completat profilul de siguranță.</b> Dacă ești însărcinată, iei anticoagulante, ai pacemaker, osteoporoză, cancer sau probleme de circulație la picioare, completează-l înainte de prima sesiune (durează un minut).</p><div class="bar"><button class="b" data-h-click="96">Completez profilul</button><button class="b alt" data-h-click="97">Nu am niciuna dintre acestea</button></div></div><div class="bar"><button class="b alt" data-h-click="98">Anulează</button></div>`
+  :!g.steps.length?`<p><b>Toate punctele acestei sesiuni se evită în profilul tău.</b> Alege altă sesiune sau întreabă medicul.</p><div class="bar"><button class="b" data-h-click="98">Închide</button></div>`
+  :stop.length?`<p><b>Această sesiune nu este potrivită pentru profilul tău.</b> Alege altă variantă sau întreabă medicul.</p><div class="bar"><button class="b" data-h-click="98">Închide</button></div>`
   :child?`<p><b>Acest gest îl face doar un adult responsabil.</b> Atingere foarte ușoară, cu vârful degetelor, 10–20 de secunde; nu apăsa pe puncte. Oprește imediat dacă plânge mai tare. Nu face acest gest și mergi urgent la medic sau sună la 112 dacă sugarul sau copilul are febră, vărsături verzui sau cu sânge, abdomen umflat și dur, sânge în scaun, letargie, refuză alimentarea sau respiră greu.</p>
    ${g.o.guide?`<p class="mut">${esc(g.o.guide)}</p>`:''}
    ${GCHK('gk','Sunt adultul responsabil și nu observ niciunul dintre aceste semne.')}
-   <div class="bar" style="justify-content:center"><button class="b" id="gGo" onclick="gateGo()">▶ Pornește sesiunea</button><button class="b alt" onclick="gateCancel()">Anulează</button></div>`
+   <div class="bar" style="justify-content:center"><button class="b" id="gGo" data-h-click="99">▶ Pornește sesiunea</button><button class="b alt" data-h-click="98">Anulează</button></div>`
   :`${fresh?'':`<p><b>Nu începe dacă ai oricare dintre:</b></p>${RED.map(t=>GCHK('gr',esc(t))).join('')}<div id="gAlarm" class="warn" role="alert" style="display:none"></div>`}
    ${asks.map(x=>GCHK('ga','Am discutat cu medicul și am acordul lui pentru această sesiune ('+esc(profLabel(x.k))+').')).join('')}
    ${g.o.partner?GCHK('gc','Am întrebat persoana dacă este de acord și dacă are contraindicații, iar ea poate cere oricând oprirea.').replace('class="gc"','class="gc" id="gC"'):''}
    <p class="mut">Opțional: cum te simți acum? (0 = fără disconfort, 10 = disconfort foarte mare)</p>
    <select id="gB" aria-label="Scor înainte"><option value="">Nu notez</option>${[0,1,2,3,4,5,6,7,8,9,10].map(n=>`<option value="${n}">${n}</option>`).join('')}</select>
-   <div class="bar" style="justify-content:center"><button class="b" id="gGo" onclick="gateGo()">▶ Pornește sesiunea</button><button class="b alt" onclick="gateCancel()">Anulează</button></div>`;
+   <div class="bar" style="justify-content:center"><button class="b" id="gGo" data-h-click="99">▶ Pornește sesiunea</button><button class="b alt" data-h-click="98">Anulează</button></div>`;
   $('#modal').innerHTML=`<div class="modal"><div class="box" style="text-align:left"><h2>Înainte de sesiune</h2><p class="mut">${esc(g.title)}</p>
    ${g.note?'<p class="w pw" role="note">Am sărit peste punctele de evitat în sarcină, conform profilului tău.</p>':''}
    ${profBadges(g.R)}${g.o.warn?`<div class="warn" role="note"><b>Citește înainte:</b> ${esc(g.o.warn)}</div>`:''}${body}</div></div>`;
@@ -143,13 +143,13 @@ function sesGo(title,steps,o){
 /* ---------- mod partener ---------- */
 const FBT={less:'Primitorul cere: mai ușor',ok:'Primitorul spune: bine așa',more:'Primitorul cere: mai tare'};
 function sesFb(k){
-  if(k==='stop'){endSes(false);$('#modal').innerHTML=`<div class="modal"><div class="box"><h2>⏹ Sesiune oprită</h2><p>Oprită la cererea primitorului. Întreabă dacă are nevoie de apă sau odihnă.</p><button class="b" data-af onclick="$('#modal').innerHTML=''">OK</button></div></div>`;return}
+  if(k==='stop'){endSes(false);$('#modal').innerHTML=`<div class="modal"><div class="box"><h2>⏹ Sesiune oprită</h2><p>Oprită la cererea primitorului. Întreabă dacă are nevoie de apă sau odihnă.</p><button class="b" data-af data-h-click="100">OK</button></div></div>`;return}
   SES.fb=FBT[k]||'';SES.fbn++;sesFbShow(); // fără redesenarea ferestrei: butoanele și focusul rămân intacte
   clearTimeout(SES.fbT);SES.fbT=setTimeout(()=>{SES.fb='';if(SES.on)sesFbShow()},6000);
 }
 function sesFbShow(){const e=document.getElementById('sesFb');if(!e)return;e.hidden=!SES.fb;e.innerHTML=SES.fb?`<b>${esc(SES.fb)}</b>`:''}
 function partnerBar(){
-  return `<div class="bar" style="justify-content:center"><button class="b alt" data-f="less" onclick="sesFb('less')">Mai ușor</button><button class="b alt" data-f="ok" onclick="sesFb('ok')">Bine</button><button class="b alt" data-f="more" onclick="sesFb('more')">Mai tare</button><button class="b" data-f="stop" style="background:var(--acc2);color:#fff" onclick="sesFb('stop')">STOP</button></div><p class="w pw" id="sesFb" role="status" style="font-size:1.1rem" ${SES.fb?'':'hidden'}>${SES.fb?`<b>${esc(SES.fb)}</b>`:''}</p>`;
+  return `<div class="bar" style="justify-content:center"><button class="b alt" data-f="less" data-h-click="101">Mai ușor</button><button class="b alt" data-f="ok" data-h-click="102">Bine</button><button class="b alt" data-f="more" data-h-click="103">Mai tare</button><button class="b" data-f="stop" style="background:var(--acc2);color:#fff" data-h-click="104">STOP</button></div><p class="w pw" id="sesFb" role="status" style="font-size:1.1rem" ${SES.fb?'':'hidden'}>${SES.fb?`<b>${esc(SES.fb)}</b>`:''}</p>`;
 }
 
 /* ---------- voce ---------- */
@@ -169,8 +169,8 @@ function ringHtml(){return (S.acc&&S.acc.ring)?'<div class="brg" aria-hidden="tr
 function sesDoneHtml(){
   const j=SES.jb!=null;
   return `<div class="modal"><div class="box"><h2>✔ Sesiune încheiată</h2><p>Stai încă 1–2 minute, respiră lent. Bea apă dacă dorești.</p>
-   ${j?`<p class="mut">Cum te simți acum? (0 = fără disconfort, 10 = disconfort foarte mare)</p><select id="jA" aria-label="Scor după"><option value="" selected>Nu notez</option>${[0,1,2,3,4,5,6,7,8,9,10].map(n=>`<option value="${n}">${n}</option>`).join('')}</select><input id="jN" maxlength="200" placeholder="Notă (opțional)" style="width:100%;margin:.5rem 0;padding:.5rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)"><div class="bar" style="justify-content:center"><button class="b" onclick="jrSave()">Salvează în jurnal</button><button class="b alt" onclick="$('#modal').innerHTML=''">Nu salva</button></div>`
-   :`<button class="b" onclick="$('#modal').innerHTML=''">OK</button>`}</div></div>`;
+   ${j?`<p class="mut">Cum te simți acum? (0 = fără disconfort, 10 = disconfort foarte mare)</p><select id="jA" aria-label="Scor după"><option value="" selected>Nu notez</option>${[0,1,2,3,4,5,6,7,8,9,10].map(n=>`<option value="${n}">${n}</option>`).join('')}</select><input id="jN" maxlength="200" placeholder="Notă (opțional)" style="width:100%;margin:.5rem 0;padding:.5rem;border:1px solid var(--line);border-radius:10px;background:var(--bg);color:var(--ink)"><div class="bar" style="justify-content:center"><button class="b" data-h-click="105">Salvează în jurnal</button><button class="b alt" data-h-click="100">Nu salva</button></div>`
+   :`<button class="b" data-h-click="100">OK</button>`}</div></div>`;
 }
 function jrSave(){
   const a=$('#jA'),n=$('#jN');
@@ -178,5 +178,5 @@ function jrSave(){
   if(S.log.length>500)S.log=S.log.slice(-500);
   save();$('#modal').innerHTML='';if(view()==='eu')render();
   const A=a?n10(a.value):null;
-  if(A!=null&&((SES.jb!=null&&A>SES.jb+1)||A>=7))$('#modal').innerHTML=`<div class="modal"><div class="box"><h2>Disconfortul a crescut</h2><p>Disconfortul a crescut după sesiune. Nu repeta sesiunea. Dacă durerea persistă peste 24–48 de ore sau apar amorțeală, umflătură, vânătaie ori simptomele din lista de alarmă, vorbește cu medicul.</p><button class="b" onclick="$('#modal').innerHTML=''">OK</button></div></div>`;
+  if(A!=null&&((SES.jb!=null&&A>SES.jb+1)||A>=7))$('#modal').innerHTML=`<div class="modal"><div class="box"><h2>Disconfortul a crescut</h2><p>Disconfortul a crescut după sesiune. Nu repeta sesiunea. Dacă durerea persistă peste 24–48 de ore sau apar amorțeală, umflătură, vânătaie ori simptomele din lista de alarmă, vorbește cu medicul.</p><button class="b" data-h-click="100">OK</button></div></div>`;
 }

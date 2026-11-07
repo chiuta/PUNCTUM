@@ -1,9 +1,12 @@
 {
-  "cspExceptions": [
-    {"rule": "script-unsafe-inline", "reason": "Interfața generează ~150 de handlere inline (onclick/onchange/oninput) în șabloane; migrarea la delegare de evenimente e planificată, nu s-a făcut aici ca să nu se strice funcționalitatea. connect-src rămâne 'none'."}
-  ],
   "exceptions": [
-    {"rule": "unprefixed-storage", "reason": "Cheile «punctum» (starea) și «acupunctura» (denumirea veche, doar citită/ștearsă la reset) sunt datele deja salvate ale utilizatorilor; redenumirea ar pierde datele existente."}
+    {
+      "rule": "unprefixed-storage",
+      "reason": "Cheile «punctum» (starea) și «acupunctura» (denumirea veche, doar citită/ștearsă la reset) sunt datele deja salvate ale utilizatorilor; redenumirea ar pierde datele existente."
+    }
   ],
-  "storagePrefixes": ["punctum", "acupunctura"]
+  "storagePrefixes": [
+    "punctum",
+    "acupunctura"
+  ]
 }

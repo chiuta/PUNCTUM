@@ -4,7 +4,8 @@
 - Aligned with fff-kit (core, store, dialog, label, bundle): transparency label on `#app-version`, `app.json`, application-version/last-updated meta.
 - Native `confirm()`/`alert()` replaced by `FFF.dialog` (accessible modal, translated); tests press "Yes" in the dialog.
 - Footer button contrast fixed (axe: 0 violations in 8 scenarios).
-- `fff.config.json` documents two exceptions: `script-unsafe-inline` (about 150 inline handlers, migration to event delegation pending) and unprefixed storage keys `punctum` / `acupunctura` (existing user data).
+- CSP without `unsafe-inline`: the ~140 inline handlers (onclick/onchange/oninput/onkeydown) became a handler registry (`src/js/98_handlers.js`) with delegated listeners; dynamic arguments travel in `data-a-<id>-<k>` attributes.
+- `fff.config.json` documents one exception: unprefixed storage keys `punctum` / `acupunctura` (existing user data).
 - `tests/suite.test.mjs` runs the whole suite.
 
 ## 2.5 — 2026-11-04

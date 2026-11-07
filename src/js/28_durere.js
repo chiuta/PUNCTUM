@@ -22,7 +22,7 @@ function vDurere(){
   const z=DZ.find(x=>x.id===DR.z);const red=DR.red.some(Boolean);
   const sharp=DR.s===DS[3]||DR.s===DS[4]||DR.s===DS[6];
   const acute=!!z&&ZHIDE.includes(z.id)&&DR.d===DD[0];
-  const chip=(arr,k,cur)=>arr.map(t=>`<button class="b ${cur===t?'':'alt'}" onclick="drSet('${k}',this.dataset.v)" data-v="${esc(t)}" aria-pressed="${cur===t}">${esc(t)}</button>`).join('');
+  const chip=(arr,k,cur)=>arr.map(t=>`<button class="b ${cur===t?'':'alt'}" data-h-click="128" data-a-128-0="${k}" data-v="${esc(t)}" aria-pressed="${cur===t}">${esc(t)}</button>`).join('');
   let out='';
   if(red)out=`<div class="warn" role="alert">${redAlarm(DR.red.map((v,i)=>v?i:-1).filter(i=>i>=0))}</div>`;
   else if(z){
@@ -35,18 +35,18 @@ function vDurere(){
     out=`${ZALERT[z.id]?`<div class="warn" role="note">${esc(ZALERT[z.id])}</div>`:''}${notes.map(t=>`<div class="warn" role="note">${esc(t)}</div>`).join('')}
     ${acute?`<p class="mut">Dacă niciunul dintre aceste semne nu se potrivește și durerea persistă peste 48 de ore, vezi medicul.</p>`:''}
     ${sharp||acute?'':`<h2>Sugestii pentru această zonă</h2>
-    ${pr.length?`<h3>Presopunctură</h3>${pr.map(i=>`<div class="card" style="margin:.4rem 0"><h3>${esc(PROT[i].t)}</h3><p>${PROT[i].p.map(c=>cPtTag(c)).join('')}</p><p class="w">${esc(PROT[i].n)}</p><button class="b" onclick="startSes(${i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
-    ${sm.length?`<h3>Puncte apăsate simultan</h3>${sm.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.c.n)}</h3><p>${masTags(o.c.pts)}</p>${profBadges(profR('sim',o.c))}${o.c.nota?`<p class="w">${esc(o.c.nota)}</p>`:''}<button class="b" onclick="masStart('s',${o.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
-    ${sq.length?`<h3>Secvențe de masaj</h3>${sq.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.r.n)}</h3><p class="mut">${esc(o.r.scop)}</p>${profBadges(profR('seq',o.r))}${o.r.evita?`<p class="w">${esc(o.r.evita)}</p>`:''}${o.r.nota?`<p class="w">${esc(o.r.nota)}</p>`:''}<button class="b" onclick="masStart('c',${o.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
+    ${pr.length?`<h3>Presopunctură</h3>${pr.map(i=>`<div class="card" style="margin:.4rem 0"><h3>${esc(PROT[i].t)}</h3><p>${PROT[i].p.map(c=>cPtTag(c)).join('')}</p><p class="w">${esc(PROT[i].n)}</p><button class="b" data-h-click="16" data-a-16-0="${i}">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
+    ${sm.length?`<h3>Puncte apăsate simultan</h3>${sm.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.c.n)}</h3><p>${masTags(o.c.pts)}</p>${profBadges(profR('sim',o.c))}${o.c.nota?`<p class="w">${esc(o.c.nota)}</p>`:''}<button class="b" data-h-click="90" data-a-90-0="${o.i}">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
+    ${sq.length?`<h3>Secvențe de masaj</h3>${sq.map(o=>`<div class="card" style="margin:.4rem 0"><h3>${esc(o.r.n)}</h3><p class="mut">${esc(o.r.scop)}</p>${profBadges(profR('seq',o.r))}${o.r.evita?`<p class="w">${esc(o.r.evita)}</p>`:''}${o.r.nota?`<p class="w">${esc(o.r.nota)}</p>`:''}<button class="b" data-h-click="91" data-a-91-0="${o.i}">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
     ${!pr.length&&!sm.length&&!sq.length?`<p class="mut">${esc(T().noRes)}</p>`:''}`}`;
   }
   return `<h1>Unde te doare?</h1>${disc()}
   <p>Alege zona, apoi cum se simte. Primești rutine blânde potrivite și semnele de alarmă. Nu este un diagnostic.</p>
-  <h2>1. Zona</h2><div class="bar">${DZ.map(x=>`<button class="b ${DR.z===x.id?'':'alt'}" onclick="drSet('z','${x.id}')" aria-pressed="${DR.z===x.id}">${x.e} ${esc(x.n)}</button>`).join('')}</div>
+  <h2>1. Zona</h2><div class="bar">${DZ.map(x=>`<button class="b ${DR.z===x.id?'':'alt'}" data-h-click="129" data-a-129-0="${x.id}" aria-pressed="${DR.z===x.id}">${x.e} ${esc(x.n)}</button>`).join('')}</div>
   <h2>2. Cum se simte</h2><div class="bar">${chip(DS,'s',DR.s)}</div>
   <h2>3. De cât timp</h2><div class="bar">${chip(DD,'d',DR.d)}</div>
   <h2>4. Semne de alarmă</h2><p class="mut">Bifează dacă ai oricare dintre ele.</p>
-  ${RED.map((t,i)=>`<label class="mut" style="display:flex;gap:.5rem;align-items:flex-start;margin:.3rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto;margin-top:.25rem" ${DR.red[i]?'checked':''} onchange="drRed(${i},this.checked)"> <span>${esc(t)}</span></label>`).join('')}
+  ${RED.map((t,i)=>`<label class="mut" style="display:flex;gap:.5rem;align-items:flex-start;margin:.3rem 0"><input type="checkbox" style="flex:none;min-width:0;width:auto;margin-top:.25rem" ${DR.red[i]?'checked':''} data-h-change="130" data-a-130-0="${i}"> <span>${esc(t)}</span></label>`).join('')}
   ${out}`;
 }
 regView('durere',vDurere,{ro:'Unde te doare?',en:'Where does it hurt?',fr:'Où avez-vous mal ?',it:'Dove senti dolore?',es:'¿Dónde te duele?',pt:'Onde dói?',de:'Wo tut es weh?',hu:'Hol fáj?'},{after:'acu'});
@@ -92,11 +92,11 @@ function vExam(){
   const acc=S.exam.n?Math.round(100*S.exam.ok/S.exam.n):0;
   return `${MPCSS}<h1>Examen pe hartă</h1>${disc()}
   <p>Apasă pe hartă locul unde se află punctul cerut. Hărțile sunt schematice: servesc la exersare, nu înlocuiesc măsurarea pe corp.</p>
-  <div class="bar"><button class="b ${EX.mode==='key'?'':'alt'}" onclick="exMode('key')">Puncte-cheie</button><button class="b ${EX.mode==='all'?'':'alt'}" onclick="exMode('all')">Toate punctele</button></div>
+  <div class="bar"><button class="b ${EX.mode==='key'?'':'alt'}" data-h-click="131">Puncte-cheie</button><button class="b ${EX.mode==='all'?'':'alt'}" data-h-click="132">Toate punctele</button></div>
   <div class="card"><h2 style="margin:.2rem 0"><span class="badge" style="background:${MCOL[p.m]}">${esc(p.c)}</span>${esc(p.p)}</h2>
-  ${EX.tip?`<p class="mut">${esc(p.l)}</p>`:`<button class="b alt" onclick="exTip()">Arată indiciul (localizarea)</button>`}
-  <svg id="exSvg" viewBox="0 0 ${v.vb[0]} ${v.vb[1]}" style="width:100%;max-width:360px;display:block;margin:.6rem auto;touch-action:manipulation" role="img" aria-label="Hartă pentru examen" onclick="exTap(event)">${v.svg()}${marks}</svg>
-  ${r?`<p role="status"><b>${esc(msg)}</b></p><button class="b" onclick="exNext()">Următorul punct ▶</button>`:''}</div>
+  ${EX.tip?`<p class="mut">${esc(p.l)}</p>`:`<button class="b alt" data-h-click="133">Arată indiciul (localizarea)</button>`}
+  <svg id="exSvg" viewBox="0 0 ${v.vb[0]} ${v.vb[1]}" style="width:100%;max-width:360px;display:block;margin:.6rem auto;touch-action:manipulation" role="img" aria-label="Hartă pentru examen" data-h-click="134">${v.svg()}${marks}</svg>
+  ${r?`<p role="status"><b>${esc(msg)}</b></p><button class="b" data-h-click="135">Următorul punct ▶</button>`:''}</div>
   <p class="mut">Încercări: <b>${S.exam.n}</b> · reușite: <b>${S.exam.ok}</b> (${acc}%) · cea mai lungă serie: <b>${S.exam.best}</b></p>`;
 }
 regView('exam',vExam,{},{nonav:true});

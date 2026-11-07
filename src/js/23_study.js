@@ -59,14 +59,14 @@ function vQuizRun(){
     return `<h2>${esc(su('result'))}: ${r.sc} / ${r.items.length}</h2><p class="mut">${esc(su('time'))}: ${mins} min</p>
     ${r.missed&&r.missed.length?'':''}
     ${qReview(r)}
-    <div class="bar"><button class="b" onclick="SQ.run=null;render()">${esc(su('again'))}</button>${r.wrongIdx&&r.wrongIdx.length?'':''}<button class="b alt" onclick="qRetryWrong()">${esc(su('retryWrong'))}</button></div>`;
+    <div class="bar"><button class="b" data-h-click="70">${esc(su('again'))}</button>${r.wrongIdx&&r.wrongIdx.length?'':''}<button class="b alt" data-h-click="71">${esc(su('retryWrong'))}</button></div>`;
   }
   const it=r.items[r.i];
   return `<p class="mut">${esc(su('q'))} ${r.i+1} ${esc(su('of'))} ${r.items.length} · ${esc(su('score'))} ${r.sc} · ${esc(suc(it.cat))}</p>
   <div class="card"><h3>${esc(it.q)}</h3>
-  ${it.o.map((o,i)=>{let c='';if(SQ.mode==='practice'&&r.ans!==null){if(o===it.ok)c=' ok';else if(o===r.ans)c=' no'}else if(SQ.mode==='exam'&&r.picks[r.i]===o)c=' ok';return `<button class="opt${c}" onclick="qPick(${i})">${esc(o)}</button>`}).join('')}
-  ${SQ.mode==='practice'&&r.ans!==null?`<p class="mut">${r.ans===it.ok?'✔':'✘'} ${esc(it.e||'')}</p><button class="b" onclick="qNext()">${esc(r.i<r.items.length-1?su('next'):su('finish'))}</button>`:''}
-  ${SQ.mode==='exam'?`<button class="b alt" onclick="qNext()">${esc(su('skip'))}</button>`:''}</div>`;
+  ${it.o.map((o,i)=>{let c='';if(SQ.mode==='practice'&&r.ans!==null){if(o===it.ok)c=' ok';else if(o===r.ans)c=' no'}else if(SQ.mode==='exam'&&r.picks[r.i]===o)c=' ok';return `<button class="opt${c}" data-h-click="72" data-a-72-0="${i}">${esc(o)}</button>`}).join('')}
+  ${SQ.mode==='practice'&&r.ans!==null?`<p class="mut">${r.ans===it.ok?'✔':'✘'} ${esc(it.e||'')}</p><button class="b" data-h-click="73">${esc(r.i<r.items.length-1?su('next'):su('finish'))}</button>`:''}
+  ${SQ.mode==='exam'?`<button class="b alt" data-h-click="73">${esc(su('skip'))}</button>`:''}</div>`;
 }
 function qReview(r){
   // în modul practică, greșelile se rețin în r.picks prin pickLog; aici reconstruim din contorul pe întrebare
@@ -106,11 +106,11 @@ function vCards(){
   if(!SQ.fc.queue||SQ.fc.queue===undefined||SQ.fc.built!==SQ.deck){fcBuild();SQ.fc.built=SQ.deck}
   const q=SQ.fc.queue;const st=SQ.fc.stat||{due:0,fresh:0,learned:0,total:0};
   const decks=[['pts','dPts'],['loc','dLoc'],['mer','dMer'],['var','dVar'],['glo','dGlo']];
-  return `<div class="bar"><label class="mut">${esc(su('deck'))}: <select onchange="SQ.deck=this.value;SQ.fc.built=null;SQ.fc.extra=0;render()">${decks.map(d=>`<option value="${d[0]}" ${SQ.deck===d[0]?'selected':''}>${esc(su(d[1]))}</option>`).join('')}</select></label></div>
+  return `<div class="bar"><label class="mut">${esc(su('deck'))}: <select data-h-change="74">${decks.map(d=>`<option value="${d[0]}" ${SQ.deck===d[0]?'selected':''}>${esc(su(d[1]))}</option>`).join('')}</select></label></div>
   <p class="mut">${st.due} ${esc(su('due'))} · ${st.fresh} ${esc(su('newc'))} · ${st.learned}/${st.total} ${esc(su('learned'))}</p>
   ${q.length?`<div class="card" style="text-align:center;min-height:160px"><div style="font-size:1.1rem;margin:.4rem 0">${q[0].f}</div>${SQ.fc.flip?`<hr style="border:0;border-top:1px solid var(--line)"><div style="text-align:left">${q[0].b}</div>`:''}</div>
-  <div class="bar">${SQ.fc.flip?`<button class="b alt" onclick="fcRate(0)">${esc(su('again2'))}</button><button class="b alt" onclick="fcRate(1)">${esc(su('hard'))}</button><button class="b" onclick="fcRate(2)">${esc(su('good'))}</button><button class="b" onclick="fcRate(3)">${esc(su('easy'))}</button>`:`<button class="b" onclick="SQ.fc.flip=true;render()">${esc(su('flip'))}</button>`}</div><p class="mut">${q.length} ↓</p>`
-  :`<div class="card"><p>${esc(su('noDue'))}</p><button class="b" onclick="SQ.fc.extra=(SQ.fc.extra||0)+10;SQ.fc.built=null;render()">${esc(su('moreNew'))}</button></div>`}`;
+  <div class="bar">${SQ.fc.flip?`<button class="b alt" data-h-click="75">${esc(su('again2'))}</button><button class="b alt" data-h-click="76">${esc(su('hard'))}</button><button class="b" data-h-click="77">${esc(su('good'))}</button><button class="b" data-h-click="78">${esc(su('easy'))}</button>`:`<button class="b" data-h-click="79">${esc(su('flip'))}</button>`}</div><p class="mut">${q.length} ↓</p>`
+  :`<div class="card"><p>${esc(su('noDue'))}</p><button class="b" data-h-click="80">${esc(su('moreNew'))}</button></div>`}`;
 }
 function vProgress(){
   const s=sst();const keys=Object.keys(s.by);
@@ -118,11 +118,11 @@ function vProgress(){
   const rows=keys.map(k=>({k,ok:s.by[k][0],n:s.by[k][1],p:Math.round(100*s.by[k][0]/s.by[k][1])})).sort((a,b)=>a.p-b.p);
   return `<div class="card"><b>${s.ok} / ${s.n}</b> ${esc(su('answered'))} · ${esc(su('acc'))} ${Math.round(100*s.ok/s.n)}%</div>
   <h3>${esc(su('weak'))}</h3><div class="tw"><table>${rows.map(r=>`<tr><td>${esc(suc(r.k))}</td><td style="width:50%"><div style="height:8px;border-radius:6px;background:var(--soft);overflow:hidden"><div style="height:100%;width:${r.p}%;background:${r.p<60?'var(--acc2)':'var(--acc)'}"></div></div></td><td>${r.p}% (${r.ok}/${r.n})</td></tr>`).join('')}</table></div>
-  <p><button class="b alt" onclick="FFF.dialog.confirm(su('confirmReset')).then(function(ok){if(ok){S.study={by:{},fc:{},n:0,ok:0};save();SQ.fc.built=null;render()}})">${esc(su('resetStats'))}</button></p>`;
+  <p><button class="b alt" data-h-click="81">${esc(su('resetStats'))}</button></p>`;
 }
 function vStudy(){
   const tab=SQ.tab;
-  const tabs=`<div class="bar"><button class="b ${tab==='quiz'?'':'alt'}" onclick="SQ.tab='quiz';render()">${esc(su('tabQuiz'))}</button><button class="b ${tab==='cards'?'':'alt'}" onclick="SQ.tab='cards';SQ.fc.built=null;render()">${esc(su('tabCards'))}</button><button class="b ${tab==='prog'?'':'alt'}" onclick="SQ.tab='prog';render()">${esc(su('tabProg'))}</button></div>`;
+  const tabs=`<div class="bar"><button class="b ${tab==='quiz'?'':'alt'}" data-h-click="82">${esc(su('tabQuiz'))}</button><button class="b ${tab==='cards'?'':'alt'}" data-h-click="83">${esc(su('tabCards'))}</button><button class="b ${tab==='prog'?'':'alt'}" data-h-click="84">${esc(su('tabProg'))}</button></div>`;
   const exl=`<p><a class="b alt" href="#exam" style="text-decoration:none;display:inline-block;padding:.6rem .9rem">📍 Examen pe hartă</a></p>`;
   let body='';
   if(tab==='cards')body=vCards();
@@ -132,11 +132,11 @@ function vStudy(){
     const cats=[...new Set(qPool().map(x=>x.cat))];
     body=`<p class="mut">${qPool().length} ${esc(su('bank'))}</p>
     <div class="card"><div class="bar">
-     <label class="mut">${esc(su('cat'))}: <select onchange="SQ.cat=this.value">${'<option value="">'+esc(su('all'))+'</option>'+cats.map(c=>`<option value="${esc(c)}" ${SQ.cat===c?'selected':''}>${esc(suc(c))}</option>`).join('')}</select></label>
-     <label class="mut">${esc(su('lvl'))}: <select onchange="SQ.lvl=+this.value"><option value="0">${esc(su('anyLvl'))}</option>${[1,2,3].map(l=>`<option value="${l}" ${SQ.lvl===l?'selected':''}>${l}</option>`).join('')}</select></label>
-     <label class="mut">${esc(su('n'))}: <select onchange="SQ.n=this.value">${[10,20,30,'all'].map(n=>`<option value="${n}" ${String(SQ.n)===String(n)?'selected':''}>${n==='all'?esc(su('all')):n}</option>`).join('')}</select></label>
-     <label class="mut">${esc(su('mode'))}: <select onchange="SQ.mode=this.value"><option value="practice" ${SQ.mode==='practice'?'selected':''}>${esc(su('practice'))}</option><option value="exam" ${SQ.mode==='exam'?'selected':''}>${esc(su('exam'))}</option></select></label>
-    </div><button class="b" onclick="qBegin()">${esc(su('start'))}</button> <span class="mut">${esc(su('best'))}: ${S.best||0}</span></div>`;
+     <label class="mut">${esc(su('cat'))}: <select data-h-change="85">${'<option value="">'+esc(su('all'))+'</option>'+cats.map(c=>`<option value="${esc(c)}" ${SQ.cat===c?'selected':''}>${esc(suc(c))}</option>`).join('')}</select></label>
+     <label class="mut">${esc(su('lvl'))}: <select data-h-change="86"><option value="0">${esc(su('anyLvl'))}</option>${[1,2,3].map(l=>`<option value="${l}" ${SQ.lvl===l?'selected':''}>${l}</option>`).join('')}</select></label>
+     <label class="mut">${esc(su('n'))}: <select data-h-change="87">${[10,20,30,'all'].map(n=>`<option value="${n}" ${String(SQ.n)===String(n)?'selected':''}>${n==='all'?esc(su('all')):n}</option>`).join('')}</select></label>
+     <label class="mut">${esc(su('mode'))}: <select data-h-change="88"><option value="practice" ${SQ.mode==='practice'?'selected':''}>${esc(su('practice'))}</option><option value="exam" ${SQ.mode==='exam'?'selected':''}>${esc(su('exam'))}</option></select></label>
+    </div><button class="b" data-h-click="89">${esc(su('start'))}</button> <span class="mut">${esc(su('best'))}: ${S.best||0}</span></div>`;
   }
   return `<h1>${esc(su('title'))}</h1>${tabs}${exl}${body}`;
 }

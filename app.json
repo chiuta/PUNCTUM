@@ -15,13 +15,13 @@
     "acupunctura",
     "punctum"
   ],
-  "sizeBytes": 5184829,
-  "sha256": "8dd46a462f7b6bbbff9f9f1626cc6e51209958fa31fd5551e8d1bda330017ecb",
+  "sizeBytes": 5190599,
+  "sha256": "0168f5d3004bc6488ada7d781f8810d19b3f864f936de795235ab042a757ef27",
   "csp": {
     "present": true,
     "directives": {
       "default-src": "'none'",
-      "script-src": "'self' 'unsafe-inline'",
+      "script-src": "'self' sha256×3",
       "style-src": "'unsafe-inline'",
       "img-src": "'self' data: blob:",
       "manifest-src": "'self'",
@@ -29,7 +29,7 @@
       "base-uri": "'none'",
       "form-action": "'none'"
     },
-    "scriptInline": "unsafe-inline",
+    "scriptInline": "hash",
     "connect": "'none'"
   },
   "features": {
@@ -68,12 +68,6 @@
     ]
   },
   "selfSerializing": false,
-  "cspExceptions": [
-    {
-      "rule": "script-unsafe-inline",
-      "reason": "Interfața generează ~150 de handlere inline (onclick/onchange/oninput) în șabloane; migrarea la delegare de evenimente e planificată, nu s-a făcut aici ca să nu se strice funcționalitatea. connect-src rămâne 'none'."
-    }
-  ],
   "exceptions": [
     {
       "rule": "unprefixed-storage",

@@ -76,7 +76,7 @@ function cndFilter(){
 function cndVarLink(id){
   const v=VAR.find(x=>x.id===id);if(!v)return '';
   if(CNF.noN&&(v.inv>=2||v.risc>=3))return '';
-  return `<a class="tag" href="#tech" onclick="TF.q='${esc(v.n).replace(/'/g,'')}';TF.cat='';TF.open='${esc(v.id)}';$('#q').value='';render();return false">${esc(v.n.split(' (')[0])}</a>`;
+  return `<a class="tag" href="#tech" data-h-click="34" data-a-34-0="${esc(v.n).replace(/'/g,'')}" data-a-34-1="${esc(v.id)}">${esc(v.n.split(' (')[0])}</a>`;
 }
 function cndCard(c){
   const pts=c.pts.map(cPt).filter(Boolean);
@@ -89,7 +89,7 @@ function cndCard(c){
    ${c.g==='Copii'?`<div class="warn">👶 ${esc(CNU('kidsN'))}</div>`:''}
    <h3>${esc(CNU('points'))}</h3><p>${pts.map(p=>`<span class="tag" title="${esc(p.l)}">${ptLink(p.c)} ${esc(p.p)}</span>`).join('')}</p>
    <h3>${esc(CNU('protocol'))}</h3><p>${esc(c.pr)}</p>
-   <div class="bar"><button class="b" onclick="cndStart('${esc(c.id)}')">${esc(CNU('startS'))}</button><button class="b alt" onclick="cndAddAll('${esc(c.id)}')">${esc(CNU('addR'))}</button></div>
+   <div class="bar"><button class="b" data-h-click="35" data-a-35-0="${esc(c.id)}">${esc(CNU('startS'))}</button><button class="b alt" data-h-click="36" data-a-36-0="${esc(c.id)}">${esc(CNU('addR'))}</button></div>
    ${vl?`<h3>${esc(CNU('variants'))}</h3><p>${vl}</p>`:''}
    <h3>${esc(CNU('selfcare'))}</h3><p>${esc(c.sc)}</p>
    <h3>${esc(CNU('evid'))}</h3><p><span class="badge" style="background:${EVC[c.ev]||EVC.x}">${esc(CNU('evL')[c.ev]||'')}</span> ${esc(c.evt)}</p>
@@ -103,8 +103,8 @@ function cndRenderList(){
 }
 function cndChips(){
   const gs=[...new Set(COND.map(c=>c.g))];
-  return `<button class="b ${CNF.g?'alt':''}" onclick="CNF.g='';cndChipsDraw();cndRenderList()">${esc(CNU('all'))} (${COND.length})</button>`+
-   gs.map(g=>`<button class="b ${CNF.g===g?'':'alt'}" data-g="${esc(g)}" onclick="CNF.g=this.dataset.g;cndChipsDraw();cndRenderList()">${esc(CNUg(g))} (${COND.filter(c=>c.g===g).length})</button>`).join('');
+  return `<button class="b ${CNF.g?'alt':''}" data-h-click="37">${esc(CNU('all'))} (${COND.length})</button>`+
+   gs.map(g=>`<button class="b ${CNF.g===g?'':'alt'}" data-g="${esc(g)}" data-h-click="38">${esc(CNUg(g))} (${COND.filter(c=>c.g===g).length})</button>`).join('');
 }
 function cndChipsDraw(){const b=$('#cnd-chips');if(b)b.innerHTML=cndChips()}
 
@@ -125,7 +125,7 @@ function rtnSug(v){
   if(!q){box.innerHTML='';return}
   const sc=p=>{const c=cnN(p.c),n=cnN(p.p);return c===q?0:c.startsWith(q)?1:n.startsWith(q)?2:c.includes(q)?3:n.includes(q)?4:cnN(p.u||'').includes(q)?5:9};
   const L=PT.map(p=>({p,s:sc(p)})).filter(x=>x.s<9).sort((a,b)=>a.s-b.s).slice(0,8);
-  box.innerHTML=L.map(x=>`<button class="b alt" style="margin:.15rem .2rem .15rem 0;padding:.3rem .6rem;font-size:.85rem" onclick="rtnAdd('${esc(x.p.c)}');$('#rtn-q').value='';$('#rtn-sug').innerHTML=''">+ ${esc(x.p.c)} ${esc(x.p.p)}</button>`).join('')||`<span class="mut">${esc(CNU('noRes'))}</span>`;
+  box.innerHTML=L.map(x=>`<button class="b alt" style="margin:.15rem .2rem .15rem 0;padding:.3rem .6rem;font-size:.85rem" data-h-click="39" data-a-39-0="${esc(x.p.c)}">+ ${esc(x.p.c)} ${esc(x.p.p)}</button>`).join('')||`<span class="mut">${esc(CNU('noRes'))}</span>`;
 }
 function rtnKey(e){if(e.key==='Enter'){const b=document.querySelector('#rtn-sug button');if(b){e.preventDefault();b.click()}}}
 function rtnMove(i,d){const j=i+d;if(j<0||j>=CRT.pts.length)return;const t=CRT.pts[i];CRT.pts[i]=CRT.pts[j];CRT.pts[j]=t;rtnDraw()}
@@ -188,28 +188,28 @@ function rtnDraw(){
   const box=$('#rtn-box');if(!box)return;
   const R=cRoutines().slice().sort((a,b)=>(b.fav?1:0)-(a.fav?1:0));
   const rows=CRT.pts.map((c,i)=>{const p=cPt(c);return `<tr><td>${i+1}</td><td><span class="badge" style="background:${p&&typeof MCOL!=='undefined'&&MCOL[p.m]||'var(--acc)'}">${esc(c)}</span>${p?esc(p.p):''}</td>
-    <td style="white-space:nowrap"><button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rUp'))}" aria-label="${esc(CNU('rUp'))}" onclick="rtnMove(${i},-1)" ${i===0?'disabled':''}>▲</button>
-    <button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rDown'))}" aria-label="${esc(CNU('rDown'))}" onclick="rtnMove(${i},1)" ${i===CRT.pts.length-1?'disabled':''}>▼</button>
-    <button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rDel'))}" aria-label="${esc(CNU('rDel'))}" onclick="rtnDel(${i})">✕</button></td></tr>`}).join('');
+    <td style="white-space:nowrap"><button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rUp'))}" aria-label="${esc(CNU('rUp'))}" data-h-click="40" data-a-40-0="${i}" ${i===0?'disabled':''}>▲</button>
+    <button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rDown'))}" aria-label="${esc(CNU('rDown'))}" data-h-click="41" data-a-41-0="${i}" ${i===CRT.pts.length-1?'disabled':''}>▼</button>
+    <button class="b alt" style="padding:.25rem .55rem" title="${esc(CNU('rDel'))}" aria-label="${esc(CNU('rDel'))}" data-h-click="42" data-a-42-0="${i}">✕</button></td></tr>`}).join('');
   const pregWarn=CRT.pts.map(cPt).filter(p=>p&&isPregPt(p)).map(p=>p.c);
   box.innerHTML=`<div class="card" id="rtn-ed">
-   <div class="bar"><input id="rtn-name" maxlength="80" placeholder="${esc(CNU('rNamePh'))}" aria-label="${esc(CNU('rName'))}" value="${esc(CRT.name)}" oninput="CRT.name=this.value">
-    <select aria-label="${esc(CNU('rSec'))}" onchange="CRT.sec=+this.value">${CSEC.map(s=>`<option value="${s}" ${CRT.sec===s?'selected':''}>${s} ${esc(CNU('rSecU'))} / ${esc(CNU('perPt'))}</option>`).join('')}</select></div>
-   <div class="bar"><input id="rtn-q" type="search" placeholder="${esc(CNU('rAddPh'))}" autocomplete="off" oninput="rtnSug(this.value)" onkeydown="rtnKey(event)"></div>
+   <div class="bar"><input id="rtn-name" maxlength="80" placeholder="${esc(CNU('rNamePh'))}" aria-label="${esc(CNU('rName'))}" value="${esc(CRT.name)}" data-h-input="43">
+    <select aria-label="${esc(CNU('rSec'))}" data-h-change="44">${CSEC.map(s=>`<option value="${s}" ${CRT.sec===s?'selected':''}>${s} ${esc(CNU('rSecU'))} / ${esc(CNU('perPt'))}</option>`).join('')}</select></div>
+   <div class="bar"><input id="rtn-q" type="search" placeholder="${esc(CNU('rAddPh'))}" autocomplete="off" data-h-input="45" data-h-keydown="46"></div>
    <div id="rtn-sug"></div>
    ${CRT.pts.length?`<div class="tw"><table>${rows}</table></div>`:`<p class="mut">${esc(CNU('rEmpty'))}</p>`}
    ${pregWarn.length?`<p class="w" style="color:var(--acc2)">⚠ ${esc(CNU('pregN'))}${pregWarn.join(', ')}.</p>`:''}
-   <div class="bar"><button class="b" onclick="rtnSave()">${esc(CNU('rSave'))}</button><button class="b alt" onclick="rtnStartDraft()" ${CRT.pts.length?'':'disabled'}>${esc(CNU('rStartDraft'))}</button><button class="b alt" onclick="rtnClear()">${esc(CNU('rNew'))}</button></div>
+   <div class="bar"><button class="b" data-h-click="47">${esc(CNU('rSave'))}</button><button class="b alt" data-h-click="48" ${CRT.pts.length?'':'disabled'}>${esc(CNU('rStartDraft'))}</button><button class="b alt" data-h-click="49">${esc(CNU('rNew'))}</button></div>
    ${CRT.msg?`<p class="mut" role="status">${esc(CRT.msg)}</p>`:''}
   </div>
   ${R.length?R.map(r=>`<details ${r.fav?'open':''}><summary>${r.fav?'★ ':''}${esc(r.name)} <span class="tag">${r.pts.length} · ${r.sec||60} ${esc(CNU('rSecU'))}</span></summary>
     <p>${r.pts.map(cPtTag).join('')}</p>
-    <div class="bar"><button class="b" onclick="rtnStart('${esc(r.id)}')">${esc(CNU('rStart'))}</button><button class="b alt" onclick="rtnEdit('${esc(r.id)}')">${esc(CNU('rEdit'))}</button>
-     <button class="b alt" onclick="rtnFav('${esc(r.id)}')">${r.fav?'★':'☆'} ${esc(CNU('rFav'))}</button><button class="b alt" onclick="rtnPrint('${esc(r.id)}')">🖨 ${esc(CNU('rPrint'))}</button>
-     <button class="b alt" onclick="rtnDup('${esc(r.id)}')">${esc(CNU('rDup'))}</button><button class="b alt" onclick="rtnRemove('${esc(r.id)}')">${esc(CNU('rDel'))}</button></div></details>`).join(''):`<p class="mut">${esc(CNU('rNone'))}</p>`}
+    <div class="bar"><button class="b" data-h-click="50" data-a-50-0="${esc(r.id)}">${esc(CNU('rStart'))}</button><button class="b alt" data-h-click="51" data-a-51-0="${esc(r.id)}">${esc(CNU('rEdit'))}</button>
+     <button class="b alt" data-h-click="52" data-a-52-0="${esc(r.id)}">${r.fav?'★':'☆'} ${esc(CNU('rFav'))}</button><button class="b alt" data-h-click="53" data-a-53-0="${esc(r.id)}">🖨 ${esc(CNU('rPrint'))}</button>
+     <button class="b alt" data-h-click="54" data-a-54-0="${esc(r.id)}">${esc(CNU('rDup'))}</button><button class="b alt" data-h-click="55" data-a-55-0="${esc(r.id)}">${esc(CNU('rDel'))}</button></div></details>`).join(''):`<p class="mut">${esc(CNU('rNone'))}</p>`}
   <details><summary>${esc(CNU('ioT'))}</summary>
-   <textarea id="rtn-io" rows="6" style="width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem;font:13px monospace;font-size:max(16px,1rem)" placeholder="${esc(CNU('ioPh'))}" aria-label="JSON" oninput="CRT.io=this.value">${esc(CRT.io)}</textarea>
-   <div class="bar"><button class="b alt" onclick="rtnExport()">${esc(CNU('rExport'))}</button><button class="b" onclick="rtnImport()">${esc(CNU('rImport'))}</button></div></details>`;
+   <textarea id="rtn-io" rows="6" style="width:100%;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:10px;padding:.5rem;font:13px monospace;font-size:max(16px,1rem)" placeholder="${esc(CNU('ioPh'))}" aria-label="JSON" data-h-input="56">${esc(CRT.io)}</textarea>
+   <div class="bar"><button class="b alt" data-h-click="57">${esc(CNU('rExport'))}</button><button class="b" data-h-click="58">${esc(CNU('rImport'))}</button></div></details>`;
 }
 
 /* ---- vizualizarea ---- */
@@ -217,11 +217,11 @@ function vCond(){
   const fav=cRoutines().find(r=>r.fav);
   return `<h1>${esc(CNU('title'))}</h1>${disc()}
   <p>${esc(CNU('intro'))}</p><p class="mut">${esc(CNU('contentNote'))}</p>
-  ${fav?`<div class="bar"><button class="b" onclick="rtnStart('${esc(fav.id)}')">${esc(CNU('rFavStart'))}: ${esc(fav.name)}</button></div>`:''}
-  <div class="bar"><input id="cnd-q" type="search" placeholder="${esc(CNU('search'))}" aria-label="${esc(CNU('search'))}" value="${esc(CNF.q)}" oninput="CNF.q=this.value;cndRenderList()">
+  ${fav?`<div class="bar"><button class="b" data-h-click="50" data-a-50-0="${esc(fav.id)}">${esc(CNU('rFavStart'))}: ${esc(fav.name)}</button></div>`:''}
+  <div class="bar"><input id="cnd-q" type="search" placeholder="${esc(CNU('search'))}" aria-label="${esc(CNU('search'))}" value="${esc(CNF.q)}" data-h-input="59">
    <span class="mut" id="cnd-count" style="align-self:center"></span></div>
   <div class="bar" id="cnd-chips"></div>
-  <div class="bar"><label class="mut" style="display:flex;gap:.4rem;align-items:center"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${CNF.noN?'checked':''} onchange="CNF.noN=this.checked;cndRenderList()"> ${esc(CNU('noNeedle'))}</label></div>
+  <div class="bar"><label class="mut" style="display:flex;gap:.4rem;align-items:center"><input type="checkbox" style="flex:none;min-width:0;width:auto" ${CNF.noN?'checked':''} data-h-change="60"> ${esc(CNU('noNeedle'))}</label></div>
   <div id="cnd-list"></div>
   <h2 id="rtn-sec">${esc(CNU('sec'))}</h2>
   <div id="rtn-box"></div>`;

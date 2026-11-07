@@ -82,7 +82,7 @@ function elSvg(){
   let s='';
   for(let i=0;i<5;i++){const l=sh(pos[i],pos[(i+2)%5],27);s+=`<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}" stroke="#c0392b" stroke-width="1.5" stroke-dasharray="4 3" marker-end="url(#ak)"/>`}
   for(let i=0;i<5;i++){const l=sh(pos[i],pos[(i+1)%5],27);s+=`<line x1="${l[0]}" y1="${l[1]}" x2="${l[2]}" y2="${l[3]}" stroke="#2e8b57" stroke-width="2.5" marker-end="url(#ah)"/>`}
-  for(let i=0;i<5;i++){const sel=i===selEl.i;s+=`<g class="elp" onclick="selectEl(${i})"><circle cx="${pos[i][0]}" cy="${pos[i][1]}" r="${sel?27:23}" fill="${EL[i].c}" stroke="${sel?'#fff':'none'}" stroke-width="3"/><text x="${pos[i][0]}" y="${pos[i][1]+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${EL[i].n}</text></g>`}
+  for(let i=0;i<5;i++){const sel=i===selEl.i;s+=`<g class="elp" data-h-click="3" data-a-3-0="${i}"><circle cx="${pos[i][0]}" cy="${pos[i][1]}" r="${sel?27:23}" fill="${EL[i].c}" stroke="${sel?'#fff':'none'}" stroke-width="3"/><text x="${pos[i][0]}" y="${pos[i][1]+4}" text-anchor="middle" font-size="12" font-weight="700" fill="#fff">${EL[i].n}</text></g>`}
   return s;
 }
 function selectEl(i){selEl.i=i;render()}
@@ -98,7 +98,7 @@ function vMer(){
     <p><b>Puncte-cheie:</b> ${linkify(m.key)}</p>
     <p><b>Utilizare tradițională:</b> ${esc(m.use)}</p>
     <p class="mut">Element: ${m.el} · ${m.yy} · ${esc(m.lim)} · ${m.pts} puncte${m.t!=='—'?` · maxim ${m.t}`:''}</p>
-    <p><a href="#pts" onclick="PF.m='${m.c}';PF.q='';PF.r='';PF.fav=false;go('pts')">Vezi toate punctele din listă →</a></p></details>`).join('')}
+    <p><a href="#pts" data-h-click="4" data-a-4-0="${m.c}">Vezi toate punctele din listă →</a></p></details>`).join('')}
   <h2>Circulația în ciclul de 24 de ore</h2>
   <p>LU → LI → ST → SP → HT → SI → BL → KI → PC → TE → GB → LR → LU. Fiecare meridian este considerat mai activ într-un interval de 2 ore (vezi Acasă).</p>
   <h2>Cuplări yin–yang</h2>
@@ -115,10 +115,10 @@ function renderPtsList(){const pl=$('#plist');if(!pl)return;const L=filterPts();
 function vPts(){
   return `<h1>Puncte</h1>${disc()}
   <div class="card"><p><b>Presopunctură:</b> apasă cu pulpa degetului, ferm dar fără durere ascuțită, 30–60 de secunde, respirând lent. Dacă apar durere intensă, amorțeală sau amețeală, oprește-te. Avertismentele despre „înțepare" privesc doar practicanții de acupunctură.</p></div>
-  <div class="bar"><input id="pq" placeholder="Filtrează (cod, nume, simptom)…" value="${esc(PF.q)}" oninput="PF.q=this.value;dbRun('pts',renderPtsList)">
-   <select id="pm" onchange="PF.m=this.value;renderPtsList()"><option value="">Toate meridianele</option>${MER.map(m=>`<option value="${m.c}" ${PF.m===m.c?'selected':''}>${m.c} — ${esc(m.n)}</option>`).join('')}<option value="EX" ${PF.m==='EX'?'selected':''}>EX — Puncte extra</option></select>
-   <select id="pr" onchange="PF.r=this.value;renderPtsList()"><option value="">Toate zonele</option>${Object.keys(REG).map(k=>`<option value="${k}" ${PF.r===k?'selected':''}>${REG[k]}</option>`).join('')}</select>
-   <button class="b alt" onclick="PF.fav=!PF.fav;this.style.outline=PF.fav?'2px solid var(--gold)':'none';renderPtsList()" style="${PF.fav?'outline:2px solid var(--gold)':''}">★ Favorite</button>
+  <div class="bar"><input id="pq" placeholder="Filtrează (cod, nume, simptom)…" value="${esc(PF.q)}" data-h-input="5">
+   <select id="pm" data-h-change="6"><option value="">Toate meridianele</option>${MER.map(m=>`<option value="${m.c}" ${PF.m===m.c?'selected':''}>${m.c} — ${esc(m.n)}</option>`).join('')}<option value="EX" ${PF.m==='EX'?'selected':''}>EX — Puncte extra</option></select>
+   <select id="pr" data-h-change="7"><option value="">Toate zonele</option>${Object.keys(REG).map(k=>`<option value="${k}" ${PF.r===k?'selected':''}>${REG[k]}</option>`).join('')}</select>
+   <button class="b alt" data-h-click="8" style="${PF.fav?'outline:2px solid var(--gold)':''}">★ Favorite</button>
    <span class="mut" id="pcount" style="align-self:center"></span></div>
   <div class="grid" id="plist"></div>
   <p class="mut">Descrierile urmează convențiile standard OMS; locațiile exacte variază individual. Indicațiile sunt cele tradiționale, nu promisiuni terapeutice. Marcajul ⚠ indică precauții.</p>`;
@@ -169,12 +169,12 @@ function drawSes(){
    ${SES.partner?partnerBar():''}
    <p class="mut">${SES.child?'Atingere foarte ușoară, fără presiune pe puncte · oprește imediat dacă plânge mai tare':`Presiune confortabilă, niciodată dureroasă · ${(p.pr==='u'||profOn('anticoag'))?(profOn('anticoag')?'ușoară (maximum 3 din 10)':'ușoară (2–3 din 10)'):'medie (4–6 din 10)'} · inspiră 4 s · expiră 6 s · ambele părți unde e cazul`}</p>
    <div class="bar" style="justify-content:center">
-    <button class="b alt" data-f="prev" aria-label="${esc(TX('sPrev'))}" onclick="sesNext(-1)" ${SES.i===0?'disabled':''}>◀</button>
-    <button class="b" data-f="pause" data-af aria-label="${esc(TX(SES.paused?'sResume':'sPause'))}" onclick="sesPause()">${SES.paused?'▶':'❚❚'}</button>
-    <button class="b alt" data-f="next" aria-label="${esc(TX('sNext'))}" onclick="sesNext(1)" ${SES.i===SES.pts.length-1?'disabled':''}>▶</button>
-    <button class="b alt" data-f="end" aria-label="${esc(TX('sStop'))}" onclick="endSes(false)">✕</button></div>
-   <div class="bar" style="justify-content:center">${SES.fixed?'':`<select data-f="time" aria-label="${esc(TX('sDur'))}" onchange="sesTime(this.value)">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.dur===s?'selected':''}>${s} s / punct</option>`).join('')}</select>`}
-   <label class="mut" style="align-self:center"><input type="checkbox" data-f="beep" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
+    <button class="b alt" data-f="prev" aria-label="${esc(TX('sPrev'))}" data-h-click="9" ${SES.i===0?'disabled':''}>◀</button>
+    <button class="b" data-f="pause" data-af aria-label="${esc(TX(SES.paused?'sResume':'sPause'))}" data-h-click="10">${SES.paused?'▶':'❚❚'}</button>
+    <button class="b alt" data-f="next" aria-label="${esc(TX('sNext'))}" data-h-click="11" ${SES.i===SES.pts.length-1?'disabled':''}>▶</button>
+    <button class="b alt" data-f="end" aria-label="${esc(TX('sStop'))}" data-h-click="12">✕</button></div>
+   <div class="bar" style="justify-content:center">${SES.fixed?'':`<select data-f="time" aria-label="${esc(TX('sDur'))}" data-h-change="13">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.dur===s?'selected':''}>${s} s / punct</option>`).join('')}</select>`}
+   <label class="mut" style="align-self:center"><input type="checkbox" data-f="beep" ${SES.beep?'checked':''} data-h-change="14"> sunet</label></div>
   </div></div>`;
 }
 
@@ -192,14 +192,14 @@ function vAcu(){
   <li>După sesiune: bea apă, odihnește-te câteva minute.</li></ul>
   <div class="warn"><b>Oprește sesiunea</b> dacă apar: durere ascuțită, amețeală puternică, amorțeală persistentă, palpitații sau stare de leșin. Evită presiunea pe răni, vene varicoase severe, tromboză venoasă, umflături, tumori, zone fracturate sau operate recent, febră mare și imediat după mese copioase. La anticoagulante, osteoporoză severă, epilepsie, cancer sau boli cardiace grave, și la copii mici, cere întâi sfatul medicului. În sarcină evită punctele marcate ⚠ și zonele abdominală și lombo-sacrată, și cere avizul medicului.</div>
   <h2>Protocoale pe situații (auto-îngrijire)</h2>
-  <div class="bar"><label class="mut">Durată/punct: <select onchange="SES.sec=+this.value">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s</option>`).join('')}</select></label><label class="mut"><input type="checkbox" ${SES.beep?'checked':''} onchange="SES.beep=this.checked"> sunet</label></div>
+  <div class="bar"><label class="mut">Durată/punct: <select data-h-change="15">${[30,45,60,90,120].map(s=>`<option value="${s}" ${SES.sec===s?'selected':''}>${s} s</option>`).join('')}</select></label><label class="mut"><input type="checkbox" ${SES.beep?'checked':''} data-h-change="14"> sunet</label></div>
   ${PROT.map((p,i)=>{
     const pts=p.p.map(c=>PT.find(x=>x.c===c)).filter(Boolean);const preg=pts.filter(isPregPt).map(x=>x.c);
     return `<details><summary>${esc(p.t)}</summary>
      <p>${pts.map(x=>`<span class="tag" title="${esc(x.l)}">${ptLink(x.c)} ${esc(x.p)}</span>`).join('')}</p>
      <p>${esc(p.n)}</p>
      ${preg.length?`<p class="w" style="color:var(--acc2)">⚠ În sarcină evită: ${preg.join(', ')}.</p>`:''}
-     <button class="b" onclick="startSes(${i})">▶ Pornește sesiunea ghidată</button> <p></p></details>`}).join('')}
+     <button class="b" data-h-click="16" data-a-16-0="${i}">▶ Pornește sesiunea ghidată</button> <p></p></details>`}).join('')}
   <h2>Autostimulare cu obiecte</h2>
   <ul><li><b>Minge de tenis / lacrosse</b> lângă coloană, pe perete sau pe podea — pentru spate și fese (BL, GB30).</li>
   <li><b>Pieptene sau perie</b> pentru stimularea ușoară a scalpului (GV20, EX-HN1).</li>
@@ -254,7 +254,7 @@ function renderVarList(){
   $('#vcount').textContent=L.length+' / '+(TF.scope==='all'?VAR.length:VAR.filter(v=>v.soft).length);
   if(!L.length){box.innerHTML=`<p class="mut">${esc(T().noRes)}</p>`;return}
   if(TF.view==='table'){
-    box.innerHTML=`<div class="tw"><table><tr><th>Variantă</th><th>Categorie</th><th>Invazivitate</th><th>Risc</th><th>Dovezi</th><th>Autoaplicare</th></tr>${L.map(v=>`<tr><td><a href="#tech" onclick="TF.view='cards';TF.q='${esc(v.n).replace(/'/g,'')}';TF.open='${esc(v.id)}';render();return false">${esc(v.n)}</a></td><td>${esc(CATN[v.cat].split(' (')[0])}</td><td>${INVN[v.inv]}</td><td>${RISKN[v.risc]}</td><td><span class="badge" style="background:${EVC[v.ev]}">${esc(EVN[v.ev].split(' (')[0])}</span></td><td>${AUTN[v.auto]}</td></tr>`).join('')}</table></div>`;
+    box.innerHTML=`<div class="tw"><table><tr><th>Variantă</th><th>Categorie</th><th>Invazivitate</th><th>Risc</th><th>Dovezi</th><th>Autoaplicare</th></tr>${L.map(v=>`<tr><td><a href="#tech" data-h-click="17" data-a-17-0="${esc(v.n).replace(/'/g,'')}" data-a-17-1="${esc(v.id)}">${esc(v.n)}</a></td><td>${esc(CATN[v.cat].split(' (')[0])}</td><td>${INVN[v.inv]}</td><td>${RISKN[v.risc]}</td><td><span class="badge" style="background:${EVC[v.ev]}">${esc(EVN[v.ev].split(' (')[0])}</span></td><td>${AUTN[v.auto]}</td></tr>`).join('')}</table></div>`;
     return;
   }
   const order=Object.keys(CATN);let h='';
@@ -269,18 +269,18 @@ function vTech(){
   const cnt={};VAR.filter(v=>TF.scope==='all'||v.soft).forEach(v=>cnt[v.cat]=(cnt[v.cat]||0)+1);
   return `<h1>Variante</h1>${disc()}
   <p>Implicit vezi presopunctura și metodele blânde, pe care le poți învăța și aplica acasă, cu respectarea regulilor de siguranță. Metodele cu ace, foc, vid sau sânge se văd doar dacă le ceri, sunt prezentate informativ și se fac numai de practicieni calificați.</p>
-  <div class="bar"><button class="b ${TF.scope==='soft'?'':'alt'}" onclick="TF.scope='soft';TF.cat='';render()">Presopunctură și metode blânde</button><button class="b ${TF.scope==='all'?'':'alt'}" onclick="TF.scope='all';render()">Toate variantele (ace, foc, sânge — doar informativ)</button></div>
-  <div class="bar"><input id="vq" placeholder="Caută o variantă, o zonă, un simptom…" value="${esc(TF.q)}" oninput="TF.q=this.value;renderVarList()">
-   <select onchange="TF.sort=this.value;renderVarList()"><option value="cat" ${TF.sort==='cat'?'selected':''}>Grupat pe categorii</option><option value="name" ${TF.sort==='name'?'selected':''}>Alfabetic</option><option value="risk" ${TF.sort==='risk'?'selected':''}>Risc crescător</option><option value="ev" ${TF.sort==='ev'?'selected':''}>Dovezi (cele mai bune întâi)</option></select>
-   <button class="b alt" onclick="TF.view=TF.view==='cards'?'table':'cards';render()">${TF.view==='cards'?'▦ Tabel comparativ':'☰ Fișe'}</button>
+  <div class="bar"><button class="b ${TF.scope==='soft'?'':'alt'}" data-h-click="18">Presopunctură și metode blânde</button><button class="b ${TF.scope==='all'?'':'alt'}" data-h-click="19">Toate variantele (ace, foc, sânge — doar informativ)</button></div>
+  <div class="bar"><input id="vq" placeholder="Caută o variantă, o zonă, un simptom…" value="${esc(TF.q)}" data-h-input="20">
+   <select data-h-change="21"><option value="cat" ${TF.sort==='cat'?'selected':''}>Grupat pe categorii</option><option value="name" ${TF.sort==='name'?'selected':''}>Alfabetic</option><option value="risk" ${TF.sort==='risk'?'selected':''}>Risc crescător</option><option value="ev" ${TF.sort==='ev'?'selected':''}>Dovezi (cele mai bune întâi)</option></select>
+   <button class="b alt" data-h-click="22">${TF.view==='cards'?'▦ Tabel comparativ':'☰ Fișe'}</button>
    <span class="mut" id="vcount" style="align-self:center"></span></div>
   <div class="bar" id="vchips">
-   <button class="b ${!TF.cat?'':'alt'}" onclick="TF.cat='';render()">Toate</button>
-   ${Object.keys(CATN).filter(k=>cnt[k]).map(k=>`<button class="b ${TF.cat===k?'':'alt'}" onclick="TF.cat='${k}';render()">${esc(CATN[k].split(' (')[0])} (${cnt[k]||0})</button>`).join('')}</div>
+   <button class="b ${!TF.cat?'':'alt'}" data-h-click="23">Toate</button>
+   ${Object.keys(CATN).filter(k=>cnt[k]).map(k=>`<button class="b ${TF.cat===k?'':'alt'}" data-h-click="24" data-a-24-0="${k}">${esc(CATN[k].split(' (')[0])} (${cnt[k]||0})</button>`).join('')}</div>
   <div class="bar">
-   <label class="mut"><input type="checkbox" ${TF.noNeedle?'checked':''} onchange="TF.noNeedle=this.checked;renderVarList()"> Fără ace</label>
-   <label class="mut"><input type="checkbox" ${TF.self?'checked':''} onchange="TF.self=this.checked;renderVarList()"> Pot face singur (parțial sau total)</label>
-   <label class="mut"><input type="checkbox" ${TF.ev?'checked':''} onchange="TF.ev=this.checked;renderVarList()"> Doar dovezi moderate</label></div>
+   <label class="mut"><input type="checkbox" ${TF.noNeedle?'checked':''} data-h-change="25"> Fără ace</label>
+   <label class="mut"><input type="checkbox" ${TF.self?'checked':''} data-h-change="26"> Pot face singur (parțial sau total)</label>
+   <label class="mut"><input type="checkbox" ${TF.ev?'checked':''} data-h-change="27"> Doar dovezi moderate</label></div>
   <div id="vlist"></div>
   <h2>Cum alegi între variante</h2>
   <div class="tw"><table><tr><th>Dacă vrei…</th><th>Variante potrivite</th></tr>
@@ -339,7 +339,7 @@ function vCun(){
   <h2>Metoda degetelor („cun-ul degetelor")</h2>
   <ul><li><b>1 cun</b> = lățimea policelui la nivelul articulației interfalangiene.</li><li><b>1,5 cun</b> = lățimea degetelor II + III (arătător + mijlociu) unite, la nivelul articulației dintre falange.</li><li><b>2 cun</b> = lățimea a trei degete (II–IV) la nivelul falangei mijlocii a degetului III.</li><li><b>3 cun</b> = lățimea a patru degete (II–V) la nivelul falangei mijlocii a degetului III.</li></ul>
   <div class="card"><h3>Calculator personalizat</h3>
-   <label>Lățimea policelui tău (mm): <input id="thm2" type="number" min="10" max="35" step="0.5" value="${th}" style="width:90px;padding:.4rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)" oninput="CUN.th=this.value;cunTab()"></label>
+   <label>Lățimea policelui tău (mm): <input id="thm2" type="number" min="10" max="35" step="0.5" value="${th}" style="width:90px;padding:.4rem;border:1px solid var(--line);border-radius:8px;background:var(--bg);color:var(--ink)" data-h-input="28"></label>
    <div id="cuntab">${cunTable(th)}</div></div>
   <h2>Repere proporționale ale corpului</h2>
   <div class="tw"><table><tr><th>Segment</th><th>Cun</th></tr>${seg.map(s=>`<tr><td>${esc(s[0])}</td><td>${s[1]}</td></tr>`).join('')}</table></div>
@@ -439,23 +439,23 @@ function vQuiz(){
   if(!QZ.q.length){QZ.q=genQ();QZ.i=0;QZ.sc=0;QZ.ans=false}
   if(QZ.i>=QZ.q.length){
     if(QZ.sc>S.best){S.best=QZ.sc;save()}
-    return `<h1>Quiz</h1><div class="card"><h2>Rezultat: ${QZ.sc} / ${QZ.q.length}</h2><p>Cel mai bun scor: ${S.best}</p><button class="b" onclick="QZ.q=[];render()">Din nou</button></div>`;
+    return `<h1>Quiz</h1><div class="card"><h2>Rezultat: ${QZ.sc} / ${QZ.q.length}</h2><p>Cel mai bun scor: ${S.best}</p><button class="b" data-h-click="29">Din nou</button></div>`;
   }
   const q=QZ.q[QZ.i];
   return `<h1>Quiz</h1><p class="mut">Întrebarea ${QZ.i+1} din ${QZ.q.length} · scor ${QZ.sc} · record ${S.best}</p>
-  <div class="card"><h3>${esc(q.t)}</h3><div id="opts">${q.o.map((o,i)=>`<button class="opt" onclick="ansQ(${i})">${esc(o)}</button>`).join('')}</div>
+  <div class="card"><h3>${esc(q.t)}</h3><div id="opts">${q.o.map((o,i)=>`<button class="opt" data-h-click="30" data-a-30-0="${i}">${esc(o)}</button>`).join('')}</div>
   <div id="qres"></div></div>`;
 }
 function ansQ(i){
   if(QZ.ans)return;QZ.ans=true;const q=QZ.q[QZ.i];const btn=document.querySelectorAll('.opt');
   btn.forEach((b,j)=>{if(q.o[j]===q.a)b.classList.add('ok');else if(j===i)b.classList.add('no')});
   if(q.o[i]===q.a)QZ.sc++;
-  $('#qres').innerHTML=`<button class="b" onclick="QZ.i++;QZ.ans=false;render()">${QZ.i<QZ.q.length-1?'Următoarea →':'Rezultat'}</button>`;
+  $('#qres').innerHTML=`<button class="b" data-h-click="31">${QZ.i<QZ.q.length-1?'Următoarea →':'Rezultat'}</button>`;
 }
 
 function vGloss(){
   const g=GLO.slice().sort((a,b)=>cmp(a[0],b[0]));
-  return `<h1>Glosar</h1>${disc()}<div class="bar"><input id="gq" placeholder="Caută în glosar…" oninput="gFilter(this.value)"></div><div id="glist">${g.map(x=>`<details class="gl"><summary>${esc(x[0])}</summary><p>${esc(x[1])}</p></details>`).join('')}</div>`;
+  return `<h1>Glosar</h1>${disc()}<div class="bar"><input id="gq" placeholder="Caută în glosar…" data-h-input="32"></div><div id="glist">${g.map(x=>`<details class="gl"><summary>${esc(x[0])}</summary><p>${esc(x[1])}</p></details>`).join('')}</div>`;
 }
 function gFilter(v){v=v.toLowerCase();document.querySelectorAll('.gl').forEach(d=>d.style.display=d.textContent.toLowerCase().includes(v)?'':'none')}
 
@@ -477,9 +477,9 @@ function doSearch(){
   $('#main').innerHTML=`<h1>${esc(T().ph.replace('…',''))}: “${esc(v)}”</h1>${nlUrgent(v)?'<div class="warn" role="alert"><b>Ce descrii poate fi o urgență.</b> Dacă ai durere sau presiune în piept, lipsă de aer, slăbiciune bruscă pe o parte, vorbire încurcată, durere de cap ca o lovitură, sângerare importantă sau gânduri de a-ți face rău, sună acum la 112. Nu folosi presopunctura în locul ajutorului medical.</div>':''}${any?'':`<p class="mut">${esc(T().noRes)}</p>`}
   ${pts.length?`<h2>Puncte (${pts.length})</h2><div class="grid">${pts.map(ptCard).join('')}</div>`:''}
   ${mer.length?`<h2>Meridiane</h2>${mer.map(m=>`<div class="card" style="margin:.4rem 0"><h3><span class="badge" style="background:${MCOL[m.c]}">${m.c}</span>${esc(m.n)}</h3><p>${esc(m.path)}</p></div>`).join('')}`:''}
-  ${mas.length?`<h2>Masaj</h2>${mas.map(m=>`<div class="card" style="margin:.4rem 0"><h3>${esc(m.n)}</h3><p class="mut">${esc(m.x)}</p><button class="b" onclick="masStart('${m.k}',${m.i})">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
+  ${mas.length?`<h2>Masaj</h2>${mas.map(m=>`<div class="card" style="margin:.4rem 0"><h3>${esc(m.n)}</h3><p class="mut">${esc(m.x)}</p><button class="b" data-h-click="33" data-a-33-0="${m.k}" data-a-33-1="${m.i}">▶ Pornește sesiunea ghidată</button></div>`).join('')}`:''}
   ${pro.length?`<h2>Protocoale</h2>${pro.map(p=>`<div class="card" style="margin:.4rem 0"><h3>${esc(p.t)}</h3><p>${p.p.map(c=>`<span class="tag">${c}</span>`).join('')}</p></div>`).join('')}`:''}
-  ${tech.length?`<h2>Variante (${tech.length})</h2>${tech.slice(0,25).map(t=>`<div class="card" style="margin:.4rem 0"><h3>${esc(t.n)}</h3><p>${esc(t.pr)}</p><a href="#tech" onclick="TF.q='${esc(t.n).replace(/'/g,'')}';TF.cat='';TF.open='${esc(t.id)}';$('#q').value='';render();return false">Vezi fișa →</a></div>`).join('')}`:''}
+  ${tech.length?`<h2>Variante (${tech.length})</h2>${tech.slice(0,25).map(t=>`<div class="card" style="margin:.4rem 0"><h3>${esc(t.n)}</h3><p>${esc(t.pr)}</p><a href="#tech" data-h-click="34" data-a-34-0="${esc(t.n).replace(/'/g,'')}" data-a-34-1="${esc(t.id)}">Vezi fișa →</a></div>`).join('')}`:''}
   ${glo.length?`<h2>Glosar</h2>${glo.map(g=>`<details open><summary>${esc(g[0])}</summary><p>${esc(g[1])}</p></details>`).join('')}`:''}`;
 }
 
