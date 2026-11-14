@@ -9,19 +9,20 @@
   "permissions": [
     "speechSynthesis",
     "serviceWorker",
-    "localStorage"
+    "localStorage",
+    "WebGL"
   ],
   "storageKeys": [
     "acupunctura",
     "punctum"
   ],
-  "sizeBytes": 5244713,
-  "sha256": "94e68601dfcb4f407004debde6afb51b701ee045b997c4a25c22340d862b17fd",
+  "sizeBytes": 5296353,
+  "sha256": "2af888e33913e352ba8deb565a44b58a15d8d0c80608134f29e486c4d24c330e",
   "csp": {
     "present": true,
     "directives": {
       "default-src": "'none'",
-      "script-src": "'self' sha256×3",
+      "script-src": "'self' sha256×4",
       "style-src": "'unsafe-inline'",
       "img-src": "'self' data: blob:",
       "manifest-src": "'self'",
