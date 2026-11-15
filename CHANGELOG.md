@@ -1,5 +1,9 @@
 # PUNCTUM — jurnal de versiuni
 
+## 2.5.7 — 2026-11-15
+
+- Nou: texturi fractale hiper-detaliate (fff-texturi 1.1.2) — fundalul și suprafețele mari (carduri, panouri, antete, butoane; filele și dialogurile ascunse la încărcare, când se deschid) primesc un material generat local (WebGL2, fără rețea și fără imagini), care se repetă fără cusătură; culorile aplicației rămân ale ei. Se oprește din dialogul „Transparență” sau cu `?notex=1`.
+
 ## 2.5 (fff-kit alignment, 2026-11-07)
 - Aligned with fff-kit (core, store, dialog, label, bundle): transparency label on `#app-version`, `app.json`, application-version/last-updated meta.
 - Native `confirm()`/`alert()` replaced by `FFF.dialog` (accessible modal, translated); tests press "Yes" in the dialog.
