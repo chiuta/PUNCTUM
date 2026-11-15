@@ -2,7 +2,7 @@
   "schema": 1,
   "slug": "punctum",
   "name": "PUNCTUM — atlas al terapiilor prin puncte",
-  "version": "2.5.7",
+  "version": "2.6.0",
   "updated": "2026-11-15",
   "description": "",
   "egress": [],
@@ -16,8 +16,8 @@
     "acupunctura",
     "punctum"
   ],
-  "sizeBytes": 5301641,
-  "sha256": "45db5d21c8f3c34dc2b8036ee21c5a55e5ba5c8345de43743fb07200f85c9306",
+  "sizeBytes": 5339663,
+  "sha256": "02edf5aaafe4481fa9a120cd3195f461fa7def3e19ed7e94b5ff2b19b8810ced",
   "csp": {
     "present": true,
     "directives": {
@@ -56,19 +56,21 @@
       "dialog",
       "exit",
       "view",
+      "a11y",
       "ux",
       "label",
       "bundle"
     ]
   },
   "kit": {
-    "version": "1.5.0",
+    "version": "1.6.0",
     "modules": [
       "core",
       "store",
       "dialog",
       "exit",
       "view",
+      "a11y",
       "ux",
       "label",
       "bundle"
